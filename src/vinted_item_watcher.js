@@ -1,10 +1,6 @@
-import { VintedHandler } from './vinted.js';
-import { UrlBuilder } from './url_builder.js';
-import { SeleniumChromeAgent } from './selenium_agent.js';
-
 class VintedItemWatcher {
-    constructor(urlBuilder, vintedHandler, callback, checkInterval = 5000) {
-        this.urlBuilder = urlBuilder;
+    constructor(url, vintedHandler, callback, checkInterval = 5000) {
+        this.url = url;
         this.vintedHandler = vintedHandler;
         this.callback = callback;  // Callback to handle new items
         this.checkInterval = checkInterval;
@@ -30,7 +26,7 @@ class VintedItemWatcher {
     }
 
     async fetch() {
-        const url = this.urlBuilder.build();
+        const url = this.url;
         console.log(`Checking for new items at ${url}...`);
         try {
             const items = await this.vintedHandler.getItemsFromUrl(url);

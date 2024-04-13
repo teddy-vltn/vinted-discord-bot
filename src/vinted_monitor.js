@@ -32,12 +32,10 @@ class VintedMonitor {
         this.urlBuilder.setSizes(sizes);
         this.urlBuilder.setPriceFrom(priceFrom);
         this.urlBuilder.setPriceTo(priceTo);
-
-        this.urlBuilder.build();
     }
 
     startMonitoring(callback, interval = 60000) {
-        this.watcher = new VintedItemWatcher(this.urlBuilder, this.handler, callback, interval);
+        this.watcher = new VintedItemWatcher(this.urlBuilder.build(), this.handler, callback, interval);
         this.watcher.startWatching();
     }
 

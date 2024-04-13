@@ -24,6 +24,23 @@ Ensure that you have the required packages installed. If not, you can install th
 npm install
 ```
 
+### Running the Monitor
+
+To run the monitor and test the main.js file, use the following command:
+
+```bash
+npm run start
+```
+
+You also have a way to run the monitor in a telegram bot using the following command:
+
+```bash
+npm run telegram
+```
+
+If you want to know about how to create a Telegram Bot : https://core.telegram.org/bots/tutorial
+Follow this tutorial to create your own bot and set your token in `config.json` file.
+
 ### Files
 
 - `vinted_monitor.js`: Contains the `VintedMonitor` class responsible for setting up and managing item monitoring on Vinted.
