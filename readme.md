@@ -41,6 +41,15 @@ npm run telegram
 If you want to know about how to create a Telegram Bot : https://core.telegram.org/bots/tutorial
 Follow this tutorial to create your own bot and set your token in `config.json` file.
 
+The base code for the telegram bot is in `telegram.js` file. It holds features like:
+*   `/start` : To start the bot
+*   `/config` : To see the current config
+*   `/setbrands` : To set the brands. eg: `/setbrands Nike, Puma`
+*   `/setsizes` : To set the sizes. eg: `/setsizes XS, S`
+*   `/setprice` : To set the price range. eg: `/setprice 10-100`
+*   `/watch` : To start watching the items.
+*   `/stop` : To stop watching the items.
+
 ### Files
 
 - `vinted_monitor.js`: Contains the `VintedMonitor` class responsible for setting up and managing item monitoring on Vinted.
