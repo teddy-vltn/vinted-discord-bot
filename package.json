@@ -1,0 +1,18 @@
+{
+  "name": "vinted",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "fuse.js": "^7.0.0",
+    "selenium-webdriver": "^4.19.0"
+  }
+}
