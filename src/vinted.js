@@ -35,7 +35,9 @@ class VintedHandler {
 
         const $ = cheerio.load(data);
 
-        const items = $('[data-testid=grid-item]');
+        // skip feed-grid__item feed-grid__item--full-row which are sponsored items
+
+        const items = $('.feed-grid__item').not('.feed-grid__item--full-row');
 
         const parsedItems = [];
 

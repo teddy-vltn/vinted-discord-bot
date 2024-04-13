@@ -50,6 +50,10 @@ The base code for the telegram bot is in `telegram.js` file. It holds features l
 *   `/watch` : To start watching the items.
 *   `/stop` : To stop watching the items.
 
+<p float="left">
+    <img src="img/telegram.jpeg" width="200" />
+</p>
+
 ### Files
 
 - `vinted_monitor.js`: Contains the `VintedMonitor` class responsible for setting up and managing item monitoring on Vinted.
