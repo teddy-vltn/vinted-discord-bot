@@ -5,28 +5,16 @@ const CHROME_OPTIONS = [
     "--headless",
     "--disable-gpu",
     "--no-sandbox",
-    "--disable-dev-shm-usage",
-    "--disable-web-security",
-    "--allow-running-insecure-content",
-    "--disable-extensions",
-    "--disable-plugins",
-    "--disable-popup-blocking",
-    "--disable-features=IsolateOrigins,site-per-process",
-    "--disable-site-isolation-trials",
-    "--ignore-certificate-errors",
-    "--ignore-ssl-errors",
-    "--ignore-certificate-errors-spki-list",
-    "--disable-setuid-sandbox",
-    "--disable-infobars",
-    "--window-size=1920,1080",
+    // disable images download
+    "--blink-settings=imagesEnabled=false",
+    // disable font download
+    "--disable-remote-fonts",
+    // disable audio
+    "--mute-audio",
+    // disable notifications
     "--disable-notifications",
-    "--disable-background-networking",
-    "--disable-breakpad",
-    "--disable-component-extensions-with-background-pages",
-    "--disable-default-apps",
-    "--silent",
-    "--disable-logging",
-    "--disable-sync"
+    // disable webgl
+    "--disable-webgl",
 ];
 
 class SeleniumChromeAgent {

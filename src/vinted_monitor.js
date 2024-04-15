@@ -1,26 +1,36 @@
-import { VintedHandler } from './vinted.js';
+import { VintedHandlerSelenium, VintedHandlerAPI } from './vinted.js';
 import { UrlBuilder } from './url_builder.js';
 import { SeleniumChromeAgent } from './selenium_agent.js';
 import { VintedItemWatcher } from './vinted_item_watcher.js';
 
 class VintedMonitor {
-    constructor(baseURL, proxy = null) {
+    constructor(baseURL) {
         this.baseURL = baseURL;
+    }
+
+    useSelenium(useSelenium) {
+        this.selenium = useSelenium;
+    }
+
+    useProxy(proxy) {
         this.proxy = proxy;
-        console.log("VintedMonitor created with baseURL:", baseURL)
-        console.log("Proxy:", proxy)
     }
 
     async setup() {
-        if (this.proxy) {
-            console.log("Using proxy:", this.proxy);
+        
+        if (this.selenium) {
             this.agent = new SeleniumChromeAgent(this.proxy);
+            this.driver = await this.agent.getDriver();
+            this.handler = new VintedHandlerSelenium(this.driver);
+            this.baseURL = this.baseURL + '/catalog';
         } else {
-            this.agent = new SeleniumChromeAgent();
+            this.handler = new VintedHandlerAPI();
+            if (this.proxy) {
+                this.handler.useProxy(this.proxy);
+            }
+            this.baseURL = this.baseURL + '/api/v2/catalog/items';
         }
 
-        this.driver = await this.agent.getDriver();
-        this.handler = new VintedHandler(this.driver);
         this.urlBuilder = new UrlBuilder(this.baseURL);
     }
 

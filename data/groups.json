@@ -19,6 +19,30 @@
                 "slug": "blazers",
                 "size_id": 4,
                 "children": {}
+              },
+              "Ensembles tailleur/pantalon": {
+                "id": 1125,
+                "slug": "trouser-suits",
+                "size_id": null,
+                "children": {}
+              },
+              "Jupes et robes tailleurs": {
+                "id": 1126,
+                "slug": "skirt-suits",
+                "size_id": 4,
+                "children": {}
+              },
+              "Tailleurs pièces séparées": {
+                "id": 1128,
+                "slug": "suit-separates",
+                "size_id": 4,
+                "children": {}
+              },
+              "Autres ensembles & tailleurs": {
+                "id": 1129,
+                "slug": "other-suits-and-blazers",
+                "size_id": 4,
+                "children": {}
               }
             }
           },
@@ -62,6 +86,18 @@
                 "slug": "harem-pants",
                 "size_id": 4,
                 "children": {}
+              },
+              "Pantalons courts & chinos": {
+                "id": 1070,
+                "slug": "cropped-trousers-and-chinos",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pantalons à jambes larges": {
+                "id": 1071,
+                "slug": "wide-leg-trousers",
+                "size_id": 4,
+                "children": {}
               }
             }
           },
@@ -85,6 +121,61 @@
               "Robes en jean": {
                 "id": 179,
                 "slug": "denim-dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Robes longues": {
+                "id": 1055,
+                "slug": "long-dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Midi": {
+                "id": 1056,
+                "slug": "midi-dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Robes chics": {
+                "id": 1057,
+                "slug": "formal-and-work-dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Petites robes noires": {
+                "id": 1058,
+                "slug": "little-black-dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Robes casual": {
+                "id": 1059,
+                "slug": "casual-dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pour occasions": {
+                "id": 1774,
+                "slug": "special-occasion-dresses",
+                "size_id": null,
+                "children": {
+                  "Robes dos nu": {
+                    "id": 1060,
+                    "slug": "backless-dresses",
+                    "size_id": 4,
+                    "children": {}
+                  }
+                }
+              },
+              "Robes sans bretelles": {
+                "id": 1061,
+                "slug": "strapless-dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Robes d'été": {
+                "id": 1065,
+                "slug": "summer-dresses",
                 "size_id": 4,
                 "children": {}
               }
@@ -173,6 +264,36 @@
                 "slug": "vest-tops-and-tank-tops",
                 "size_id": 4,
                 "children": {}
+              },
+              "Tops courts": {
+                "id": 1041,
+                "slug": "crop-tops",
+                "size_id": 4,
+                "children": {}
+              },
+              "Tops épaules dénudées": {
+                "id": 1042,
+                "slug": "off-the-shoulder-tops",
+                "size_id": 4,
+                "children": {}
+              },
+              "Blouses": {
+                "id": 1043,
+                "slug": "blouses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Tops dos nu": {
+                "id": 1044,
+                "slug": "halterneck-tops",
+                "size_id": 4,
+                "children": {}
+              },
+              "Cols roulés": {
+                "id": 1045,
+                "slug": "turtlenecks",
+                "size_id": 4,
+                "children": {}
               }
             }
           },
@@ -215,6 +336,12 @@
                     "slug": "knitted-jumpers",
                     "size_id": 4,
                     "children": {}
+                  },
+                  "Autres sweats": {
+                    "id": 1066,
+                    "slug": "other-jumpers",
+                    "size_id": 4,
+                    "children": {}
                   }
                 }
               },
@@ -239,6 +366,12 @@
               "Autres pull-overs & sweat-shirts": {
                 "id": 197,
                 "slug": "other-jumpers-and-sweaters",
+                "size_id": 4,
+                "children": {}
+              },
+              "Kimonos": {
+                "id": 1067,
+                "slug": "kimonos",
                 "size_id": 4,
                 "children": {}
               }
@@ -270,6 +403,30 @@
               "Shorts en jean": {
                 "id": 538,
                 "slug": "denim-shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Shorts taille haute": {
+                "id": 1099,
+                "slug": "high-waisted-shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Shorts en cuir": {
+                "id": 1100,
+                "slug": "leather-shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Shorts en dentelle": {
+                "id": 1101,
+                "slug": "lace-shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Shorts cargo": {
+                "id": 1103,
+                "slug": "cargo-shorts",
                 "size_id": 4,
                 "children": {}
               }
@@ -338,6 +495,12 @@
               "Ensembles": {
                 "id": 229,
                 "slug": "sets",
+                "size_id": 4,
+                "children": {}
+              },
+              "Peignoirs": {
+                "id": 1030,
+                "slug": "dressing-gowns",
                 "size_id": 4,
                 "children": {}
               }
@@ -415,6 +578,137 @@
             "slug": "jeans",
             "size_id": 4,
             "children": {}
+          },
+          "Combinaisons et combishorts": {
+            "id": 1035,
+            "slug": "jumpsuits-and-playsuits",
+            "size_id": 4,
+            "children": {
+              "Combinaisons": {
+                "id": 1131,
+                "slug": "jumpsuits",
+                "size_id": 4,
+                "children": {}
+              },
+              "Combi Shorts": {
+                "id": 1132,
+                "slug": "playsuits",
+                "size_id": 4,
+                "children": {}
+              },
+              "Autres combinaisons & combishorts": {
+                "id": 1134,
+                "slug": "other-jumpsuits-and-playsuits",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Manteaux et vestes": {
+            "id": 1037,
+            "slug": "outerwear",
+            "size_id": 4,
+            "children": {
+              "Vestes": {
+                "id": 1908,
+                "slug": "jackets",
+                "size_id": null,
+                "children": {
+                  "Blousons aviateur": {
+                    "id": 1078,
+                    "slug": "bomber-jackets",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Vestes en jean": {
+                    "id": 1079,
+                    "slug": "denim-jackets",
+                    "size_id": 4,
+                    "children": {}
+                  }
+                }
+              },
+              "Manteaux": {
+                "id": 1907,
+                "slug": "coats",
+                "size_id": null,
+                "children": {
+                  "Imperméables": {
+                    "id": 1080,
+                    "slug": "raincoats",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Manteaux en fausse fourrure": {
+                    "id": 1090,
+                    "slug": "faux-fur-coats",
+                    "size_id": 4,
+                    "children": {}
+                  }
+                }
+              }
+            }
+          },
+          "Maternité": {
+            "id": 1176,
+            "slug": "maternity-clothes",
+            "size_id": 4,
+            "children": {
+              "Pantalons maternité": {
+                "id": 1177,
+                "slug": "maternity-trousers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Jupes maternité": {
+                "id": 1178,
+                "slug": "maternity-skirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Tops maternité": {
+                "id": 1179,
+                "slug": "maternity-tops",
+                "size_id": 4,
+                "children": {}
+              },
+              "Combinaisons & combi shorts maternité": {
+                "id": 1181,
+                "slug": "maternity-jumpsuits-and-playsuits",
+                "size_id": 4,
+                "children": {}
+              },
+              "Robes maternité": {
+                "id": 1182,
+                "slug": "maternity-dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Manteaux & vestes maternité": {
+                "id": 1183,
+                "slug": "maternity-coats-and-jackets",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pulls à capuche & pulls maternité": {
+                "id": 1184,
+                "slug": "maternity-jumpers-and-sweaters",
+                "size_id": 4,
+                "children": {}
+              },
+              "Shorts maternité": {
+                "id": 1185,
+                "slug": "maternity-shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Maillots & tenues de plage maternité": {
+                "id": 1186,
+                "slug": "maternity-swimwear-and-beachwear",
+                "size_id": 4,
+                "children": {}
+              }
+            }
           }
         }
       },
@@ -613,6 +907,12 @@
             "slug": "gloves",
             "size_id": 61,
             "children": {}
+          },
+          "Autres accessoires": {
+            "id": 1140,
+            "slug": "other-accessories",
+            "size_id": null,
+            "children": {}
           }
         }
       },
@@ -630,6 +930,61 @@
           "Autres cosmétiques et accessoires": {
             "id": 153,
             "slug": "other-beauty-items",
+            "size_id": null,
+            "children": {}
+          },
+          "Soins du visage": {
+            "id": 948,
+            "slug": "facial-care",
+            "size_id": null,
+            "children": {}
+          },
+          "Accessoires de beauté": {
+            "id": 1906,
+            "slug": "beauty-tools",
+            "size_id": null,
+            "children": {
+              "Accessoires soins du visage": {
+                "id": 950,
+                "slug": "facial-care-tools",
+                "size_id": null,
+                "children": {}
+              },
+              "Accessoires soins corporels": {
+                "id": 958,
+                "slug": "body-care-tools",
+                "size_id": null,
+                "children": {}
+              },
+              "Accessoires soins des ongles": {
+                "id": 962,
+                "slug": "nail-care-tools",
+                "size_id": null,
+                "children": {}
+              },
+              "Accessoires maquillage": {
+                "id": 967,
+                "slug": "make-up-tools",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Soins du corps": {
+            "id": 956,
+            "slug": "body-care",
+            "size_id": null,
+            "children": {}
+          },
+          "Manucure": {
+            "id": 960,
+            "slug": "nail-care",
+            "size_id": null,
+            "children": {}
+          },
+          "Maquillage": {
+            "id": 964,
+            "slug": "make-up",
             "size_id": null,
             "children": {}
           }
@@ -849,6 +1204,12 @@
             "slug": "jeans",
             "size_id": 77,
             "children": {}
+          },
+          "Manteaux et vestes": {
+            "id": 1206,
+            "slug": "outerwear",
+            "size_id": 14,
+            "children": {}
           }
         }
       },
@@ -1010,8 +1371,108 @@
             "slug": "aftershave-and-cologne",
             "size_id": null,
             "children": {}
+          },
+          "Autres cosmétiques": {
+            "id": 968,
+            "slug": "other-grooming-items",
+            "size_id": null,
+            "children": {}
+          },
+          "Accessoires": {
+            "id": 2055,
+            "slug": "tools-and-accessories",
+            "size_id": null,
+            "children": {
+              "Autres accessoires beauté": {
+                "id": 971,
+                "slug": "other-tools",
+                "size_id": null,
+                "children": {}
+              }
+            }
           }
         }
+      }
+    }
+  },
+  "Enfants": {
+    "id": 1193,
+    "slug": "kids",
+    "size_id": 32,
+    "children": {
+      "Garçons": {
+        "id": 1194,
+        "slug": "boys-clothing",
+        "size_id": 32,
+        "children": {
+          "Bébé garçons": {
+            "id": 1196,
+            "slug": "baby-boys-clothing",
+            "size_id": 32,
+            "children": {}
+          },
+          "Vêtements d'extérieur": {
+            "id": 1197,
+            "slug": "outerwear",
+            "size_id": 32,
+            "children": {}
+          },
+          "Chemises et t-shirts": {
+            "id": 1198,
+            "slug": "tops-and-t-shirts",
+            "size_id": 32,
+            "children": {}
+          },
+          "Pulls & sweats": {
+            "id": 1199,
+            "slug": "jumpers-and-hoodies",
+            "size_id": 32,
+            "children": {}
+          },
+          "Pantalons et shorts": {
+            "id": 1200,
+            "slug": "trousers-shorts-and-dungarees",
+            "size_id": 32,
+            "children": {
+              "Shorts et pantacourts": {
+                "id": 1201,
+                "slug": "shorts-and-cropped-trousers",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Équipements de natation": {
+            "id": 1202,
+            "slug": "swimwear",
+            "size_id": 32,
+            "children": {}
+          },
+          "Sous-vêtements": {
+            "id": 1203,
+            "slug": "underwear-and-socks",
+            "size_id": 32,
+            "children": {}
+          },
+          "Vêtements de sport": {
+            "id": 1204,
+            "slug": "activewear",
+            "size_id": 32,
+            "children": {}
+          },
+          "Autres": {
+            "id": 1205,
+            "slug": "other-boys-clothing",
+            "size_id": 32,
+            "children": {}
+          }
+        }
+      },
+      "Filles": {
+        "id": 1195,
+        "slug": "girls-clothing",
+        "size_id": 32,
+        "children": {}
       }
     }
   }

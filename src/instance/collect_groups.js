@@ -34,7 +34,7 @@ async function fetchAndProcessCatalogs() {
     const agent = new SeleniumChromeAgent();
     const driver = await agent.getDriver();
 
-    let catalogId = 793; // Start from catalog ID 1
+    let catalogId = 1105; // Start from catalog ID 1
 
     while (catalogId < 4000) { // Example arbitrary stop condition
         const url = `https://www.vinted.fr/catalog/${catalogId}`;

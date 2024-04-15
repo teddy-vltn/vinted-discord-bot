@@ -15,11 +15,16 @@ class Proxys {
 }
 
 class ProxyEntity {
-    constructor(ip, port, username, password) {
+    constructor(ip, port, protocol, username, password) {
         this.ip = ip;
         this.port = port;
+        this.protocol = 'http';
         this.username = username;
         this.password = password;
+    }
+
+    toString() {
+        return `${this.protocol}://${this.ip}:${this.port}`;
     }
 }
 

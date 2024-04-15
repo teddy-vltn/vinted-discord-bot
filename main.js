@@ -4,10 +4,11 @@ import { ProxyEntity } from './src/proxys.js';
 // Usage example
 async function main() {
     const vintedMonitor = new VintedMonitor(
-        'https://www.vinted.fr/catalog',
-        // constructor(ip, port, username, password)
-        new ProxyEntity( "38.162.17.52", "3128", null, null)
+        'https://www.vinted.fr'
     );
+
+    vintedMonitor.useSelenium(false)
+    vintedMonitor.useProxy(new ProxyEntity("157.254.28.10", "999", "http"));
 
     await vintedMonitor.configure({
         order: 'newest_first',
@@ -19,7 +20,7 @@ async function main() {
     vintedMonitor.startMonitoring(newItems => {
         console.log(`Found ${newItems.length} new items:`);
         newItems.forEach(item => console.log(item.toString()));
-    }, 5000);  // Check every 5 seconds
+    }, 50000);  // Check every 5 seconds
 
     // Optionally, stop the watcher after some time
     setTimeout(() => {
