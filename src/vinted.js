@@ -99,7 +99,7 @@ class VintedHandlerAPI {
                     let vintedCookies = response.headers['set-cookie'].join(";");
                     try {
                         let parsedCookies = cookie.parse(vintedCookies);
-                        let sessionCookieKey = `_vinted_${domain}_session`;
+                        let sessionCookieKey = `_vinted_fr_session`;
                         let sessionCookie = parsedCookies[sessionCookieKey];
                         if (sessionCookie) {
                             this.cookie = sessionCookie.split(';')[0];
@@ -130,7 +130,7 @@ class VintedHandlerAPI {
             let options = {
                 url: url,
                 headers: {
-                    'Cookie': `_vinted_${domain}_session=${this.cookie}`
+                    'Cookie': `_vinted_fr_session=${this.cookie}`
                 }
             };
 

@@ -4,11 +4,11 @@ import { ProxyEntity } from './src/proxys.js';
 // Usage example
 async function main() {
     const vintedMonitor = new VintedMonitor(
-        'https://www.vinted.fr'
+        'https://www.vinted.be'
     );
 
     vintedMonitor.useSelenium(false)
-    vintedMonitor.useProxy(new ProxyEntity("157.254.28.10", "999", "http"));
+    //vintedMonitor.useProxy(new ProxyEntity("157.254.28.10", "999", "http"));
 
     await vintedMonitor.configure({
         order: 'newest_first',
