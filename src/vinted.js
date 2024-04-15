@@ -3,7 +3,7 @@ import cheerio from 'cheerio';
 import { By, until } from 'selenium-webdriver';
 import { UrlBuilder } from './url_builder.js';
 import cookie from 'cookie';
-import { HttpsProxyAgent } from 'https-proxy-agent';
+import request from 'request';
 
 class VintedHandlerSelenium {
     constructor(driver) {
@@ -64,53 +64,98 @@ class VintedHandlerAPI {
         this.proxy = proxy;
     }
 
-    async fetchCookie(domain = 'fr', agent = null) {
-        console.log(`Fetching cookie for domain https://www.vinted.${domain}`);
-        const response = await fetch(`https://www.vinted.${domain}`, {
-            agent: agent
-        });
-        
-        let vintedCookies = response.headers.get('set-cookie');
+    /*request({
+  'url':'https://anysite.you.want/sub/sub',
+  'method': "GET",
+  'proxy':'http://yourproxy:8087'
+},function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    console.log(body);
+  }
+})*/
 
-        if (!vintedCookies) {
-            console.error("No cookies found in response.");
-            return;
+    async fetchCookie(domain = 'fr') {
+
+        let options = {
+            url: `https://www.vinted.${domain}`,
+            method: "GET"
+        };
+
+        if (this.proxy) {
+            options['proxy'] = this.proxy.toString();
         }
-
-        let vintedCookie = cookie.parse(vintedCookies)["SameSite"].replace(`Lax, _vinted_${domain}_session=`, "")
-
-        this.cookie = vintedCookie;
+    
+        return new Promise((resolve, reject) => {
+            console.log(`Fetching cookie for domain https://www.vinted.${domain}`);
+            
+            request(options, (error, response, body) => {
+                if (error) {
+                    console.error("Error fetching cookie:", error);
+                    reject("Failed to fetch cookie: " + error.message);
+                    return;
+                }
+                
+                if (response && response.headers['set-cookie']) {
+                    let vintedCookies = response.headers['set-cookie'].join(";");
+                    try {
+                        let parsedCookies = cookie.parse(vintedCookies);
+                        let sessionCookieKey = `_vinted_${domain}_session`;
+                        let sessionCookie = parsedCookies[sessionCookieKey];
+                        if (sessionCookie) {
+                            this.cookie = sessionCookie.split(';')[0];
+                            console.log("Cookie fetched successfully:", this.cookie);
+                            resolve(this.cookie);
+                        } else {
+                            reject("Session cookie not found in response.");
+                        }
+                    } catch (parseError) {
+                        reject("Error parsing cookies: " + parseError.message);
+                    }
+                } else {
+                    console.error("No cookies found in response.");
+                    reject("No cookies found in response.");
+                }
+            });
+        });
     }
 
     async getItemsFromUrl(url) {
-        // _vinted_fr_session can be any instead of "fr" for example if on vinted.lt it will be _vinted_lt_session
-        // parse based on url domain instead of hardcoding
-        const domain = new URL(url).hostname.split('.').slice(-2)[1];
-
-        let agent = null;
-
-        if (this.proxy) {
-            console.log(`Using proxy ${this.proxy}`);
-            agent = new HttpsProxyAgent(this.proxy.toString());
-        }
+        const domain = new URL(url).hostname.split('.').slice(-2)[1]; 
 
         if (!this.cookie) {
-            await this.fetchCookie(domain, agent);
+            await this.fetchCookie(domain);
         }
 
-        const response = await fetch(url, {
-            headers: {
-                cookie: `_vinted_${domain}_session=${this.cookie}`
-            },
-            agent: agent
+        return new Promise((resolve, reject) => {
+            let options = {
+                url: url,
+                headers: {
+                    'Cookie': `_vinted_${domain}_session=${this.cookie}`
+                }
+            };
+
+            if (this.proxy) {
+                console.log(`Using proxy ${this.proxy}`);
+                options['proxy'] = this.proxy;
+            }
+
+            request(options, (error, response, body) => {
+                if (error) {
+                    console.error("Error fetching items:", error);
+                    reject(error);
+                    return;
+                }
+
+                try {
+                    const items = this.parseItems(body);
+                    resolve(items);
+                } catch (parseError) {
+                    console.error("Error parsing items:", parseError);
+                    reject(parseError);
+                }
+            });
         });
-
-        const data = await response.text();
-
-        const items = this.parseItems(data);
-
-        return items;
-    }   
+    }  
 
     parseItems(data) {
         const items = JSON.parse(data).items

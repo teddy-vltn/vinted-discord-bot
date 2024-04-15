@@ -503,6 +503,18 @@
                 "slug": "dressing-gowns",
                 "size_id": 4,
                 "children": {}
+              },
+              "Chaussettes": {
+                "id": 1262,
+                "slug": "socks",
+                "size_id": 72,
+                "children": {}
+              },
+              "Collants": {
+                "id": 1263,
+                "slug": "tights-and-stockings",
+                "size_id": 4,
+                "children": {}
               }
             }
           },
@@ -913,6 +925,12 @@
             "slug": "other-accessories",
             "size_id": null,
             "children": {}
+          },
+          "Accessoires high-tech": {
+            "id": 1221,
+            "slug": "tech-accessories",
+            "size_id": null,
+            "children": {}
           }
         }
       },
@@ -985,6 +1003,12 @@
           "Maquillage": {
             "id": 964,
             "slug": "make-up",
+            "size_id": null,
+            "children": {}
+          },
+          "Soin mains": {
+            "id": 1264,
+            "slug": "hand-care",
             "size_id": null,
             "children": {}
           }
@@ -1209,7 +1233,58 @@
             "id": 1206,
             "slug": "outerwear",
             "size_id": 14,
-            "children": {}
+            "children": {
+              "Vestes": {
+                "id": 2052,
+                "slug": "jackets",
+                "size_id": null,
+                "children": {
+                  "Blousons aviateur": {
+                    "id": 1223,
+                    "slug": "bomber-jackets",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Vestes en jean": {
+                    "id": 1224,
+                    "slug": "denim-jackets",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Vestes Harrington": {
+                    "id": 1226,
+                    "slug": "harrington-jackets",
+                    "size_id": 14,
+                    "children": {}
+                  }
+                }
+              },
+              "Manteaux": {
+                "id": 2051,
+                "slug": "coats",
+                "size_id": null,
+                "children": {
+                  "Duffle-coats": {
+                    "id": 1225,
+                    "slug": "duffle-coats",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Parkas": {
+                    "id": 1227,
+                    "slug": "parkas",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Trenchs": {
+                    "id": 1230,
+                    "slug": "trench-coats",
+                    "size_id": 14,
+                    "children": {}
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -1392,6 +1467,31 @@
             }
           }
         }
+      },
+      "Chaussures": {
+        "id": 1231,
+        "slug": "shoes",
+        "size_id": 38,
+        "children": {
+          "Bottes": {
+            "id": 1233,
+            "slug": "boots",
+            "size_id": 38,
+            "children": {}
+          },
+          "Chaussures habillées": {
+            "id": 1238,
+            "slug": "formal-shoes",
+            "size_id": 38,
+            "children": {}
+          },
+          "Baskets": {
+            "id": 1242,
+            "slug": "trainers",
+            "size_id": 38,
+            "children": {}
+          }
+        }
       }
     }
   },
@@ -1465,6 +1565,18 @@
             "slug": "other-boys-clothing",
             "size_id": 32,
             "children": {}
+          },
+          "Chaussures": {
+            "id": 1256,
+            "slug": "shoes",
+            "size_id": 31,
+            "children": {}
+          },
+          "Sacs et sacs à dos": {
+            "id": 1257,
+            "slug": "bags-and-backpacks",
+            "size_id": null,
+            "children": {}
           }
         }
       },
@@ -1472,7 +1584,93 @@
         "id": 1195,
         "slug": "girls-clothing",
         "size_id": 32,
-        "children": {}
+        "children": {
+          "Bébé filles": {
+            "id": 1243,
+            "slug": "baby-girls-clothing",
+            "size_id": 32,
+            "children": {}
+          },
+          "Vêtements d'extérieur": {
+            "id": 1244,
+            "slug": "outerwear",
+            "size_id": 32,
+            "children": {}
+          },
+          "Chemises et t-shirts": {
+            "id": 1245,
+            "slug": "tops-and-t-shirts",
+            "size_id": 32,
+            "children": {}
+          },
+          "Pulls & sweats": {
+            "id": 1246,
+            "slug": "jumpers-and-hoodies",
+            "size_id": 32,
+            "children": {}
+          },
+          "Robes": {
+            "id": 1247,
+            "slug": "dresses",
+            "size_id": 32,
+            "children": {}
+          },
+          "Jupes": {
+            "id": 1248,
+            "slug": "skirts",
+            "size_id": 32,
+            "children": {}
+          },
+          "Pantalons et shorts": {
+            "id": 1249,
+            "slug": "trousers-shorts-and-dungarees",
+            "size_id": 32,
+            "children": {
+              "Shorts et pantacourts": {
+                "id": 1250,
+                "slug": "shorts-and-cropped-trousers",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Équipements de natation": {
+            "id": 1251,
+            "slug": "swimwear",
+            "size_id": 32,
+            "children": {}
+          },
+          "Sous-vêtements": {
+            "id": 1252,
+            "slug": "underwear-and-socks",
+            "size_id": 32,
+            "children": {}
+          },
+          "Vêtements de sport": {
+            "id": 1253,
+            "slug": "activewear",
+            "size_id": 32,
+            "children": {}
+          },
+          "Autres": {
+            "id": 1254,
+            "slug": "other-girls-clothing",
+            "size_id": 32,
+            "children": {}
+          },
+          "Chaussures": {
+            "id": 1255,
+            "slug": "shoes",
+            "size_id": 31,
+            "children": {}
+          },
+          "Sacs et sacs à dos": {
+            "id": 1258,
+            "slug": "bags-and-backpacks",
+            "size_id": null,
+            "children": {}
+          }
+        }
       }
     }
   }

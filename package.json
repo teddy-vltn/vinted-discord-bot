@@ -17,6 +17,7 @@
     "fuse.js": "^7.0.0",
     "https-proxy-agent": "^7.0.4",
     "node-telegram-bot-api": "^0.65.1",
+    "request": "^2.88.2",
     "selenium-webdriver": "^4.19.0"
   }
 }

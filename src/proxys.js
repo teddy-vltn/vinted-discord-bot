@@ -18,7 +18,7 @@ class ProxyEntity {
     constructor(ip, port, protocol, username, password) {
         this.ip = ip;
         this.port = port;
-        this.protocol = 'http';
+        this.protocol = protocol;
         this.username = username;
         this.password = password;
     }
