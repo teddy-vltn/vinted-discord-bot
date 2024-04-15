@@ -1,28 +1,1018 @@
 {
-    "Tailles": 4,
-    "Chaussures": 7,
-    "Soutiens-gorge": 53,
-    "Bagues": 52,
-    "Chapeaux adulte": 60,
-    "Montres": 62,
-    "Gants adulte": 61,
-    "Ceintures femme": 64,
-    "Chaussettes femme": 72,
-    "Tailles hommes": 14,
-    "Pantalons homme": 77,
-    "Chemises homme": 74,
-    "Vestes de costume pour homme": 75,
-    "Chaussures hommes": 38,
-    "Ceintures homme": 63,
-    "Chaussettes homme": 73,
-    "Tailles enfants et b\u00e9b\u00e9s": 32,
-    "Tailles de chaussures pour enfants": 31,
-    "Si\u00e8ges auto b\u00e9b\u00e9": 27,
-    "\u00c2ge enfant": 29,
-    "Chapeaux enfant": 43,
-    "Ceintures enfant": 70,
-    "Chaussettes enfant": 71,
-    "Tailles de coussins": 59,
-    "Tailles de couvertures": 67,
-    "Articles pour chiens": 57
+  "Femmes": {
+    "id": 1904,
+    "slug": "women",
+    "size_id": null,
+    "children": {
+      "Vêtements": {
+        "id": 4,
+        "slug": "clothing",
+        "size_id": 4,
+        "children": {
+          "Blazers et tailleurs": {
+            "id": 8,
+            "slug": "suits-and-blazers",
+            "size_id": 4,
+            "children": {
+              "Blazers": {
+                "id": 532,
+                "slug": "blazers",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Pantalons et leggings": {
+            "id": 9,
+            "slug": "trousers-and-leggings",
+            "size_id": 4,
+            "children": {
+              "Pantalons en cuir": {
+                "id": 184,
+                "slug": "leather-trousers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pantalons skinny": {
+                "id": 185,
+                "slug": "skinny-trousers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pantalons ajustés": {
+                "id": 187,
+                "slug": "tailored-trousers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Autres pantalons": {
+                "id": 189,
+                "slug": "other-trousers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Leggings": {
+                "id": 525,
+                "slug": "leggings",
+                "size_id": 4,
+                "children": {}
+              },
+              "Sarouels": {
+                "id": 526,
+                "slug": "harem-pants",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Robes": {
+            "id": 10,
+            "slug": "dresses",
+            "size_id": 4,
+            "children": {
+              "Autres robes": {
+                "id": 176,
+                "slug": "other-dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Mini": {
+                "id": 178,
+                "slug": "mini-dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Robes en jean": {
+                "id": 179,
+                "slug": "denim-dresses",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Jupes": {
+            "id": 11,
+            "slug": "skirts",
+            "size_id": 4,
+            "children": {
+              "Minijupes": {
+                "id": 198,
+                "slug": "mini-skirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Jupes mi-longues": {
+                "id": 199,
+                "slug": "midi-skirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Jupes longues": {
+                "id": 200,
+                "slug": "maxi-skirts",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Hauts et t-shirts": {
+            "id": 12,
+            "slug": "tops-and-t-shirts",
+            "size_id": 4,
+            "children": {
+              "Vestes": {
+                "id": 14,
+                "slug": "camis",
+                "size_id": 4,
+                "children": {}
+              },
+              "T-shirts": {
+                "id": 221,
+                "slug": "t-shirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Chemises": {
+                "id": 222,
+                "slug": "shirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Blouses manches courtes": {
+                "id": 223,
+                "slug": "short-sleeved-tops",
+                "size_id": 4,
+                "children": {}
+              },
+              "Blouses manches longues": {
+                "id": 224,
+                "slug": "long-sleeved-tops",
+                "size_id": 4,
+                "children": {}
+              },
+              "Blouses ¾": {
+                "id": 225,
+                "slug": "three-fourths-sleeve-tops",
+                "size_id": 4,
+                "children": {}
+              },
+              "Tuniques": {
+                "id": 227,
+                "slug": "tunics",
+                "size_id": 4,
+                "children": {}
+              },
+              "Autres hauts": {
+                "id": 228,
+                "slug": "other-tops-and-t-shirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Débardeurs": {
+                "id": 534,
+                "slug": "vest-tops-and-tank-tops",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Sweats et sweats à capuche": {
+            "id": 13,
+            "slug": "jumpers-and-sweaters",
+            "size_id": 4,
+            "children": {
+              "Sweats": {
+                "id": 1917,
+                "slug": "jumpers",
+                "size_id": null,
+                "children": {
+                  "Pulls col V": {
+                    "id": 190,
+                    "slug": "v-neck-jumpers",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Pulls col roulé": {
+                    "id": 191,
+                    "slug": "turtleneck-jumpers",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Sweats longs": {
+                    "id": 192,
+                    "slug": "long-jumpers",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Sweats manche ¾": {
+                    "id": 193,
+                    "slug": "three-fourths-sleeve-jumpers",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Pulls d'hiver": {
+                    "id": 529,
+                    "slug": "knitted-jumpers",
+                    "size_id": 4,
+                    "children": {}
+                  }
+                }
+              },
+              "Cardigans": {
+                "id": 194,
+                "slug": "cardigans",
+                "size_id": 4,
+                "children": {}
+              },
+              "Boléros": {
+                "id": 195,
+                "slug": "boleros",
+                "size_id": 4,
+                "children": {}
+              },
+              "Sweats & sweats à capuche": {
+                "id": 196,
+                "slug": "hoodies-and-sweatshirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Autres pull-overs & sweat-shirts": {
+                "id": 197,
+                "slug": "other-jumpers-and-sweaters",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Shorts": {
+            "id": 15,
+            "slug": "shorts-and-cropped-trousers",
+            "size_id": 4,
+            "children": {
+              "Shorts longueur genou": {
+                "id": 203,
+                "slug": "knee-length-shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pantacourts": {
+                "id": 204,
+                "slug": "cropped-trousers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Autres shorts": {
+                "id": 205,
+                "slug": "other-shorts-and-cropped-trousers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Shorts en jean": {
+                "id": 538,
+                "slug": "denim-shorts",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Autres": {
+            "id": 18,
+            "slug": "other-clothing",
+            "size_id": 4,
+            "children": {}
+          },
+          "Maillots de bain": {
+            "id": 28,
+            "slug": "swimwear",
+            "size_id": 4,
+            "children": {
+              "Une pièce": {
+                "id": 218,
+                "slug": "one-pieces",
+                "size_id": 4,
+                "children": {}
+              },
+              "Deux pièces": {
+                "id": 219,
+                "slug": "bikinis-and-tankinis",
+                "size_id": 4,
+                "children": {}
+              },
+              "Autres": {
+                "id": 220,
+                "slug": "other-swimwear-and-beachwear",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Lingerie et pyjamas": {
+            "id": 29,
+            "slug": "lingerie-and-nightwear",
+            "size_id": 4,
+            "children": {
+              "Soutiens-gorge": {
+                "id": 119,
+                "slug": "bras",
+                "size_id": 53,
+                "children": {}
+              },
+              "Culottes": {
+                "id": 120,
+                "slug": "panties",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pyjamas et tenues de nuit": {
+                "id": 123,
+                "slug": "nightwear",
+                "size_id": 4,
+                "children": {}
+              },
+              "Autres": {
+                "id": 124,
+                "slug": "other",
+                "size_id": 4,
+                "children": {}
+              },
+              "Ensembles": {
+                "id": 229,
+                "slug": "sets",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Vêtements de sport": {
+            "id": 73,
+            "slug": "activewear",
+            "size_id": 4,
+            "children": {
+              "Vêtements d'extérieur": {
+                "id": 571,
+                "slug": "outerwear",
+                "size_id": 4,
+                "children": {}
+              },
+              "Survêtements": {
+                "id": 572,
+                "slug": "tracksuits",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pantalons & leggings": {
+                "id": 573,
+                "slug": "trousers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Robes": {
+                "id": 574,
+                "slug": "dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Jupes": {
+                "id": 575,
+                "slug": "skirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Hauts & t-shirts": {
+                "id": 576,
+                "slug": "tops-and-t-shirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Sweats et sweats à capuche": {
+                "id": 577,
+                "slug": "hoodies-and-sweatshirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Shorts": {
+                "id": 578,
+                "slug": "shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Accessoires de sports": {
+                "id": 579,
+                "slug": "sports-accessories",
+                "size_id": 4,
+                "children": {}
+              },
+              "Autres": {
+                "id": 580,
+                "slug": "other-activewear",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Jeans": {
+            "id": 183,
+            "slug": "jeans",
+            "size_id": 4,
+            "children": {}
+          }
+        }
+      },
+      "Chaussures": {
+        "id": 16,
+        "slug": "shoes",
+        "size_id": 7,
+        "children": {
+          "Bottes": {
+            "id": 1049,
+            "slug": "boots",
+            "size_id": null,
+            "children": {
+              "Bottes hautes": {
+                "id": 211,
+                "slug": "knee-high-boots",
+                "size_id": 7,
+                "children": {}
+              },
+              "Bottes de pluie": {
+                "id": 213,
+                "slug": "wellington-boots",
+                "size_id": 7,
+                "children": {}
+              }
+            }
+          },
+          "Chaussons et pantoufles": {
+            "id": 215,
+            "slug": "slippers",
+            "size_id": 7,
+            "children": {}
+          },
+          "Chaussures à talons": {
+            "id": 543,
+            "slug": "heels",
+            "size_id": 7,
+            "children": {}
+          }
+        }
+      },
+      "Sacs": {
+        "id": 19,
+        "slug": "bags",
+        "size_id": null,
+        "children": {
+          "Sacs à main": {
+            "id": 156,
+            "slug": "handbags",
+            "size_id": null,
+            "children": {}
+          },
+          "Sacs à dos": {
+            "id": 157,
+            "slug": "backpacks",
+            "size_id": null,
+            "children": {}
+          },
+          "Sacs à bandoulière": {
+            "id": 158,
+            "slug": "shoulder-bags",
+            "size_id": null,
+            "children": {}
+          },
+          "Pochettes": {
+            "id": 159,
+            "slug": "clutches",
+            "size_id": null,
+            "children": {}
+          },
+          "Porte-monnaie": {
+            "id": 160,
+            "slug": "wallets-and-purses",
+            "size_id": null,
+            "children": {}
+          },
+          "Trousses à maquillage": {
+            "id": 161,
+            "slug": "makeup-bags",
+            "size_id": null,
+            "children": {}
+          },
+          "Sacs fourre-tout": {
+            "id": 552,
+            "slug": "tote-bags",
+            "size_id": null,
+            "children": {}
+          }
+        }
+      },
+      "Accessoires": {
+        "id": 1187,
+        "slug": "accessories",
+        "size_id": null,
+        "children": {
+          "Ceintures": {
+            "id": 20,
+            "slug": "belts",
+            "size_id": 64,
+            "children": {}
+          },
+          "Bijoux": {
+            "id": 21,
+            "slug": "jewellery",
+            "size_id": 52,
+            "children": {
+              "Autres bijoux": {
+                "id": 162,
+                "slug": "other-jewellery",
+                "size_id": null,
+                "children": {}
+              },
+              "Boucles d'oreilles": {
+                "id": 163,
+                "slug": "earrings",
+                "size_id": null,
+                "children": {}
+              },
+              "Colliers": {
+                "id": 164,
+                "slug": "necklaces",
+                "size_id": null,
+                "children": {}
+              },
+              "Bracelets": {
+                "id": 165,
+                "slug": "bracelets",
+                "size_id": null,
+                "children": {}
+              },
+              "Ensembles de bijoux": {
+                "id": 166,
+                "slug": "jewellery-sets",
+                "size_id": null,
+                "children": {}
+              },
+              "Broches": {
+                "id": 167,
+                "slug": "brooches",
+                "size_id": null,
+                "children": {}
+              },
+              "Bagues": {
+                "id": 553,
+                "slug": "rings",
+                "size_id": 52,
+                "children": {}
+              }
+            }
+          },
+          "Montres": {
+            "id": 22,
+            "slug": "watches",
+            "size_id": 62,
+            "children": {}
+          },
+          "Lunettes de soleil": {
+            "id": 26,
+            "slug": "sunglasses",
+            "size_id": null,
+            "children": {}
+          },
+          "Chapeaux & casquettes": {
+            "id": 88,
+            "slug": "hats-and-caps",
+            "size_id": 60,
+            "children": {
+              "Casquettes": {
+                "id": 230,
+                "slug": "caps",
+                "size_id": 60,
+                "children": {}
+              },
+              "Chapeaux": {
+                "id": 231,
+                "slug": "hats",
+                "size_id": 60,
+                "children": {}
+              },
+              "Bandeaux": {
+                "id": 234,
+                "slug": "headbands",
+                "size_id": 60,
+                "children": {}
+              }
+            }
+          },
+          "Écharpes et châles": {
+            "id": 89,
+            "slug": "scarves-and-shawls",
+            "size_id": null,
+            "children": {}
+          },
+          "Gants": {
+            "id": 90,
+            "slug": "gloves",
+            "size_id": 61,
+            "children": {}
+          }
+        }
+      },
+      "Beauté": {
+        "id": 146,
+        "slug": "beauty",
+        "size_id": null,
+        "children": {
+          "Parfums": {
+            "id": 152,
+            "slug": "perfume",
+            "size_id": null,
+            "children": {}
+          },
+          "Autres cosmétiques et accessoires": {
+            "id": 153,
+            "slug": "other-beauty-items",
+            "size_id": null,
+            "children": {}
+          }
+        }
+      }
+    }
+  },
+  "Hommes": {
+    "id": 5,
+    "slug": "men",
+    "size_id": 14,
+    "children": {
+      "Vêtements": {
+        "id": 2050,
+        "slug": "clothing",
+        "size_id": null,
+        "children": {
+          "Vêtements de sport et accessoires": {
+            "id": 30,
+            "slug": "activewear",
+            "size_id": 14,
+            "children": {
+              "Vêtements d'extérieur": {
+                "id": 581,
+                "slug": "outerwear",
+                "size_id": 14,
+                "children": {}
+              },
+              "Survêtements": {
+                "id": 582,
+                "slug": "tracksuits",
+                "size_id": 14,
+                "children": {}
+              },
+              "Pantalons": {
+                "id": 583,
+                "slug": "trousers",
+                "size_id": 14,
+                "children": {}
+              },
+              "Hauts et t-shirts": {
+                "id": 584,
+                "slug": "tops-and-t-shirts",
+                "size_id": 14,
+                "children": {}
+              },
+              "Pulls & sweats": {
+                "id": 585,
+                "slug": "pullovers-and-sweaters",
+                "size_id": 14,
+                "children": {}
+              },
+              "Shorts": {
+                "id": 586,
+                "slug": "shorts",
+                "size_id": 14,
+                "children": {}
+              },
+              "Accessoires de sports": {
+                "id": 587,
+                "slug": "sports-accessories",
+                "size_id": 14,
+                "children": {}
+              },
+              "Autres": {
+                "id": 588,
+                "slug": "other-activewear",
+                "size_id": 14,
+                "children": {}
+              }
+            }
+          },
+          "Costumes et blazers": {
+            "id": 32,
+            "slug": "suits-and-blazers",
+            "size_id": 77,
+            "children": {}
+          },
+          "Pantalons": {
+            "id": 34,
+            "slug": "trousers",
+            "size_id": 77,
+            "children": {
+              "Pantalons skinny": {
+                "id": 259,
+                "slug": "skinny-trousers",
+                "size_id": 77,
+                "children": {}
+              },
+              "Pantalons à jambes larges": {
+                "id": 260,
+                "slug": "wide-legged-trousers",
+                "size_id": 77,
+                "children": {}
+              },
+              "Pantalons de costume": {
+                "id": 261,
+                "slug": "tailored-trousers",
+                "size_id": 77,
+                "children": {}
+              },
+              "Autres pantalons": {
+                "id": 263,
+                "slug": "other-trousers",
+                "size_id": 77,
+                "children": {}
+              },
+              "Pantacourts": {
+                "id": 271,
+                "slug": "cropped-trousers",
+                "size_id": 77,
+                "children": {}
+              }
+            }
+          },
+          "Hauts et t-shirts": {
+            "id": 76,
+            "slug": "tops-and-t-shirts",
+            "size_id": 14,
+            "children": {
+              "T-shirts": {
+                "id": 77,
+                "slug": "t-shirts",
+                "size_id": 14,
+                "children": {}
+              },
+              "Chemises": {
+                "id": 536,
+                "slug": "shirts",
+                "size_id": 74,
+                "children": {}
+              },
+              "T-shirts sans manches": {
+                "id": 560,
+                "slug": "vests-and-sleeveless-t-shirts",
+                "size_id": 14,
+                "children": {}
+              }
+            }
+          },
+          "Sweats et pulls": {
+            "id": 79,
+            "slug": "jumpers-and-sweaters",
+            "size_id": 14,
+            "children": {
+              "Sweats à col V": {
+                "id": 264,
+                "slug": "v-neck-jumpers",
+                "size_id": 14,
+                "children": {}
+              },
+              "Pulls à col roulé": {
+                "id": 265,
+                "slug": "turtleneck-jumpers",
+                "size_id": 14,
+                "children": {}
+              },
+              "Cardigans": {
+                "id": 266,
+                "slug": "cardigans",
+                "size_id": 14,
+                "children": {}
+              },
+              "Pulls et pulls à capuche": {
+                "id": 267,
+                "slug": "hoodies-and-sweaters",
+                "size_id": 14,
+                "children": {}
+              },
+              "Autres": {
+                "id": 268,
+                "slug": "other-jumpers-and-sweaters",
+                "size_id": 14,
+                "children": {}
+              }
+            }
+          },
+          "Shorts": {
+            "id": 80,
+            "slug": "shorts",
+            "size_id": 77,
+            "children": {
+              "Autres shorts": {
+                "id": 272,
+                "slug": "other-shorts",
+                "size_id": 77,
+                "children": {}
+              }
+            }
+          },
+          "Autres": {
+            "id": 83,
+            "slug": "other-mens-clothing",
+            "size_id": 14,
+            "children": {}
+          },
+          "Maillots de bain": {
+            "id": 84,
+            "slug": "swimwear",
+            "size_id": 14,
+            "children": {}
+          },
+          "Sous-vêtements et chaussettes": {
+            "id": 85,
+            "slug": "socks-and-underwear",
+            "size_id": 14,
+            "children": {}
+          },
+          "Vêtements spécialisés et costumes": {
+            "id": 92,
+            "slug": "costumes-and-special-outfits",
+            "size_id": 14,
+            "children": {}
+          },
+          "Jeans": {
+            "id": 257,
+            "slug": "jeans",
+            "size_id": 77,
+            "children": {}
+          }
+        }
+      },
+      "Accessoires": {
+        "id": 82,
+        "slug": "accessories",
+        "size_id": 52,
+        "children": {
+          "Chapeaux et casquettes": {
+            "id": 86,
+            "slug": "hats-and-caps",
+            "size_id": 60,
+            "children": {
+              "Casquettes": {
+                "id": 287,
+                "slug": "caps",
+                "size_id": 60,
+                "children": {}
+              },
+              "Chapeaux": {
+                "id": 288,
+                "slug": "hats",
+                "size_id": 60,
+                "children": {}
+              }
+            }
+          },
+          "Écharpes et châles": {
+            "id": 87,
+            "slug": "scarves-and-shawls",
+            "size_id": null,
+            "children": {}
+          },
+          "Gants": {
+            "id": 91,
+            "slug": "gloves",
+            "size_id": 61,
+            "children": {}
+          },
+          "Sacs et sacoches": {
+            "id": 94,
+            "slug": "bags-and-backpacks",
+            "size_id": null,
+            "children": {
+              "Sacs à dos": {
+                "id": 246,
+                "slug": "backpacks",
+                "size_id": null,
+                "children": {}
+              },
+              "Sacs à bandoulière": {
+                "id": 247,
+                "slug": "shoulder-bags",
+                "size_id": null,
+                "children": {}
+              },
+              "Porte-monnaie": {
+                "id": 248,
+                "slug": "wallets",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Bijoux": {
+            "id": 95,
+            "slug": "jewellery",
+            "size_id": 52,
+            "children": {
+              "Colliers": {
+                "id": 241,
+                "slug": "necklaces",
+                "size_id": null,
+                "children": {}
+              },
+              "Bagues": {
+                "id": 242,
+                "slug": "rings",
+                "size_id": 52,
+                "children": {}
+              },
+              "Bracelets": {
+                "id": 243,
+                "slug": "bracelets",
+                "size_id": null,
+                "children": {}
+              },
+              "Autre": {
+                "id": 244,
+                "slug": "other-jewellery",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Ceintures": {
+            "id": 96,
+            "slug": "belts",
+            "size_id": 63,
+            "children": {}
+          },
+          "Montres": {
+            "id": 97,
+            "slug": "watches",
+            "size_id": 62,
+            "children": {}
+          },
+          "Lunettes de soleil": {
+            "id": 98,
+            "slug": "sunglasses",
+            "size_id": null,
+            "children": {}
+          },
+          "Autres": {
+            "id": 99,
+            "slug": "other-accessories",
+            "size_id": null,
+            "children": {}
+          }
+        }
+      },
+      "Soins": {
+        "id": 139,
+        "slug": "grooming",
+        "size_id": null,
+        "children": {
+          "Soins cheveux": {
+            "id": 140,
+            "slug": "hair-care",
+            "size_id": null,
+            "children": {}
+          },
+          "Soins du corps": {
+            "id": 141,
+            "slug": "body-care",
+            "size_id": null,
+            "children": {}
+          },
+          "Soins mains et ongles": {
+            "id": 142,
+            "slug": "hand-and-nail-care",
+            "size_id": null,
+            "children": {}
+          },
+          "Soins visage": {
+            "id": 143,
+            "slug": "facial-care",
+            "size_id": null,
+            "children": {}
+          },
+          "Maquillage": {
+            "id": 144,
+            "slug": "make-up",
+            "size_id": null,
+            "children": {}
+          },
+          "Parfums": {
+            "id": 145,
+            "slug": "aftershave-and-cologne",
+            "size_id": null,
+            "children": {}
+          }
+        }
+      }
+    }
+  }
 }

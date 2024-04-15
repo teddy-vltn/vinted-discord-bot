@@ -1,14 +1,17 @@
 import { VintedMonitor } from './src/vinted_monitor.js';
+import { ProxyEntity } from './src/proxys.js';
 
 // Usage example
 async function main() {
-    const vintedMonitor = new VintedMonitor('https://www.vinted.fr/catalog');
+    const vintedMonitor = new VintedMonitor(
+        'https://www.vinted.fr/catalog',
+        // constructor(ip, port, username, password)
+        new ProxyEntity( "38.162.17.52", "3128", null, null)
+    );
 
     await vintedMonitor.configure({
         order: 'newest_first',
-        catalog: 'Tailles hommes',
         brands: ['Nike', 'Puma'],
-        sizes: ['XS'],
         priceFrom: 10,
         priceTo: 100
     });

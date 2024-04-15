@@ -4,12 +4,21 @@ import { SeleniumChromeAgent } from './selenium_agent.js';
 import { VintedItemWatcher } from './vinted_item_watcher.js';
 
 class VintedMonitor {
-    constructor(baseURL) {
+    constructor(baseURL, proxy = null) {
         this.baseURL = baseURL;
+        this.proxy = proxy;
+        console.log("VintedMonitor created with baseURL:", baseURL)
+        console.log("Proxy:", proxy)
     }
 
     async setup() {
-        this.agent = new SeleniumChromeAgent();
+        if (this.proxy) {
+            console.log("Using proxy:", this.proxy);
+            this.agent = new SeleniumChromeAgent(this.proxy);
+        } else {
+            this.agent = new SeleniumChromeAgent();
+        }
+
         this.driver = await this.agent.getDriver();
         this.handler = new VintedHandler(this.driver);
         this.urlBuilder = new UrlBuilder(this.baseURL);
@@ -19,7 +28,7 @@ class VintedMonitor {
         await this.setup();
 
         const order = options.order || 'newest_first';
-        const catalog = options.catalog || 'Tailles hommes';
+        const catalog = options.catalog || null
         const brands = options.brands || [];
         const sizes = options.sizes || [];
         const priceFrom = options.priceFrom || 0;
@@ -27,11 +36,26 @@ class VintedMonitor {
         
         console.log("Configuring monitor with options:", options);
         this.urlBuilder.setOrder(order);
-        this.urlBuilder.setCatalog(catalog);
-        await this.urlBuilder.setBrands(brands);
-        this.urlBuilder.setSizes(sizes);
-        this.urlBuilder.setPriceFrom(priceFrom);
-        this.urlBuilder.setPriceTo(priceTo);
+
+        if (catalog) {
+            this.urlBuilder.setCatalog(catalog);
+        }
+
+        if (brands.length > 0) {
+            await this.urlBuilder.setBrands(brands);
+        }
+
+        if (sizes.length > 0) {
+            this.urlBuilder.setSizes(sizes);
+        }
+
+        if (priceFrom) {
+            this.urlBuilder.setPriceFrom(priceFrom);
+        }
+
+        if (priceTo) {
+            this.urlBuilder.setPriceTo(priceTo);
+        }
     }
 
     startMonitoring(callback, interval = 60000) {
