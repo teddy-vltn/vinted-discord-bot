@@ -1,54 +1,80 @@
-import { Builder } from 'selenium-webdriver';
+import { Builder, By } from 'selenium-webdriver';
 import chrome from 'selenium-webdriver/chrome.js';
 
+// Define Chrome options for Selenium to optimize performance and functionality.
+const CHROME_OPTIONS = [
+    "--headless",  // Run Chrome in headless mode without a GUI.
+    "--disable-gpu",  // Disable GPU hardware acceleration.
+    "--no-sandbox",  // Disable the Chrome sandbox for running in certain environments.
+    "--blink-settings=imagesEnabled=false",  // Disable image loading to improve speed.
+    "--disable-remote-fonts",  // Disable remote fonts loading.
+    "--mute-audio",  // Mute audio to avoid noise during operation.
+    "--disable-notifications",  // Disable all Chrome notifications.
+    "--disable-webgl",  // Disable WebGL to reduce resource usage.
+];
+
+// The SeleniumChromeAgent class manages a Selenium WebDriver with custom Chrome options.
 class SeleniumChromeAgent {
-    constructor() {
+    /**
+     * Constructs a SeleniumChromeAgent instance optionally using proxy settings.
+     * @param {Object} proxy_ent - An object containing proxy details such as IP, port, username, and password.
+     */
+    constructor(proxy_ent) {
         const options = new chrome.Options();
-        // Specify user agent string for a recent version of Chrome
+        // Set a user agent string to mimic a standard web browser session.
         const userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36";
-
-        // Configure Chrome options
-        options.addArguments("--headless");
-        options.addArguments("--disable-gpu");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
         options.addArguments(`--user-agent=${userAgent}`);
-        options.addArguments("--disable-web-security");
-        options.addArguments("--allow-running-insecure-content");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--disable-plugins");
-        options.addArguments("--disable-popup-blocking");
-        options.addArguments("--disable-features=IsolateOrigins,site-per-process");
-        options.addArguments("--disable-site-isolation-trials");
-        options.addArguments("--ignore-certificate-errors");
-        options.addArguments("--ignore-ssl-errors");
-        options.addArguments("--ignore-certificate-errors-spki-list");
-        options.addArguments("--disable-setuid-sandbox");
-        options.addArguments("--disable-infobars");
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-background-networking");
-        options.addArguments("--disable-breakpad");
-        options.addArguments("--disable-component-extensions-with-background-pages");
-        options.addArguments("--disable-default-apps"); 
-        options.addArguments("--silent");
-        options.addArguments("--disable-logging");
-        options.addArguments("--disable-sync");
 
-        // Initialize the Chrome driver with these options
+        // Apply all predefined Chrome options.
+        CHROME_OPTIONS.forEach(option => options.addArguments(option));
+
+        // Configure proxy if provided.
+        if (proxy_ent) {
+            const { ip, port, username, password } = proxy_ent;
+            console.log(`Using proxy ${ip}:${port}`);
+            options.addArguments(`--proxy-server=http://${ip}:${port}`);
+            if (username && password) {
+                options.addArguments(`--proxy-auth=${username}:${password}`);
+            }
+        }
+
+        // Initialize the Chrome WebDriver with the specified options.
         this.driver = new Builder()
             .forBrowser('chrome')
             .setChromeOptions(options)
             .build();
     }
 
+    /**
+     * Retrieves the initialized WebDriver instance.
+     * @returns {WebDriver} The WebDriver instance for further use with Selenium operations.
+     */
     async getDriver() {
         return this.driver;
     }
 
+    /**
+     * Properly closes the WebDriver and all associated windows.
+     */
     async close() {
         await this.driver.quit();
     }
+
+    /**
+     * Checks and handles cookie consent forms by attempting to find and click a "reject all" button.
+     */
+    async checkForCookieConsent() {
+        try {
+            const rejectButton = await this.driver.findElement(By.id('onetrust-reject-all-handler'));
+            if (rejectButton) {
+                await rejectButton.click();
+                console.log('Cookie consent rejected.');
+            }
+        } catch (err) {
+            console.log('No cookie consent found or error in rejecting cookies:', err.message);
+        }
+    }
 }
 
+// Export the SeleniumChromeAgent class for external use.
 export { SeleniumChromeAgent };
