@@ -47,7 +47,7 @@ class IntelligentNameIDFinder {
         this.fuse = null;
         this.fuseOptions = {
             keys: ['name'],
-            threshold: 0.4, // More selective matching
+            threshold: 0.7, // More selective matching
             includeScore: true,
             ignoreLocation: true, // Ignores the position of match in the text
             ignoreFieldNorm: true,
@@ -61,20 +61,19 @@ class IntelligentNameIDFinder {
      * @param {string} path - Current path to a category, used for nested structures.
      * @returns {Array} Flattened list of categories with paths for searching.
      */
-    flattenCategories(categories, path = '') {
+    flattenCategories(categories) {
         let flatList = [];
 
         try {
             Object.entries(categories).forEach(([key, value]) => {
-                const currentPath = path ? `${path} ${key}` : key;
-    
-                value.name = currentPath;
+                value.name = key;
     
                 flatList.push(value);
                 if (value.children && Object.keys(value.children).length > 0) {
-                    flatList = flatList.concat(this.flattenCategories(value.children, currentPath));
+                    flatList = flatList.concat(this.flattenCategories(value.children));
                 }
             });
+
             return flatList;
         } catch (error) {
             const transformed = [];

@@ -28,8 +28,11 @@ async function main() {
         search_text: 'veste',
         order: 'newest_first',  // Ensures that the monitor fetches the newest items available.
         brands: ['Nike', 'Adidas'],  // Specify brands to monitor.
-        catalog: "T-shirt Hommes",  // Specify the catalog name; the system will find the closest match.
-        sizes: ['XS', 'S'],  // Specify sizes to monitor.
+        // Specify the type of item to monitor, "Hommes", "Femmes", "Enfants", "Bébés", "Autres".
+        // WARNING : Those are strict values, make sure to use one of the above.
+        type: "Hommes", 
+        catalog: "Vestes et manteaux",  // Specify the catalog name; the system will find the closest match.
+        sizes: ['XS', 'S', 'M', 'L'],  // Specify sizes to monitor.
         priceFrom: 10,  // Set minimum price filter.
         priceTo: 100  // Set maximum price filter.
     });
@@ -58,6 +61,20 @@ async function main() {
             console.log(message);
             console.log(separator);
         });
+
+        /*
+            If you need more information about the item, you can use the getMoreInfo method.
+            This require Selenium to be enabled for now. I will adapt it for API usage soon.
+
+            It will give you the following information:
+            - item.desc
+            - item.rating
+            - item.votes
+
+            newItems[0].getMoreInfo(vintedMonitor.driver).then(info => {
+                console.log(info);
+            });
+        */
 
      }, 5000);  // Monitoring interval set to every 5 seconds.
 

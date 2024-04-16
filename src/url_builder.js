@@ -22,7 +22,7 @@ class UrlBuilder {
         this.brands_data = new DataReader('brand');
         this.brands_finder = new IntelligentNameIDFinder(this.brands_data.getData());
         this.catalog_data = new DataReader('groups');
-        this.catalog_finder = new IntelligentNameIDFinder(this.catalog_data.getData());
+        this.catalog_finder = null;
         this.size_data = new DataReader('sizes');
         this.size_finder = null;
     }
@@ -81,10 +81,23 @@ class UrlBuilder {
     }
 
     /**
+     * Sets type of item to search for, loading the appropriate catalog data.
+     * eg. 'Hommes', 'Femmes', 'Enfants', 'Maison', 'Loisirs', 'Autres'
+     * @param {string} type - Type of item to search for (e.g.,
+     */
+    setType(type) {
+        this.type = type;
+        this.catalog_data = this.catalog_data.getSubData(type).children;
+        return this;
+    }
+
+    /**
      * Sets catalog parameters for the URL.
      * @param {string} catalog - Catalog name.
      */
     setCatalog(catalog) {
+        if (!this.type) throw new Error('Type must be set before setting catalog');
+        if (!this.catalog_finder) this.catalog_finder = new IntelligentNameIDFinder(this.catalog_data);
         const catalog_ent = this.catalog_finder.getBestMatch(catalog);
         if (!catalog_ent) return this.setSearchText(catalog);
         this.params.set('catalog', catalog_ent.id);

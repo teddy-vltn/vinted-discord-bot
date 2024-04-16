@@ -64,6 +64,9 @@ class VintedMonitor {
         if (options.search_text) {
             this.urlBuilder.setSearchText(options.search_text);
         }
+        if (options.type) {
+            this.urlBuilder.setType(options.type)
+        }
         if (options.catalog) {
             this.urlBuilder.setCatalog(options.catalog);
         }

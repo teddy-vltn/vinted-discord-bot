@@ -182,7 +182,7 @@ class VintedHandlerAPI {
 }
 
 class VintedItem {
-    constructor(price, size, url, imageUrl, owner, ownerId, desc = null, brand = null) {
+    constructor(price, size, url, imageUrl, owner, ownerId, brand = null) {
         this.brand = brand;
         this.price = price;
         this.size = size;
@@ -190,7 +190,9 @@ class VintedItem {
         this.imageUrl = imageUrl;
         this.owner = owner;
         this.ownerId = ownerId;
-        this.desc = desc;
+        this.desc = null;
+        this.rating = null;
+        this.votes = null;
     }
 
     static async loadFromItemBoxContainer(item) {
@@ -202,8 +204,39 @@ class VintedItem {
         const url = item.find('[data-testid$=--overlay-link]').attr('href');
         const imageUrl = item.find('[data-testid$=--image--img]').attr('src');
 
-        return new VintedItem(price, size, url, imageUrl, owner, ownerId, null, brand);
+        return new VintedItem(price, size, url, imageUrl, owner, ownerId, brand);
     }
+
+    // <div class="u-text-wrap" itemprop="description"><span class="web_ui__Text__text web_ui__Text__body web_ui__Text__left web_ui__Text__format"><span>Acheté mais ne me plaît pas donc jamais porté</span></span></div>
+    async getMoreInfo(driver) {
+        if (!driver) throw new Error('Driver must be provided to get more info');
+    
+        await driver.get(this.url);
+        await driver.wait(until.elementLocated(By.tagName('body')), 10000);
+    
+        const html = await driver.getPageSource();
+    
+        const $ = cheerio.load(html);
+    
+        // Extraction de la description
+        const desc = $('[itemprop="description"]').text().trim();
+    
+        // Extraction de la note moyenne (rating)
+        const ratingLabel = $('.web_ui__Rating__rating[aria-label]').attr('aria-label');
+        const ratingValue = ratingLabel ? parseFloat(ratingLabel.match(/(\d+(\.\d+)?)/)[0]) : null;
+    
+        // Extraction du nombre de votes
+        const votesText = $('.web_ui__Rating__label h4').text();
+        const votes = parseInt(votesText, 10);
+    
+        // Stocker les informations extraites dans l'objet
+        this.desc = desc;
+        this.rating = ratingValue;
+        this.votes = votes;
+    
+        return this;
+    }    
+      
 
     toString() {
         return [
