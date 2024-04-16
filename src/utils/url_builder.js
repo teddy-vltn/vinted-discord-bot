@@ -1,5 +1,5 @@
-import { IntelligentNameIDFinder, DataReader } from "./util/data_reader.js";
-import { BrandIdFetcher } from "./util/brand_fetcher.js";
+import { IntelligentNameIDFinder, DataReader } from "../data/data_reader.js";
+import { BrandIdFetcher } from "../handlers/brand_fetcher.js";
 
 /**
  * Class responsible for building and managing URL parameters for Vinted URL queries.

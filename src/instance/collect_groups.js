@@ -1,4 +1,4 @@
-import { SeleniumChromeAgent } from '../selenium_agent.js';
+import { SeleniumChromeAgent } from '../agents/selenium_agent.js';
 import { By, until } from 'selenium-webdriver';
 import cheerio from 'cheerio';
 import fs from 'fs';
@@ -34,9 +34,9 @@ async function fetchAndProcessCatalogs() {
     const agent = new SeleniumChromeAgent();
     const driver = await agent.getDriver();
 
-    let catalogId = 2298; // Start from catalog ID 1
+    let catalogId = 3496; // Start from catalog ID 1
 
-    while (catalogId < 4000) { // Example arbitrary stop condition
+    while (catalogId < 6000) { // Example arbitrary stop condition
         const url = `https://www.vinted.fr/catalog/${catalogId}`;
         console.log(`Checking catalog at ${url}...`);
 

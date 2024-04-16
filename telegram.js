@@ -1,5 +1,5 @@
 import TelegramBot from 'node-telegram-bot-api';
-import { VintedMonitor } from './src/vinted_monitor.js';
+import { VintedMonitor } from './src/monitors/vinted_monitor.js';
 import fs from 'fs';
 
 // get token from config.json

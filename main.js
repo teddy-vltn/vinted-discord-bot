@@ -1,5 +1,5 @@
-import { VintedMonitor } from './src/vinted_monitor.js';
-import { ProxyEntity } from './src/proxys.js';
+import { VintedMonitor } from './src/monitors/vinted_monitor.js';
+import { ProxyEntity } from './src/utils/proxys.js';
 
 /**
  * This script initializes a VintedMonitor to track new listings on Vinted.

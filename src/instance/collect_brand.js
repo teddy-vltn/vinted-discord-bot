@@ -1,7 +1,7 @@
-import { VintedHandler } from '../vinted.js';
-import { UrlBuilder } from '../url_builder.js';
-import { SeleniumChromeAgent } from '../selenium_agent.js';
-import { BrandIdFetcher } from '../util/brand_fetcher.js';
+import { VintedHandler } from '../handlers/vinted_handler.js';
+import { UrlBuilder } from '../utils/url_builder.js';
+import { SeleniumChromeAgent } from '../agents/selenium_agent.js';
+import { BrandIdFetcher } from '../handlers/brand_fetcher.js';
 import fs from 'fs';
 
 // Make sure the brand file exists or create it if it doesn't

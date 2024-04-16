@@ -1,7 +1,7 @@
 
 import cheerio from 'cheerio';
 import { By, until } from 'selenium-webdriver';
-import { UrlBuilder } from './url_builder.js';
+import { UrlBuilder } from '../utils/url_builder.js';
 import cookie from 'cookie';
 import request from 'request';
 
