@@ -17,9 +17,15 @@ class UrlBuilder {
         this.catalog_finder = new IntelligentNameIDFinder(this.catalog_data.getData());
 
         this.size_data = new DataReader('sizes');
+        this.size_finder = null
     }
 
     setSearchText(text) {
+        // check if search_text is already set
+        if (this.params.has('search_text')) {
+            const current_text = this.params.get('search_text');
+            text = `${current_text} ${text}`;
+        }
         this.params.set('search_text', text);
         return this;
     }
@@ -32,7 +38,7 @@ class UrlBuilder {
     async setBrands(brands_list, fetch_on_fail = false, driver = null) {
         // Resolve all promises at once using Promise.all
         const brand_ids = await Promise.all(brands_list.map(async brand => {
-            const brand_id = this.brands_finder.getId(brand);
+            const brand_id = this.brands_finder.getBestMatch(brand).id;
             if (!brand_id) {
                 if (fetch_on_fail) {
                     if (!driver) {
@@ -59,17 +65,14 @@ class UrlBuilder {
     setSizes(sizes_list) {
         // We check if catalog is set
         if (!this.params.has('catalog_ids')) {
-            throw new Error('Cannot set sizes without setting catalog first');
+            this.setSearchText(sizes_list.join(' '));
+            return this;
         }
-
-        const catalog_id = this.params.get('catalog_ids');
-        const catalog_sizes = this.size_data.getSubData(catalog_id);
-        const size_finder = new IntelligentNameIDFinder(catalog_sizes);
-
+        
         const size_ids = sizes_list.map(size => {
-            const size_id = size_finder.getId(size);
+            const size_id = this.size_finder.getBestMatch(size).id;
             if (!size_id) {
-                throw new Error(`Size ${size} not found in catalog ${catalog_id}`);
+                throw new Error(`Size ${size} not found in size data`);
             }
             return size_id;
         });
@@ -79,15 +82,26 @@ class UrlBuilder {
     }
 
     setCatalog(catalog) {
-        const catalog_id = this.catalog_finder.getId(catalog);
+        const catalog_ent = this.catalog_finder.getBestMatch(catalog);
+        let catalog_id = null;
+        
+        // create the finder for the sizes if catalog.size_id is set
+        if (catalog_ent) {
+            catalog_id = catalog_ent.id;
 
-        if (!catalog_id) {
-            throw new Error(`Catalog ${catalog} not found`);
+            const string_size_id = catalog_ent.size_id.toString();
+            const data = this.size_data.getSubData(string_size_id);
+
+            this.size_finder = new IntelligentNameIDFinder(data);
+
+            this.params.set('catalog_ids', catalog_id);
+            this.params.set('catalog', catalog_id);
         }
 
-        console.log(`Catalog ID: ${catalog_id}`)
-
-        this.params.set('catalog_ids', catalog_id);
+        if (!catalog_id) {
+            console.log("Not found in catalog data, we add to search text")
+            this.setSearchText(catalog);
+        }
 
         return this;
     }
