@@ -1,130 +1,117 @@
 import { IntelligentNameIDFinder, DataReader } from "./util/data_reader.js";
 import { BrandIdFetcher } from "./util/brand_fetcher.js";
 
+/**
+ * Class responsible for building and managing URL parameters for Vinted URL queries.
+ */
 class UrlBuilder {
+    /**
+     * Initializes a new instance of the UrlBuilder with a base URL.
+     * @param {string} base - The base URL to which parameters will be appended.
+     */
     constructor(base) {
         this.base = base;
         this.setup();
     }
 
+    /**
+     * Sets up the initial configuration for URL parameter management, including loading data for brands, catalogs, and sizes.
+     */
     setup() {
         this.params = new URLSearchParams();
-
         this.brands_data = new DataReader('brand');
         this.brands_finder = new IntelligentNameIDFinder(this.brands_data.getData());
-
         this.catalog_data = new DataReader('groups');
         this.catalog_finder = new IntelligentNameIDFinder(this.catalog_data.getData());
-
         this.size_data = new DataReader('sizes');
-        this.size_finder = null
+        this.size_finder = null;
     }
 
+    /**
+     * Appends or updates the 'search_text' parameter for the URL.
+     * @param {string} text - Text to append to the search query.
+     */
     setSearchText(text) {
-        // check if search_text is already set
-        if (this.params.has('search_text')) {
-            const current_text = this.params.get('search_text');
-            text = `${current_text} ${text}`;
-        }
-        this.params.set('search_text', text);
+        this.params.set('search_text', this.params.get('search_text') ? `${this.params.get('search_text')} ${text}` : text);
         return this;
     }
 
+    /**
+     * Sets the order parameter for item sorting in the URL.
+     * @param {string} order - Order specification (e.g., 'newest_first').
+     */
     setOrder(order) {
         this.params.set('order', order);
         return this;
     }
 
+    /**
+     * Asynchronously sets brand parameters by resolving brand IDs.
+     * @param {Array<string>} brands_list - List of brand names.
+     * @param {boolean} fetch_on_fail - Whether to fetch brand ID from a remote service if not found locally.
+     * @param {WebDriver} driver - Selenium WebDriver instance for fetching brand IDs if necessary.
+     */
     async setBrands(brands_list, fetch_on_fail = false, driver = null) {
-        // Resolve all promises at once using Promise.all
         const brand_ids = await Promise.all(brands_list.map(async brand => {
             const brand_id = this.brands_finder.getBestMatch(brand).id;
-            if (!brand_id) {
-                if (fetch_on_fail) {
-                    if (!driver) {
-                        throw new Error('Driver must be provided to fetch brands');
-                    }
-                    const brand_fetcher = new BrandIdFetcher(driver, true);
-                    const new_brand_id = await brand_fetcher.getBrandId(brand);
-                    if (!new_brand_id) {
-                        throw new Error(`Brand ${brand} not found`);
-                    }
-                    return new_brand_id;
-                }
-                throw new Error(`Brand ${brand} not found in brand data`);
+            if (!brand_id && fetch_on_fail) {
+                if (!driver) throw new Error('Driver must be provided to fetch brands');
+                const brand_fetcher = new BrandIdFetcher(driver, true);
+                return await brand_fetcher.getBrandId(brand);
             }
             return brand_id;
         }));
-    
-        // Now brand_ids is an array of resolved values
         this.params.set('brand_ids', brand_ids.join(','));
-    
         return this;
-    }    
+    }
 
+    /**
+     * Sets size parameters for the URL, requiring the 'catalog_ids' to be set first.
+     * @param {Array<string>} sizes_list - List of size labels.
+     */
     setSizes(sizes_list) {
-        // We check if catalog is set
-        if (!this.params.has('catalog_ids')) {
-            this.setSearchText(sizes_list.join(' '));
-            return this;
-        }
-        
-        const size_ids = sizes_list.map(size => {
-            const size_id = this.size_finder.getBestMatch(size).id;
-            if (!size_id) {
-                throw new Error(`Size ${size} not found in size data`);
-            }
-            return size_id;
-        });
-        
+        if (!this.params.has('catalog_ids')) throw new Error('Catalog must be set before setting sizes');
+        const size_ids = sizes_list.map(size => this.size_finder.getBestMatch(size).id);
         this.params.set('size_ids', size_ids.join(','));
         return this;
     }
 
+    /**
+     * Sets catalog parameters for the URL.
+     * @param {string} catalog - Catalog name.
+     */
     setCatalog(catalog) {
         const catalog_ent = this.catalog_finder.getBestMatch(catalog);
-        let catalog_id = null;
-        
-        // create the finder for the sizes if catalog.size_id is set
-        if (catalog_ent) {
-            catalog_id = catalog_ent.id;
-
-            const string_size_id = catalog_ent.size_id.toString();
-            const data = this.size_data.getSubData(string_size_id);
-
-            this.size_finder = new IntelligentNameIDFinder(data);
-
-            this.params.set('catalog_ids', catalog_id);
-            this.params.set('catalog', catalog_id);
-        }
-
-        if (!catalog_id) {
-            console.log("Not found in catalog data, we add to search text")
-            this.setSearchText(catalog);
-        }
-
+        if (!catalog_ent) return this.setSearchText(catalog);
+        this.params.set('catalog_ids', catalog_ent.id);
+        if (catalog_ent.size_id) this.size_finder = new IntelligentNameIDFinder(this.size_data.getSubData(catalog_ent.size_id.toString()));
         return this;
     }
 
+    /**
+     * Sets the minimum price parameter for the URL.
+     * @param {number} price - Minimum price value.
+     */
     setPriceFrom(price) {
         this.params.set('price_from', price);
         return this;
     }
 
+    /**
+     * Sets the maximum price parameter for the URL.
+     * @param {number} price - Maximum price value.
+     */
     setPriceTo(price) {
         this.params.set('price_to', price);
         return this;
     }
 
-    // Add other methods for different URL parameters as needed
-    // Example:
-    // setSize(size) {
-    //     this.params.set('size', size);
-    //     return this;
-    // }
-
+    /**
+     * Builds the full URL with all configured parameters.
+     * @returns {string} The complete URL ready for use.
+     */
     build() {
-        console.log(this.params.toString());
+        console.log(`URL Parameters: ${this.params.toString()}`);
         return `${this.base}?${this.params.toString()}`;
     }
 }
