@@ -9,6 +9,14 @@
 - **Support for Proxies:** Use proxies to manage IP restrictions or blockages.
 - **Selenium and API Support:** Choose between scraping the website with Selenium or using Vinted's API for data retrieval.
 
+## Left to do
+
+- [ ] Add more feature + more configuration to the telegram bot.
+- [ ] Simple database to store the users preferences.
+- [ ] Add a language option for the dataset. Currently, it only supports French dataset.
+- [ ] Add more features to the monitor.
+- [ ] Export the telegram bot to a discord bot.
+
 ## Data
 
 The overall vinted database has been roughly collected from the Vinted website and stored in JSON files in the `data` directory. 
@@ -94,7 +102,7 @@ async function main() {
         search_text: 'veste',
         order: 'newest_first',  // Ensures that the monitor fetches the newest items available.
         brands: ['Nike', 'Adidas'],  // Specify brands to monitor.
-        catalog: "Veste hommes",  // Specify the catalog name; the system will find the closest match.
+        catalog: "T-shirt Hommes",  // Specify the catalog name; the system will find the closest match.
         sizes: ['XS', 'S'],  // Specify sizes to monitor.
         priceFrom: 10,  // Set minimum price filter.
         priceTo: 100  // Set maximum price filter.

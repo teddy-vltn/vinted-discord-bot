@@ -71,6 +71,10 @@ class UrlBuilder {
      */
     setSizes(sizes_list) {
         if (!this.params.has('catalog_ids')) throw new Error('Catalog must be set before setting sizes');
+        if (!this.size_finder) {
+            this.setSearchText(sizes_list.join(' '))
+            return this;
+        }
         const size_ids = sizes_list.map(size => this.size_finder.getBestMatch(size).id);
         this.params.set('size_ids', size_ids.join(','));
         return this;
@@ -83,6 +87,7 @@ class UrlBuilder {
     setCatalog(catalog) {
         const catalog_ent = this.catalog_finder.getBestMatch(catalog);
         if (!catalog_ent) return this.setSearchText(catalog);
+        this.params.set('catalog', catalog_ent.id);
         this.params.set('catalog_ids', catalog_ent.id);
         if (catalog_ent.size_id) this.size_finder = new IntelligentNameIDFinder(this.size_data.getSubData(catalog_ent.size_id.toString()));
         return this;

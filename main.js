@@ -11,18 +11,24 @@ async function main() {
     const vintedMonitor = new VintedMonitor('https://www.vinted.fr');
 
     // Optionally, enable Selenium scraping; set to false to use Vinted's API.
-    vintedMonitor.useSelenium(true);
+    // Vinted API is faster and more reliable, but Selenium scraping is more robust.
+    // In default configuration, the monitor uses Vinted's API to avoid Selenium setup.
+    vintedMonitor.useSelenium(false);
 
     // Configure a proxy if running from a location with IP restrictions.
     // WARNING: Use reliable proxies to avoid security risks and ensure data integrity.
-    // vintedMonitor.useProxy(new ProxyEntity("128.199.221.91", "61449", "http"));
+    /*
+        Example proxy configuration:
+
+            vintedMonitor.useProxy(new ProxyEntity("128.199.221.91", "61449", "http"));
+    */
 
     // Set up monitoring configuration.
     await vintedMonitor.configure({
         search_text: 'veste',
         order: 'newest_first',  // Ensures that the monitor fetches the newest items available.
         brands: ['Nike', 'Adidas'],  // Specify brands to monitor.
-        catalog: "Veste hommes",  // Specify the catalog name; the system will find the closest match.
+        catalog: "T-shirt Hommes",  // Specify the catalog name; the system will find the closest match.
         sizes: ['XS', 'S'],  // Specify sizes to monitor.
         priceFrom: 10,  // Set minimum price filter.
         priceTo: 100  // Set maximum price filter.

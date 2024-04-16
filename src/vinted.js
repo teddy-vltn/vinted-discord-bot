@@ -103,7 +103,7 @@ class VintedHandlerAPI {
                         let sessionCookie = parsedCookies[sessionCookieKey];
                         if (sessionCookie) {
                             this.cookie = sessionCookie.split(';')[0];
-                            console.log("Cookie fetched successfully:", this.cookie);
+                            console.log("Cookie fetched successfully");
                             resolve(this.cookie);
                         } else {
                             reject("Session cookie not found in response.");

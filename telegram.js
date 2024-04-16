@@ -77,10 +77,11 @@ bot.onText(/\/watch/, async (msg) => {
     const chatId = msg.chat.id;
     if (userConfigs[chatId] && !monitors[chatId]) {
         const config = userConfigs[chatId];
-        monitors[chatId] = new VintedMonitor('https://www.vinted.fr/catalog');
+        monitors[chatId] = new VintedMonitor('https://www.vinted.fr');
+        monitors[chatId].useSelenium(false); // Use Vinted's API
         await monitors[chatId].configure({
             order: 'newest_first',
-            catalog: 'Tailles hommes',
+            catalog: 'Hommes',
             brands: config.brands,
             sizes: config.sizes,
             priceFrom: config.priceFrom,
