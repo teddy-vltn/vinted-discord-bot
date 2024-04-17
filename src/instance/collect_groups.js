@@ -34,14 +34,25 @@ async function fetchAndProcessCatalogs() {
     const agent = new SeleniumChromeAgent();
     const driver = await agent.getDriver();
 
-    let catalogId = 3496; // Start from catalog ID 1
+    let catalogId = 3593; // Start from catalog ID 1
 
     while (catalogId < 6000) { // Example arbitrary stop condition
         const url = `https://www.vinted.fr/catalog/${catalogId}`;
         console.log(`Checking catalog at ${url}...`);
 
         try {
+
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Throttle requests
+
             await driver.get(url);
+
+            // get title of the page
+            const title = await driver.getTitle();
+            if (title === 'La page n\'existe pas') {
+                console.log(`Catalog ${catalogId} not found`);
+                catalogId++;
+                continue;
+            }
 
             // wait for that .breadcrumbs__item a to appear
             await driver.wait(until.elementLocated(By.css('.breadcrumbs__item a')), 10000);
@@ -126,7 +137,7 @@ async function fetchAndProcessCatalogs() {
         }
 
         catalogId++;
-        await new Promise(resolve => setTimeout(resolve, 2000)); // Throttle requests
+        
     }
 
     console.log("Finished checking catalogs.");

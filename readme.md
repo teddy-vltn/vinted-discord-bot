@@ -1,30 +1,31 @@
-# VintedMonitor - Monitor Vinted for New Listings
+<p align="center">
+
+ <h2 align="center">VintedMonitor</h2>
+ <p align="center">Real-time tracking of new listings on Vinted tailored to your preferences.</p>
+</p>
+
+<p align="center">
+    <img alt="Last Updated" src="https://img.shields.io/badge/last%20update-April%2017,%202024-blue.svg" />
+    <img alt="Selenium Scrapping Support" src="https://img.shields.io/badge/Selenium%20Scrapping-enabled-brightgreen.svg" />
+    <img alt="Vinted API Support" src="https://img.shields.io/badge/Vinted%20API-enabled-brightgreen.svg" />
+    <img alt="Telegram Integration" src="https://img.shields.io/badge/Telegram-integrated-blue.svg" />
+    <img alt="No delay" src="https://img.shields.io/badge/No%20Delay-Real%20Time-blue.svg" />
+    <img alt="Discord Bot Coming Soon" src="https://img.shields.io/badge/Discord%20Bot-Coming%20Soon-blue.svg" />
+    <img alt="Proxy Support" src="https://img.shields.io/badge/proxy-enabled-blue.svg" />
+</p>
 
 ## Overview
-`VintedMonitor` is a sophisticated tool designed to monitor Vinted for new listings. It can utilize both Selenium for web scraping and direct API calls to Vinted, depending on your setup preferences. This flexibility allows users to adapt to potential changes in Vinted's website or API. Additionally, the tool integrates with Telegram to provide real-time alerts on new listings based on user-defined preferences such as brands, sizes, catalog, and price range.
+
+VintedMonitor leverages both Selenium and direct API calls to offer real-time monitoring of new listings on Vinted. Configure it to track specific brands, sizes, categories, and price ranges. The tool supports notifications through a Telegram bot, ensuring you never miss out on a potential deal.
 
 ## Features
-- **Real-Time Alerts:** Get instant notifications via Telegram when new items that match your preferences are listed.
-- **Customizable Tracking:** Track items by brand, size, price range, and more.
-- **Support for Proxies:** Use proxies to manage IP restrictions or blockages.
-- **Selenium and API Support:** Choose between scraping the website with Selenium or using Vinted's API for data retrieval.
 
-## Left to do
-
-- [ ] Add more feature + more configuration to the telegram bot.
-- [ ] Simple database to store the users preferences.
-- [ ] Add a language option for the dataset. Currently, it only supports French dataset.
-- [ ] Add more features to the monitor.
-- [ ] Export the telegram bot to a discord bot.
-
-## Data
-
-The overall vinted database has been roughly collected from the Vinted website and stored in JSON files in the `data` directory. 
-
-Last updated: `16th April 2024`
+- **Real-Time Notifications**: Instant alerts through Telegram.
+- **Flexible Monitoring Options**: Supports both Selenium for dynamic scraping and API for structured data retrieval.
+- **Customizable Filters**: Monitor based on brands, sizes, price ranges, and more.
+- **Proxy Support**: Compatible with proxy usage to circumvent IP blocking.
 
 ## Getting Started
----------------
 
 ### Installation
 
@@ -41,32 +42,19 @@ To run the monitor and test the main.js file, use the following command:
 ```bash
 npm run start
 ```
+> [!NOTE]\
+> You also have a way to run the monitor in a telegram bot using the following command:
 
-You also have a way to run the monitor in a telegram bot using the following command:
+> [!WARNING]\
+> The bot is just a showcase for now. It is not fully functional. Only base features are implemented. More is coming soon.
 
 ```bash
 npm run telegram
 ```
 
-If you want to know about how to create a Telegram Bot : https://core.telegram.org/bots/tutorial
-Follow this tutorial to create your own bot and set your token in `config.json` file.
-
-The base code for the telegram bot is in `telegram.js` file. It holds features like:
-*   `/start` : To start the bot
-*   `/config` : To see the current config
-*   `/setbrands` : To set the brands. eg: `/setbrands Nike, Puma`
-*   `/setsizes` : To set the sizes. eg: `/setsizes XS, S`
-*   `/setprice` : To set the price range. eg: `/setprice 10-100`
-*   `/watch` : To start watching the items.
-*   `/stop` : To stop watching the items.
-
-<p float="left">
-    <img src="img/telegram.jpeg" width="200" />
-</p>
-
-### Files
-
-- `vinted_monitor.js`: Contains the `VintedMonitor` class responsible for setting up and managing item monitoring on Vinted.
+> [!NOTE]\
+> If you want to know about how to create a Telegram Bot : https://core.telegram.org/bots/tutorial
+> Follow this tutorial to create your own bot and set your token in `config.json` file.
 
 Usage
 -----
@@ -170,8 +158,8 @@ main();
 
 ### Configuration Options
 
-*   `useSelenium`: Boolean value to enable Selenium scraping.
-*   `useProxy`: ProxyEntity object to set up a proxy for the monitor.
+> [!IMPORTANT]\
+> All needs to be written in French for now. More languages are coming soon with the dataset.
 
 *   `search_text`: Text to search for in the Vinted website.
 *   `order`: Sort order of the items.
@@ -186,20 +174,27 @@ All the sizes options can be found in the `data/sizes.json` file.
 
 It uses `fuse.js` to search for the closest match to the provided values. So, if you provide a brand that is not in the list, it will still try to find the closest match. So no need to write the exact brand name or size or catalog name.
 
-## Features
---------
 
-*   **Real-time Monitoring**: Checks Vinted for new listings at specified intervals.
-*   **Flexible Configuration**: Easy to specify what items to watch through simple configuration.
-*   **Callback Functionality**: Provides real-time callbacks for new items found.
+
+## Left to do
+
+- [ ] Add more feature + more configuration to the telegram bot.
+- [ ] Simple database to store the users preferences.
+- [ ] Add a language option for the dataset. Currently, it only supports French dataset.
+- [ ] Add more features to the monitor.
+- [ ] Export the telegram bot to a discord bot.
+
+## Data
+
+The overall vinted database has been roughly collected from the Vinted website and stored in JSON files in the `data` directory. 
+
+Last updated: `16th April 2024`
 
 ### Stopping the Monitor
---------------------
 
 To stop the monitor after a certain period or based on specific conditions, use the `stopMonitoring` method.
 
 ## Contributions
--------------
 
 Contributions are welcome. Please submit a pull request or issue on our GitHub repository.
 
