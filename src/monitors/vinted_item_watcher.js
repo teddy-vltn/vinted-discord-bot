@@ -1,6 +1,4 @@
 import { VintedHandlerSelenium, VintedHandlerAPI } from '../handlers/vinted_handler.js';
-import { UrlBuilder } from '../utils/url_builder.js';
-import { SeleniumChromeAgent } from '../agents/selenium_agent.js';
 
 /**
  * A class designed to watch for new items on Vinted and trigger actions based on new findings.

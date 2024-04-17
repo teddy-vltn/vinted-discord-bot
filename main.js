@@ -1,5 +1,14 @@
 import { VintedMonitor } from './src/monitors/vinted_monitor.js';
-import { ProxyEntity } from './src/utils/proxys.js';
+import { ProxyHandler } from './src/utils/proxys.js';
+import { config } from 'dotenv';
+
+// Dont touch this don't even think about it just let it be
+// Load environment variables
+config();
+config({ path: `.env.local`, override: true });
+
+// Get environment variables
+const env = process.env;
 
 /**
  * This script initializes a VintedMonitor to track new listings on Vinted.
@@ -13,15 +22,14 @@ async function main() {
     // Optionally, enable Selenium scraping; set to false to use Vinted's API.
     // Vinted API is faster and more reliable, but Selenium scraping is more robust.
     // In default configuration, the monitor uses Vinted's API to avoid Selenium setup.
-    vintedMonitor.useSelenium(false);
+    vintedMonitor.useSelenium(true);
 
     // Configure a proxy if running from a location with IP restrictions.
     // WARNING: Use reliable proxies to avoid security risks and ensure data integrity.
-    /*
-        Example proxy configuration:
-
-            vintedMonitor.useProxy(new ProxyEntity("128.199.221.91", "61449", "http"));
-    */
+    if (env.PROXY_ENABLED === 'true') {
+        console.log("Using proxy configuration.");
+        vintedMonitor.useProxy(new ProxyHandler(env.PROXY_PROTOCOL, env.PROXY_IP, env.PROXY_PORT, env.PROXY_USERNAME, env.PROXY_PASSWORD));
+    }
 
     // Set up monitoring configuration.
     await vintedMonitor.configure({

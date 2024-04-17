@@ -14,10 +14,12 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
     "cookie": "^0.6.0",
+    "dotenv": "^16.4.5",
     "fuse.js": "^7.0.0",
     "https-proxy-agent": "^7.0.4",
     "node-telegram-bot-api": "^0.65.1",
     "request": "^2.88.2",
-    "selenium-webdriver": "^4.19.0"
+    "selenium-webdriver": "^4.19.0",
+    "socks-proxy-agent": "^8.0.3"
   }
 }

@@ -17,9 +17,9 @@ const CHROME_OPTIONS = [
 class SeleniumChromeAgent {
     /**
      * Constructs a SeleniumChromeAgent instance optionally using proxy settings.
-     * @param {Object} proxy_ent - An object containing proxy details such as IP, port, username, and password.
+     * @param {Object} proxy_handler - An object containing proxy details such as IP, port, username, and password.
      */
-    constructor(proxy_ent) {
+    constructor(proxy_handler) {
         const options = new chrome.Options();
         // Set a user agent string to mimic a standard web browser session.
         const userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36";
@@ -28,14 +28,25 @@ class SeleniumChromeAgent {
         // Apply all predefined Chrome options.
         CHROME_OPTIONS.forEach(option => options.addArguments(option));
 
-        // Configure proxy if provided.
-        if (proxy_ent) {
-            const { ip, port, username, password } = proxy_ent;
-            console.log(`Using proxy ${ip}:${port}`);
-            options.addArguments(`--proxy-server=http://${ip}:${port}`);
-            if (username && password) {
-                options.addArguments(`--proxy-auth=${username}:${password}`);
-            }
+        // Check if a proxy is provided and set it up if necessary.
+        if (proxy_handler) {
+            const proxy = proxy_handler.getConfig();
+
+            /*
+                // Does not work for SOCKS proxies, only HTTP/HTTPS.
+
+                options.setProxy({
+                    proxyType: 'manual',
+                    socksVersion: 0,
+                    httpProxy: proxy.httpProxy,
+                    sslProxy: proxy.sslProxy,
+                    socksProxy: proxy.socksProxy,
+                    socksUsername: proxy.socksUsername,
+                    socksPassword: proxy.socksPassword,
+                });
+            */
+            
+            // TODO: Implement SOCKS proxy support.
         }
 
         // Initialize the Chrome WebDriver with the specified options.

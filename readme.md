@@ -54,7 +54,8 @@ npm run telegram
 
 > [!NOTE]\
 > If you want to know about how to create a Telegram Bot : https://core.telegram.org/bots/tutorial
-> Follow this tutorial to create your own bot and set your token in `config.json` file.
+> Follow this tutorial to create your own bot and set your token in `.env` file.
+> `TELEGRAM_BOT_TOKEN=...`
 
 <img src="./img/telegram.jpeg" alt="Telegram Bot Showcase" width="300"/>
 
@@ -88,8 +89,17 @@ It uses `fuse.js` to search for the closest match to the provided values. So, if
 
 
 ```javascript
-import { VintedMonitor } from './src/vinted_monitor.js';
-import { ProxyEntity } from './src/proxys.js';
+import { VintedMonitor } from './src/monitors/vinted_monitor.js';
+import { ProxyHandler } from './src/utils/proxys.js';
+import { config } from 'dotenv';
+
+// Dont touch this don't even think about it just let it be
+// Load environment variables
+config();
+config({ path: `.env.local`, override: true });
+
+// Get environment variables
+const env = process.env;
 
 /**
  * This script initializes a VintedMonitor to track new listings on Vinted.
@@ -98,21 +108,19 @@ import { ProxyEntity } from './src/proxys.js';
 
 async function main() {
     // Initialize VintedMonitor with the specific Vinted domain you want to track.
-    // If you want to track a different Vinted domain, change the URL accordingly. eg : new VintedMonitor('https://www.vinted.co.uk'); will work for the UK domain.
     const vintedMonitor = new VintedMonitor('https://www.vinted.fr');
 
     // Optionally, enable Selenium scraping; set to false to use Vinted's API.
     // Vinted API is faster and more reliable, but Selenium scraping is more robust.
     // In default configuration, the monitor uses Vinted's API to avoid Selenium setup.
-    vintedMonitor.useSelenium(false);
+    vintedMonitor.useSelenium(true);
 
     // Configure a proxy if running from a location with IP restrictions.
     // WARNING: Use reliable proxies to avoid security risks and ensure data integrity.
-    /*
-        Example proxy configuration:
-
-            vintedMonitor.useProxy(new ProxyEntity("128.199.221.91", "61449", "http"));
-    */
+    if (env.PROXY_ENABLED === 'true') {
+        console.log("Using proxy configuration.");
+        vintedMonitor.useProxy(new ProxyHandler(env.PROXY_PROTOCOL, env.PROXY_IP, env.PROXY_PORT, env.PROXY_USERNAME, env.PROXY_PASSWORD));
+    }
 
     // Set up monitoring configuration.
     await vintedMonitor.configure({

@@ -1,11 +1,14 @@
 import TelegramBot from 'node-telegram-bot-api';
 import { VintedMonitor } from './src/monitors/vinted_monitor.js';
 import fs from 'fs';
+import { config } from 'dotenv';
 
-// get token from config.json
-const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+config();
+config({ path: `.env.local`, override: true });
 
-const token = config["telegram_token"];
+const env = process.env;
+
+const token = env.TELEGRAM_BOT_TOKEN;
 
 const bot = new TelegramBot(token, {polling: true});
 let userConfigs = {};

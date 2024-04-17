@@ -1,23 +1,29 @@
+import { ProxyHandler } from "../src/utils/proxys.js"
+import request from "request";
+import { config } from "dotenv";
 
-const PROXY = "157.254.28.10:999"
-import { Builder } from 'selenium-webdriver'
-import chrome from 'selenium-webdriver/chrome.js'
+// Load environment variables
+config();
+config({ path: `.env.local`, override: true });
 
-async function start() {
-    const options = new chrome.Options()
+// Get environment variables
+const env = process.env;
 
-    options.addArguments('--proxy-server=' + PROXY)
+console.log("Proxy IP:", env.PROXY_IP);
 
-    const driver = new Builder()
-        .forBrowser('chrome')
-        .setChromeOptions(options)
-        .build()
+// Proxy configuration
+const proxy = new ProxyHandler(env.PROXY_PROTOCOL, env.PROXY_IP, env.PROXY_PORT, env.PROXY_USERNAME, env.PROXY_PASSWORD);
 
-    await driver.get('http://example.com')
-    const title = await driver.getTitle()
-    console.log(title)
+// Test the proxy
+request({
+    url: "https://api.ipify.org?format=json",
+    agent: proxy.getAgent()
+}, (error, response, body) => {
+    if (error) {
+        console.error("Error fetching IP:", error);
+        return;
+    }
 
-}
-
-start()
+    console.log("IP:", JSON.parse(body).ip);
+});
 

@@ -88,7 +88,7 @@ class VintedHandlerAPI {
         options['url'] = `https://www.vinted.com`;
             
         if (this.proxy) {
-            options['proxy'] = this.proxy.toString();
+            options['agent'] = this.proxy.getAgent();
         }
     
         return new Promise((resolve, reject) => {
@@ -102,9 +102,7 @@ class VintedHandlerAPI {
                 }
                 
                 if (response && response.headers['set-cookie']) {
-                    console.log("Response headers:", response)
                     let vintedCookies = response.headers['set-cookie'].join(";");
-                    console.log("Cookies found in response:", vintedCookies);
                     try {
                         let parsedCookies = cookie.parse(vintedCookies);
                         let sessionCookieKey = `_vinted_fr_session`;
@@ -141,8 +139,7 @@ class VintedHandlerAPI {
             options['headers']['Cookie'] = `_vinted_fr_session=${this.cookie}`;
 
             if (this.proxy) {
-                console.log(`Using proxy ${this.proxy}`);
-                options['proxy'] = this.proxy;
+                options['agent'] = this.proxy.getAgent();
             }
 
             request(options, (error, response, body) => {
