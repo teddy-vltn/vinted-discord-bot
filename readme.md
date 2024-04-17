@@ -65,6 +65,26 @@ To use the `VintedMonitor`, import it into your project and configure it with de
 
 Here's a basic example of how to set up and use the `VintedMonitor`:
 
+### Configuration Options
+
+> [!IMPORTANT]\
+> All needs to be written in French for now. More languages are coming soon with the dataset.
+
+*   `search_text`: Text to search for in the Vinted website.
+*   `order`: Sort order of the items.
+*   `type`: Type of items to monitor. eg : "Hommes", "Femmes", "Enfants", "Bébés", "Autres".
+*   `catalog`: Specific catalog to monitor. eg : "Vestes et manteaux", "Chaussures", "Sacs et sacs à dos", "Accessoires", "Bijoux et montres", "Vêtements de sport", "Beauté", "Maison", "Électronique", "Livres et papeterie", "Jeux et jouets", "Autres".
+All the catalog options can be found in the `data/groups.json` file.
+*   `brands`: Array of brands to filter items.
+All the brands options can be found in the `data/brands.json` file.
+*   `sizes`: Sizes to filter the items.
+All the sizes options can be found in the `data/sizes.json` file.
+*   `priceFrom`: Minimum price of items to monitor.
+*   `priceTo`: Maximum price of items to monitor.
+
+It uses `fuse.js` to search for the closest match to the provided values. So, if you provide a brand that is not in the list, it will still try to find the closest match. So no need to write the exact brand name or size or catalog name.
+
+
 ```javascript
 import { VintedMonitor } from './src/vinted_monitor.js';
 import { ProxyEntity } from './src/proxys.js';
@@ -76,6 +96,7 @@ import { ProxyEntity } from './src/proxys.js';
 
 async function main() {
     // Initialize VintedMonitor with the specific Vinted domain you want to track.
+    // If you want to track a different Vinted domain, change the URL accordingly. eg : new VintedMonitor('https://www.vinted.co.uk'); will work for the UK domain.
     const vintedMonitor = new VintedMonitor('https://www.vinted.fr');
 
     // Optionally, enable Selenium scraping; set to false to use Vinted's API.
@@ -155,26 +176,6 @@ async function main() {
 
 main();
 ```
-
-### Configuration Options
-
-> [!IMPORTANT]\
-> All needs to be written in French for now. More languages are coming soon with the dataset.
-
-*   `search_text`: Text to search for in the Vinted website.
-*   `order`: Sort order of the items.
-*   `catalog`: Specific catalog to monitor.
-All the catalog options can be found in the `data/groups.json` file.
-*   `brands`: Array of brands to filter items.
-All the brands options can be found in the `data/brands.json` file.
-*   `sizes`: Sizes to filter the items.
-All the sizes options can be found in the `data/sizes.json` file.
-*   `priceFrom`: Minimum price of items to monitor.
-*   `priceTo`: Maximum price of items to monitor.
-
-It uses `fuse.js` to search for the closest match to the provided values. So, if you provide a brand that is not in the list, it will still try to find the closest match. So no need to write the exact brand name or size or catalog name.
-
-
 
 ## Left to do
 
