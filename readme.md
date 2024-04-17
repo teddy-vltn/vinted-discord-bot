@@ -56,6 +56,8 @@ npm run telegram
 > If you want to know about how to create a Telegram Bot : https://core.telegram.org/bots/tutorial
 > Follow this tutorial to create your own bot and set your token in `config.json` file.
 
+<img src="./img/telegram.jpeg" alt="Telegram Bot Showcase" width="300"/>
+
 Usage
 -----
 
