@@ -60,20 +60,6 @@ class SeleniumChromeAgent {
         await this.driver.quit();
     }
 
-    /**
-     * Checks and handles cookie consent forms by attempting to find and click a "reject all" button.
-     */
-    async checkForCookieConsent() {
-        try {
-            const rejectButton = await this.driver.findElement(By.id('onetrust-reject-all-handler'));
-            if (rejectButton) {
-                await rejectButton.click();
-                console.log('Cookie consent rejected.');
-            }
-        } catch (err) {
-            console.log('No cookie consent found or error in rejecting cookies:', err.message);
-        }
-    }
 }
 
 // Export the SeleniumChromeAgent class for external use.

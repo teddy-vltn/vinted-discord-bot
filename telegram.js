@@ -15,9 +15,7 @@ let itemsStorage = {};
 const baseConfig = {
     order: 'newest_first',
     type: 'Hommes',
-    catalog: 'Vêtements',
-    brands: ["Nike"],
-    sizes: ["XS"],
+    brands: [],
     priceFrom: 10,
     priceTo: 100
 };
@@ -80,7 +78,7 @@ bot.onText(/\/watch/, async (msg) => {
     if (userConfigs[chatId] && !monitors[chatId]) {
         const config = userConfigs[chatId];
         monitors[chatId] = new VintedMonitor('https://www.vinted.fr');
-        monitors[chatId].useSelenium(true); // Use Vinted's API
+        monitors[chatId].useSelenium(false); // Use Vinted's API
         await monitors[chatId].configure({
             order: 'newest_first',
             type: 'Hommes',
@@ -134,24 +132,30 @@ bot.on('callback_query', async (callbackQuery) => {
     const itemIndex = parseInt(parts[2], 10);  // Get the index of the item
 
     if (command === 'info') {
-        const item = itemsStorage[chatId][itemIndex];  // Retrieve the item from storage
-        const monitor = monitors[chatId];
-
-        bot.sendMessage(chatId, `Fetching more info about the item...`);
-
-        item.getMoreInfo(monitor.driver).then((item) => {
-
-            const infoMessage = `*More About the Item:*\n` +
-                `*Description:* ${item.desc}\n` +
-                `*Rating:* ${item.rating} stars\n` +
-                `*Votes:* ${item.votes}`;
-
-            bot.sendMessage(chatId, infoMessage, { parse_mode: 'Markdown' });
-
-        }).catch(error => {
+        try {
+            const item = itemsStorage[chatId][itemIndex];  // Retrieve the item from storage
+            const monitor = monitors[chatId];
+    
+            bot.sendMessage(chatId, `Fetching more info about the item...`);
+    
+            item.getMoreInfo(monitor.driver).then((item) => {
+    
+                const infoMessage = `*More About the Item:*\n` +
+                    `*Description:* ${item.desc}\n` +
+                    `*Rating:* ${item.rating} stars\n` +
+                    `*Votes:* ${item.votes}`;
+    
+                bot.sendMessage(chatId, infoMessage, { parse_mode: 'Markdown' });
+    
+            }).catch(error => {
+                console.error("Error fetching more info:", error);
+                bot.sendMessage(chatId, "Error fetching more info.");
+            });
+        } catch (error) {
             console.error("Error fetching more info:", error);
             bot.sendMessage(chatId, "Error fetching more info.");
-        });
+        }
+
     }
 });
 

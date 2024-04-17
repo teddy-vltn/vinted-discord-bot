@@ -46,7 +46,7 @@ async function fetchAndProcessCatalogs() {
             // wait for that .breadcrumbs__item a to appear
             await driver.wait(until.elementLocated(By.css('.breadcrumbs__item a')), 10000);
 
-            await agent.checkForCookieConsent();
+            await DriverUtils.checkForCookieConsent(driver);
 
             let hasSizeFilter = false;
 

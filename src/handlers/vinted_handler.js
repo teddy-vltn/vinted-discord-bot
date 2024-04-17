@@ -4,6 +4,9 @@ import { By, until } from 'selenium-webdriver';
 import { UrlBuilder } from '../utils/url_builder.js';
 import cookie from 'cookie';
 import request from 'request';
+import DriverUtils from '../utils/driver_utils.js';
+
+
 
 class VintedHandlerSelenium {
     constructor(driver) {
@@ -12,27 +15,22 @@ class VintedHandlerSelenium {
 
     async getItemsFromUrl(url) {
         try {
-            this.driver.get(url);
+            await this.driver.get(url);
             
-            // once find that feed-grid__item is visible, we can start parsing
-            // on error, return empty array
-            try {
-                await this.driver.wait(until.elementLocated(By.className('feed-grid__item')), 30000);
-            } catch (error) {
-                console.error("No items has been found after waiting.", error);
-                return [];
-            }
+            // Wait for the element to be visible
+            await DriverUtils.wait_for_element(this.driver, By.className('feed-grid__item'), 10000);
             
             const feed_grid = await this.driver.findElement(By.className('feed-grid'));
-
-            const items = await this.parseItems(await feed_grid.getAttribute('innerHTML'));
-
+            const innerHTML = await feed_grid.getAttribute('innerHTML');
+            const items = await this.parseItems(innerHTML);
+            
             return items;
         } catch (error) {
-            console.error("Error fetching or parsing items: ", error);
+            console.error('Error waiting for feed grid items:', error);
             return [];
         }
     }
+    
 
     async parseItems(data) {
 
@@ -55,6 +53,16 @@ class VintedHandlerSelenium {
 
 }
 
+const baseOptions = {
+    method: "GET",
+    headers: {
+        'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Connection': 'keep-alive',
+    }
+}
+    
+
 class VintedHandlerAPI {
     constructor() {
         this.cookie = null;
@@ -76,11 +84,9 @@ class VintedHandlerAPI {
 
     async fetchCookie(domain = 'fr') {
 
-        let options = {
-            url: `https://www.vinted.${domain}`,
-            method: "GET"
-        };
-
+        let options = baseOptions;
+        options['url'] = `https://www.vinted.com`;
+            
         if (this.proxy) {
             options['proxy'] = this.proxy.toString();
         }
@@ -96,7 +102,9 @@ class VintedHandlerAPI {
                 }
                 
                 if (response && response.headers['set-cookie']) {
+                    console.log("Response headers:", response)
                     let vintedCookies = response.headers['set-cookie'].join(";");
+                    console.log("Cookies found in response:", vintedCookies);
                     try {
                         let parsedCookies = cookie.parse(vintedCookies);
                         let sessionCookieKey = `_vinted_fr_session`;
@@ -127,12 +135,10 @@ class VintedHandlerAPI {
         }
 
         return new Promise((resolve, reject) => {
-            let options = {
-                url: url,
-                headers: {
-                    'Cookie': `_vinted_fr_session=${this.cookie}`
-                }
-            };
+
+            let options = baseOptions;
+            options['url'] = url;
+            options['headers']['Cookie'] = `_vinted_fr_session=${this.cookie}`;
 
             if (this.proxy) {
                 console.log(`Using proxy ${this.proxy}`);

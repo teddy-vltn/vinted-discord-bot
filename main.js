@@ -8,7 +8,7 @@ import { ProxyEntity } from './src/utils/proxys.js';
 
 async function main() {
     // Initialize VintedMonitor with the specific Vinted domain you want to track.
-    const vintedMonitor = new VintedMonitor('https://www.vinted.fr');
+    const vintedMonitor = new VintedMonitor('https://www.vinted.co.uk');
 
     // Optionally, enable Selenium scraping; set to false to use Vinted's API.
     // Vinted API is faster and more reliable, but Selenium scraping is more robust.
