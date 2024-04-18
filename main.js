@@ -1,5 +1,5 @@
 import { VintedMonitor } from './src/monitors/vinted_monitor.js';
-import { BotManager} from './src/bot/telegram.js';  // Assuming BotManager is in this path
+import { BotManager} from './src/bot/telegram/telegram.js';  // Assuming BotManager is in this path
 import { ProxyHandler } from './src/utils/proxys.js';
 import { config } from 'dotenv';
 
@@ -32,6 +32,8 @@ async function main() {
 
         await vintedMonitor.configure({
             search_text: env.SEARCH_TEXT,
+            type: env.TYPE,
+            catalog : env.CATALOG,
             brands: env.BRANDS.split(',').map(brand => brand.trim()),
             priceFrom: parseInt(env.PRICE_FROM, 10),
             priceTo: parseInt(env.PRICE_TO, 10)

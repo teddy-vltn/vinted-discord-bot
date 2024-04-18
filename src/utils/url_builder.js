@@ -1,6 +1,14 @@
 import { IntelligentNameIDFinder, DataReader } from "../data/data_reader.js";
 import { BrandIdFetcher } from "../handlers/brand_fetcher.js";
 
+import { config } from 'dotenv';
+
+config();
+config({ path: `.env.local`, override: true });
+
+const env = process.env;
+const COUNTRY_CODE = env.COUNTRY_CODE;
+
 /**
  * Class responsible for building and managing URL parameters for Vinted URL queries.
  */
@@ -21,7 +29,7 @@ class UrlBuilder {
         this.params = new URLSearchParams();
         this.brands_data = new DataReader('brand');
         this.brands_finder = new IntelligentNameIDFinder(this.brands_data.getData());
-        this.catalog_data = new DataReader('groups');
+        this.catalog_data = new DataReader(`${COUNTRY_CODE}/groups`);
         this.catalog_finder = null;
         this.size_data = new DataReader('sizes');
         this.size_finder = null;
@@ -87,7 +95,15 @@ class UrlBuilder {
      */
     setType(type) {
         this.type = type;
-        this.catalog_data = this.catalog_data.getSubData(type).children;
+        try {
+            this.catalog_data = this.catalog_data.getSubData(type).children;
+        } catch (error) {
+            // get valid types by getting every first key of the catalog_data
+            const valid_types = Object.keys(this.catalog_data.getData()).map(key => key.split(' ')[0]);
+
+            console.error(`Error loading catalog data for type ${type} - valid types are: ${valid_types.join(', ')}`);
+        }
+        
         return this;
     }
 
