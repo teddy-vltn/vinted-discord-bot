@@ -3,6 +3,8 @@ import { UrlBuilder } from '../utils/url_builder.js';
 import { SeleniumChromeAgent } from '../agents/selenium_agent.js';
 import { VintedItemWatcher } from './vinted_item_watcher.js';
 
+const VINTED_BASE_URL_WITHOUT_COUNTRY = 'https://www.vinted.';
+
 /**
  * Class that facilitates monitoring of Vinted for new listings based on configured criteria.
  */
@@ -11,8 +13,20 @@ class VintedMonitor {
      * Initializes the VintedMonitor with a specified base URL.
      * @param {string} baseURL - The base URL to use for Vinted API or website.
      */
-    constructor(baseURL) {
-        this.baseURL = baseURL;
+    constructor() {
+
+        this.baseURL = null;
+        this.selenium = false;
+        this.proxy = null;
+
+    }
+
+    /** 
+     * Sets the country code for the Vinted website.
+     * @param {string} countryCode - The country code to use for the Vinted website.
+     */
+    setCountryCode(countryCode) {
+        this.baseURL = VINTED_BASE_URL_WITHOUT_COUNTRY + countryCode;
     }
 
     /**
@@ -35,6 +49,11 @@ class VintedMonitor {
      * Sets up the handler based on the configuration of using Selenium or direct API.
      */
     async setup() {
+
+        if (!this.baseURL) {
+            throw new Error('Please use setCountryCode() to set the country code before configuring the monitor, e.g., setCountryCode("fr") for France Vinted or setCountryCode("co.uk") for UK Vinted');
+        }
+
         if (this.selenium) {
             this.agent = new SeleniumChromeAgent(this.proxy);
             this.driver = await this.agent.getDriver();
@@ -58,8 +77,12 @@ class VintedMonitor {
     async configure(options) {
         await this.setup();
 
+        if (!options) {
+            throw new Error(`Please provide configuration options to the configure() method.\n\nExample: configure({ order: 'newest_first', search_text: 'Pull' brands: ['Nike', 'Adidas'], priceFrom: 10, priceTo: 100 })\n`);
+        }
+
         console.log("Configuring monitor with options:", options);
-        this.urlBuilder.setOrder(options.order || 'newest_first');
+        this.urlBuilder.setOrder('newest_first');
 
         if (options.search_text) {
             this.urlBuilder.setSearchText(options.search_text);
@@ -90,6 +113,11 @@ class VintedMonitor {
      * @param {number} interval - Interval in milliseconds to check for new items.
      */
     startMonitoring(callback, interval = 60000) {
+
+        if (!this.urlBuilder) {
+            throw new Error('Please configure the monitor before starting monitoring. Use configure() method to set up the monitor.');
+        }
+
         const builtUrl = this.urlBuilder.build();
         this.watcher = new VintedItemWatcher(builtUrl, this.handler, callback, interval);
         this.watcher.startWatching();
