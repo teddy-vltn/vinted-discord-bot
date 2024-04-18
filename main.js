@@ -39,7 +39,7 @@ async function main() {
 
         vintedMonitor.startMonitoring(newItems => {
             newItems.forEach(item => {
-                console.log(`New item found: ${item}`);
+                console.log(`New item found: ${item.url}`);
             });
         }, 5000);
 

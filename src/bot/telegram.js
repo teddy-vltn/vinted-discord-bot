@@ -8,6 +8,8 @@ config();
 config({ path: `.env.local`, override: true });
 
 const env = process.env;
+const country_code = env.COUNTRY_CODE;
+const selenium_enabled = env.USE_SELENIUM === 'true';
 
 class BotManager {
     constructor() {
@@ -16,10 +18,7 @@ class BotManager {
         this.userConfigs = {};
         this.monitors = {};  // Stores VintedMonitor instances per chatId
         this.baseConfig = {
-            country: env.COUNTRY_CODE,
-            useSelenium: env.USE_SELENIUM === 'true',
             search_text: env.SEARCH_TEXT,
-            order: env.ORDER,
             brands: env.BRANDS.split(',').map(brand => brand.trim()),
             priceFrom: parseInt(env.PRICE_FROM, 10),
             priceTo: parseInt(env.PRICE_TO, 10)
@@ -28,11 +27,11 @@ class BotManager {
     }
 
     // Initialize VintedMonitor for a specific chatId
-    initializeMonitor(chatId) {
+    async initializeMonitor(chatId) {
         const config = this.userConfigs[chatId] || { ...this.baseConfig };
         const monitor = new VintedMonitor();
-        monitor.setCountryCode(config.country);
-        monitor.useSelenium(config.useSelenium);
+        monitor.setCountryCode(country_code);
+        monitor.useSelenium(selenium_enabled);
         
         // Setup proxy if required
         if (env.PROXY_ENABLED === 'true') {
@@ -45,14 +44,14 @@ class BotManager {
             ));
         }
 
-        monitor.configure(config);
+        await monitor.configure(config);
         this.monitors[chatId] = monitor;
     }
 
     // Start monitoring items
-    startMonitoring(chatId) {
+    async startMonitoring(chatId) {
         if (!this.monitors[chatId]) {
-            this.initializeMonitor(chatId);
+            await this.initializeMonitor(chatId);
         }
         this.monitors[chatId].startMonitoring(items => {
             // Code to send new items to chat
