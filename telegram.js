@@ -18,6 +18,8 @@ let itemsStorage = {};
 const baseConfig = {
     order: 'newest_first',
     type: 'Hommes',
+    catalog: 'Pulls',
+    sizes: [],
     brands: [],
     priceFrom: 10,
     priceTo: 100
