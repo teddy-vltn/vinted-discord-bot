@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-    <img alt="Last Updated" src="https://img.shields.io/badge/last%20update-April%2017,%202024-blue.svg" />
+    <img alt="Last Updated" src="https://img.shields.io/badge/last%20update-April%2018,%202024-blue.svg" />
     <img alt="Selenium Scrapping Support" src="https://img.shields.io/badge/Selenium%20Scrapping-enabled-brightgreen.svg" />
     <img alt="Vinted API Support" src="https://img.shields.io/badge/Vinted%20API-enabled-brightgreen.svg" />
     <img alt="Telegram Integration" src="https://img.shields.io/badge/Telegram-integrated-blue.svg" />
@@ -35,6 +35,39 @@ Ensure that you have the required packages installed. If not, you can install th
 npm install
 ```
 
+### Configuration
+
+Modify the `.env` file to set up your environment variables, including the Telegram bot token and monitoring preferences. You can customize the default settings to match your preferences.
+```bash
+# General configuration for the VintedMonitor
+COUNTRY_CURRENCY="€"                # Default currency code for the Vinted site (e.g., 'EUR' for Euro, 'USD' for US Dollar, 'GBP' for British Pound, etc.)
+COUNTRY_CODE="co.uk"                # Default country code for the Vinted site (e.g., 'fr' for France, 'us' for United States, 'de' for Germany, etc.)
+SEARCH_TEXT=""   
+TYPE="Men"                          # Default type to filter listings (eg. "Men", "Women", "Kids")
+CATALOG="Jacket"                    # Default category to filter listings
+SIZES="XS, S, M, L"                 # Comma-separated list of sizes to monitor
+BRANDS="Nike, Adidas"               # Comma-separated list of brands to monitor
+PRICE_FROM=10                       # Minimum price range for monitored items (lower bound is inclusive)
+PRICE_TO=50                         # Maximum price range for monitored items (upper bound is inclusive)
+
+# Telegram Bot configuration
+TELEGRAM_BOT_TOKEN="YOUR_TELEGRAM_BOT_TOKEN"  # Token for Telegram Bot API access
+LIMIT_TELEGRAM_MESSAGES=true       # Boolean to enable or disable message limit for Telegram notifications
+TELEGRAM_MESSAGE_LIMIT=5           # Maximum number of messages to send in a single batch
+
+# Selenium usage configuration
+USE_SELENIUM=false                  # Boolean to decide if Selenium should be used for scraping
+
+# Proxy configuration (useful for bypassing IP blocks or geo-restrictions)
+PROXY_ENABLED=false                 # Boolean to enable or disable proxy usage
+
+PROXY_PROTOCOL="http"               # Protocol of the proxy server (e.g., http, socks)
+PROXY_IP="example.com"              # IP address of the proxy server
+PROXY_PORT="1234"                   # Port number of the proxy server
+PROXY_USERNAME="username"           # Username for proxy authentication, if required (selenium does not support proxy authentication)
+PROXY_PASSWORD="password"           # Password for proxy authentication, if required (selenium does not support proxy authentication)
+```
+
 ### Running the Monitor
 
 To run the monitor and test the main.js file, use the following command:
@@ -57,7 +90,7 @@ npm run telegram
 > Follow this tutorial to create your own bot and set your token in `.env` file.
 > `TELEGRAM_BOT_TOKEN=...`
 
-<img src="./img/telegram.jpeg" alt="Telegram Bot Showcase" width="300"/>
+<img src="./img/telegram.png" alt="Telegram Bot Showcase" width="300"/>
 
 Usage
 -----
@@ -191,7 +224,7 @@ main();
 
 - [ ] Add more feature + more configuration to the telegram bot.
 - [ ] Simple database to store the users preferences.
-- [ ] Add a language option for the dataset. Currently, it only supports French dataset.
+- [x] Add a language option for the dataset. Currently, it only supports French dataset.
 - [ ] Add more features to the monitor.
 - [ ] Export the telegram bot to a discord bot.
 
@@ -199,7 +232,7 @@ main();
 
 The overall vinted database has been roughly collected from the Vinted website and stored in JSON files in the `data` directory. 
 
-Last updated: `16th April 2024`
+Last updated: `18th April 2024`
 
 ### Stopping the Monitor
 
