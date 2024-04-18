@@ -79,6 +79,10 @@ class HTTPAgent {
 class ProxyHandler {
     constructor(protocol, ip, port, username, password) {
 
+        if (!protocol || !ip || !port) {
+            throw new Error("Protocol, IP, and port are required for a proxy.");
+        }
+
         if (protocol === 'socks') {
             this.proxy = new SocksAgent(ip, port, username, password);
             return;
@@ -89,7 +93,7 @@ class ProxyHandler {
             return;
         }
 
-        throw new Error("Unsupported proxy protocol.");
+        throw new Error("Unsupported proxy protocol. Supported protocols are 'http' and 'socks'.");
 
     }
 

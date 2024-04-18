@@ -7,7 +7,6 @@ import request from 'request';
 import DriverUtils from '../utils/driver_utils.js';
 
 
-
 class VintedHandlerSelenium {
     constructor(driver) {
         this.driver = driver;
@@ -165,16 +164,7 @@ class VintedHandlerAPI {
         const parsedItems = [];
 
         for (let item of items) {
-            const parsedItem = new VintedItem(
-                item.price,
-                null,
-                item.url,
-                item.photo.url,
-                item.user.login,
-                item.user.id,
-                item.title,
-                item.brand_title
-            );
+            const parsedItem = new VintedItem(item.title, item.price, item.size_title, item.url, item.photo.url, item.profile_url, item.brand_title);
 
             parsedItems.push(parsedItem);
         }
@@ -185,62 +175,28 @@ class VintedHandlerAPI {
 }
 
 class VintedItem {
-    constructor(price, size, url, imageUrl, owner, ownerId, brand = null) {
+    constructor(title, price, size, url, imageUrl, profileUrl, brand = null) {
+        this.title = title;
         this.brand = brand;
         this.price = price;
         this.size = size;
         this.url = url;
         this.imageUrl = imageUrl;
-        this.owner = owner;
-        this.ownerId = ownerId;
-        this.desc = null;
-        this.rating = null;
-        this.votes = null;
+        this.profileUrl = profileUrl;
     }
 
     static async loadFromItemBoxContainer(item) {
-        const owner = item.find('[data-testid$=--owner-name]').text();
-        const ownerId = item.find('[data-testid$=--owner]').text();
+        const title = item.find('[data-testid$=--title]').text();
+        //const ownerId = item.find('[data-testid$=--owner]').text();
         const price = item.find('[data-testid$=--price-text]').text();
         const size = item.find('[data-testid$=--description-title]').text();
         const brand = item.find('[data-testid$=--description-subtitle]').text();
         const url = item.find('[data-testid$=--overlay-link]').attr('href');
         const imageUrl = item.find('[data-testid$=--image--img]').attr('src');
 
-        return new VintedItem(price, size, url, imageUrl, owner, ownerId, brand);
-    }
-
-    // <div class="u-text-wrap" itemprop="description"><span class="web_ui__Text__text web_ui__Text__body web_ui__Text__left web_ui__Text__format"><span>Acheté mais ne me plaît pas donc jamais porté</span></span></div>
-    async getMoreInfo(driver) {
-        if (!driver) throw new Error('Driver must be provided to get more info');
-    
-        await driver.get(this.url);
-        await driver.wait(until.elementLocated(By.tagName('body')), 10000);
-    
-        const html = await driver.getPageSource();
-    
-        const $ = cheerio.load(html);
-    
-        // Extraction de la description
-        const desc = $('[itemprop="description"]').text().trim();
-    
-        // Extraction de la note moyenne (rating)
-        const ratingLabel = $('.web_ui__Rating__rating[aria-label]').attr('aria-label');
-        const ratingValue = ratingLabel ? parseFloat(ratingLabel.match(/(\d+(\.\d+)?)/)[0]) : null;
-    
-        // Extraction du nombre de votes
-        const votesText = $('.web_ui__Rating__label h4').text();
-        const votes = parseInt(votesText, 10);
-    
-        // Stocker les informations extraites dans l'objet
-        this.desc = desc;
-        this.rating = ratingValue;
-        this.votes = votes;
-    
-        return this;
-    }    
+        return new VintedItem(title, price, size, url, imageUrl, null, brand);
+    }  
       
-
     toString() {
         return [
             `Owner: ${this.owner}`,

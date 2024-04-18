@@ -1,0 +1,6482 @@
+{
+  "Mujer": {
+    "id": 1904,
+    "slug": "women_root",
+    "size_id": 4,
+    "children": {
+      "Ropa": {
+        "id": 4,
+        "slug": "womens",
+        "size_id": 4,
+        "children": {
+          "Abrigos y cazadoras": {
+            "id": 1037,
+            "slug": "coats_jackets",
+            "size_id": 4,
+            "children": {
+              "Capas y ponchos": {
+                "id": 1773,
+                "slug": "capes_ponchos",
+                "size_id": 4,
+                "children": {}
+              },
+              "Abrigos": {
+                "id": 1907,
+                "slug": "w_coats",
+                "size_id": 4,
+                "children": {
+                  "Trencas": {
+                    "id": 2525,
+                    "slug": "women_duffle_coats",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Abrigos de piel sintética": {
+                    "id": 1090,
+                    "slug": "faux_fur_coats",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Sobretodos y abrigos largos": {
+                    "id": 2526,
+                    "slug": "women_overcoats_longcoats",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Parkas": {
+                    "id": 1087,
+                    "slug": "parkas",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Chaquetones marineros": {
+                    "id": 1076,
+                    "slug": "pea_coats",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Impermeables": {
+                    "id": 1080,
+                    "slug": "w_raincoats",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Gabardinas": {
+                    "id": 1834,
+                    "slug": "w_trench_coats",
+                    "size_id": 4,
+                    "children": {}
+                  }
+                }
+              },
+              "Chalecos": {
+                "id": 2524,
+                "slug": "women_outerwear_vests",
+                "size_id": 4,
+                "children": {}
+              },
+              "Chaquetas": {
+                "id": 1908,
+                "slug": "w_jackets",
+                "size_id": 4,
+                "children": {
+                  "Cazadoras biker": {
+                    "id": 2527,
+                    "slug": "women_biker_racer_jackets",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Chaquetas bomber": {
+                    "id": 1078,
+                    "slug": "bomber_jackets",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Cazadoras vaqueras": {
+                    "id": 1079,
+                    "slug": "denim_jackets",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Chaquetas militares y utilitarias": {
+                    "id": 2528,
+                    "slug": "women_military_utility_jackets",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Forros polares": {
+                    "id": 1086,
+                    "slug": "fleece_jackets",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Chaquetas de plumas": {
+                    "id": 2614,
+                    "slug": "women_puffer_jackets",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Chaquetas acolchadas": {
+                    "id": 2596,
+                    "slug": "women_quilted_jackets",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Sobrecamisas": {
+                    "id": 2529,
+                    "slug": "women_shackets",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Chaquetas de esquí y snow": {
+                    "id": 2530,
+                    "slug": "women_ski_snowboard_jackets",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Chaquetas universitarias": {
+                    "id": 2531,
+                    "slug": "women_varisty_jackets",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Cortavientos": {
+                    "id": 2532,
+                    "slug": "women_windbreakers",
+                    "size_id": 4,
+                    "children": {}
+                  }
+                }
+              }
+            }
+          },
+          "Jerséis y sudaderas": {
+            "id": 13,
+            "slug": "pullovers_sweaters",
+            "size_id": 4,
+            "children": {
+              "Sudaderas": {
+                "id": 196,
+                "slug": "hoodies_jumpers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Jerséis": {
+                "id": 1917,
+                "slug": "w_new_sweaters",
+                "size_id": 4,
+                "children": {
+                  "Cuello de pico": {
+                    "id": 190,
+                    "slug": "v_neck_sweaters",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Cuello alto": {
+                    "id": 191,
+                    "slug": "turtleneck_sweaters",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Largos": {
+                    "id": 192,
+                    "slug": "long_sweaters",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "De punto": {
+                    "id": 529,
+                    "slug": "knitted_sweaters",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Manga 3/4": {
+                    "id": 193,
+                    "slug": "34_sleeve_sweaters",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Otros jerséis": {
+                    "id": 1066,
+                    "slug": "w_sweaters",
+                    "size_id": 4,
+                    "children": {}
+                  }
+                }
+              },
+              "Kimonos": {
+                "id": 1067,
+                "slug": "kimonos",
+                "size_id": 4,
+                "children": {}
+              },
+              "Cárdigan": {
+                "id": 194,
+                "slug": "cardigans",
+                "size_id": 4,
+                "children": {}
+              },
+              "Boleros": {
+                "id": 195,
+                "slug": "bolero",
+                "size_id": 4,
+                "children": {}
+              },
+              "Chalecos": {
+                "id": 1874,
+                "slug": "women_waistcoat_sweater",
+                "size_id": 4,
+                "children": {}
+              },
+              "Otros jerséis y sudaderas": {
+                "id": 197,
+                "slug": "wom_pul_other",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Trajes y blazers": {
+            "id": 8,
+            "slug": "blazers",
+            "size_id": 4,
+            "children": {
+              "Blazers": {
+                "id": 532,
+                "slug": "wom_bla_blazers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Trajes de pantalón": {
+                "id": 1125,
+                "slug": "w_pantsuits",
+                "size_id": 4,
+                "children": {}
+              },
+              "Trajes de falda": {
+                "id": 1126,
+                "slug": "w_skirt_suits",
+                "size_id": 4,
+                "children": {}
+              },
+              "Piezas de traje": {
+                "id": 1128,
+                "slug": "w_suit_separates",
+                "size_id": 4,
+                "children": {}
+              },
+              "Otros trajes y blazers": {
+                "id": 1129,
+                "slug": "w_other_suits_blazers",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Vestidos": {
+            "id": 10,
+            "slug": "dresses",
+            "size_id": 4,
+            "children": {
+              "Mini": {
+                "id": 178,
+                "slug": "mini_dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Midi": {
+                "id": 1056,
+                "slug": "midi_dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vestidos largos": {
+                "id": 1055,
+                "slug": "maxi_dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Ocasiones especiales": {
+                "id": 1774,
+                "slug": "occasional_dresses",
+                "size_id": 4,
+                "children": {
+                  "Fiesta y cóctel": {
+                    "id": 1775,
+                    "slug": "party_dresses",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Vestidos de novia": {
+                    "id": 1776,
+                    "slug": "wedding_dresses1",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Graduación": {
+                    "id": 1777,
+                    "slug": "prom_dresses1",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Vestidos de noche": {
+                    "id": 1778,
+                    "slug": "evening_dresses1",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Espalda descubierta": {
+                    "id": 1060,
+                    "slug": "backless_dresses",
+                    "size_id": 4,
+                    "children": {}
+                  }
+                }
+              },
+              "Vestidos de verano": {
+                "id": 1065,
+                "slug": "summer_dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vestidos de invierno": {
+                "id": 1779,
+                "slug": "winter_dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vestidos formales": {
+                "id": 1057,
+                "slug": "formal_dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vestidos informales": {
+                "id": 1059,
+                "slug": "casual_dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vestidos sin tirantes": {
+                "id": 1061,
+                "slug": "strapless_dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vestidos negros": {
+                "id": 1058,
+                "slug": "little_black_dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vestidos vaqueros": {
+                "id": 179,
+                "slug": "jeans_dresses_tunics",
+                "size_id": 4,
+                "children": {}
+              },
+              "Otros vestidos": {
+                "id": 176,
+                "slug": "wom_dre_other",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Falda": {
+            "id": 11,
+            "slug": "skirts",
+            "size_id": 4,
+            "children": {
+              "Minifalda": {
+                "id": 198,
+                "slug": "mini_skirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Falda por la rodilla": {
+                "id": 2927,
+                "slug": "women_knee_length_skirts_real",
+                "size_id": 4,
+                "children": {}
+              },
+              "Falda midi": {
+                "id": 199,
+                "slug": "knee_length_skirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Falda larga": {
+                "id": 200,
+                "slug": "maxi_skirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Falda asimétrica": {
+                "id": 2928,
+                "slug": "women_asymmetric_skirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Falda-pantalón": {
+                "id": 2929,
+                "slug": "women_skorts",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Camisetas y tops": {
+            "id": 12,
+            "slug": "tops_t_shirts",
+            "size_id": 4,
+            "children": {
+              "Camisas": {
+                "id": 222,
+                "slug": "shirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Blusas": {
+                "id": 1043,
+                "slug": "blouses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Chalecos": {
+                "id": 14,
+                "slug": "vests",
+                "size_id": 4,
+                "children": {}
+              },
+              "Camisetas": {
+                "id": 221,
+                "slug": "wom_top_t_shirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Sin mangas": {
+                "id": 534,
+                "slug": "tank_tops",
+                "size_id": 4,
+                "children": {}
+              },
+              "Túnicas": {
+                "id": 227,
+                "slug": "tunics",
+                "size_id": 4,
+                "children": {}
+              },
+              "Crop tops": {
+                "id": 1041,
+                "slug": "crop_tops",
+                "size_id": 4,
+                "children": {}
+              },
+              "Manga corta": {
+                "id": 223,
+                "slug": "short_sleeve_blouses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Manga ¾": {
+                "id": 225,
+                "slug": "middle_sleeve_blouses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Manga larga": {
+                "id": 224,
+                "slug": "long_sleeve_blouses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Bodies": {
+                "id": 1835,
+                "slug": "tops_bodies",
+                "size_id": 4,
+                "children": {}
+              },
+              "Hombros descubiertos": {
+                "id": 1042,
+                "slug": "tube_tops",
+                "size_id": 4,
+                "children": {}
+              },
+              "Cuello alto": {
+                "id": 1045,
+                "slug": "w_turtlenecks",
+                "size_id": 4,
+                "children": {}
+              },
+              "Peplum": {
+                "id": 1837,
+                "slug": "peplum_tops",
+                "size_id": 4,
+                "children": {}
+              },
+              "Halter": {
+                "id": 1044,
+                "slug": "halter_tops",
+                "size_id": 4,
+                "children": {}
+              },
+              "Otros tops": {
+                "id": 228,
+                "slug": "wom_top_other",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Vaqueros": {
+            "id": 183,
+            "slug": "jeans",
+            "size_id": 4,
+            "children": {
+              "Vaqueros boyfriend": {
+                "id": 1839,
+                "slug": "boyfriend_jeans",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vaqueros tobilleros": {
+                "id": 1840,
+                "slug": "w_cropped_jeans",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vaqueros de campana": {
+                "id": 1841,
+                "slug": "flared_jeans",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vaqueros de cintura alta": {
+                "id": 1842,
+                "slug": "w_high_waist_jeans",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vaqueros rotos": {
+                "id": 1843,
+                "slug": "w_ripped_jeans",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vaqueros pitillo": {
+                "id": 1844,
+                "slug": "w_skinny_jeans",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vaqueros rectos": {
+                "id": 1845,
+                "slug": "w_straight_jeans",
+                "size_id": 4,
+                "children": {}
+              },
+              "Otros vaqueros": {
+                "id": 1864,
+                "slug": "jeans_other",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Pantalones y leggings": {
+            "id": 9,
+            "slug": "trousers",
+            "size_id": 4,
+            "children": {
+              "Pantalones tobilleros y chinos": {
+                "id": 1070,
+                "slug": "cropped_pants",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pantalones anchos": {
+                "id": 1071,
+                "slug": "wide_leg_pants",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pantalones pitillo": {
+                "id": 185,
+                "slug": "skinny_trousers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pantalones de pinzas": {
+                "id": 187,
+                "slug": "tailored_trousers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pantalones rectos": {
+                "id": 1846,
+                "slug": "w_slim_straight_pants",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pantalones de cuero": {
+                "id": 184,
+                "slug": "leather_trousers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Leggings": {
+                "id": 525,
+                "slug": "leggings",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pantalones harén": {
+                "id": 526,
+                "slug": "harems",
+                "size_id": 4,
+                "children": {}
+              },
+              "Otros pantalones": {
+                "id": 189,
+                "slug": "wom_tro_other",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Shorts": {
+            "id": 15,
+            "slug": "shorts_capris",
+            "size_id": 4,
+            "children": {
+              "De cintura baja": {
+                "id": 1838,
+                "slug": "low_waist_shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "De cintura alta": {
+                "id": 1099,
+                "slug": "high_wasted_shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Hasta la rodilla": {
+                "id": 203,
+                "slug": "medium_length_shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vaqueros": {
+                "id": 538,
+                "slug": "jeans_shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "De encaje": {
+                "id": 1101,
+                "slug": "lace_shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "De cuero": {
+                "id": 1100,
+                "slug": "leather_shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Estilo cargo": {
+                "id": 1103,
+                "slug": "cargo_shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Capri": {
+                "id": 204,
+                "slug": "capri_trousers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Otros shorts": {
+                "id": 205,
+                "slug": "wom_sho_other",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Monos": {
+            "id": 1035,
+            "slug": "jumpsuits_uk",
+            "size_id": 4,
+            "children": {
+              "Monos largos": {
+                "id": 1131,
+                "slug": "w_jumpsuits",
+                "size_id": 4,
+                "children": {}
+              },
+              "Monos cortos": {
+                "id": 1132,
+                "slug": "w_rompers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Otros monos": {
+                "id": 1134,
+                "slug": "w_other_rompers_jumpsuits",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Ropa de baño": {
+            "id": 28,
+            "slug": "swimwear",
+            "size_id": 4,
+            "children": {
+              "Bañadores": {
+                "id": 218,
+                "slug": "one_pieces",
+                "size_id": 4,
+                "children": {}
+              },
+              "Bikinis": {
+                "id": 219,
+                "slug": "two_piece_swimwear",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pareos y caftanes": {
+                "id": 1780,
+                "slug": "coverup_swimwear",
+                "size_id": 4,
+                "children": {}
+              },
+              "Otros": {
+                "id": 220,
+                "slug": "wom_swi_other",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Lencería y pijamas": {
+            "id": 29,
+            "slug": "lingerie",
+            "size_id": 4,
+            "children": {
+              "Sujetadores": {
+                "id": 119,
+                "slug": "bras",
+                "size_id": 53,
+                "children": {}
+              },
+              "Braguitas": {
+                "id": 120,
+                "slug": "panties_thongs",
+                "size_id": 4,
+                "children": {}
+              },
+              "Conjuntos": {
+                "id": 229,
+                "slug": "wom_lin_sets",
+                "size_id": 4,
+                "children": {}
+              },
+              "Lencería moldeadora": {
+                "id": 1781,
+                "slug": "shapewear",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pijamas": {
+                "id": 123,
+                "slug": "nightwear",
+                "size_id": 4,
+                "children": {}
+              },
+              "Batas": {
+                "id": 1030,
+                "slug": "dressing_gowns",
+                "size_id": 4,
+                "children": {}
+              },
+              "Medias": {
+                "id": 1263,
+                "slug": "intimates_tights",
+                "size_id": 4,
+                "children": {}
+              },
+              "Calcetines": {
+                "id": 1262,
+                "slug": "intimates_socks",
+                "size_id": 72,
+                "children": {}
+              },
+              "Accesorios de lencería": {
+                "id": 1847,
+                "slug": "lingerie_acc",
+                "size_id": 4,
+                "children": {}
+              },
+              "Otros": {
+                "id": 124,
+                "slug": "wom_lin_other",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Premamá": {
+            "id": 1176,
+            "slug": "maternity_clothes_main",
+            "size_id": 4,
+            "children": {
+              "Camisetas y blusas": {
+                "id": 1179,
+                "slug": "maternity_tops",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vestidos": {
+                "id": 1182,
+                "slug": "maternity_dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Faldas": {
+                "id": 1178,
+                "slug": "maternity_skirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pantalones": {
+                "id": 1177,
+                "slug": "maternity_pants",
+                "size_id": 4,
+                "children": {}
+              },
+              "Shorts": {
+                "id": 1185,
+                "slug": "maternity_shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Monos": {
+                "id": 1181,
+                "slug": "maternity_rompers_jumpsuits",
+                "size_id": 4,
+                "children": {}
+              },
+              "Sudaderas y jerséis": {
+                "id": 1184,
+                "slug": "maternity_hoodies_sweaters",
+                "size_id": 4,
+                "children": {}
+              },
+              "Abrigos y cazadoras": {
+                "id": 1183,
+                "slug": "maternity_coats_jackets",
+                "size_id": 4,
+                "children": {}
+              },
+              "Bañadores y pareos": {
+                "id": 1186,
+                "slug": "maternity_swimwear_beachwear",
+                "size_id": 4,
+                "children": {}
+              },
+              "Ropa interior": {
+                "id": 1614,
+                "slug": "maternity_underwear",
+                "size_id": 4,
+                "children": {
+                  "Ropa interior": {
+                    "id": 1615,
+                    "slug": "mater_underwear_new",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Pijamas": {
+                    "id": 1616,
+                    "slug": "maternity_sleepwear_new",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Fajas premamá y posparto": {
+                    "id": 1617,
+                    "slug": "maternity_belts_new",
+                    "size_id": 30,
+                    "children": {}
+                  },
+                  "Sujetadores premamá y posparto": {
+                    "id": 1618,
+                    "slug": "maternity_bra",
+                    "size_id": 53,
+                    "children": {}
+                  }
+                }
+              },
+              "Ropa de deporte": {
+                "id": 2084,
+                "slug": "maternity_sport",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Ropa deportiva": {
+            "id": 73,
+            "slug": "sportswear_women",
+            "size_id": 4,
+            "children": {
+              "Ropa de abrigo": {
+                "id": 571,
+                "slug": "wom_spo_outerwear",
+                "size_id": 4,
+                "children": {}
+              },
+              "Chándales": {
+                "id": 572,
+                "slug": "training_costumes",
+                "size_id": 4,
+                "children": {}
+              },
+              "Pantalones": {
+                "id": 573,
+                "slug": "wom_spo_trousers",
+                "size_id": 4,
+                "children": {}
+              },
+              "Shorts": {
+                "id": 578,
+                "slug": "wom_spo_shorts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Vestidos": {
+                "id": 574,
+                "slug": "wom_spo_dresses",
+                "size_id": 4,
+                "children": {}
+              },
+              "Faldas": {
+                "id": 575,
+                "slug": "wom_spo_skirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Tops y camisetas": {
+                "id": 576,
+                "slug": "wom_spo_tops_t_shirts",
+                "size_id": 4,
+                "children": {}
+              },
+              "Sudaderas": {
+                "id": 577,
+                "slug": "wom_spo_pullovers_sweaters",
+                "size_id": 4,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 579,
+                "slug": "wom_spo_accessories",
+                "size_id": 4,
+                "children": {
+                  "Bufandas": {
+                    "id": 1440,
+                    "slug": "sports_scarves_women",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Gafas": {
+                    "id": 1441,
+                    "slug": "sports_glasses_women",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Relojes y muñequeras": {
+                    "id": 1442,
+                    "slug": "sports_watches_women",
+                    "size_id": 62,
+                    "children": {}
+                  },
+                  "Gorras": {
+                    "id": 1443,
+                    "slug": "sports_hats_women",
+                    "size_id": 60,
+                    "children": {}
+                  },
+                  "Guantes": {
+                    "id": 1444,
+                    "slug": "sports_gloves_women",
+                    "size_id": 61,
+                    "children": {}
+                  },
+                  "Protecciones": {
+                    "id": 1445,
+                    "slug": "sport_protectors_women",
+                    "size_id": 4,
+                    "children": {}
+                  },
+                  "Otros accesorios": {
+                    "id": 1446,
+                    "slug": "sports_other_women",
+                    "size_id": 4,
+                    "children": {}
+                  }
+                }
+              },
+              "Sujetadores": {
+                "id": 1439,
+                "slug": "sports_bra",
+                "size_id": 53,
+                "children": {}
+              },
+              "Otros": {
+                "id": 580,
+                "slug": "wom_spo_other",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Disfraces y trajes especiales": {
+            "id": 1782,
+            "slug": "special_outfits_costumes_w",
+            "size_id": 4,
+            "children": {}
+          },
+          "Otras prendas": {
+            "id": 18,
+            "slug": "other_clothes",
+            "size_id": 4,
+            "children": {}
+          }
+        }
+      },
+      "Calzado": {
+        "id": 16,
+        "slug": "footwear",
+        "size_id": 7,
+        "children": {
+          "Bailarinas": {
+            "id": 2955,
+            "slug": "women_ballerinas",
+            "size_id": 7,
+            "children": {}
+          },
+          "Naúticos y mocasines": {
+            "id": 2954,
+            "slug": "women_boat_shoes_loafers_moccasins",
+            "size_id": 7,
+            "children": {}
+          },
+          "Botas": {
+            "id": 1049,
+            "slug": "w_boots",
+            "size_id": 7,
+            "children": {
+              "Botines": {
+                "id": 2618,
+                "slug": "women_ankle_boots",
+                "size_id": 7,
+                "children": {}
+              },
+              "Botas de media pantorrilla": {
+                "id": 2619,
+                "slug": "women_mid_calf_boots",
+                "size_id": 7,
+                "children": {}
+              },
+              "Botas altas": {
+                "id": 211,
+                "slug": "knee_lenght_boots",
+                "size_id": 7,
+                "children": {}
+              },
+              "Botas por encima de la rodilla": {
+                "id": 2620,
+                "slug": "women_over_knee_boots",
+                "size_id": 7,
+                "children": {}
+              },
+              "Botas de nieve": {
+                "id": 2621,
+                "slug": "women_snow_boots",
+                "size_id": 7,
+                "children": {}
+              },
+              "Botas de agua": {
+                "id": 213,
+                "slug": "wellington_boots",
+                "size_id": 7,
+                "children": {}
+              },
+              "Calzado de seguridad": {
+                "id": 2622,
+                "slug": "women_work_boots",
+                "size_id": 7,
+                "children": {}
+              }
+            }
+          },
+          "Zuecos y mules": {
+            "id": 2623,
+            "slug": "women_clogs_mules",
+            "size_id": 7,
+            "children": {}
+          },
+          "Alpargatas": {
+            "id": 2953,
+            "slug": "women_espadrilles",
+            "size_id": 7,
+            "children": {}
+          },
+          "Chanclas": {
+            "id": 2952,
+            "slug": "women_flipflops_slides",
+            "size_id": 7,
+            "children": {}
+          },
+          "Tacones": {
+            "id": 543,
+            "slug": "high_heels",
+            "size_id": 7,
+            "children": {}
+          },
+          "Zapatos con cordones": {
+            "id": 2951,
+            "slug": "women_lace_up_shoes",
+            "size_id": 7,
+            "children": {}
+          },
+          "Merceditas": {
+            "id": 2950,
+            "slug": "women_mary_janes_tbar_shoes",
+            "size_id": 7,
+            "children": {}
+          },
+          "Sandalias": {
+            "id": 2949,
+            "slug": "women_sandals",
+            "size_id": 7,
+            "children": {}
+          },
+          "Pantuflas": {
+            "id": 215,
+            "slug": "slippers",
+            "size_id": 7,
+            "children": {}
+          },
+          "Zapatillas de deporte": {
+            "id": 2630,
+            "slug": "women_sport_shoes",
+            "size_id": 7,
+            "children": {
+              "Zapatillas de baloncesto": {
+                "id": 2639,
+                "slug": "women_basketball_shoes",
+                "size_id": 7,
+                "children": {}
+              },
+              "Pies de gato": {
+                "id": 2640,
+                "slug": "women_climbing_bouldering_shoes",
+                "size_id": 7,
+                "children": {}
+              },
+              "Zapatillas de ciclismo": {
+                "id": 2641,
+                "slug": "women_cycling_shoes",
+                "size_id": 7,
+                "children": {}
+              },
+              "Zapatos de baile": {
+                "id": 2642,
+                "slug": "women_dance_shoes",
+                "size_id": 7,
+                "children": {}
+              },
+              "Botas de fútbol": {
+                "id": 2643,
+                "slug": "women_football_boots",
+                "size_id": 7,
+                "children": {}
+              },
+              "Zapatos de golf": {
+                "id": 2644,
+                "slug": "women_golf_shoes",
+                "size_id": 7,
+                "children": {}
+              },
+              "Calzado y botas de montaña": {
+                "id": 2645,
+                "slug": "women_hiking_boots_shoes",
+                "size_id": 7,
+                "children": {}
+              },
+              "Patines de hielo": {
+                "id": 2646,
+                "slug": "women_ice_skates",
+                "size_id": 7,
+                "children": {}
+              },
+              "Zapatillas de fútbol sala": {
+                "id": 2647,
+                "slug": "women_indoor_football_shoes",
+                "size_id": 7,
+                "children": {}
+              },
+              "Para gimnasio": {
+                "id": 2648,
+                "slug": "women_indoor_training_shoes",
+                "size_id": 7,
+                "children": {}
+              },
+              "Botas de moto": {
+                "id": 2649,
+                "slug": "women_motorbike_boots",
+                "size_id": 7,
+                "children": {}
+              },
+              "Patines de ruedas": {
+                "id": 2650,
+                "slug": "women_roller_skates_blades",
+                "size_id": 7,
+                "children": {}
+              },
+              "Zapatillas de correr": {
+                "id": 2651,
+                "slug": "women_running_shoes",
+                "size_id": 7,
+                "children": {}
+              },
+              "Botas de esquí": {
+                "id": 2652,
+                "slug": "women_ski_boots",
+                "size_id": 7,
+                "children": {}
+              },
+              "Botas de snowboard": {
+                "id": 2653,
+                "slug": "women_snowboard_boots",
+                "size_id": 7,
+                "children": {}
+              },
+              "Calzado para nadar y agua": {
+                "id": 2654,
+                "slug": "women_swimming_water_shoes",
+                "size_id": 7,
+                "children": {}
+              },
+              "Zapatillas de tenis": {
+                "id": 2655,
+                "slug": "women_tennis_shoes",
+                "size_id": 7,
+                "children": {}
+              }
+            }
+          },
+          "Zapatillas": {
+            "id": 2632,
+            "slug": "women_trainers",
+            "size_id": 7,
+            "children": {}
+          }
+        }
+      },
+      "Bolsos": {
+        "id": 19,
+        "slug": "bags_backpacks",
+        "size_id": 4,
+        "children": {
+          "Mochilas": {
+            "id": 157,
+            "slug": "backpacks",
+            "size_id": 4,
+            "children": {}
+          },
+          "Bolsas de playa": {
+            "id": 2940,
+            "slug": "women_beach_bags",
+            "size_id": null,
+            "children": {}
+          },
+          "Maletines": {
+            "id": 2941,
+            "slug": "women_briefcases",
+            "size_id": null,
+            "children": {}
+          },
+          "Bolsos cubo": {
+            "id": 2942,
+            "slug": "women_bucket_bags",
+            "size_id": null,
+            "children": {}
+          },
+          "Riñoneras": {
+            "id": 1848,
+            "slug": "w_bum_bags",
+            "size_id": 4,
+            "children": {}
+          },
+          "Bolsos de fiesta": {
+            "id": 159,
+            "slug": "clutches",
+            "size_id": 4,
+            "children": {}
+          },
+          "Portatrajes": {
+            "id": 2943,
+            "slug": "women_garment_bags",
+            "size_id": null,
+            "children": {}
+          },
+          "bolsa de deporte, bolso de deporte, bolsa de gimnasio": {
+            "id": 2944,
+            "slug": "women_gym_bags",
+            "size_id": null,
+            "children": {}
+          },
+          "Bolsos de mano": {
+            "id": 156,
+            "slug": "handbags",
+            "size_id": 4,
+            "children": {}
+          },
+          "Bolsos hobo": {
+            "id": 2945,
+            "slug": "women_hobo_bags",
+            "size_id": null,
+            "children": {}
+          },
+          "Bolsas de viaje": {
+            "id": 1849,
+            "slug": "w_holdalls",
+            "size_id": 4,
+            "children": {}
+          },
+          "Maletas": {
+            "id": 1850,
+            "slug": "w_luggage",
+            "size_id": 4,
+            "children": {}
+          },
+          "Neceseres": {
+            "id": 161,
+            "slug": "make_up_bags",
+            "size_id": 4,
+            "children": {}
+          },
+          "Satchels": {
+            "id": 1784,
+            "slug": "satchels_new",
+            "size_id": 4,
+            "children": {}
+          },
+          "Bolsos de hombro": {
+            "id": 158,
+            "slug": "shoulder_bags",
+            "size_id": 4,
+            "children": {}
+          },
+          "Bolsos tote": {
+            "id": 552,
+            "slug": "tote_bags",
+            "size_id": 4,
+            "children": {}
+          },
+          "Monederos y carteras": {
+            "id": 160,
+            "slug": "purses",
+            "size_id": 4,
+            "children": {}
+          },
+          "Bolsos de pulsera": {
+            "id": 2939,
+            "slug": "women_wristlets",
+            "size_id": null,
+            "children": {}
+          }
+        }
+      },
+      "Accesorios": {
+        "id": 1187,
+        "slug": "accessories_jewellery",
+        "size_id": 4,
+        "children": {
+          "Bandanas y pañuelos para el pelo": {
+            "id": 2931,
+            "slug": "women_bandanas_headscarves",
+            "size_id": null,
+            "children": {}
+          },
+          "Cinturones": {
+            "id": 20,
+            "slug": "belts",
+            "size_id": 64,
+            "children": {}
+          },
+          "Guantes": {
+            "id": 90,
+            "slug": "gloves",
+            "size_id": 61,
+            "children": {}
+          },
+          "Accesorios de cabello": {
+            "id": 1123,
+            "slug": "w_hair_accessories",
+            "size_id": 4,
+            "children": {}
+          },
+          "Pañuelos": {
+            "id": 2932,
+            "slug": "women_handkerchiefs",
+            "size_id": null,
+            "children": {}
+          },
+          "Sombreros y gorros": {
+            "id": 88,
+            "slug": "wom_acc_hats_caps",
+            "size_id": null,
+            "children": {
+              "Pasamontañas": {
+                "id": 2933,
+                "slug": "women_balaclavas",
+                "size_id": 60,
+                "children": {}
+              },
+              "Gorros de lana": {
+                "id": 2934,
+                "slug": "women_beanies",
+                "size_id": 60,
+                "children": {}
+              },
+              "Gorras": {
+                "id": 230,
+                "slug": "caps",
+                "size_id": 60,
+                "children": {}
+              },
+              "Orejeras": {
+                "id": 2935,
+                "slug": "women_earmuffs",
+                "size_id": 60,
+                "children": {}
+              },
+              "Tocados": {
+                "id": 2936,
+                "slug": "women_fascinators",
+                "size_id": 60,
+                "children": {}
+              },
+              "Sombreros": {
+                "id": 231,
+                "slug": "hats",
+                "size_id": 60,
+                "children": {}
+              },
+              "Diademas y cintas": {
+                "id": 234,
+                "slug": "headbands",
+                "size_id": 60,
+                "children": {}
+              }
+            }
+          },
+          "Joyería": {
+            "id": 21,
+            "slug": "jewelry",
+            "size_id": 4,
+            "children": {
+              "Tobilleras": {
+                "id": 1785,
+                "slug": "anklets_new",
+                "size_id": 4,
+                "children": {}
+              },
+              "Joyas corporales": {
+                "id": 2937,
+                "slug": "women_body_jewellery",
+                "size_id": null,
+                "children": {}
+              },
+              "Pulseras": {
+                "id": 165,
+                "slug": "bracelets",
+                "size_id": 4,
+                "children": {}
+              },
+              "Broches": {
+                "id": 167,
+                "slug": "brooches",
+                "size_id": 4,
+                "children": {}
+              },
+              "Colgantes y dijes": {
+                "id": 2938,
+                "slug": "women_charms_pendants",
+                "size_id": null,
+                "children": {}
+              },
+              "Pendientes": {
+                "id": 163,
+                "slug": "earrings",
+                "size_id": 4,
+                "children": {}
+              },
+              "Conjuntos de joyería": {
+                "id": 166,
+                "slug": "wom_acc_jew_sets",
+                "size_id": 4,
+                "children": {}
+              },
+              "Collares": {
+                "id": 164,
+                "slug": "necklaces_beads_pendants",
+                "size_id": 4,
+                "children": {}
+              },
+              "Anillos": {
+                "id": 553,
+                "slug": "wom_acc_jew_rings",
+                "size_id": 52,
+                "children": {}
+              },
+              "Otros": {
+                "id": 162,
+                "slug": "wom_acc_jew_other",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Llaveros": {
+            "id": 1852,
+            "slug": "key_rings",
+            "size_id": 4,
+            "children": {}
+          },
+          "Bufandas y pañuelos": {
+            "id": 89,
+            "slug": "wom_acc_scarves_shawls",
+            "size_id": 4,
+            "children": {}
+          },
+          "Gafas de sol": {
+            "id": 26,
+            "slug": "sunglasses",
+            "size_id": 4,
+            "children": {}
+          },
+          "Accesorios de tecnología": {
+            "id": 1221,
+            "slug": "access_mobile",
+            "size_id": 4,
+            "children": {}
+          },
+          "Paraguas": {
+            "id": 1851,
+            "slug": "w_acc_umbrellas",
+            "size_id": 4,
+            "children": {}
+          },
+          "Relojes": {
+            "id": 22,
+            "slug": "watches",
+            "size_id": 62,
+            "children": {}
+          },
+          "Otros": {
+            "id": 1140,
+            "slug": "w_other_accessories",
+            "size_id": 4,
+            "children": {}
+          }
+        }
+      },
+      "Cuidado y belleza": {
+        "id": 146,
+        "slug": "cosmetics_and_beauty_products",
+        "size_id": 4,
+        "children": {
+          "Maquillaje": {
+            "id": 964,
+            "slug": "wom_cos_mak_cosmetics",
+            "size_id": 4,
+            "children": {}
+          },
+          "Perfume": {
+            "id": 152,
+            "slug": "wom_cos_perfume",
+            "size_id": 4,
+            "children": {}
+          },
+          "Cuidado facial": {
+            "id": 948,
+            "slug": "cosmetics",
+            "size_id": 4,
+            "children": {}
+          },
+          "Accesorios de belleza": {
+            "id": 1906,
+            "slug": "w_beauty_tools",
+            "size_id": 4,
+            "children": {
+              "Utensilios de peluquería": {
+                "id": 1903,
+                "slug": "w_hair_tools",
+                "size_id": 4,
+                "children": {}
+              },
+              "Accesorios de cuidado facial": {
+                "id": 950,
+                "slug": "beauty_tools",
+                "size_id": 4,
+                "children": {}
+              },
+              "Accesorios de cuidado corporal": {
+                "id": 958,
+                "slug": "wom_cos_bod_beauty_tools",
+                "size_id": 4,
+                "children": {}
+              },
+              "Herramientas de cuidado de uñas": {
+                "id": 962,
+                "slug": "wom_cos_han_beauty_tools",
+                "size_id": 4,
+                "children": {}
+              },
+              "Accesorios de maquillaje": {
+                "id": 967,
+                "slug": "wom_cos_mak_beauty_tools",
+                "size_id": 4,
+                "children": {}
+              }
+            }
+          },
+          "Cuidado de las manos": {
+            "id": 1264,
+            "slug": "beauty_hand_only",
+            "size_id": 4,
+            "children": {}
+          },
+          "Manicura": {
+            "id": 960,
+            "slug": "wom_cos_han_cosmetics",
+            "size_id": 4,
+            "children": {}
+          },
+          "Cuidado corporal": {
+            "id": 956,
+            "slug": "wom_cos_bod_cosmetics",
+            "size_id": 4,
+            "children": {}
+          },
+          "Cuidado del cabello": {
+            "id": 1902,
+            "slug": "w_hair_cosmetics",
+            "size_id": 4,
+            "children": {}
+          },
+          "Otros productos de belleza": {
+            "id": 153,
+            "slug": "other_cosmetics_and_tools",
+            "size_id": 4,
+            "children": {}
+          }
+        }
+      }
+    }
+  },
+  "Hombre": {
+    "id": 5,
+    "slug": "mens",
+    "size_id": 14,
+    "children": {
+      "Ropa": {
+        "id": 2050,
+        "slug": "men_clothing",
+        "size_id": 14,
+        "children": {
+          "Vaqueros": {
+            "id": 257,
+            "slug": "men_tro_jeans",
+            "size_id": null,
+            "children": {
+              "Vaqueros rotos": {
+                "id": 1816,
+                "slug": "men_ripped_jeans",
+                "size_id": 77,
+                "children": {}
+              },
+              "Vaqueros pitillo": {
+                "id": 1817,
+                "slug": "men_skinny_jeans",
+                "size_id": 77,
+                "children": {}
+              },
+              "Vaqueros ajustados": {
+                "id": 1818,
+                "slug": "men_slimfit_jeans",
+                "size_id": 77,
+                "children": {}
+              },
+              "Vaqueros rectos": {
+                "id": 1819,
+                "slug": "men_straightfit_jeans",
+                "size_id": 77,
+                "children": {}
+              }
+            }
+          },
+          "Abrigos y chaquetas": {
+            "id": 1206,
+            "slug": "men_outerwear_new",
+            "size_id": 14,
+            "children": {
+              "Abrigos": {
+                "id": 2051,
+                "slug": "men_coats",
+                "size_id": 14,
+                "children": {
+                  "Trencas": {
+                    "id": 1225,
+                    "slug": "men_duffle",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Sobretodos y abrigos largos": {
+                    "id": 2533,
+                    "slug": "men_overcoats_longcoats",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Parkas": {
+                    "id": 1227,
+                    "slug": "men_parkas",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Chaquetones marineros": {
+                    "id": 1861,
+                    "slug": "men_pea_coats",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Impermeables": {
+                    "id": 1859,
+                    "slug": "men_raincoat",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Gabardinas": {
+                    "id": 1230,
+                    "slug": "men_trench",
+                    "size_id": 14,
+                    "children": {}
+                  }
+                }
+              },
+              "Chalecos": {
+                "id": 2553,
+                "slug": "men_outerwear_vests",
+                "size_id": 14,
+                "children": {}
+              },
+              "Chaquetas": {
+                "id": 2052,
+                "slug": "men_jackets",
+                "size_id": 14,
+                "children": {
+                  "Cazadoras biker": {
+                    "id": 2534,
+                    "slug": "men_biker_racer_jackets",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Chaquetas bomber": {
+                    "id": 1223,
+                    "slug": "men_bomber",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Cazadoras vaqueras": {
+                    "id": 1224,
+                    "slug": "men_denim",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Chaquetas militares y utilitarias": {
+                    "id": 2535,
+                    "slug": "men_military_utility_jackets",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Forros polares": {
+                    "id": 1858,
+                    "slug": "men_fleece_jackets",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Chaquetas Harrington": {
+                    "id": 1226,
+                    "slug": "men_harringt",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Chaquetas de plumas": {
+                    "id": 2536,
+                    "slug": "men_puffer_jackets",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Chaquetas acolchadas": {
+                    "id": 2537,
+                    "slug": "men_quilted_jackets",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Sobrecamisas": {
+                    "id": 2538,
+                    "slug": "men_shackets",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Chaquetas de esquí y snow": {
+                    "id": 2539,
+                    "slug": "men_ski_snowboard_jackets",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Chaquetas universitarias": {
+                    "id": 2550,
+                    "slug": "men_varsity_jackets",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Cortavientos": {
+                    "id": 2551,
+                    "slug": "men_windbreakers",
+                    "size_id": 14,
+                    "children": {}
+                  }
+                }
+              },
+              "Ponchos": {
+                "id": 2552,
+                "slug": "men_ponchos",
+                "size_id": 14,
+                "children": {}
+              }
+            }
+          },
+          "Camisetas y camisas": {
+            "id": 76,
+            "slug": "men_tops_t_shirts",
+            "size_id": 14,
+            "children": {
+              "Camisas": {
+                "id": 536,
+                "slug": "men_top_shirts",
+                "size_id": 74,
+                "children": {
+                  "Camisas de cuadros": {
+                    "id": 1801,
+                    "slug": "checked_shirts",
+                    "size_id": 74,
+                    "children": {}
+                  },
+                  "Camisas vaqueras": {
+                    "id": 1802,
+                    "slug": "denim_shirts",
+                    "size_id": 74,
+                    "children": {}
+                  },
+                  "Camisas lisas": {
+                    "id": 1803,
+                    "slug": "plain_shirts",
+                    "size_id": 74,
+                    "children": {}
+                  },
+                  "Camisas estampadas": {
+                    "id": 1804,
+                    "slug": "printed_shirts",
+                    "size_id": 74,
+                    "children": {}
+                  },
+                  "Camisas de rayas": {
+                    "id": 1805,
+                    "slug": "stripped_shirts",
+                    "size_id": 74,
+                    "children": {}
+                  },
+                  "Otras camisas": {
+                    "id": 1865,
+                    "slug": "men_shirts_other",
+                    "size_id": 74,
+                    "children": {}
+                  }
+                }
+              },
+              "Camisetas": {
+                "id": 77,
+                "slug": "men_top_t_shirts",
+                "size_id": 14,
+                "children": {
+                  "Camisetas lisas": {
+                    "id": 1806,
+                    "slug": "plain_tshirts",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Camisetas estampadas": {
+                    "id": 1807,
+                    "slug": "printed_tshirts",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Camisetas de rayas": {
+                    "id": 1808,
+                    "slug": "stripped_tshirts",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Polos": {
+                    "id": 1809,
+                    "slug": "polo_shirts",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Camisetas de manga larga": {
+                    "id": 1810,
+                    "slug": "long_sl_tshirts",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Otras camisetas": {
+                    "id": 1868,
+                    "slug": "other_men_tshirts",
+                    "size_id": 14,
+                    "children": {}
+                  }
+                }
+              },
+              "Camisetas sin mangas": {
+                "id": 560,
+                "slug": "men_top_vests",
+                "size_id": 14,
+                "children": {}
+              }
+            }
+          },
+          "Trajes y blazers": {
+            "id": 32,
+            "slug": "suits_blazers",
+            "size_id": null,
+            "children": {
+              "Blazers": {
+                "id": 1786,
+                "slug": "blazers_men",
+                "size_id": 75,
+                "children": {}
+              },
+              "Pantalones de traje": {
+                "id": 1787,
+                "slug": "suit_pants",
+                "size_id": 77,
+                "children": {}
+              },
+              "Chalecos": {
+                "id": 1788,
+                "slug": "suit_waistcoat",
+                "size_id": 75,
+                "children": {}
+              },
+              "Trajes": {
+                "id": 1789,
+                "slug": "suit_set_men",
+                "size_id": 75,
+                "children": {}
+              },
+              "Trajes de boda": {
+                "id": 1790,
+                "slug": "wedding_suit",
+                "size_id": 75,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1866,
+                "slug": "suits_blazers_other",
+                "size_id": 75,
+                "children": {}
+              }
+            }
+          },
+          "Jerséis y sudaderas": {
+            "id": 79,
+            "slug": "men_pullovers_sweaters",
+            "size_id": 14,
+            "children": {
+              "Jerséis": {
+                "id": 1811,
+                "slug": "men_sweaters",
+                "size_id": 14,
+                "children": {}
+              },
+              "Sudaderas y sudaderas con capucha": {
+                "id": 267,
+                "slug": "men_pul_hoodies_pullovers",
+                "size_id": 14,
+                "children": {}
+              },
+              "Sudaderas con cremallera": {
+                "id": 1812,
+                "slug": "men_ziphoodies",
+                "size_id": 14,
+                "children": {}
+              },
+              "Cárdigan": {
+                "id": 266,
+                "slug": "men_pul_cardigans",
+                "size_id": 14,
+                "children": {}
+              },
+              "Cuello redondo": {
+                "id": 1813,
+                "slug": "men_crewneck_jumper",
+                "size_id": 14,
+                "children": {}
+              },
+              "Cuello de pico": {
+                "id": 264,
+                "slug": "men_pul_v_neck_sweaters",
+                "size_id": 14,
+                "children": {}
+              },
+              "Cuello alto": {
+                "id": 265,
+                "slug": "men_pul_turtleneck_sweaters",
+                "size_id": 14,
+                "children": {}
+              },
+              "Largos": {
+                "id": 1814,
+                "slug": "men_long_sweater",
+                "size_id": 14,
+                "children": {}
+              },
+              "De punto": {
+                "id": 1815,
+                "slug": "men_knitted_sweater",
+                "size_id": 14,
+                "children": {}
+              },
+              "Chalecos": {
+                "id": 1825,
+                "slug": "outdoor_vest",
+                "size_id": 14,
+                "children": {}
+              },
+              "Otros": {
+                "id": 268,
+                "slug": "men_pul_other",
+                "size_id": 14,
+                "children": {}
+              }
+            }
+          },
+          "Pantalones": {
+            "id": 34,
+            "slug": "men_trousers",
+            "size_id": null,
+            "children": {
+              "Chinos": {
+                "id": 1820,
+                "slug": "men_chinos",
+                "size_id": 77,
+                "children": {}
+              },
+              "Joggers": {
+                "id": 1821,
+                "slug": "men_joggers",
+                "size_id": 77,
+                "children": {}
+              },
+              "Pantalones pitillo": {
+                "id": 259,
+                "slug": "men_tro_skinny_trousers",
+                "size_id": 77,
+                "children": {}
+              },
+              "Capri": {
+                "id": 271,
+                "slug": "men_sho_capri_trousers",
+                "size_id": 77,
+                "children": {}
+              },
+              "Pantalones de pinzas": {
+                "id": 261,
+                "slug": "men_tro_tailored_trousers",
+                "size_id": 77,
+                "children": {}
+              },
+              "Pantalones anchos": {
+                "id": 260,
+                "slug": "men_tro_wide_legged_trousers",
+                "size_id": 77,
+                "children": {}
+              },
+              "Otros": {
+                "id": 263,
+                "slug": "men_tro_other",
+                "size_id": 77,
+                "children": {}
+              }
+            }
+          },
+          "Shorts": {
+            "id": 80,
+            "slug": "shorts_capri_pants",
+            "size_id": null,
+            "children": {
+              "Estilo cargo": {
+                "id": 1822,
+                "slug": "men_cargo_shorts",
+                "size_id": 77,
+                "children": {}
+              },
+              "Chinos": {
+                "id": 1823,
+                "slug": "men_chino_shorts",
+                "size_id": 77,
+                "children": {}
+              },
+              "Vaqueros": {
+                "id": 1824,
+                "slug": "men_denim_shorts",
+                "size_id": 77,
+                "children": {}
+              },
+              "Otros": {
+                "id": 272,
+                "slug": "men_sho_other",
+                "size_id": 77,
+                "children": {}
+              }
+            }
+          },
+          "Ropa interior": {
+            "id": 85,
+            "slug": "underwear",
+            "size_id": 14,
+            "children": {
+              "Calzoncillos": {
+                "id": 1829,
+                "slug": "men_underwear",
+                "size_id": 14,
+                "children": {}
+              },
+              "Calcetines": {
+                "id": 1828,
+                "slug": "men_socks",
+                "size_id": 73,
+                "children": {}
+              },
+              "Albornoces": {
+                "id": 1830,
+                "slug": "men_robes",
+                "size_id": 14,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1867,
+                "slug": "other_men_underwear",
+                "size_id": 14,
+                "children": {}
+              }
+            }
+          },
+          "Pijamas": {
+            "id": 2910,
+            "slug": "men_sleepwear",
+            "size_id": 14,
+            "children": {
+              "Pijamas de una pieza": {
+                "id": 2911,
+                "slug": "men_one_piece_pyjamas",
+                "size_id": 14,
+                "children": {}
+              },
+              "Pantalones de pijama": {
+                "id": 2912,
+                "slug": "men_pyjama_bottoms",
+                "size_id": 14,
+                "children": {}
+              },
+              "Pijamas completos": {
+                "id": 2913,
+                "slug": "men_pyjama_sets",
+                "size_id": 14,
+                "children": {}
+              },
+              "Camisetas de pijama": {
+                "id": 2914,
+                "slug": "men_pyjama_tops",
+                "size_id": 14,
+                "children": {}
+              }
+            }
+          },
+          "Bañadores": {
+            "id": 84,
+            "slug": "men_swimwear",
+            "size_id": 14,
+            "children": {}
+          },
+          "Ropa y accesorios deportivos": {
+            "id": 30,
+            "slug": "sportswear",
+            "size_id": 14,
+            "children": {
+              "Ropa de abrigo": {
+                "id": 581,
+                "slug": "men_spo_outerwear",
+                "size_id": 14,
+                "children": {}
+              },
+              "Ropa de entrenamiento": {
+                "id": 582,
+                "slug": "men_spo_training_costumes",
+                "size_id": 14,
+                "children": {}
+              },
+              "Pantalones": {
+                "id": 583,
+                "slug": "men_spo_trousers",
+                "size_id": 14,
+                "children": {}
+              },
+              "Shorts": {
+                "id": 586,
+                "slug": "men_spo_shorts",
+                "size_id": 14,
+                "children": {}
+              },
+              "Camisetas y tops": {
+                "id": 584,
+                "slug": "men_spo_tops_t_shirts",
+                "size_id": 14,
+                "children": {}
+              },
+              "Sudaderas y suéteres": {
+                "id": 585,
+                "slug": "men_spo_pullovers_sweaters",
+                "size_id": 14,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 587,
+                "slug": "men_spo_accessories",
+                "size_id": 14,
+                "children": {
+                  "Bufandas": {
+                    "id": 1470,
+                    "slug": "sport_access_scarves_men",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Gafas": {
+                    "id": 1471,
+                    "slug": "sport_access_glasses_men",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Relojes y muñequeras": {
+                    "id": 1472,
+                    "slug": "sport_access_watches_men",
+                    "size_id": 62,
+                    "children": {}
+                  },
+                  "Gorras": {
+                    "id": 1473,
+                    "slug": "sport_access_hats_men",
+                    "size_id": 60,
+                    "children": {}
+                  },
+                  "Guantes": {
+                    "id": 1474,
+                    "slug": "sport_access_gloves_men",
+                    "size_id": 61,
+                    "children": {}
+                  },
+                  "Protecciones": {
+                    "id": 1475,
+                    "slug": "sport_access_protect_men",
+                    "size_id": 14,
+                    "children": {}
+                  },
+                  "Otros accesorios": {
+                    "id": 1476,
+                    "slug": "sport_access_other_men",
+                    "size_id": 14,
+                    "children": {}
+                  }
+                }
+              },
+              "Otros": {
+                "id": 588,
+                "slug": "men_spo_other",
+                "size_id": 14,
+                "children": {}
+              }
+            }
+          },
+          "Disfraces y trajes especiales": {
+            "id": 92,
+            "slug": "specialised_clothing_costumes",
+            "size_id": 14,
+            "children": {}
+          },
+          "Otras prendas": {
+            "id": 83,
+            "slug": "men_other",
+            "size_id": 14,
+            "children": {}
+          }
+        }
+      },
+      "Calzado": {
+        "id": 1231,
+        "slug": "men_shoes_new",
+        "size_id": 38,
+        "children": {
+          "Naúticos y mocasines": {
+            "id": 2656,
+            "slug": "men_boat_loafers_moccasins",
+            "size_id": 38,
+            "children": {}
+          },
+          "Botas": {
+            "id": 1233,
+            "slug": "men_boots",
+            "size_id": 38,
+            "children": {
+              "Botas Chelsea y sin cordones": {
+                "id": 2661,
+                "slug": "men_chelsea_slip_on_boots",
+                "size_id": 38,
+                "children": {}
+              },
+              "Botas desert y con cordones": {
+                "id": 2662,
+                "slug": "men_desert_lace_up_boots",
+                "size_id": 38,
+                "children": {}
+              },
+              "Botas de nieve": {
+                "id": 2663,
+                "slug": "men_snow_boots",
+                "size_id": 38,
+                "children": {}
+              },
+              "Botas de agua": {
+                "id": 1795,
+                "slug": "men_wellington",
+                "size_id": 38,
+                "children": {}
+              },
+              "Calzado de seguridad": {
+                "id": 2664,
+                "slug": "men_work_boots",
+                "size_id": 38,
+                "children": {}
+              }
+            }
+          },
+          "Zuecos y mules": {
+            "id": 2970,
+            "slug": "men_clogs_mules_new",
+            "size_id": 38,
+            "children": {}
+          },
+          "Alpargatas": {
+            "id": 2657,
+            "slug": "men_espadrilles",
+            "size_id": 38,
+            "children": {}
+          },
+          "Chanclas": {
+            "id": 2969,
+            "slug": "men_flipflops_slides",
+            "size_id": 38,
+            "children": {}
+          },
+          "Zapatos de vestir": {
+            "id": 1238,
+            "slug": "men_formal",
+            "size_id": 38,
+            "children": {}
+          },
+          "Sandalias": {
+            "id": 2968,
+            "slug": "men_sandals_new",
+            "size_id": 38,
+            "children": {}
+          },
+          "Pantuflas": {
+            "id": 2659,
+            "slug": "men_slippers_2",
+            "size_id": 38,
+            "children": {}
+          },
+          "Zapatillas de deporte": {
+            "id": 1452,
+            "slug": "sport_shoes_men",
+            "size_id": 38,
+            "children": {
+              "Zapatillas de baloncesto": {
+                "id": 2672,
+                "slug": "men_basketball_shoes",
+                "size_id": 38,
+                "children": {}
+              },
+              "Pies de gato": {
+                "id": 2673,
+                "slug": "men_climbing_bouldering_shoes",
+                "size_id": 38,
+                "children": {}
+              },
+              "Zapatillas de ciclismo": {
+                "id": 2674,
+                "slug": "men_cycling_shoes",
+                "size_id": 38,
+                "children": {}
+              },
+              "Zapatos de baile": {
+                "id": 2675,
+                "slug": "men_dance_shoes",
+                "size_id": 38,
+                "children": {}
+              },
+              "Botas de fútbol": {
+                "id": 2676,
+                "slug": "men_football_boots",
+                "size_id": 38,
+                "children": {}
+              },
+              "Zapatos de golf": {
+                "id": 2677,
+                "slug": "men_golf_shoes",
+                "size_id": 38,
+                "children": {}
+              },
+              "Calzado y botas de montaña": {
+                "id": 2678,
+                "slug": "men_hiking_boots_shoes",
+                "size_id": 38,
+                "children": {}
+              },
+              "Patines de hielo": {
+                "id": 2679,
+                "slug": "men_ice_skates",
+                "size_id": 38,
+                "children": {}
+              },
+              "Zapatillas de fútbol sala": {
+                "id": 2680,
+                "slug": "men_indoor_football_shoes",
+                "size_id": 38,
+                "children": {}
+              },
+              "Para gimnasio": {
+                "id": 1467,
+                "slug": "sport_shoes_indoor_men",
+                "size_id": 38,
+                "children": {}
+              },
+              "Botas de moto": {
+                "id": 2681,
+                "slug": "men_motorbike_boots",
+                "size_id": 38,
+                "children": {}
+              },
+              "Patines de ruedas": {
+                "id": 2682,
+                "slug": "men_roller_skates_blades",
+                "size_id": 38,
+                "children": {}
+              },
+              "Zapatillas de correr": {
+                "id": 1453,
+                "slug": "sport_shoes_running_men",
+                "size_id": 38,
+                "children": {}
+              },
+              "Botas de esquí": {
+                "id": 2683,
+                "slug": "men_ski_boots",
+                "size_id": 38,
+                "children": {}
+              },
+              "Botas de snowboard": {
+                "id": 2684,
+                "slug": "men_snowboard_boots",
+                "size_id": 38,
+                "children": {}
+              },
+              "Calzado para nadar y agua": {
+                "id": 2685,
+                "slug": "men_swimming_water_shoes",
+                "size_id": 38,
+                "children": {}
+              },
+              "Zapatillas de tenis": {
+                "id": 2686,
+                "slug": "men_tennis_shoes",
+                "size_id": 38,
+                "children": {}
+              }
+            }
+          },
+          "Zapatillas": {
+            "id": 1242,
+            "slug": "men_sneakers",
+            "size_id": 38,
+            "children": {}
+          }
+        }
+      },
+      "Accesorios": {
+        "id": 82,
+        "slug": "men_accessories",
+        "size_id": 14,
+        "children": {
+          "Mochilas y bolsos": {
+            "id": 94,
+            "slug": "bags",
+            "size_id": 14,
+            "children": {
+              "Mochilas": {
+                "id": 246,
+                "slug": "men_acc_bag_backpacks",
+                "size_id": 14,
+                "children": {}
+              },
+              "Maletines": {
+                "id": 2963,
+                "slug": "men_briefcases",
+                "size_id": null,
+                "children": {}
+              },
+              "Riñoneras": {
+                "id": 1799,
+                "slug": "men_acc_bumbags",
+                "size_id": 14,
+                "children": {}
+              },
+              "Portatrajes": {
+                "id": 2962,
+                "slug": "men_garment_bags",
+                "size_id": null,
+                "children": {}
+              },
+              "Bolsas de deporte": {
+                "id": 2961,
+                "slug": "men_gym_bags",
+                "size_id": null,
+                "children": {}
+              },
+              "Bolsas de viaje": {
+                "id": 1798,
+                "slug": "men_holdalls",
+                "size_id": 14,
+                "children": {}
+              },
+              "Maletas": {
+                "id": 1862,
+                "slug": "men_luggage",
+                "size_id": 14,
+                "children": {}
+              },
+              "Satchels": {
+                "id": 1797,
+                "slug": "men_acc_satchels",
+                "size_id": 14,
+                "children": {}
+              },
+              "Bolsos de hombro": {
+                "id": 247,
+                "slug": "men_acc_bag_shoulder_bags",
+                "size_id": 14,
+                "children": {}
+              },
+              "Billeteras": {
+                "id": 248,
+                "slug": "wallets",
+                "size_id": 14,
+                "children": {}
+              }
+            }
+          },
+          "Bandanas y pañuelos para el pelo": {
+            "id": 2960,
+            "slug": "men_bandanas_headscarves",
+            "size_id": null,
+            "children": {}
+          },
+          "Cinturones": {
+            "id": 96,
+            "slug": "men_acc_belts",
+            "size_id": 63,
+            "children": {}
+          },
+          "Tirantes": {
+            "id": 2959,
+            "slug": "men_braces",
+            "size_id": null,
+            "children": {}
+          },
+          "Guantes": {
+            "id": 91,
+            "slug": "men_acc_gloves",
+            "size_id": 61,
+            "children": {}
+          },
+          "Pañuelos": {
+            "id": 2958,
+            "slug": "men_handkerchiefs",
+            "size_id": null,
+            "children": {}
+          },
+          "Sombreros y gorros": {
+            "id": 86,
+            "slug": "hats_caps",
+            "size_id": null,
+            "children": {
+              "Pasamontañas": {
+                "id": 2965,
+                "slug": "men_balaclavas",
+                "size_id": 60,
+                "children": {}
+              },
+              "Gorros de lana": {
+                "id": 2964,
+                "slug": "men_beanies",
+                "size_id": 60,
+                "children": {}
+              },
+              "Gorras": {
+                "id": 287,
+                "slug": "men_acc_hat_caps",
+                "size_id": 60,
+                "children": {}
+              },
+              "Sombreros": {
+                "id": 288,
+                "slug": "men_acc_hat_hats",
+                "size_id": 60,
+                "children": {}
+              }
+            }
+          },
+          "Joyería": {
+            "id": 95,
+            "slug": "apparel",
+            "size_id": 52,
+            "children": {
+              "Pulseras": {
+                "id": 243,
+                "slug": "men_acc_app_bracelets",
+                "size_id": 14,
+                "children": {}
+              },
+              "Colgantes y dijes": {
+                "id": 2967,
+                "slug": "men_charms_pendants",
+                "size_id": null,
+                "children": {}
+              },
+              "Gemelos": {
+                "id": 1800,
+                "slug": "men_acc_cufflinks",
+                "size_id": 14,
+                "children": {}
+              },
+              "Pendientes": {
+                "id": 2966,
+                "slug": "men_earrings",
+                "size_id": null,
+                "children": {}
+              },
+              "Collares": {
+                "id": 241,
+                "slug": "necklaces_pendants",
+                "size_id": 14,
+                "children": {}
+              },
+              "Anillos": {
+                "id": 242,
+                "slug": "rings",
+                "size_id": 52,
+                "children": {}
+              },
+              "Otros": {
+                "id": 244,
+                "slug": "men_acc_app_other",
+                "size_id": 14,
+                "children": {}
+              }
+            }
+          },
+          "Pañuelos de bolsillo": {
+            "id": 2957,
+            "slug": "men_pocket_squares",
+            "size_id": null,
+            "children": {}
+          },
+          "Bufandas y pañuelos": {
+            "id": 87,
+            "slug": "scarves_shawls",
+            "size_id": 14,
+            "children": {}
+          },
+          "Gafas de sol": {
+            "id": 98,
+            "slug": "men_acc_sunglasses",
+            "size_id": 14,
+            "children": {}
+          },
+          "Corbatas y pajaritas": {
+            "id": 2956,
+            "slug": "men_ties_bowties",
+            "size_id": null,
+            "children": {}
+          },
+          "Relojes": {
+            "id": 97,
+            "slug": "men_acc_watches",
+            "size_id": 62,
+            "children": {}
+          },
+          "Otros": {
+            "id": 99,
+            "slug": "men_acc_other",
+            "size_id": 14,
+            "children": {}
+          }
+        }
+      },
+      "Cuidado y belleza": {
+        "id": 139,
+        "slug": "cosmetics_and_beauty_items",
+        "size_id": 14,
+        "children": {
+          "Cuidado facial": {
+            "id": 143,
+            "slug": "face_care",
+            "size_id": 14,
+            "children": {}
+          },
+          "Utensilios de aseo y belleza": {
+            "id": 2055,
+            "slug": "men_beauty_tools",
+            "size_id": 14,
+            "children": {
+              "Herramientas del afeitado": {
+                "id": 1826,
+                "slug": "men_shaving_tools",
+                "size_id": 14,
+                "children": {}
+              },
+              "Herramientas de aseo": {
+                "id": 1827,
+                "slug": "grooming_tools",
+                "size_id": 14,
+                "children": {}
+              },
+              "Otros utensilios": {
+                "id": 971,
+                "slug": "men_cos_oth_beauty_tools",
+                "size_id": 14,
+                "children": {}
+              }
+            }
+          },
+          "Cuidado del cabello": {
+            "id": 140,
+            "slug": "hair_care",
+            "size_id": 14,
+            "children": {}
+          },
+          "Cuidado corporal": {
+            "id": 141,
+            "slug": "body_care",
+            "size_id": 14,
+            "children": {}
+          },
+          "Cuidado de manos y uñas": {
+            "id": 142,
+            "slug": "hand_nail_care",
+            "size_id": 14,
+            "children": {}
+          },
+          "Perfumes": {
+            "id": 145,
+            "slug": "perfume",
+            "size_id": 14,
+            "children": {}
+          },
+          "Maquillaje": {
+            "id": 144,
+            "slug": "make_up",
+            "size_id": 14,
+            "children": {}
+          },
+          "Sets": {
+            "id": 1863,
+            "slug": "men_sets",
+            "size_id": 14,
+            "children": {}
+          },
+          "Otros": {
+            "id": 968,
+            "slug": "men_cos_oth_cosmetics",
+            "size_id": 14,
+            "children": {}
+          }
+        }
+      }
+    }
+  },
+  "Niños": {
+    "id": 1193,
+    "slug": "children_new",
+    "size_id": 32,
+    "children": {
+      "Niñas": {
+        "id": 1195,
+        "slug": "girls_new",
+        "size_id": 32,
+        "children": {
+          "Ropa para bebé niña": {
+            "id": 1243,
+            "slug": "girls_babies",
+            "size_id": 32,
+            "children": {
+              "Peleles": {
+                "id": 1514,
+                "slug": "full_rompers_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Bodies": {
+                "id": 1515,
+                "slug": "girls_bodies_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Petos": {
+                "id": 1516,
+                "slug": "rompers_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Conjuntos": {
+                "id": 1517,
+                "slug": "sets_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1875,
+                "slug": "girls_babies_others",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Calzado": {
+            "id": 1255,
+            "slug": "girls_shoes",
+            "size_id": 31,
+            "children": {
+              "Calzado de bebé": {
+                "id": 1525,
+                "slug": "baby_girls_shoes_new",
+                "size_id": 31,
+                "children": {}
+              },
+              "Botas": {
+                "id": 1530,
+                "slug": "boots_girls_new",
+                "size_id": 31,
+                "children": {
+                  "Botines": {
+                    "id": 2695,
+                    "slug": "girls_ankle_boots",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Botas altas": {
+                    "id": 2696,
+                    "slug": "girls_mid_calf_boots",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Botas de nieve": {
+                    "id": 2697,
+                    "slug": "girls_snow_boots",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Botas de agua": {
+                    "id": 2698,
+                    "slug": "girls_wellington_boots",
+                    "size_id": 31,
+                    "children": {}
+                  }
+                }
+              },
+              "Zuecos y mules": {
+                "id": 2690,
+                "slug": "girls_clogs_mules",
+                "size_id": 31,
+                "children": {}
+              },
+              "Zapatos planos": {
+                "id": 1526,
+                "slug": "flat_girls_new",
+                "size_id": 31,
+                "children": {
+                  "Bailarinas, merceditas y manoletinas": {
+                    "id": 2753,
+                    "slug": "girls_ballerinas_mary_janes",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Alpargatas": {
+                    "id": 2701,
+                    "slug": "girls_espadrille_shoes",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Zapatos con cordones": {
+                    "id": 2702,
+                    "slug": "girls_flat_lace_up_shoes",
+                    "size_id": 31,
+                    "children": {}
+                  }
+                }
+              },
+              "Sandalias y chanclas": {
+                "id": 2691,
+                "slug": "girls_flip_flops_sandals_slides",
+                "size_id": 31,
+                "children": {
+                  "Chanclas": {
+                    "id": 2704,
+                    "slug": "girls_flip_flops",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Sandalias": {
+                    "id": 2705,
+                    "slug": "girls_sandals",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Sandalias y chanclas de pala": {
+                    "id": 2707,
+                    "slug": "girls_slides_2",
+                    "size_id": 31,
+                    "children": {}
+                  }
+                }
+              },
+              "Ocasiones especiales": {
+                "id": 1528,
+                "slug": "shoes_occ_girls_new",
+                "size_id": 31,
+                "children": {}
+              },
+              "Tacones": {
+                "id": 2692,
+                "slug": "girls_heels",
+                "size_id": 31,
+                "children": {}
+              },
+              "Pantuflas": {
+                "id": 1534,
+                "slug": "slippers_girls_new",
+                "size_id": 31,
+                "children": {}
+              },
+              "Zapatillas de deporte": {
+                "id": 2693,
+                "slug": "girls_sport_shoes",
+                "size_id": 31,
+                "children": {
+                  "Zapatillas de baloncesto": {
+                    "id": 2708,
+                    "slug": "girls_basketball_shoes",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Zapatos de baile": {
+                    "id": 2709,
+                    "slug": "girls_dance_shoes",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Botas de fútbol": {
+                    "id": 2710,
+                    "slug": "girls_football_boots",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Calzado y botas de montaña": {
+                    "id": 2711,
+                    "slug": "girls_hiking_boots_shoes",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Patines de hielo": {
+                    "id": 2712,
+                    "slug": "girls_ice_skates",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Patines de ruedas": {
+                    "id": 2713,
+                    "slug": "girls_roller_skates_blades",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Zapatillas de correr": {
+                    "id": 2714,
+                    "slug": "girls_running_shoes",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Botas de esquí": {
+                    "id": 2715,
+                    "slug": "girls_ski_boots",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Botas de snowboard": {
+                    "id": 2716,
+                    "slug": "girls_snowboard_boots",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Calzado para nadar y agua": {
+                    "id": 2717,
+                    "slug": "girls_swimming_water_shoes",
+                    "size_id": 31,
+                    "children": {}
+                  }
+                }
+              },
+              "Deportivas": {
+                "id": 1533,
+                "slug": "sneakers_girls_new",
+                "size_id": 31,
+                "children": {
+                  "Deportivas de cierres de gancho y bucle": {
+                    "id": 2718,
+                    "slug": "girls_hook_loop_trainers",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Deportivas con cordones": {
+                    "id": 2719,
+                    "slug": "girls_lace_up_trainers",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Deportivas sin cierre": {
+                    "id": 2720,
+                    "slug": "girls_slip_on_trainers",
+                    "size_id": 31,
+                    "children": {}
+                  }
+                }
+              }
+            }
+          },
+          "Abrigos y chaquetas": {
+            "id": 1244,
+            "slug": "girls_coats",
+            "size_id": 32,
+            "children": {
+              "Abrigos": {
+                "id": 1519,
+                "slug": "coats_girls_new",
+                "size_id": 32,
+                "children": {
+                  "Trencas": {
+                    "id": 2540,
+                    "slug": "girls_duffle_coats",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Parkas": {
+                    "id": 2541,
+                    "slug": "girls_parkas",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Chaquetones marineros": {
+                    "id": 2542,
+                    "slug": "girls_peacoats",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Gabardinas": {
+                    "id": 2543,
+                    "slug": "girls_trench_coats",
+                    "size_id": 32,
+                    "children": {}
+                  }
+                }
+              },
+              "Chalecos": {
+                "id": 1518,
+                "slug": "out_vests_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Chaquetas": {
+                "id": 1521,
+                "slug": "jackets_girls_new",
+                "size_id": 32,
+                "children": {
+                  "Blazers": {
+                    "id": 2544,
+                    "slug": "girls_blazers_3",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Chaquetas bomber": {
+                    "id": 2545,
+                    "slug": "girls_bomber_jackets",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Cazadoras vaqueras": {
+                    "id": 2546,
+                    "slug": "girls_denim_jackets",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Forros polares": {
+                    "id": 2547,
+                    "slug": "girls_fleece_jackets",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Chaquetas de plumas": {
+                    "id": 2548,
+                    "slug": "girls_puffer_jackets",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Cortavientos": {
+                    "id": 2549,
+                    "slug": "girls_windbreakers",
+                    "size_id": 32,
+                    "children": {}
+                  }
+                }
+              },
+              "Ropa impermeable": {
+                "id": 2554,
+                "slug": "girls_rain_gear",
+                "size_id": 32,
+                "children": {
+                  "Ponchos": {
+                    "id": 2556,
+                    "slug": "girls_ponchos_3",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Conjuntos impermeables": {
+                    "id": 2557,
+                    "slug": "girls_rain_suits",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Pantalones impermeables": {
+                    "id": 2555,
+                    "slug": "girls_rain_pants",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Impermeables": {
+                    "id": 2558,
+                    "slug": "girls_raincoats_3",
+                    "size_id": 32,
+                    "children": {}
+                  }
+                }
+              },
+              "Ropa para la nieve": {
+                "id": 2559,
+                "slug": "girls_snow_gear",
+                "size_id": 32,
+                "children": {
+                  "Abrigos y chaquetas para la nieve": {
+                    "id": 2560,
+                    "slug": "girls_jackets_coats",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Conjuntos para la nieve": {
+                    "id": 2565,
+                    "slug": "girls_snow_suits",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Pantalones para la nieve": {
+                    "id": 2582,
+                    "slug": "girls_snow_pants",
+                    "size_id": 32,
+                    "children": {}
+                  }
+                }
+              }
+            }
+          },
+          "Jerséis y sudaderas": {
+            "id": 1246,
+            "slug": "girls_sweaters",
+            "size_id": 32,
+            "children": {
+              "Jerséis": {
+                "id": 1542,
+                "slug": "sweaters_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Cuello de pico": {
+                "id": 1543,
+                "slug": "vneck_sweaters_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Cuello alto": {
+                "id": 1544,
+                "slug": "turleneck_grils_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Con cremallera": {
+                "id": 1548,
+                "slug": "zipp_sweaters_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Boleros": {
+                "id": 1549,
+                "slug": "boleros_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Sudaderas": {
+                "id": 1550,
+                "slug": "hoodies_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Chalecos": {
+                "id": 1551,
+                "slug": "vests_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1877,
+                "slug": "other_sweaters_girls",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Camisetas y blusas": {
+            "id": 1245,
+            "slug": "girls_shirts",
+            "size_id": 32,
+            "children": {
+              "Camisetas": {
+                "id": 1535,
+                "slug": "tops_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Polos": {
+                "id": 1536,
+                "slug": "poloshirts_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Camisas": {
+                "id": 1537,
+                "slug": "shirts_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Camisas de manga corta": {
+                "id": 1538,
+                "slug": "shortsleeve_shirts_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Camisas de manga larga": {
+                "id": 1539,
+                "slug": "logsleeve_shirts_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Camisas sin mangas": {
+                "id": 1540,
+                "slug": "sleeveless_shirts_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Túnicas": {
+                "id": 1541,
+                "slug": "tunics_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1878,
+                "slug": "other_tops_girls",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Vestidos": {
+            "id": 1247,
+            "slug": "girls_dresses",
+            "size_id": 32,
+            "children": {
+              "Vestidos cortos": {
+                "id": 1554,
+                "slug": "shortdresses_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Vestidos largos": {
+                "id": 1553,
+                "slug": "longdresses_girls_new",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Faldas": {
+            "id": 1248,
+            "slug": "girls_skirts",
+            "size_id": 32,
+            "children": {}
+          },
+          "Pantalones y shorts": {
+            "id": 1249,
+            "slug": "girls_pants",
+            "size_id": 32,
+            "children": {
+              "Vaqueros": {
+                "id": 1559,
+                "slug": "jeans_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Pantalones de pitillo": {
+                "id": 1560,
+                "slug": "skinnypants_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Pantalones de campana": {
+                "id": 1562,
+                "slug": "bellbottompants_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Leggings": {
+                "id": 1565,
+                "slug": "leggings_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Monos y petos": {
+                "id": 1568,
+                "slug": "overalls_rompers_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Shorts y bermudas": {
+                "id": 1250,
+                "slug": "girls_shorts",
+                "size_id": 32,
+                "children": {}
+              },
+              "Pantalones harem": {
+                "id": 2079,
+                "slug": "harem_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1880,
+                "slug": "other_pants_girls",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Bolsos y mochilas": {
+            "id": 1258,
+            "slug": "girls_bags",
+            "size_id": 32,
+            "children": {}
+          },
+          "Accesorios": {
+            "id": 1574,
+            "slug": "accessories_girls_new",
+            "size_id": 32,
+            "children": {
+              "Gorros y gorras": {
+                "id": 1577,
+                "slug": "hats_girls_new",
+                "size_id": 43,
+                "children": {}
+              },
+              "Guantes": {
+                "id": 1578,
+                "slug": "gloves_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Bufandas y pañuelos": {
+                "id": 1580,
+                "slug": "scarves_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Cinturones": {
+                "id": 1581,
+                "slug": "belts_girls_new",
+                "size_id": 70,
+                "children": {}
+              },
+              "Diademas y horquillas": {
+                "id": 1582,
+                "slug": "hair_acc_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Monederos": {
+                "id": 1584,
+                "slug": "kids_wallets_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Joyería": {
+                "id": 1586,
+                "slug": "kids_jewelery",
+                "size_id": 32,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1881,
+                "slug": "others_acc_girls",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Ropa de baño": {
+            "id": 1251,
+            "slug": "girls_swim",
+            "size_id": 32,
+            "children": {
+              "Bañadores": {
+                "id": 1590,
+                "slug": "swimsuits_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Bikinis": {
+                "id": 1592,
+                "slug": "bikinis_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Albornoces": {
+                "id": 1593,
+                "slug": "bathrobes_girls_new",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Ropa interior": {
+            "id": 1252,
+            "slug": "girls_underw",
+            "size_id": 32,
+            "children": {
+              "Calcetines": {
+                "id": 1600,
+                "slug": "socks_girls_new",
+                "size_id": 71,
+                "children": {}
+              },
+              "Medias": {
+                "id": 1601,
+                "slug": "tights_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Braguitas": {
+                "id": 1602,
+                "slug": "panties_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1872,
+                "slug": "other_underwear_girls",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Pijamas": {
+            "id": 1594,
+            "slug": "sleepwear_girls_new",
+            "size_id": 32,
+            "children": {
+              "Pijama de una pieza": {
+                "id": 1596,
+                "slug": "onepiece_pajamas_girls",
+                "size_id": 32,
+                "children": {}
+              },
+              "Pijama de dos piezas": {
+                "id": 1597,
+                "slug": "twopiece_pajamas_girls_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Camisones": {
+                "id": 1598,
+                "slug": "nightgowns_girls_new",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Ropa deportiva": {
+            "id": 1253,
+            "slug": "girls_sports",
+            "size_id": 32,
+            "children": {}
+          },
+          "Lotes de ropa": {
+            "id": 1510,
+            "slug": "clothing_packages_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Conjuntos para gemelos": {
+            "id": 1604,
+            "slug": "twins_girls_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Disfraces": {
+            "id": 1606,
+            "slug": "costumes_girls_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Ropa para ocasiones especiales": {
+            "id": 2080,
+            "slug": "themed_costumes_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Otros": {
+            "id": 1254,
+            "slug": "girls_other",
+            "size_id": 32,
+            "children": {}
+          }
+        }
+      },
+      "Niños": {
+        "id": 1194,
+        "slug": "boys_new",
+        "size_id": 32,
+        "children": {
+          "Ropa para bebé niño": {
+            "id": 1196,
+            "slug": "boys_babies",
+            "size_id": 32,
+            "children": {
+              "Peleles": {
+                "id": 1642,
+                "slug": "full_rompers_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Bodies": {
+                "id": 1643,
+                "slug": "boys_bodies_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Petos": {
+                "id": 1644,
+                "slug": "rompers_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Conjuntos": {
+                "id": 1645,
+                "slug": "boys_sets_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1883,
+                "slug": "other_baby_boys",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Calzado": {
+            "id": 1256,
+            "slug": "boys_shoes",
+            "size_id": 31,
+            "children": {
+              "Calzado de bebé": {
+                "id": 1653,
+                "slug": "boy_babyshoes_new",
+                "size_id": 31,
+                "children": {}
+              },
+              "Naúticos y mocasines": {
+                "id": 2721,
+                "slug": "boys_boat_loafers_moccasins",
+                "size_id": 31,
+                "children": {}
+              },
+              "Botas": {
+                "id": 1657,
+                "slug": "boots_boys_new",
+                "size_id": 31,
+                "children": {
+                  "Botines": {
+                    "id": 2726,
+                    "slug": "boys_ankle_boots",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Botas altas": {
+                    "id": 2727,
+                    "slug": "boys_mid_calf_boots",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Botas de nieve": {
+                    "id": 2728,
+                    "slug": "boys_snow_boots",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Botas de agua": {
+                    "id": 2729,
+                    "slug": "boys_wellingtons",
+                    "size_id": 31,
+                    "children": {}
+                  }
+                }
+              },
+              "Alpargatas": {
+                "id": 2722,
+                "slug": "boys_espadrilles",
+                "size_id": 31,
+                "children": {}
+              },
+              "Sandalias y chanclas": {
+                "id": 2723,
+                "slug": "boys_flip_flops_sandals_slides",
+                "size_id": 31,
+                "children": {
+                  "Zuecos y mules": {
+                    "id": 2730,
+                    "slug": "boys_clogs_mules",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Chanclas": {
+                    "id": 2732,
+                    "slug": "boys_flip_flops_2",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Sandalias": {
+                    "id": 2733,
+                    "slug": "boys_sandals",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Sandalias y chanclas de pala": {
+                    "id": 2734,
+                    "slug": "boys_slides",
+                    "size_id": 31,
+                    "children": {}
+                  }
+                }
+              },
+              "Ocasiones especiales": {
+                "id": 1655,
+                "slug": "shoes_occ_boys_new",
+                "size_id": 31,
+                "children": {}
+              },
+              "Pantuflas": {
+                "id": 1661,
+                "slug": "slippers_boys_new",
+                "size_id": 31,
+                "children": {}
+              },
+              "Zapatillas de deporte": {
+                "id": 2724,
+                "slug": "boys_sport_shoes",
+                "size_id": 31,
+                "children": {
+                  "Zapatillas de baloncesto": {
+                    "id": 2735,
+                    "slug": "boys_basketball_shoes",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Zapatos de baile": {
+                    "id": 2737,
+                    "slug": "boys_dance_shoes_2",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Botas de fútbol": {
+                    "id": 2738,
+                    "slug": "boys_football_boots",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Calzado y botas de montaña": {
+                    "id": 2742,
+                    "slug": "boys_hiking_boots_shoes_3",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Patines de hielo": {
+                    "id": 2743,
+                    "slug": "boys_ice_skates",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Patines de ruedas": {
+                    "id": 2744,
+                    "slug": "boys_roller_skates_blades",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Zapatillas de correr": {
+                    "id": 2745,
+                    "slug": "boys_running_shoes",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Botas de esquí": {
+                    "id": 2746,
+                    "slug": "boys_ski_boots",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Botas de snowboard": {
+                    "id": 2748,
+                    "slug": "boys_snowboard_boots_2",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Calzado para nadar y agua": {
+                    "id": 2749,
+                    "slug": "boys_swimming_water_shoes",
+                    "size_id": 31,
+                    "children": {}
+                  }
+                }
+              },
+              "Deportivas": {
+                "id": 1660,
+                "slug": "sneakers_boys_new",
+                "size_id": 31,
+                "children": {
+                  "Deportivas de cierres de gancho y bucle": {
+                    "id": 2750,
+                    "slug": "boys_hook_loop_trainers",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Deportivas con cordones": {
+                    "id": 2751,
+                    "slug": "boys_lace_up_trainers",
+                    "size_id": 31,
+                    "children": {}
+                  },
+                  "Deportivas sin cierre": {
+                    "id": 2752,
+                    "slug": "boys_slip_on_trainers",
+                    "size_id": 31,
+                    "children": {}
+                  }
+                }
+              }
+            }
+          },
+          "Abrigos y chaquetas": {
+            "id": 1197,
+            "slug": "boys_coats",
+            "size_id": 32,
+            "children": {
+              "Abrigos": {
+                "id": 1647,
+                "slug": "boys_coats_new",
+                "size_id": 32,
+                "children": {
+                  "Trencas": {
+                    "id": 2561,
+                    "slug": "boys_duffle_coats",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Parkas": {
+                    "id": 2562,
+                    "slug": "boys_parkas",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Chaquetones marineros": {
+                    "id": 2563,
+                    "slug": "boys_peacoats",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Gabardinas": {
+                    "id": 2564,
+                    "slug": "boys_trench_coats",
+                    "size_id": 32,
+                    "children": {}
+                  }
+                }
+              },
+              "Chalecos": {
+                "id": 1646,
+                "slug": "boys_outvests_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Cazadoras": {
+                "id": 1649,
+                "slug": "boys_jackets_new",
+                "size_id": 32,
+                "children": {
+                  "Blazers": {
+                    "id": 2571,
+                    "slug": "boys_blazers",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Chaquetas bomber": {
+                    "id": 2573,
+                    "slug": "boys_bomber_jackets",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Cazadoras vaqueras": {
+                    "id": 2574,
+                    "slug": "boys_denim_jackets",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Forros polares": {
+                    "id": 2575,
+                    "slug": "boys_fleece_jackets",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Chaquetas de plumas": {
+                    "id": 2576,
+                    "slug": "boys_puffer_jackets",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Cortavientos": {
+                    "id": 2577,
+                    "slug": "boys_windbreakers",
+                    "size_id": 32,
+                    "children": {}
+                  }
+                }
+              },
+              "Ropa impermeable": {
+                "id": 2583,
+                "slug": "boys_rain_gear",
+                "size_id": 32,
+                "children": {
+                  "Ponchos": {
+                    "id": 2604,
+                    "slug": "boys_ponchos",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Conjuntos impermeables": {
+                    "id": 2609,
+                    "slug": "boys_rain_suits_sets",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Pantalones impermeables": {
+                    "id": 2602,
+                    "slug": "boys_rain_pants",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Impermeables": {
+                    "id": 2606,
+                    "slug": "boys_raincoats",
+                    "size_id": 32,
+                    "children": {}
+                  }
+                }
+              },
+              "Ropa para la nieve": {
+                "id": 2590,
+                "slug": "boys_snow_gear",
+                "size_id": null,
+                "children": {
+                  "Abrigos y chaquetas para la nieve": {
+                    "id": 2610,
+                    "slug": "boys_snow_coats_jackets",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Conjuntos para la nieve": {
+                    "id": 2613,
+                    "slug": "boys_snow_suits_sets",
+                    "size_id": 32,
+                    "children": {}
+                  },
+                  "Pantalones para la nieve": {
+                    "id": 2612,
+                    "slug": "boys_snow_pants",
+                    "size_id": 32,
+                    "children": {}
+                  }
+                }
+              }
+            }
+          },
+          "Jerséis y sudaderas": {
+            "id": 1199,
+            "slug": "boys_sweaters",
+            "size_id": 32,
+            "children": {
+              "Jerséis": {
+                "id": 1668,
+                "slug": "sweaters_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Cuello de pico": {
+                "id": 1669,
+                "slug": "vneck_sweaters_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Cuello alto": {
+                "id": 1670,
+                "slug": "turleneck_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Con cremallera": {
+                "id": 1671,
+                "slug": "zipp_sweaters_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Sudaderas": {
+                "id": 1672,
+                "slug": "hoodies_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Chalecos": {
+                "id": 1673,
+                "slug": "vests_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1887,
+                "slug": "other_sweaters_boys",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Camisetas y camisas": {
+            "id": 1198,
+            "slug": "boys_shirts",
+            "size_id": 32,
+            "children": {
+              "Camisetas": {
+                "id": 1662,
+                "slug": "tshirts_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Polos": {
+                "id": 1663,
+                "slug": "poloshirts_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Camisas": {
+                "id": 1664,
+                "slug": "shirts_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Camisas de manga corta": {
+                "id": 1665,
+                "slug": "shortsleeve_shirts_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Camisas de manga larga": {
+                "id": 1666,
+                "slug": "longsleeve_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Camisas sin mangas": {
+                "id": 1667,
+                "slug": "sleeveless_shirts_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1886,
+                "slug": "other_tops_boys",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Pantalones y shorts": {
+            "id": 1200,
+            "slug": "boys_pants",
+            "size_id": 32,
+            "children": {
+              "Vaqueros": {
+                "id": 1696,
+                "slug": "jeans_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Pantalones pitillo": {
+                "id": 1697,
+                "slug": "skinnypants_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Pantalones de campana": {
+                "id": 1698,
+                "slug": "bellbottompants_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Leggings": {
+                "id": 1701,
+                "slug": "boys_leggings_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Monos y petos": {
+                "id": 1702,
+                "slug": "overalls_rompers_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Shorts y bermudas": {
+                "id": 1201,
+                "slug": "boys_shorts",
+                "size_id": 32,
+                "children": {}
+              },
+              "Pantalones harem": {
+                "id": 2082,
+                "slug": "boys_pants_harem",
+                "size_id": 32,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1870,
+                "slug": "boys_oth_pants",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Bolsos y mochilas": {
+            "id": 1257,
+            "slug": "boys_bags",
+            "size_id": 32,
+            "children": {}
+          },
+          "Accesorios": {
+            "id": 1714,
+            "slug": "accessories_boys_new",
+            "size_id": 32,
+            "children": {
+              "Sombreros y gorros": {
+                "id": 1749,
+                "slug": "caps_boys_new",
+                "size_id": 43,
+                "children": {}
+              },
+              "Guantes": {
+                "id": 1740,
+                "slug": "gloves_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Bufandas y pañuelos": {
+                "id": 1741,
+                "slug": "scarves_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Cinturones": {
+                "id": 1743,
+                "slug": "belts_boys_new",
+                "size_id": 70,
+                "children": {}
+              },
+              "Monederos": {
+                "id": 1745,
+                "slug": "wallets_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Pajaritas y corbatas": {
+                "id": 1746,
+                "slug": "bows_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1748,
+                "slug": "boys_acc_new",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Ropa de baño": {
+            "id": 1202,
+            "slug": "boys_swim",
+            "size_id": 32,
+            "children": {
+              "Bañadores": {
+                "id": 1750,
+                "slug": "bathshorts_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Albornoces": {
+                "id": 1751,
+                "slug": "bathrobes_boys_new",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Ropa interior": {
+            "id": 1203,
+            "slug": "boys_swimwear",
+            "size_id": 32,
+            "children": {
+              "Calcetines": {
+                "id": 1757,
+                "slug": "socks_boys_new",
+                "size_id": 71,
+                "children": {}
+              },
+              "Medias": {
+                "id": 1758,
+                "slug": "tights_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Calzoncillos": {
+                "id": 1759,
+                "slug": "panties_boys_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1871,
+                "slug": "other_under_boys",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Pijamas": {
+            "id": 1752,
+            "slug": "sleepwear_boys_new",
+            "size_id": 32,
+            "children": {
+              "Pijamas de una pieza": {
+                "id": 1754,
+                "slug": "onepiece_pajamas_boys",
+                "size_id": 32,
+                "children": {}
+              },
+              "Pijamas de dos piezas": {
+                "id": 1755,
+                "slug": "twopiece_pajamas_boys",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Ropa deportiva": {
+            "id": 1204,
+            "slug": "boys_sports",
+            "size_id": 32,
+            "children": {}
+          },
+          "Lotes de ropa": {
+            "id": 1760,
+            "slug": "boys_packages",
+            "size_id": 32,
+            "children": {}
+          },
+          "Conjuntos para gemelos": {
+            "id": 1761,
+            "slug": "twins_boys_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Disfraces": {
+            "id": 1762,
+            "slug": "occ_boys_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Ropa para ocasiones especiales": {
+            "id": 2083,
+            "slug": "boys_themed_costumes",
+            "size_id": 32,
+            "children": {}
+          },
+          "Otros": {
+            "id": 1205,
+            "slug": "boys_other",
+            "size_id": 32,
+            "children": {}
+          }
+        }
+      },
+      "Juguetes": {
+        "id": 1499,
+        "slug": "toys_and_games_new",
+        "size_id": 32,
+        "children": {
+          "Figuras de acción": {
+            "id": 1730,
+            "slug": "action_figures_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Electrónicos": {
+            "id": 1725,
+            "slug": "electronic_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Muñecas": {
+            "id": 1731,
+            "slug": "dolls_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Juguetes educativos": {
+            "id": 1763,
+            "slug": "educational_toys_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Peluches": {
+            "id": 1764,
+            "slug": "stuffed_animals_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Sonajeros y mordedores": {
+            "id": 1765,
+            "slug": "rattles_and_chew_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Juguetes musicales": {
+            "id": 1766,
+            "slug": "musical_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Construcciones": {
+            "id": 1767,
+            "slug": "construction_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Juguetes de madera": {
+            "id": 1768,
+            "slug": "wooden_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Móviles": {
+            "id": 1769,
+            "slug": "mobiles_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Juguetes acuáticos": {
+            "id": 1770,
+            "slug": "water_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Juguetes de exterior": {
+            "id": 1771,
+            "slug": "outdoor_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Juguetes de cocina": {
+            "id": 2085,
+            "slug": "kitchen_toys_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Juguetes para dormir": {
+            "id": 2086,
+            "slug": "sleeping_toys_new",
+            "size_id": 32,
+            "children": {}
+          }
+        }
+      },
+      "Cuidado del bebé": {
+        "id": 1500,
+        "slug": "baby_care_new",
+        "size_id": 32,
+        "children": {
+          "Ropa de cama": {
+            "id": 1620,
+            "slug": "sleeping_accessories_new",
+            "size_id": 32,
+            "children": {
+              "Mantas": {
+                "id": 1622,
+                "slug": "blankets_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Almohadas": {
+                "id": 1623,
+                "slug": "pillows_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Cobertores": {
+                "id": 1624,
+                "slug": "plaids_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Sacos de dormir": {
+                "id": 1625,
+                "slug": "sleeping_bags_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Ropa de cama": {
+                "id": 1626,
+                "slug": "bedding_new",
+                "size_id": 68,
+                "children": {}
+              },
+              "Calientacamas": {
+                "id": 1627,
+                "slug": "heating_pads_new",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Vajilla infantil": {
+            "id": 1621,
+            "slug": "kids_dishes_new",
+            "size_id": 32,
+            "children": {
+              "Cubertería": {
+                "id": 1628,
+                "slug": "cutlery_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Biberones": {
+                "id": 1629,
+                "slug": "baby_bottles_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Chupetes": {
+                "id": 1630,
+                "slug": "pacifiers_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Platos": {
+                "id": 1631,
+                "slug": "dishes_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Termos y calienta biberones": {
+                "id": 1633,
+                "slug": "thermos_bottles_and_warmers_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1640,
+                "slug": "dishes_others",
+                "size_id": 32,
+                "children": {}
+              },
+              "Cojines de lactancia": {
+                "id": 2088,
+                "slug": "feeding_pillows_new",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Portabebés": {
+            "id": 1674,
+            "slug": "baby_carriers_and_wraps_new",
+            "size_id": 29,
+            "children": {}
+          },
+          "Accesorios de natación": {
+            "id": 1675,
+            "slug": "swim_gear_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Pañales y cuidados": {
+            "id": 1676,
+            "slug": "diapering_and_caring_new",
+            "size_id": 32,
+            "children": {
+              "Pañales": {
+                "id": 1678,
+                "slug": "diapers_new",
+                "size_id": 26,
+                "children": {}
+              },
+              "Higiene para el bebé": {
+                "id": 1679,
+                "slug": "baby_hygiene_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Bolso cambiador": {
+                "id": 1680,
+                "slug": "mothers_bags_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Contenedores para pañales": {
+                "id": 2087,
+                "slug": "diapers_waste_containers_new",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Tecnología para bebés y niños": {
+            "id": 1681,
+            "slug": "technical_items_for_babies_new",
+            "size_id": 32,
+            "children": {
+              "Monitores para bebés": {
+                "id": 1682,
+                "slug": "baby_monitors_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Calentadores de alimentos": {
+                "id": 1683,
+                "slug": "for_food_heating_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Extractores de leche y accesorios": {
+                "id": 1684,
+                "slug": "breast_pumps_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Esterilizadores": {
+                "id": 1685,
+                "slug": "sterilizers_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Termómetros y pesos": {
+                "id": 1686,
+                "slug": "thermometers_and_scales_new",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Columpios y mecedoras": {
+            "id": 1687,
+            "slug": "bouncers_and_swings_new",
+            "size_id": 32,
+            "children": {
+              "Mecedoras": {
+                "id": 1688,
+                "slug": "bouncers_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Columpios": {
+                "id": 1689,
+                "slug": "swings_new",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Baberos": {
+            "id": 1690,
+            "slug": "bibs_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Orinales": {
+            "id": 1691,
+            "slug": "potties_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Seguridad y  protección infantil": {
+            "id": 1692,
+            "slug": "childproofing_and_safety_new",
+            "size_id": 32,
+            "children": {
+              "Seguridad para muebles y hogar": {
+                "id": 1695,
+                "slug": "home_and_furniture_safety_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Parasol para coche": {
+                "id": 1700,
+                "slug": "car_sun_shades_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Protección para bici y patinaje": {
+                "id": 1703,
+                "slug": "bicycle_and_roller_safety_new",
+                "size_id": 29,
+                "children": {}
+              },
+              "Otros": {
+                "id": 1772,
+                "slug": "other_new",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          }
+        }
+      },
+      "Cochecitos": {
+        "id": 1496,
+        "slug": "strollers_new",
+        "size_id": 32,
+        "children": {
+          "Plegables": {
+            "id": 1512,
+            "slug": "umbrella_strollers_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Deportivos": {
+            "id": 1611,
+            "slug": "sport_strollers_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Universales": {
+            "id": 1612,
+            "slug": "universal_strollers_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Para gemelos": {
+            "id": 1613,
+            "slug": "for_twins_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Accesorios para cochecitos": {
+            "id": 1511,
+            "slug": "strollers_accessories_new",
+            "size_id": 32,
+            "children": {}
+          }
+        }
+      },
+      "Juguetes para montar": {
+        "id": 1497,
+        "slug": "moving_gear_new",
+        "size_id": 32,
+        "children": {
+          "Andadores": {
+            "id": 1599,
+            "slug": "baby_walkers_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Para tirar y empujar": {
+            "id": 1603,
+            "slug": "push_and_pull_toys_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Remolques y sillitas para bici": {
+            "id": 1595,
+            "slug": "baby_bicycle_seat_and_trainers_new",
+            "size_id": 27,
+            "children": {}
+          },
+          "Patinetes": {
+            "id": 1605,
+            "slug": "scooters_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Triciclos": {
+            "id": 1607,
+            "slug": "tricycles_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Bicicletas": {
+            "id": 1608,
+            "slug": "bicycles_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Vehículos de exterior": {
+            "id": 1609,
+            "slug": "outdoor_vehicles_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Trineos, tablas y esquís": {
+            "id": 1610,
+            "slug": "sleds_new",
+            "size_id": 32,
+            "children": {}
+          }
+        }
+      },
+      "Asientos y sillitas": {
+        "id": 1495,
+        "slug": "chairs_new",
+        "size_id": 27,
+        "children": {
+          "Sillitas de coche": {
+            "id": 1503,
+            "slug": "car_chairs_new",
+            "size_id": 27,
+            "children": {}
+          },
+          "Tronas": {
+            "id": 1504,
+            "slug": "feeding_chairs_new",
+            "size_id": 27,
+            "children": {}
+          }
+        }
+      },
+      "Muebles infantiles": {
+        "id": 1498,
+        "slug": "kids_furniture_new",
+        "size_id": 32,
+        "children": {
+          "Cucos y moisés": {
+            "id": 1561,
+            "slug": "cradles_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Cunas": {
+            "id": 1563,
+            "slug": "cribs_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Camas infantiles": {
+            "id": 1566,
+            "slug": "toddler_beds_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Colchones": {
+            "id": 1567,
+            "slug": "mattresses_new",
+            "size_id": 32,
+            "children": {
+              "Para cunas": {
+                "id": 1569,
+                "slug": "for_cribs_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Para camas de bebés": {
+                "id": 1570,
+                "slug": "for_baby_beds_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Para camas infantiles": {
+                "id": 1571,
+                "slug": "for_kids_beds_new",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          },
+          "Alfombra de juegos": {
+            "id": 1572,
+            "slug": "playmats_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Corralitos": {
+            "id": 1573,
+            "slug": "playpens_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Cambiadores y mesas": {
+            "id": 1575,
+            "slug": "changing_pad_and_tables_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Muebles infantiles": {
+            "id": 1576,
+            "slug": "furniture_new",
+            "size_id": 32,
+            "children": {
+              "Sillas": {
+                "id": 1579,
+                "slug": "kids_chairs_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Mesas": {
+                "id": 1585,
+                "slug": "tables_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Alfombras": {
+                "id": 1587,
+                "slug": "carpets_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Armarios": {
+                "id": 1588,
+                "slug": "wardrobes_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Estanterías": {
+                "id": 1589,
+                "slug": "shelves_new",
+                "size_id": 32,
+                "children": {}
+              },
+              "Muebles para jugar": {
+                "id": 1591,
+                "slug": "playing_furniture_new",
+                "size_id": 32,
+                "children": {}
+              }
+            }
+          }
+        }
+      },
+      "Material escolar": {
+        "id": 1501,
+        "slug": "books_and_school_new",
+        "size_id": 32,
+        "children": {
+          "Mochilas": {
+            "id": 1508,
+            "slug": "school_bags_new",
+            "size_id": 32,
+            "children": {}
+          },
+          "Material escolar": {
+            "id": 1509,
+            "slug": "school_supplies_new",
+            "size_id": 32,
+            "children": {}
+          }
+        }
+      },
+      "Otros": {
+        "id": 1502,
+        "slug": "all_other_new",
+        "size_id": 32,
+        "children": {}
+      }
+    }
+  },
+  "Hogar": {
+    "id": 1918,
+    "slug": "home",
+    "size_id": 55,
+    "children": {
+      "Textiles": {
+        "id": 1919,
+        "slug": "h_textiles",
+        "size_id": 55,
+        "children": {
+          "Ropa de cama": {
+            "id": 1924,
+            "slug": "h_bedding",
+            "size_id": 55,
+            "children": {
+              "Juegos de sábanas": {
+                "id": 1942,
+                "slug": "h_bedding_sets",
+                "size_id": 69,
+                "children": {}
+              },
+              "Fundas nórdicas": {
+                "id": 1943,
+                "slug": "h_duvet_covers",
+                "size_id": 69,
+                "children": {}
+              },
+              "Fundas de almohada": {
+                "id": 1944,
+                "slug": "h_pillowcases",
+                "size_id": 66,
+                "children": {}
+              },
+              "Sábanas": {
+                "id": 1945,
+                "slug": "h_sheets",
+                "size_id": 55,
+                "children": {}
+              }
+            }
+          },
+          "Mantas": {
+            "id": 1925,
+            "slug": "h_blankets",
+            "size_id": 67,
+            "children": {}
+          },
+          "Cortinas y visillos": {
+            "id": 1926,
+            "slug": "h_curtains_drapes",
+            "size_id": null,
+            "children": {
+              "Cortinas": {
+                "id": 1946,
+                "slug": "h_opaque_curtains_drapes",
+                "size_id": 65,
+                "children": {}
+              },
+              "Visillos": {
+                "id": 1955,
+                "slug": "h_sheer_curtains_drapes",
+                "size_id": 65,
+                "children": {}
+              }
+            }
+          },
+          "Cojines": {
+            "id": 1974,
+            "slug": "h_cushions",
+            "size_id": 59,
+            "children": {}
+          },
+          "Alfombras y felpudos": {
+            "id": 1927,
+            "slug": "h_rugs_mats",
+            "size_id": 55,
+            "children": {
+              "Felpudos": {
+                "id": 1953,
+                "slug": "h_doormats_floor_mats",
+                "size_id": 55,
+                "children": {}
+              },
+              "Alfombras": {
+                "id": 1954,
+                "slug": "h_rugs",
+                "size_id": 55,
+                "children": {}
+              }
+            }
+          },
+          "Mantelería": {
+            "id": 1928,
+            "slug": "h_table_linen",
+            "size_id": 55,
+            "children": {}
+          },
+          "Tapices": {
+            "id": 1929,
+            "slug": "h_tapestries_wall_hangings",
+            "size_id": 55,
+            "children": {}
+          },
+          "Toallas": {
+            "id": 1930,
+            "slug": "h_towels",
+            "size_id": 55,
+            "children": {
+              "Toallas de baño": {
+                "id": 1947,
+                "slug": "h_bath_towels",
+                "size_id": 55,
+                "children": {}
+              },
+              "Toallas de playa": {
+                "id": 1948,
+                "slug": "h_beach_towels",
+                "size_id": 55,
+                "children": {}
+              },
+              "Toallas de mano": {
+                "id": 1949,
+                "slug": "h_hand_towels",
+                "size_id": 55,
+                "children": {}
+              }
+            }
+          }
+        }
+      },
+      "Decoración": {
+        "id": 1934,
+        "slug": "h_accessories",
+        "size_id": 55,
+        "children": {
+          "Velas y portavelas": {
+            "id": 1935,
+            "slug": "h_candles_candle_holders",
+            "size_id": 55,
+            "children": {
+              "Portavelas": {
+                "id": 1957,
+                "slug": "h_candleholders",
+                "size_id": 55,
+                "children": {}
+              },
+              "Velas": {
+                "id": 1956,
+                "slug": "h_candles",
+                "size_id": 55,
+                "children": {}
+              }
+            }
+          },
+          "Relojes": {
+            "id": 1936,
+            "slug": "h_clocks",
+            "size_id": 55,
+            "children": {
+              "Relojes de mesa": {
+                "id": 1966,
+                "slug": "h_table_clocks",
+                "size_id": 55,
+                "children": {}
+              },
+              "Relojes de pared": {
+                "id": 1967,
+                "slug": "h_wall_clocks",
+                "size_id": 55,
+                "children": {}
+              }
+            }
+          },
+          "Baldas": {
+            "id": 1941,
+            "slug": "h_display_shelves",
+            "size_id": 55,
+            "children": {}
+          },
+          "Marcos de cuadros y fotos": {
+            "id": 1937,
+            "slug": "h_frames",
+            "size_id": 55,
+            "children": {}
+          },
+          "Espejos": {
+            "id": 1938,
+            "slug": "h_mirrors",
+            "size_id": 55,
+            "children": {
+              "Espejos de mesa": {
+                "id": 1969,
+                "slug": "h_table_mirrors",
+                "size_id": 55,
+                "children": {}
+              },
+              "Espejos de pared": {
+                "id": 1968,
+                "slug": "h_wall_mirrors",
+                "size_id": 55,
+                "children": {}
+              }
+            }
+          },
+          "Almacenaje": {
+            "id": 1939,
+            "slug": "h_storage",
+            "size_id": 55,
+            "children": {
+              "Cestas": {
+                "id": 1962,
+                "slug": "h_baskets",
+                "size_id": 55,
+                "children": {}
+              },
+              "Cajas": {
+                "id": 1963,
+                "slug": "h_boxes",
+                "size_id": 55,
+                "children": {}
+              },
+              "Perchas y portatrajes": {
+                "id": 2012,
+                "slug": "h_clothes_bags_hangers",
+                "size_id": 55,
+                "children": {}
+              },
+              "Joyeros": {
+                "id": 1964,
+                "slug": "h_jewellery_organisers",
+                "size_id": 55,
+                "children": {}
+              },
+              "Organizadores de maquillaje": {
+                "id": 1965,
+                "slug": "h_makeup_organisers",
+                "size_id": 55,
+                "children": {}
+              }
+            }
+          },
+          "Jarrones": {
+            "id": 1940,
+            "slug": "h_vases",
+            "size_id": 55,
+            "children": {}
+          }
+        }
+      },
+      "Menaje": {
+        "id": 1920,
+        "slug": "h_tableware",
+        "size_id": 55,
+        "children": {
+          "Cubertería": {
+            "id": 1931,
+            "slug": "h_cutlery",
+            "size_id": 55,
+            "children": {
+              "Juegos de cubertería": {
+                "id": 1950,
+                "slug": "h_cutlery_sets",
+                "size_id": 55,
+                "children": {}
+              },
+              "Tenedores": {
+                "id": 1951,
+                "slug": "h_forks",
+                "size_id": 55,
+                "children": {}
+              },
+              "Cuchillos de mesa": {
+                "id": 1970,
+                "slug": "h_table_knives",
+                "size_id": 55,
+                "children": {}
+              },
+              "Cucharas": {
+                "id": 1952,
+                "slug": "h_spoons",
+                "size_id": 55,
+                "children": {}
+              }
+            }
+          },
+          "Vajilla": {
+            "id": 1932,
+            "slug": "h_dinnerware",
+            "size_id": 55,
+            "children": {
+              "Juegos de vajilla": {
+                "id": 1958,
+                "slug": "h_dinner_sets",
+                "size_id": 55,
+                "children": {}
+              },
+              "Boles": {
+                "id": 1959,
+                "slug": "h_bowls",
+                "size_id": 55,
+                "children": {}
+              },
+              "Platos": {
+                "id": 1960,
+                "slug": "h_plates",
+                "size_id": 55,
+                "children": {}
+              },
+              "Bandejas": {
+                "id": 1961,
+                "slug": "h_trays",
+                "size_id": 55,
+                "children": {}
+              }
+            }
+          },
+          "Cristalería y tazas": {
+            "id": 2005,
+            "slug": "h_drinkware",
+            "size_id": 55,
+            "children": {
+              "Tazas y tazones": {
+                "id": 2006,
+                "slug": "h_cups_mugs",
+                "size_id": 55,
+                "children": {}
+              },
+              "Cafeteras y teteras": {
+                "id": 2007,
+                "slug": "h_coffee_teapots",
+                "size_id": 55,
+                "children": {}
+              },
+              "Jarras": {
+                "id": 2008,
+                "slug": "h_jugs",
+                "size_id": 55,
+                "children": {}
+              },
+              "Copas": {
+                "id": 2009,
+                "slug": "h_stemmed_glasses",
+                "size_id": 55,
+                "children": {}
+              },
+              "Vasos": {
+                "id": 2010,
+                "slug": "h_tumblers",
+                "size_id": 55,
+                "children": {}
+              },
+              "Juegos de cristalería/tazas": {
+                "id": 2011,
+                "slug": "h_drinkware_sets",
+                "size_id": 55,
+                "children": {}
+              }
+            }
+          }
+        }
+      },
+      "Celebraciones y fiestas": {
+        "id": 2915,
+        "slug": "holidays_celebrations",
+        "size_id": null,
+        "children": {
+          "Pancartas, banderas y banderines": {
+            "id": 2917,
+            "slug": "banners_bunting",
+            "size_id": null,
+            "children": {}
+          },
+          "Tarjetas y sobres": {
+            "id": 2918,
+            "slug": "greeting_cards",
+            "size_id": null,
+            "children": {}
+          },
+          "Luces decorativas": {
+            "id": 2920,
+            "slug": "celebration_lighting",
+            "size_id": null,
+            "children": {}
+          },
+          "Papel y bolsas de regalo": {
+            "id": 2921,
+            "slug": "gift_wrap",
+            "size_id": null,
+            "children": {}
+          },
+          "Decoración festiva": {
+            "id": 2922,
+            "slug": "holiday_decor",
+            "size_id": null,
+            "children": {}
+          },
+          "Artículos de fiesta": {
+            "id": 2923,
+            "slug": "party_decor",
+            "size_id": null,
+            "children": {}
+          },
+          "Decoración de mesa": {
+            "id": 2924,
+            "slug": "table_decor",
+            "size_id": null,
+            "children": {}
+          },
+          "Adornos para el árbol": {
+            "id": 2925,
+            "slug": "tree_decor",
+            "size_id": null,
+            "children": {}
+          },
+          "Coronas": {
+            "id": 2926,
+            "slug": "wreaths",
+            "size_id": null,
+            "children": {}
+          }
+        }
+      }
+    }
+  },
+  "Entretenimiento": {
+    "id": 2309,
+    "slug": "entertainment",
+    "size_id": null,
+    "children": {
+      "Consolas y videojuegos": {
+        "id": 2313,
+        "slug": "video_games_consoles",
+        "size_id": null,
+        "children": {
+          "Xbox Series X / S": {
+            "id": 2371,
+            "slug": "xbox_series_x_and_s",
+            "size_id": null,
+            "children": {
+              "Juegos": {
+                "id": 2378,
+                "slug": "xbox_series_x_and_s_games",
+                "size_id": null,
+                "children": {}
+              },
+              "Consolas": {
+                "id": 2379,
+                "slug": "xbox_series_x_and_s_games_consoles",
+                "size_id": null,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 2380,
+                "slug": "xbox_series_x_and_s_games_accessories",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Xbox One": {
+            "id": 2372,
+            "slug": "xbox_one",
+            "size_id": null,
+            "children": {
+              "Juegos": {
+                "id": 2381,
+                "slug": "xbox_one_games",
+                "size_id": null,
+                "children": {}
+              },
+              "Consolas": {
+                "id": 2382,
+                "slug": "xbox_one_consoles",
+                "size_id": null,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 2383,
+                "slug": "xbox_one_accessories",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Xbox anteriores": {
+            "id": 2373,
+            "slug": "older_xbox",
+            "size_id": null,
+            "children": {
+              "Juegos": {
+                "id": 2384,
+                "slug": "older_xbox_games",
+                "size_id": null,
+                "children": {}
+              },
+              "Consolas": {
+                "id": 2385,
+                "slug": "older_xbox_consoles",
+                "size_id": null,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 2386,
+                "slug": "older_xbox_accessories",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "PlayStation 5": {
+            "id": 2374,
+            "slug": "playstation_5",
+            "size_id": null,
+            "children": {
+              "Juegos": {
+                "id": 2390,
+                "slug": "playstation_5_games",
+                "size_id": null,
+                "children": {}
+              },
+              "Consolas": {
+                "id": 2391,
+                "slug": "playstation_5_consoles",
+                "size_id": null,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 2392,
+                "slug": "playstation_5_accessories",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "PlayStation 4": {
+            "id": 2375,
+            "slug": "playstation_4",
+            "size_id": null,
+            "children": {
+              "Juegos": {
+                "id": 2399,
+                "slug": "playstation_4_games",
+                "size_id": null,
+                "children": {}
+              },
+              "Consolas": {
+                "id": 2402,
+                "slug": "playstation_4_consoles",
+                "size_id": null,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 2405,
+                "slug": "playstation_4_accessories",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "PlayStation anteriores": {
+            "id": 2377,
+            "slug": "older_playstation",
+            "size_id": null,
+            "children": {
+              "Juegos": {
+                "id": 2406,
+                "slug": "older_playstation_games",
+                "size_id": null,
+                "children": {}
+              },
+              "Consolas": {
+                "id": 2407,
+                "slug": "older_playstation_consoles",
+                "size_id": null,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 2409,
+                "slug": "older_playstation_accessories",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Nintendo Switch": {
+            "id": 2376,
+            "slug": "nintendo_switch",
+            "size_id": null,
+            "children": {
+              "Juegos": {
+                "id": 2412,
+                "slug": "nintendo_switch_games",
+                "size_id": null,
+                "children": {}
+              },
+              "Consolas": {
+                "id": 2420,
+                "slug": "nintendo_switch_consoles",
+                "size_id": null,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 2421,
+                "slug": "nintendo_switch_accessories",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Nintendo Wii / Wii U": {
+            "id": 2422,
+            "slug": "nintendo_wii_and_wii_u",
+            "size_id": null,
+            "children": {
+              "Juegos": {
+                "id": 2431,
+                "slug": "nintendo_wii_and_wii_u_games",
+                "size_id": null,
+                "children": {}
+              },
+              "Consolas": {
+                "id": 2447,
+                "slug": "nintendo_wii_and_wii_u_consoles",
+                "size_id": null,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 2448,
+                "slug": "nintendo_wii_and_wii_u_accessories",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Nintendo 3DS / 2DS": {
+            "id": 2323,
+            "slug": "nintendo_3ds_2ds",
+            "size_id": null,
+            "children": {
+              "Juegos": {
+                "id": 2449,
+                "slug": "nintendo_3ds_and_2ds_games",
+                "size_id": null,
+                "children": {}
+              },
+              "Consolas": {
+                "id": 2450,
+                "slug": "nintendo_3ds_and_2ds_consoles",
+                "size_id": null,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 2451,
+                "slug": "nintendo_3ds_and_2ds_accessories",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Nintendo Game Boy": {
+            "id": 2324,
+            "slug": "nintendo_game_boy",
+            "size_id": null,
+            "children": {
+              "Juegos": {
+                "id": 2452,
+                "slug": "nintendo_game_boy_games",
+                "size_id": null,
+                "children": {}
+              },
+              "Consolas": {
+                "id": 2453,
+                "slug": "nintendo_game_boy_consoles",
+                "size_id": null,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 2454,
+                "slug": "nintendo_game_boy_accessories",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Nintendo anteriores": {
+            "id": 2366,
+            "slug": "older_nintendo",
+            "size_id": null,
+            "children": {
+              "Juegos": {
+                "id": 2455,
+                "slug": "older_nintendo_games",
+                "size_id": null,
+                "children": {}
+              },
+              "Consolas": {
+                "id": 2456,
+                "slug": "older_nintendo_consoles",
+                "size_id": null,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 2458,
+                "slug": "older_nintendo_accessories",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Sega": {
+            "id": 2367,
+            "slug": "sega",
+            "size_id": null,
+            "children": {
+              "Juegos": {
+                "id": 2474,
+                "slug": "sega_games",
+                "size_id": null,
+                "children": {}
+              },
+              "Consolas": {
+                "id": 2475,
+                "slug": "sega_consoles",
+                "size_id": null,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 2476,
+                "slug": "sega_accessories",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Juegos de PC": {
+            "id": 2368,
+            "slug": "pc_games",
+            "size_id": null,
+            "children": {}
+          },
+          "Realidad virtual": {
+            "id": 2369,
+            "slug": "virtual_reality",
+            "size_id": null,
+            "children": {
+              "Juegos": {
+                "id": 2465,
+                "slug": "virtual_reality_games",
+                "size_id": null,
+                "children": {}
+              },
+              "Consolas": {
+                "id": 2466,
+                "slug": "virtual_reality_consoles",
+                "size_id": null,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 2469,
+                "slug": "virtual_reality_accessories",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Retrogaming": {
+            "id": 2370,
+            "slug": "retro_gaming",
+            "size_id": null,
+            "children": {
+              "Steam": {
+                "id": 2459,
+                "slug": "steam",
+                "size_id": null,
+                "children": {}
+              },
+              "Intellivision": {
+                "id": 2460,
+                "slug": "intellivision",
+                "size_id": null,
+                "children": {}
+              },
+              "Atari": {
+                "id": 2461,
+                "slug": "atari",
+                "size_id": null,
+                "children": {}
+              },
+              "ColecoVision": {
+                "id": 2462,
+                "slug": "colecovision",
+                "size_id": null,
+                "children": {}
+              },
+              "Commodore": {
+                "id": 2463,
+                "slug": "commodore",
+                "size_id": null,
+                "children": {}
+              },
+              "3DO": {
+                "id": 2464,
+                "slug": "three_do",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          }
+        }
+      },
+      "Juegos y puzzles": {
+        "id": 2311,
+        "slug": "games_and_puzzles",
+        "size_id": null,
+        "children": {
+          "Juegos de mesa": {
+            "id": 2321,
+            "slug": "board_games_new",
+            "size_id": null,
+            "children": {}
+          },
+          "Juegos de fichas": {
+            "id": 2477,
+            "slug": "tile_based_games",
+            "size_id": null,
+            "children": {}
+          },
+          "Juegos de cartas": {
+            "id": 2322,
+            "slug": "card_games",
+            "size_id": null,
+            "children": {}
+          },
+          "Puzzles": {
+            "id": 2478,
+            "slug": "puzzles_new",
+            "size_id": null,
+            "children": {}
+          },
+          "Rompecabezas": {
+            "id": 2479,
+            "slug": "brain_teasers_and_puzzles",
+            "size_id": null,
+            "children": {}
+          },
+          "Juegos de bolsillo": {
+            "id": 2480,
+            "slug": "travel_and_pocket_games",
+            "size_id": null,
+            "children": {}
+          },
+          "Juegos de tablero y de miniaturas": {
+            "id": 2481,
+            "slug": "tabletop_and_miniature_gaming",
+            "size_id": null,
+            "children": {}
+          },
+          "Juegos de habilidad": {
+            "id": 2482,
+            "slug": "stacking_and_balancing_games",
+            "size_id": null,
+            "children": {}
+          },
+          "Juegos de suelo": {
+            "id": 2483,
+            "slug": "floor_games",
+            "size_id": null,
+            "children": {}
+          }
+        }
+      },
+      "Música y vídeo": {
+        "id": 2310,
+        "slug": "cd_dvd_audio_new",
+        "size_id": null,
+        "children": {
+          "Música": {
+            "id": 2314,
+            "slug": "music",
+            "size_id": null,
+            "children": {
+              "CD": {
+                "id": 2328,
+                "slug": "audio_cds",
+                "size_id": null,
+                "children": {}
+              },
+              "Casetes": {
+                "id": 2329,
+                "slug": "audio_cassettes",
+                "size_id": null,
+                "children": {}
+              },
+              "Vinilos": {
+                "id": 2330,
+                "slug": "audio_vinyl",
+                "size_id": null,
+                "children": {}
+              },
+              "Formatos de audio anteriores": {
+                "id": 2332,
+                "slug": "audio_older_formats",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Vídeo": {
+            "id": 2315,
+            "slug": "video",
+            "size_id": null,
+            "children": {
+              "Blu-ray": {
+                "id": 2521,
+                "slug": "blu-ray_video",
+                "size_id": null,
+                "children": {}
+              },
+              "DVD": {
+                "id": 2333,
+                "slug": "video_dvds",
+                "size_id": null,
+                "children": {}
+              },
+              "VHS": {
+                "id": 2334,
+                "slug": "video_vhs",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          }
+        }
+      },
+      "Libros": {
+        "id": 2312,
+        "slug": "books",
+        "size_id": null,
+        "children": {
+          "Ficción": {
+            "id": 2319,
+            "slug": "literature_and_fiction",
+            "size_id": null,
+            "children": {
+              "Literatura clásica": {
+                "id": 2336,
+                "slug": "h_books_f_classical",
+                "size_id": null,
+                "children": {}
+              },
+              "Cómic y novela gráfica": {
+                "id": 2337,
+                "slug": "h_books_f_comics",
+                "size_id": null,
+                "children": {}
+              },
+              "Novela contemporánea": {
+                "id": 2338,
+                "slug": "h_books_f_contemporary",
+                "size_id": null,
+                "children": {}
+              },
+              "Policíaca y misterio": {
+                "id": 2339,
+                "slug": "h_books_f_crime",
+                "size_id": null,
+                "children": {}
+              },
+              "Humor": {
+                "id": 2340,
+                "slug": "h_books_f_humour",
+                "size_id": null,
+                "children": {}
+              },
+              "Poesía y teatro": {
+                "id": 2341,
+                "slug": "h_books_f_poetry",
+                "size_id": null,
+                "children": {}
+              },
+              "Novela romántica": {
+                "id": 2342,
+                "slug": "h_books_f_romance",
+                "size_id": null,
+                "children": {}
+              },
+              "Ciencia ficción y fantasía": {
+                "id": 2343,
+                "slug": "h_books_f_science_fiction",
+                "size_id": null,
+                "children": {}
+              },
+              "Otros (ficción)": {
+                "id": 2344,
+                "slug": "h_books_f_other",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "No ficción": {
+            "id": 2320,
+            "slug": "non_fiction",
+            "size_id": null,
+            "children": {
+              "Arte y entretenimiento": {
+                "id": 2345,
+                "slug": "h_books_nf_arts",
+                "size_id": null,
+                "children": {}
+              },
+              "Biografías": {
+                "id": 2346,
+                "slug": "h_books_nf_biography",
+                "size_id": null,
+                "children": {}
+              },
+              "Economía y empresa": {
+                "id": 2347,
+                "slug": "h_books_nf_business",
+                "size_id": null,
+                "children": {}
+              },
+              "Informática y tecnología": {
+                "id": 2348,
+                "slug": "h_books_nf_computers",
+                "size_id": null,
+                "children": {}
+              },
+              "Gastronomía": {
+                "id": 2349,
+                "slug": "h_books_nf_food",
+                "size_id": null,
+                "children": {}
+              },
+              "Salud y bienestar": {
+                "id": 2350,
+                "slug": "h_books_nf_health",
+                "size_id": null,
+                "children": {}
+              },
+              "Historia": {
+                "id": 2351,
+                "slug": "h_books_nf_history",
+                "size_id": null,
+                "children": {}
+              },
+              "Hobbies y manualidades": {
+                "id": 2352,
+                "slug": "h_books_nf_hobbies",
+                "size_id": null,
+                "children": {}
+              },
+              "Pedagogía y familia": {
+                "id": 2353,
+                "slug": "h_books_nf_parenting",
+                "size_id": null,
+                "children": {}
+              },
+              "Política y sociología": {
+                "id": 2354,
+                "slug": "h_books_nf_politics",
+                "size_id": null,
+                "children": {}
+              },
+              "Profesiones y especialidades": {
+                "id": 2355,
+                "slug": "h_books_nf_professional",
+                "size_id": null,
+                "children": {}
+              },
+              "Diccionarios y libros de consulta": {
+                "id": 2356,
+                "slug": "h_books_nf_reference",
+                "size_id": null,
+                "children": {}
+              },
+              "Religión": {
+                "id": 2357,
+                "slug": "h_books_nf_religion",
+                "size_id": null,
+                "children": {}
+              },
+              "Ciencias y naturaleza": {
+                "id": 2358,
+                "slug": "h_books_nf_science",
+                "size_id": null,
+                "children": {}
+              },
+              "Deportes": {
+                "id": 2359,
+                "slug": "h_books_nf_sports",
+                "size_id": null,
+                "children": {}
+              },
+              "Libros de texto y manuales": {
+                "id": 2360,
+                "slug": "h_books_nf_study",
+                "size_id": null,
+                "children": {}
+              },
+              "Viajes": {
+                "id": 2361,
+                "slug": "h_books_nf_travel",
+                "size_id": null,
+                "children": {}
+              },
+              "Otros (no ficción)": {
+                "id": 2362,
+                "slug": "h_books_nf_other",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Infantil y juvenil": {
+            "id": 2318,
+            "slug": "kids_and_young_adults",
+            "size_id": null,
+            "children": {
+              "Juvenil": {
+                "id": 2363,
+                "slug": "h_books_young_adults",
+                "size_id": null,
+                "children": {}
+              },
+              "Infantil": {
+                "id": 2364,
+                "slug": "h_books_kids",
+                "size_id": null,
+                "children": {}
+              },
+              "Bebés": {
+                "id": 2365,
+                "slug": "h_books_babies_toddlers",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "Mascotas": {
+    "id": 2093,
+    "slug": "pet_care",
+    "size_id": null,
+    "children": {
+      "Perros": {
+        "id": 2095,
+        "slug": "dogs",
+        "size_id": null,
+        "children": {
+          "Camas y mantas": {
+            "id": 2109,
+            "slug": "d_beds_blankets",
+            "size_id": null,
+            "children": {
+              "Camas": {
+                "id": 2512,
+                "slug": "d_beds",
+                "size_id": 57,
+                "children": {}
+              },
+              "Mantas": {
+                "id": 2511,
+                "slug": "d_blankets",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Ropa y accesorios": {
+            "id": 2112,
+            "slug": "d_clothing_accessories",
+            "size_id": null,
+            "children": {
+              "Abrigos y chaquetas": {
+                "id": 2119,
+                "slug": "d_coats_jackets",
+                "size_id": 57,
+                "children": {}
+              },
+              "Jerséis": {
+                "id": 2484,
+                "slug": "d_jumpers",
+                "size_id": 57,
+                "children": {}
+              },
+              "Camisetas": {
+                "id": 2517,
+                "slug": "d_t_shirts",
+                "size_id": 57,
+                "children": {}
+              },
+              "Disfraces": {
+                "id": 2518,
+                "slug": "d_costumes",
+                "size_id": 57,
+                "children": {}
+              },
+              "Zapatos y botas": {
+                "id": 2120,
+                "slug": "d_shoes_boots",
+                "size_id": 57,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 2121,
+                "slug": "d_accessories",
+                "size_id": 57,
+                "children": {}
+              }
+            }
+          },
+          "Juguetes": {
+            "id": 2115,
+            "slug": "d_toys",
+            "size_id": null,
+            "children": {
+              "Pelotas y juguetes para lanzar": {
+                "id": 2515,
+                "slug": "d_balls_fetch_toys",
+                "size_id": null,
+                "children": {}
+              },
+              "Juguetes blandos": {
+                "id": 2514,
+                "slug": "d_soft_toys",
+                "size_id": null,
+                "children": {}
+              },
+              "Juguetes rígidos y resistentes": {
+                "id": 2513,
+                "slug": "d_tough_durable_toys",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Collares y correas": {
+            "id": 2113,
+            "slug": "d_collars_leads",
+            "size_id": null,
+            "children": {
+              "Collares": {
+                "id": 2122,
+                "slug": "d_collars",
+                "size_id": 57,
+                "children": {}
+              },
+              "Arneses": {
+                "id": 2124,
+                "slug": "d_harnesses",
+                "size_id": 57,
+                "children": {}
+              },
+              "Correas": {
+                "id": 2123,
+                "slug": "d_leads",
+                "size_id": 57,
+                "children": {}
+              },
+              "Bozales": {
+                "id": 2516,
+                "slug": "d_muzzles",
+                "size_id": 57,
+                "children": {}
+              }
+            }
+          },
+          "Accesorios de adiestramiento": {
+            "id": 2488,
+            "slug": "d_training_accessories",
+            "size_id": null,
+            "children": {
+              "Silbatos": {
+                "id": 2510,
+                "slug": "d_whistles",
+                "size_id": null,
+                "children": {}
+              },
+              "Bolsas": {
+                "id": 2509,
+                "slug": "d_bags",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Cuencos y comederos": {
+            "id": 2110,
+            "slug": "d_bowls_feeders",
+            "size_id": null,
+            "children": {
+              "Cuencos": {
+                "id": 2117,
+                "slug": "d_bowls",
+                "size_id": null,
+                "children": {}
+              },
+              "Comederos": {
+                "id": 2118,
+                "slug": "d_feeders",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Transportines y jaulas": {
+            "id": 2111,
+            "slug": "d_carriers_crates",
+            "size_id": null,
+            "children": {
+              "Transportines": {
+                "id": 2508,
+                "slug": "d_carriers",
+                "size_id": 57,
+                "children": {}
+              },
+              "Jaulas": {
+                "id": 2507,
+                "slug": "d_crates",
+                "size_id": 57,
+                "children": {}
+              }
+            }
+          },
+          "Higiene": {
+            "id": 2114,
+            "slug": "d_grooming",
+            "size_id": null,
+            "children": {
+              "Peines y cepillos": {
+                "id": 2506,
+                "slug": "d_brushes_combs",
+                "size_id": null,
+                "children": {}
+              },
+              "Cortaúñas": {
+                "id": 2505,
+                "slug": "d_claw_care",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          }
+        }
+      },
+      "Gatos": {
+        "id": 2096,
+        "slug": "cats",
+        "size_id": null,
+        "children": {
+          "Cuencos y comederos": {
+            "id": 2098,
+            "slug": "c_bowls_feeders",
+            "size_id": null,
+            "children": {
+              "Cuencos": {
+                "id": 2099,
+                "slug": "c_bowls",
+                "size_id": null,
+                "children": {}
+              },
+              "Comederos": {
+                "id": 2126,
+                "slug": "c_feeders",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Juguetes": {
+            "id": 2137,
+            "slug": "c_toys",
+            "size_id": null,
+            "children": {
+              "Cañas y varitas": {
+                "id": 2500,
+                "slug": "c_teasers_wands",
+                "size_id": null,
+                "children": {}
+              },
+              "Pelotas": {
+                "id": 2501,
+                "slug": "c_balls",
+                "size_id": null,
+                "children": {}
+              },
+              "Juguetes blandos": {
+                "id": 2502,
+                "slug": "c_soft_toys",
+                "size_id": null,
+                "children": {}
+              },
+              "Rascadores": {
+                "id": 2503,
+                "slug": "c_scratchers",
+                "size_id": null,
+                "children": {}
+              },
+              "Juguetes interactivos": {
+                "id": 2504,
+                "slug": "c_interactive_toys",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Collares y correas": {
+            "id": 2131,
+            "slug": "c_collars_leads",
+            "size_id": null,
+            "children": {
+              "Collares": {
+                "id": 2133,
+                "slug": "c_collars",
+                "size_id": null,
+                "children": {}
+              },
+              "Arneses y correas": {
+                "id": 2134,
+                "slug": "c_harnesses_leads",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Camas": {
+            "id": 2097,
+            "slug": "c_beds",
+            "size_id": null,
+            "children": {}
+          },
+          "Transportines": {
+            "id": 2125,
+            "slug": "c_travel_carriers",
+            "size_id": null,
+            "children": {
+              "Transportines blandos y mochilas": {
+                "id": 2499,
+                "slug": "c_soft_carriers",
+                "size_id": null,
+                "children": {}
+              },
+              "Transportines duros": {
+                "id": 2498,
+                "slug": "c_hard_carriers",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Ropa y accesorios": {
+            "id": 2127,
+            "slug": "c_clothing_accessories",
+            "size_id": null,
+            "children": {
+              "Ropa": {
+                "id": 2128,
+                "slug": "c_clothing",
+                "size_id": null,
+                "children": {}
+              },
+              "Disfraces": {
+                "id": 2129,
+                "slug": "c_costumes",
+                "size_id": null,
+                "children": {}
+              },
+              "Accesorios": {
+                "id": 2130,
+                "slug": "c_accessories",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          },
+          "Areneros": {
+            "id": 2489,
+            "slug": "c_litter_boxes",
+            "size_id": null,
+            "children": {}
+          },
+          "Higiene": {
+            "id": 2136,
+            "slug": "c_grooming",
+            "size_id": null,
+            "children": {
+              "Peines y cepillos": {
+                "id": 2496,
+                "slug": "c_brushes_combs",
+                "size_id": null,
+                "children": {}
+              },
+              "Cortaúñas": {
+                "id": 2497,
+                "slug": "c_claw_care",
+                "size_id": null,
+                "children": {}
+              }
+            }
+          }
+        }
+      },
+      "Roedores, etc.": {
+        "id": 2138,
+        "slug": "small_pets",
+        "size_id": null,
+        "children": {
+          "Jaulas y accesorios": {
+            "id": 2140,
+            "slug": "sp_habitats_accessories",
+            "size_id": null,
+            "children": {}
+          },
+          "Juguetes": {
+            "id": 2142,
+            "slug": "sp_toys",
+            "size_id": null,
+            "children": {}
+          }
+        }
+      },
+      "Peces": {
+        "id": 2485,
+        "slug": "fish",
+        "size_id": null,
+        "children": {
+          "Equipamiento para acuarios": {
+            "id": 2491,
+            "slug": "f_aquariums",
+            "size_id": null,
+            "children": {}
+          },
+          "Decoración y accesorios": {
+            "id": 2490,
+            "slug": "f_deco_accessories",
+            "size_id": null,
+            "children": {}
+          }
+        }
+      },
+      "Pájaros": {
+        "id": 2486,
+        "slug": "birds",
+        "size_id": null,
+        "children": {
+          "Juguetes": {
+            "id": 2492,
+            "slug": "b_toys",
+            "size_id": null,
+            "children": {}
+          },
+          "Jaulas y accesorios": {
+            "id": 2493,
+            "slug": "b_cages_accessories",
+            "size_id": null,
+            "children": {}
+          }
+        }
+      },
+      "Reptiles": {
+        "id": 2487,
+        "slug": "reptiles",
+        "size_id": null,
+        "children": {
+          "Decoración y accesorios": {
+            "id": 2494,
+            "slug": "r_deco_accessories",
+            "size_id": null,
+            "children": {}
+          },
+          "Equipamiento para terrarios": {
+            "id": 2495,
+            "slug": "r_terrarium",
+            "size_id": null,
+            "children": {}
+          }
+        }
+      }
+    }
+  }
+}

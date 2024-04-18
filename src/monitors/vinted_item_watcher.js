@@ -1,4 +1,5 @@
 import { VintedHandlerSelenium, VintedHandlerAPI } from '../handlers/vinted_handler.js';
+import { config } from 'dotenv';
 
 /**
  * A class designed to watch for new items on Vinted and trigger actions based on new findings.
@@ -51,6 +52,7 @@ class VintedItemWatcher {
         try {
             const items = await this.vintedHandler.getItemsFromUrl(url);
             const newItems = this.compareNewItems(items);
+
             if (newItems.length > 0 && this.callback) {
                 this.callback(newItems);  // Trigger the callback with new items
             }

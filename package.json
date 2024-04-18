@@ -6,12 +6,13 @@
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
-    "telegram": "node telegram.js",
+    "telegram": "node main.js --telegram",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.12",
     "cookie": "^0.6.0",
     "dotenv": "^16.4.5",
