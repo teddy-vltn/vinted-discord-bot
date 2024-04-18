@@ -10,7 +10,7 @@ config({ path: `.env.local`, override: true });
 const env = process.env;
 
 async function main() {
-    if (process.argv.includes("--bot")) {
+    if (process.argv.includes("--telegram")) {
         // Start as Telegram Bot
         const botManager = new BotManager();
         console.log("Bot is running...");

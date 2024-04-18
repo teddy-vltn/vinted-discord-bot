@@ -78,7 +78,10 @@ class UrlBuilder {
      * @param {Array<string>} sizes_list - List of size labels.
      */
     setSizes(sizes_list) {
-        if (!this.params.has('catalog_ids')) throw new Error('Catalog must be set before setting sizes');
+        if (!this.params.has('catalog_ids')) {
+            console.error('Catalog must be set before setting sizes');
+            return this;
+        }
         if (!this.size_finder) {
             this.setSearchText(sizes_list.join(' '))
             return this;
