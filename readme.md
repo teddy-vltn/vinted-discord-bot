@@ -58,3 +58,7 @@ npm run telegram
 ## Need Help?
 
 If you encounter any issues or need help with the Vinted Real Monitor, please refer to the log file named `app.log`. It contains information about the application's activities and can help you troubleshoot any issues. https://discord.gg/HgMHRjXqhQ
+
+## TODO List
+
+- [ ] Add a discord bot
