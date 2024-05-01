@@ -3,6 +3,8 @@
 telegram:
   token: "YOUR_TELEGRAM_TOKEN" # Bot token obtained from BotFather
 
+interval: 5 # Interval in seconds for checking the latest posts
+
 use_proxies: false # Set to true if you want to use a proxy server
 
 # List of proxy configurations for handling multiple proxy servers

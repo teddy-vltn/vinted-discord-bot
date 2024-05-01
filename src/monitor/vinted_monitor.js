@@ -41,7 +41,7 @@ class VintedMonitor {
         }
     }
 
-    startMonitoring(url, callback, interval = 1000) {
+    startMonitoring(url, callback, interval) {
         const apiUrl = this.transformUrl(url);
         if (!apiUrl) {
             Logger.error("Invalid URL");

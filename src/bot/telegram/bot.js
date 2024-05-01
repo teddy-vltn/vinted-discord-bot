@@ -1,25 +1,23 @@
 import TelegramBot from 'node-telegram-bot-api';
 import handleMessage from './handlers/message_handler.js';
 import handleCallback from './handlers/callback_handler.js';
-import ProxyHandler from '../../handlers/proxy_handler.js';
 import { db } from '../../database/db.js';
-import ConfigurationManager from '../../utils/config_manager.js';
 import Logger from '../../utils/logger.js';
-
-// Load the configuration
-const configManager = new ConfigurationManager(process.cwd() + '/config.yaml');
+import VintedMonitoringService from '../../services/vinted_monitoring_service.js';
+import ConfigurationManager from '../../utils/config_manager.js';
 
 // Token and proxy details are set here.
+const configManager = new ConfigurationManager(process.cwd() + '/config.yaml');
 const token = configManager.getTelegramToken();
-const proxies = configManager.getProxies();
-const proxyHandler = new ProxyHandler(proxies);
+
+const vintedMonitoringService = new VintedMonitoringService();
 
 const bot = new TelegramBot(token, { polling: true });
 
 Logger.info('Bot started');
 
-bot.on('message', (msg) => handleMessage(bot, msg, proxyHandler));
-bot.on('callback_query', (callbackQuery) => handleCallback(bot, callbackQuery, proxyHandler));
+bot.on('message', (msg) => handleMessage(bot, msg, vintedMonitoringService));
+bot.on('callback_query', (callbackQuery) => handleCallback(bot, callbackQuery, vintedMonitoringService));
 
 Logger.info('Bot event listeners registered');
 

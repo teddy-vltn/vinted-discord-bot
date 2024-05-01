@@ -1,6 +1,5 @@
 import VintedMonitor from '../../../monitor/vinted_monitor.js';
 import { db } from '../../../database/db.js';
-import VintedHandlerAPIBasic from '../../../handlers/vinted_handler_basic.js';
 import Logger from '../../../utils/logger.js';
 
 const monitors = {};
@@ -21,7 +20,7 @@ export async function handleStartCommand(bot, chatId) {
                 }
             });
         } else {
-            bot.sendMessage(chatId, 'Welcome! 👋 Please send me a Vinted URL to start monitoring.', {
+            bot.sendMessage(chatId, 'Welcome! 👋 Please send me a Vinted URL you would want to monitor.', {
                 parse_mode: 'HTML'
             });
         }
@@ -34,13 +33,12 @@ export async function handleStartCommand(bot, chatId) {
 }
 
 // Handles messages that are HTTP URLs
-export async function handleHttpMessage(bot, chatId, text, proxyHandler) {
+export async function handleHttpMessage(bot, chatId, text, vintedMonitoringService) {
     try {
         const database = await db;
         await database.run(`INSERT INTO user_urls (chat_id, url) VALUES (?, ?) ON CONFLICT(chat_id) DO UPDATE SET url = excluded.url`, [chatId, text]);
         
-        const vintedMonitor = new VintedMonitor(VintedHandlerAPIBasic, proxyHandler);
-        vintedMonitor.startMonitoring(text, (items) => {
+        const vintedMonitor = vintedMonitoringService.startMonitoring(text, (items) => {
             items.forEach(item => {
                 bot.sendPhoto(chatId, item.imageUrl, {
                     caption: `*${item.title}*\n🏷 Price: *${item.price} €*\n📏 Size: *${item.size}*\n🏷 Brand: *${item.brand}*\n🔎 Status: *${item.status}*`,
@@ -53,7 +51,7 @@ export async function handleHttpMessage(bot, chatId, text, proxyHandler) {
                     }
                 });
             });
-        }, 1000); // Example interval for polling, adjust as needed
+        }); 
         bot.sendMessage(chatId, 'Started monitoring the Vinted URL. 🛒', {
             parse_mode: 'HTML'
         });
@@ -93,11 +91,10 @@ export async function handleUnknownCommand(bot, chatId) {
 }
 
 // Handles the 'yes' callback from inline keyboard on the start command
-export async function handleYesCallback(bot, chatId, message, proxyHandler) {
+export async function handleYesCallback(bot, chatId, message, vintedMonitoringService) {
     try {
         const url = message.text.match(/again\? (.*)/)[1]; // Extract URL from message
-        const vintedMonitor = new VintedMonitor(VintedHandlerAPIBasic, proxyHandler);
-        vintedMonitor.startMonitoring(url, (items) => {
+        const vintedMonitor = vintedMonitoringService.startMonitoring(url, (items) => {
                 items.forEach(item => {
                     bot.sendPhoto(chatId, item.imageUrl, {
                         caption: `*${item.title}*\n🏷 Price: *${item.price} €*\n📏 Size: *${item.size}*\n🏷 Brand: *${item.brand}*\n🔎 Status: *${item.status}*`,
@@ -110,7 +107,8 @@ export async function handleYesCallback(bot, chatId, message, proxyHandler) {
                         }
                     });
                 });
-            }, 1000);
+            });
+        monitors[chatId] = vintedMonitor;
         bot.sendMessage(chatId, 'Started monitoring the Vinted URL. 🛒', {
             parse_mode: 'HTML'
         });

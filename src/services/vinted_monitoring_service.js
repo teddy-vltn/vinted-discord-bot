@@ -6,10 +6,10 @@ import Logger from "../utils/logger.js";
 
 class VintedMonitoringService {
     constructor() {
-        const configManager = new ConfigurationManager(process.cwd() + '/config.yaml');
-        const proxies = configManager.getProxies();
+        this.configManager = new ConfigurationManager(process.cwd() + '/config.yaml');
+        const proxies = this.configManager.getProxies();
 
-        const isProxyEnabled = configManager.isProxyEnabled();
+        const isProxyEnabled = this.configManager.isProxyEnabled();
 
         this.proxyHandler = null;
 
@@ -29,17 +29,14 @@ class VintedMonitoringService {
             }
         }
 
-        try { 
-            this.vintedMonitor = new VintedMonitor(VintedHandlerAPIBasic, this.proxyHandler);
-        }
-        catch (error) {
-            Logger.error(`Error creating VintedMonitor: ${error.message}`);
-            return null;
-        }
     }
 
-    startMonitoring(url, callback, interval) {
-        this.vintedMonitor.startMonitoring(url, callback, interval);
+    startMonitoring(url, callback) {
+        const interval = this.configManager.getInterval();
+        
+        const vintedMonitor = new VintedMonitor(VintedHandlerAPIBasic, this.proxyHandler);
+        vintedMonitor.startMonitoring(url, callback, interval);
+        return vintedMonitor;
     }
 }
 

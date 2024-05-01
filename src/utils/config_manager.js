@@ -38,7 +38,9 @@ class ConfigurationManager {
         return this.config.proxies.map(proxy => new ProxyConfig(proxy.host, proxy.port, proxy.username, proxy.password, proxy.type));
     }
 
-
+    getInterval() {
+        return this.config.interval * 1000;
+    }
 
 }
 

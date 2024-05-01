@@ -10,7 +10,10 @@ We also have a pre-built Telegram bot that can manage your searches. It uses a d
 
 ## How to Use It?
 
-If you want to simply use and try it out, you can use my bot at this link: https://web.telegram.org/k/#@vinteditemsbot or search for `@vinteditemsbot` on Telegram. (Please note that it may not be available 24/7)
+If you want to simply use and try it out, you can use my bot at this link: https://web.telegram.org/k/#@vinteditemsbot or search for `@vinteditemsbot` on Telegram. 
+
+> [!NOTE]\
+> It's just a showcase bot, so it may not be available 24/7. If you want to use it all the time, you can deploy it on your own server. Sometimes too many users can overload the bot, so it's better to have your own instance. But it is 100% free to use my bot, so feel free to use it.
 
 Start by sending the `/start` command to the bot. It will guide you through the process. 
 
