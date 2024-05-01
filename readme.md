@@ -17,9 +17,24 @@ If you want to simply use and try it out, you can use my bot at this link: https
 
 Start by sending the `/start` command to the bot. It will guide you through the process. 
 
+## Deploy Your Own Bot
+
+If you want to deploy your own bot, you can follow the instructions below.
+
+First of all start by cloning the repository:
+
+
+```sh 
+git clone https://github.com/teddy-vltn/vinted-monitor 
+```
+
 ### Configuration
 
 Before you can start using the Vinted Real Monitor, you need to configure the application. The configuration settings are stored in a file named `config.yaml`. You need to provide your Telegram bot token in this file. You can obtain a bot token from BotFather on Telegram.
+
+> [!NOTE]\
+> If you want to know about how to create a Telegram Bot : https://core.telegram.org/bots/tutorial
+> Follow this tutorial to create your own bot and set your token in `config.yaml` file under `telegram` section.
 
 ```yaml
 # Configuration settings for the Telegram bot
@@ -40,19 +55,11 @@ proxies:
     type: "YOUR_PROXY_PROTOCOL"           # Proxy type, e.g., socks, http
 ```
 
-> [!NOTE]\
-> If you want to know about how to create a Telegram Bot : https://core.telegram.org/bots/tutorial
-> Follow this tutorial to create your own bot and set your token in `config.yaml` file under `telegram` section.
-
 > [!WARNING]\
 > If you want to use proxies, you need to set `use_proxies` to `true` and provide the proxy server details in the `proxies` section. You can add multiple proxy servers to the list. If you want to test if your proxies or your proxy server is working, you can use the following command:
 > `npm run test_proxy`
 
 To start using the Vinted Real Monitor, all you need to do is run the following command:
-
-```sh 
-git clone https://github.com/teddy-vltn/vinted-monitor 
-```
 
 ```sh
 npm install
