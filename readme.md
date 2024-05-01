@@ -10,6 +10,10 @@ We also have a pre-built Telegram bot that can manage your searches. It uses a d
 
 ## How to Use It?
 
+If you want to simply use and try it out, you can use my bot at this link: https://web.telegram.org/k/#@vinteditemsbot or search for `@vinteditemsbot` on Telegram. (Please note that it may not be available 24/7)
+
+Start by sending the `/start` command to the bot. It will guide you through the process. 
+
 ### Configuration
 
 Before you can start using the Vinted Real Monitor, you need to configure the application. The configuration settings are stored in a file named `config.yaml`. You need to provide your Telegram bot token in this file. You can obtain a bot token from BotFather on Telegram.
