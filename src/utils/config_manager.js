@@ -34,6 +34,10 @@ class ConfigurationManager {
     }
 
     getProxies() {
+        if (!this.isProxyEnabled()) {
+            return [];
+        }
+
         // return array of ProxyConfig instances
         return this.config.proxies.map(proxy => new ProxyConfig(proxy.host, proxy.port, proxy.username, proxy.password, proxy.type));
     }
