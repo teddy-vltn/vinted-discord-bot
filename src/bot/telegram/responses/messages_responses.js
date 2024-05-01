@@ -3,6 +3,8 @@ import { db } from '../../../database/db.js';
 import VintedHandlerAPIBasic from '../../../handlers/vinted_handler_basic.js';
 import Logger from '../../../utils/logger.js';
 
+const monitors = {};
+
 // Handles the /start command
 export async function handleStartCommand(bot, chatId) {
     try {
@@ -55,6 +57,8 @@ export async function handleHttpMessage(bot, chatId, text, proxyHandler) {
         bot.sendMessage(chatId, 'Started monitoring the Vinted URL. 🛒', {
             parse_mode: 'HTML'
         });
+
+        monitors[chatId] = vintedMonitor;
     } catch (error) {
         Logger.error(`Monitoring error: ${error.message}`);
         bot.sendMessage(chatId, 'Error processing your request. Please try again.', {
@@ -64,13 +68,15 @@ export async function handleHttpMessage(bot, chatId, text, proxyHandler) {
 }
 
 // Handles the /stop command
-export async function handleStopCommand(bot, chatId, proxyHandler) {
+export async function handleStopCommand(bot, chatId) {
     try {
-        const vintedMonitor = new VintedMonitor(proxyHandler);
+        const vintedMonitor = monitors[chatId];
+
         vintedMonitor.stopMonitoring();
         bot.sendMessage(chatId, 'Stopped monitoring. ✋', {
             parse_mode: 'HTML'
         });
+        
     } catch (error) {
         Logger.error(`Monitoring error: ${error.message}`);
         bot.sendMessage(chatId, 'Error stopping the monitoring. Please try again.', {
