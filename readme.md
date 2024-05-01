@@ -33,8 +33,7 @@ proxies:
 
 > [!NOTE]\
 > If you want to know about how to create a Telegram Bot : https://core.telegram.org/bots/tutorial
-> Follow this tutorial to create your own bot and set your token in `.env` file.
-> `TELEGRAM_BOT_TOKEN=...`
+> Follow this tutorial to create your own bot and set your token in `config.yaml` file under `telegram` section.
 
 > [!WARNING]\
 > If you want to use proxies, you need to set `use_proxies` to `true` and provide the proxy server details in the `proxies` section. You can add multiple proxy servers to the list. If you want to test if your proxies or your proxy server is working, you can use the following command:
