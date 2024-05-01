@@ -27,6 +27,8 @@ Before you can start using the Vinted Real Monitor, you need to configure the ap
 telegram:
   token: "YOUR_TELEGRAM_TOKEN" # Bot token obtained from BotFather
 
+interval: 5 # Interval in seconds for checking new items on Vinted
+
 use_proxies: false # Set to true if you want to use a proxy server
 
 # List of proxy configurations for handling multiple proxy servers
