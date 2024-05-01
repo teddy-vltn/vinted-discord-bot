@@ -3,7 +3,7 @@
 telegram:
   token: "YOUR_TELEGRAM_TOKEN" # Bot token obtained from BotFather
 
-use_proxies: true # Set to true if you want to use a proxy server
+use_proxies: false # Set to true if you want to use a proxy server
 
 # List of proxy configurations for handling multiple proxy servers
 proxies:
