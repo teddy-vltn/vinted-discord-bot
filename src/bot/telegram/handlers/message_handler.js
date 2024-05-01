@@ -1,7 +1,13 @@
-import { handleStartCommand, handleHttpMessage, handleStopCommand, handleUnknownCommand } from '../responses/messages_responses.js';
+import { 
+  handleStartCommand, 
+  handleHttpMessage, 
+  handleStopCommand, 
+  handleUnknownCommand,
+  sendSupportReminderGithub
+} from '../responses/messages_responses.js';
 import Logger from '../../../utils/logger.js';
 
-export default async function handleMessage(bot, msg, vintedMonitoringService) {
+export async function handleMessage(bot, msg, vintedMonitoringService) {
   const text = msg.text;
   const chatId = msg.chat.id;
 
@@ -16,4 +22,9 @@ export default async function handleMessage(bot, msg, vintedMonitoringService) {
   } else {
     handleUnknownCommand(bot, chatId);
   }
+
+}
+
+export async function supportMessage(bot) {
+  sendSupportReminderGithub(bot);
 }

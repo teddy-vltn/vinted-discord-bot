@@ -1,4 +1,3 @@
-import VintedMonitor from '../../../monitor/vinted_monitor.js';
 import { db } from '../../../database/db.js';
 import Logger from '../../../utils/logger.js';
 
@@ -74,6 +73,8 @@ export async function handleStopCommand(bot, chatId) {
         bot.sendMessage(chatId, 'Stopped monitoring. ✋', {
             parse_mode: 'HTML'
         });
+
+        delete monitors[chatId];
         
     } catch (error) {
         Logger.error(`Monitoring error: ${error.message}`);
@@ -129,3 +130,20 @@ export async function handleNoCallback(bot, chatId) {
 }
 
 
+const github_link = "https://github.com/teddy-vltn/vinted-monitor"
+export async function sendSupportReminderGithub(bot) {
+    Object.keys(monitors).forEach(chatId => {
+        bot.sendMessage(chatId, "This is a free bot! ⭐️ Support us by starring our GitHub repo: " + github_link, {
+            parse_mode: 'Markdown',
+        }).catch(error => {
+            Logger.error(`Failed to send message to chat ${chatId}: ${error.message}`);
+            // Consider removing chatId from monitors if the bot is blocked or chat is not found
+            if (error.code === 403) { // 'Forbidden: bot was blocked by the user'
+                delete monitors[chatId];
+                Logger.info(`Removed chat ${chatId} from monitoring due to block.`);
+            }
+        });
+    });
+
+    Logger.info("Support reminder sent to all chats");
+}

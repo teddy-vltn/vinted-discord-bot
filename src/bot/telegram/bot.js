@@ -1,5 +1,5 @@
 import TelegramBot from 'node-telegram-bot-api';
-import handleMessage from './handlers/message_handler.js';
+import { handleMessage, supportMessage } from './handlers/message_handler.js';
 import handleCallback from './handlers/callback_handler.js';
 import { db } from '../../database/db.js';
 import Logger from '../../utils/logger.js';
@@ -20,6 +20,9 @@ bot.on('message', (msg) => handleMessage(bot, msg, vintedMonitoringService));
 bot.on('callback_query', (callbackQuery) => handleCallback(bot, callbackQuery, vintedMonitoringService));
 
 Logger.info('Bot event listeners registered');
+
+// Send support message to all users every 24 hours
+setInterval(() => supportMessage(bot), 1000 * 60 * 15);  
 
 // Graceful shutdown
 process.on('exit', async () => {
