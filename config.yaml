@@ -1,0 +1,14 @@
+# Configuration settings for the Telegram bot
+
+telegram:
+  token: "YOUR_TELEGRAM_TOKEN" # Bot token obtained from BotFather
+
+use_proxies: true # Set to true if you want to use a proxy server
+
+# List of proxy configurations for handling multiple proxy servers
+proxies:
+  - host: "YOUR_PROXY_IP"  # Proxy server IP address
+    port: "YOUR_PROXY_PORT"            # Proxy server port
+    username: "YOUR_PROXY_USERNAME"       # Proxy authentication username
+    password: "YOUR_PROXY_PASSWORD"  # Proxy authentication password
+    type: "YOUR_PROXY_PROTOCOL"           # Proxy type, e.g., socks, http

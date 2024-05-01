@@ -1,26 +1,25 @@
 {
-  "name": "vinted",
+  "name": "vinted-real-monitor",
   "version": "1.0.0",
   "description": "",
   "type": "module",
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
-    "telegram": "node main.js --telegram",
+    "telegram": "node src/bot/telegram/bot.js",
+    "test_proxy": "node test/test_proxies.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.8",
-    "cheerio": "^1.0.0-rc.12",
+    "chalk": "^5.3.0",
     "cookie": "^0.6.0",
-    "dotenv": "^16.4.5",
-    "fuse.js": "^7.0.0",
-    "https-proxy-agent": "^7.0.4",
+    "js-yaml": "^4.1.0",
     "node-telegram-bot-api": "^0.65.1",
-    "request": "^2.88.2",
-    "selenium-webdriver": "^4.19.0",
-    "socks-proxy-agent": "^8.0.3"
+    "socks-proxy-agent": "^8.0.3",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
   }
 }
