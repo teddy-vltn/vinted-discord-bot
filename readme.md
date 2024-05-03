@@ -34,7 +34,7 @@ For a quick trial, use the showcase bot available at this link: [https://web.tel
 Clone the repository to get started:
 
 ```shell
-git clone https://github.com/teddy-vltn/vinted-monitor`
+git clone https://github.com/teddy-vltn/vinted-monitor
 ```
 
 or download the ZIP file [Direct Download](https://github.com/teddy-vltn/vinted-monitor/archive/refs/heads/main.zip).
