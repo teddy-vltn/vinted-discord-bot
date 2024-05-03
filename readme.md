@@ -1,12 +1,8 @@
+![demo](demo.gif)
+
 # Vinted Monitor
 
 Welcome to the Vinted Real Monitor! This tool helps you keep track of new items on Vinted. It's like having your personal shopping assistant who never sleeps.
-
-## Telegram Bot
-
-We also have a pre-built Telegram bot that can manage your searches. It uses a database to remember your last search, so you don't have to start from scratch every time. It's like having a personal shopping assistant in your pocket.
-
-![demo](demo.gif)
 
 ## How to Use It?
 
