@@ -1,5 +1,5 @@
-import { db } from '../../../database/db.js';
-import Logger from '../../../utils/logger.js';
+import { db } from '../../../../database/db.js';
+import Logger from '../../../../utils/logger.js';
 
 const monitors = {};
 

@@ -1,5 +1,5 @@
 import Logger from '../../../utils/logger.js';
-import { handleYesCallback, handleNoCallback } from '../responses/messages_responses.js';
+import { handleYesCallback, handleNoCallback } from './responses/messages_responses.js';
 
 export default function handleCallback(bot, callbackQuery, vintedMonitoringService) {
   const data = callbackQuery.data;

@@ -7,6 +7,7 @@ class VintedMonitor {
         this.handler = new handler(proxy_handler=proxy_handler);
         this.interval = null;
         this.lastItemIds = new Set(); // Cache to store the IDs of previously fetched items
+        this.firstRun = true;
     }
 
     transformUrl(url) {
@@ -58,10 +59,16 @@ class VintedMonitor {
                 newItems.sort((a, b) => a.id - b.id);
                 if (newItems.length > 0) {
                     newItems.forEach(item => this.lastItemIds.add(item.id)); // Update cache
-                    callback(newItems);
+                    if (this.firstRun) {
+                        this.firstRun = false;
+                        Logger.info(`First run, skipping ${newItems.length} items`);
+                        Logger.info(`This is to avoid sending notifications for items that were already present when the monitoring started.`)
+                    } else {
+                        callback(newItems);
+                    }
                 }
             } catch (error) {
-                Logger.warn(`Error fetching items: ${error.message}`);
+                Logger.warn(`Error fetching items: ${error.message}, ${error.stack}`);
             }
         }, interval);
     }

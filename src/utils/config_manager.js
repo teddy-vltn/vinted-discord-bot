@@ -33,6 +33,10 @@ class ConfigurationManager {
         return this.config.telegram.token;
     }
 
+    getDiscordToken() {
+        return this.config.discord.token;
+    }
+
     getProxies() {
         if (!this.isProxyEnabled()) {
             return [];

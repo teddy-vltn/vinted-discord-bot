@@ -1,44 +1,97 @@
-![demo](demo.gif)
+Vinted Monitor
+==============
 
-# Vinted Monitor
+Welcome to the Vinted Real Monitor! This tool acts as your personal shopping assistant, helping you keep track of new items on Vinted 24/7.
 
-Welcome to the Vinted Real Monitor! This tool helps you keep track of new items on Vinted. It's like having your personal shopping assistant who never sleeps.
+It simplies uses a Vinted search link to monitor new items and sends notifications to your preferred platform (Telegram or Discord) when new items are found.
 
-## How to Use It?
+Like this link : https://www.vinted.fr/catalog?catalog%5B%5D=2050&size_ids%5B%5D=206&size_ids%5B%5D=207&size_ids%5B%5D=208
 
-If you want to simply use and try it out, you can use my bot at this link: https://web.telegram.org/k/#@vinteditemsbot or search for `@vinteditemsbot` on Telegram. 
+> [!NOTE]
+> The Vinted Monitor is not affiliated with Vinted. It is intended for educational purposes only.
 
-> [!NOTE]\
-> It's just a showcase bot, so it may not be available 24/7. If you want to use it all the time, you can deploy it on your own server. Sometimes too many users can overload the bot, so it's better to have your own instance. But it is 100% free to use my bot, so feel free to use it.
+Quick Navigation
+----------------
 
-Start by sending the `/start` command to the bot. It will guide you through the process. 
+*   **[Using the Telegram Bot](#using-the-telegram-bot)** - Start here to use the pre-configured bot or set up your own.
+*   **[Setting Up the Discord Bot](#setting-up-the-discord-bot)** - Follow these instructions to add a Discord bot feature.
+*   **[Remaining Setup](#remaining-setup)** - Configure the bot with your preferences and start monitoring Vinted
+*   **[Using proxy servers](#using-proxy-servers)** - Learn how to use proxy servers for monitoring Vinted.
+*   **[Troubleshooting](#troubleshooting)** - Find solutions to common issues and get help from the community.
 
-## Deploy Your Own Bot
+Using the Telegram Bot
+----------------------
 
-If you want to deploy your own bot, you can follow the instructions below.
+![Demo](./etc/demo.gif)
 
-First of all start by cloning the repository:
+For a quick trial, use the showcase bot available at this link: [https://web.telegram.org/k/#@vinteditemsbot](https://web.telegram.org/k/#@vinteditemsbot) or search for `@vinteditemsbot` on Telegram.
 
+> [!NOTE]  
+> The showcase bot may not be available 24/7. For continuous use, consider deploying your own instance.
 
-```sh 
-git clone https://github.com/teddy-vltn/vinted-monitor 
+### Deploy Your Own Telegram Bot
+
+Clone the repository to get started:
+
+```shell
+git clone https://github.com/teddy-vltn/vinted-monitor`
 ```
 
-### Configuration
+or download the ZIP file [Direct Download](https://github.com/teddy-vltn/vinted-monitor/archive/refs/heads/main.zip).
 
-Before you can start using the Vinted Real Monitor, you need to configure the application. The configuration settings are stored in a file named `config.yaml`. You need to provide your Telegram bot token in this file. You can obtain a bot token from BotFather on Telegram.
+#### Configuration
 
-> [!NOTE]\
-> If you want to know about how to create a Telegram Bot : https://core.telegram.org/bots/tutorial
-> Follow this tutorial to create your own bot and set your token in `config.yaml` file under `telegram` section.
+Configure your bot in `config.yaml` using the token obtained from BotFather on Telegram. Here's a guide to [creating a Telegram Bot](https://core.telegram.org/bots/tutorial).
 
 ```yaml
-# Configuration settings for the Telegram bot
+telegram:   
+  token: "YOUR_TELEGRAM_TOKEN"
+```
 
-telegram:
-  token: "YOUR_TELEGRAM_TOKEN" # Bot token obtained from BotFather
+Install dependencies and start your bot using:
 
-interval: 5 # Interval in seconds for checking new items on Vinted
+```shell
+npm install 
+npm run telegram
+```
+
+#### Available Commands
+
+*   `/start` - Start the bot and receive a welcome message. It will walk you through the setup process.
+*   `/stop` - Stop the bot and receive a goodbye message.
+
+Setting Up the Discord Bot
+--------------------------
+
+![Demo](./etc/demo-discord.png)
+
+To add a Discord bot to the Vinted Monitor, update the `config.yaml` with your Discord bot token. Obtain a token from the Discord Developer Portal.
+
+```yaml
+discord:   
+  token: "YOUR_DISCORD_TOKEN"
+```
+
+#### Start the Bot
+
+Install dependencies and start your bot using:
+
+```shell
+npm install
+npm run discord
+```
+
+#### Available Commands
+
+*   `/start` - Start the bot and receive a welcome message. It will walk you through the setup process.
+*   `/stop` - Stop the bot and receive a goodbye message.
+
+### Remaining Setup
+
+Regardless of the platform (Telegram or Discord), set your item check interval and proxy settings in `config.yaml`:
+
+```yaml
+interval: 3 # Interval in seconds for checking new items on Vinted
 
 use_proxies: false # Set to true if you want to use a proxy server
 
@@ -51,26 +104,43 @@ proxies:
     type: "YOUR_PROXY_PROTOCOL"           # Proxy type, e.g., socks, http
 ```
 
-> [!WARNING]\
-> If you want to use proxies, you need to set `use_proxies` to `true` and provide the proxy server details in the `proxies` section. You can add multiple proxy servers to the list. If you want to test if your proxies or your proxy server is working, you can use the following command:
-> `npm run test_proxy`
+### Using proxy servers
 
-To start using the Vinted Real Monitor, all you need to do is run the following command:
+If you want to use a proxy server, set `use_proxies` to `true` and add your proxy configurations to the `proxies` list.
 
-```sh
-npm install
+#### Example
+
+```yaml
+use_proxies: true
+
+proxies:
+  - host: "x.x.x.x"
+    port: "xxxx"
+    username: "username"
+    password: "password"
+    type: "socks"
 ```
 
-To start the Telegram bot, use the following command:
+You can add multiple proxy configurations to the list for handling multiple proxy servers.
 
-```sh
-npm run telegram
+#### Example
+
+```yaml
+proxies:
+  - host: "x.x.x.x"
+    port: "xxxx"
+    username: "username"
+    password: "password"
+    type: "socks"
+  - host: "y.y.y.y"
+    port: "xxxx"
+    ...
 ```
 
-## Need Help?
+### Troubleshooting
 
-If you encounter any issues or need help with the Vinted Real Monitor, please refer to the log file named `app.log`. It contains information about the application's activities and can help you troubleshoot any issues. https://discord.gg/HgMHRjXqhQ
+If you encounter any issues, ensure that the configuration is correct and the bot is running.
 
-## TODO List
+Make sure you have Node.js installed on your system. If not, download it from the [official website](https://nodejs.org/).
 
-- [ ] Add a discord bot
+Finally, check the `app.log` for logs and troubleshooting assistance, or join the community on [Discord](https://discord.gg/HgMHRjXqhQ) for support.

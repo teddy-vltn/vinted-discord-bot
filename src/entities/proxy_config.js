@@ -1,6 +1,4 @@
 import { SocksProxyAgent } from 'socks-proxy-agent';
-import axios from 'axios';
-import Logger from '../utils/logger.js';
 
 class ProxyConfig {
     constructor(host, port, username, password, protocol) {

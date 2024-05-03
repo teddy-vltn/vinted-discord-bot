@@ -4,7 +4,7 @@ import {
   handleStopCommand, 
   handleUnknownCommand,
   sendSupportReminderGithub
-} from '../responses/messages_responses.js';
+} from './responses/messages_responses.js';
 import Logger from '../../../utils/logger.js';
 
 export async function handleMessage(bot, msg, vintedMonitoringService) {
