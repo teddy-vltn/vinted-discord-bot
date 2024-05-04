@@ -16,10 +16,10 @@ Quick Navigation
 *   **[Using proxy servers](#using-proxy-servers)** - Learn how to use proxy servers for monitoring Vinted.
 *   **[Troubleshooting](#troubleshooting)** - Find solutions to common issues and get help from the community.
 
-![Demo](./etc/demo.gif)
-
 Using the Telegram Bot
 ----------------------
+
+![Demo](./etc/demo-telegram.gif)
 
 ### Deploy Your Own Telegram Bot
 
@@ -54,6 +54,8 @@ npm run telegram
 
 Setting Up the Discord Bot
 --------------------------
+
+![Demo](./etc/demo-discord.gif)
 
 To add a Discord bot to the Vinted Monitor, update the `config.yaml` with your Discord bot token. Obtain a token from the Discord Developer Portal.
 
