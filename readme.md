@@ -1,14 +1,11 @@
-Vinted Monitor
-==============
 
-Welcome to the Vinted Real Monitor! This tool acts as your personal shopping assistant, helping you keep track of new items on Vinted 24/7.
+![Vinted Monitor](./etc/banner.png)
 
-It simplies uses a Vinted search link to monitor new items and sends notifications to your preferred platform (Telegram or Discord) when new items are found.
 
-Like this link : https://www.vinted.fr/catalog?catalog%5B%5D=2050&size_ids%5B%5D=206&size_ids%5B%5D=207&size_ids%5B%5D=208
+For a quick trial, use the showcase bot available at this link: [https://web.telegram.org/k/#@vinteditemsbot](https://web.telegram.org/k/#@vinteditemsbot) or search for `@vinteditemsbot` on Telegram.
 
-> [!NOTE]
-> The Vinted Monitor is not affiliated with Vinted. It is intended for educational purposes only.
+> [!NOTE]  
+> The showcase bot may not be available 24/7. For continuous use, consider deploying your own instance.
 
 Quick Navigation
 ----------------
@@ -19,15 +16,10 @@ Quick Navigation
 *   **[Using proxy servers](#using-proxy-servers)** - Learn how to use proxy servers for monitoring Vinted.
 *   **[Troubleshooting](#troubleshooting)** - Find solutions to common issues and get help from the community.
 
-Using the Telegram Bot
-----------------------
-
 ![Demo](./etc/demo.gif)
 
-For a quick trial, use the showcase bot available at this link: [https://web.telegram.org/k/#@vinteditemsbot](https://web.telegram.org/k/#@vinteditemsbot) or search for `@vinteditemsbot` on Telegram.
-
-> [!NOTE]  
-> The showcase bot may not be available 24/7. For continuous use, consider deploying your own instance.
+Using the Telegram Bot
+----------------------
 
 ### Deploy Your Own Telegram Bot
 
@@ -62,8 +54,6 @@ npm run telegram
 
 Setting Up the Discord Bot
 --------------------------
-
-![Demo](./etc/demo-discord.png)
 
 To add a Discord bot to the Vinted Monitor, update the `config.yaml` with your Discord bot token. Obtain a token from the Discord Developer Portal.
 
