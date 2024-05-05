@@ -17,6 +17,7 @@ class VintedMonitor {
         }
 
         Logger.info(`Monitoring URL: ${url}`);
+        Logger.debug(`Monitoring API URL: ${apiUrl}`);
         this.interval = setInterval(async () => {
             try {
                 const items = await this.handler.fetchItems(apiUrl);

@@ -20,7 +20,7 @@ monitoringService.startMonitoring(
     (items) => {
         items.forEach(item => {
             const space = " ".repeat(50 - item.title.length);
-            Logger.info(`New item found: ${item.title}, ${space} ID: ${item.id}`);
+            Logger.info(`New item found: ${item.title}, ${space} ID: ${item.id}, ${item.url}`);
         });
     },
     1000

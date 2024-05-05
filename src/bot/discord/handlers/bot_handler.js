@@ -104,7 +104,15 @@ async function startMonitoringForChannel(channelId, url) {
                     new ButtonBuilder()
                         .setLabel('👤 View Seller Profile')
                         .setStyle(ButtonStyle.Link)
-                        .setURL(item.profileUrl)  // URL to the seller's profile
+                        .setURL(item.profileUrl),  // URL to the seller's profile
+                    new ButtonBuilder()
+                        .setLabel('💸 Buy')
+                        .setStyle(ButtonStyle.Link)
+                        .setURL(`https://www.vinted.fr/transaction/buy/new?source_screen=item&transaction%5Bitem_id%5D=${item.id}`),
+                    new ButtonBuilder()
+                        .setLabel('📨 Send Message')
+                        .setStyle(ButtonStyle.Link)
+                        .setURL(`https://www.vinted.fr//items/${item.id}/want_it/new?button_name=receiver_id=${item.id}`)
                 );
                 
             channel.send({ embeds: [embed], components: [row]});
