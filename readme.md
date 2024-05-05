@@ -1,25 +1,55 @@
 
 ![Vinted Monitor](./etc/banner.png)
 
-
-For a quick trial, use the showcase bot available at this link: [https://web.telegram.org/k/#@vinteditemsbot](https://web.telegram.org/k/#@vinteditemsbot) or search for `@vinteditemsbot` on Telegram.
-
-> [!NOTE]  
-> The showcase bot may not be available 24/7. For continuous use, consider deploying your own instance.
-
 Quick Navigation
 ----------------
 
-*   **[Using the Telegram Bot](#using-the-telegram-bot)** - Start here to use the pre-configured bot or set up your own.
 *   **[Setting Up the Discord Bot](#setting-up-the-discord-bot)** - Follow these instructions to add a Discord bot feature.
+*   **[Using the Telegram Bot](#using-the-telegram-bot)** - Start here to use the pre-configured bot or set up your own.
 *   **[Remaining Setup](#remaining-setup)** - Configure the bot with your preferences and start monitoring Vinted
 *   **[Using proxy servers](#using-proxy-servers)** - Learn how to use proxy servers for monitoring Vinted.
 *   **[Troubleshooting](#troubleshooting)** - Find solutions to common issues and get help from the community.
+
+Setting Up the Discord Bot
+--------------------------
+
+![Demo](./etc/demo-discord.gif)
+
+To add a Discord bot to the Vinted Monitor, update the `config.yaml` with your Discord bot token. Obtain a token from the Discord Developer Portal.
+
+```yaml
+discord:   
+  token: "YOUR_DISCORD_TOKEN"
+```
+
+#### Start the Bot
+
+Install dependencies and start your bot using:
+
+```shell
+npm install
+npm run discord
+```
+
+#### Available Commands
+
+*   `/start <URL>` - Start the bot and receive a welcome message. It will walk you through the setup process.
+*   `/stop` - Stop the bot and receive a goodbye message.
+
+#### Features
+
+*  **Multiple Monitoring Channels** - Monitor multiple Vinted URLs in different channels.
+*  **Monitoring Channels Database** - The monitoring channels are stored in a database for when the bot restarts. So you don't have to re-add the channels.
 
 Using the Telegram Bot
 ----------------------
 
 ![Demo](./etc/demo-telegram.gif)
+
+For a quick trial, use the showcase bot available at this link: [https://web.telegram.org/k/#@vinteditemsbot](https://web.telegram.org/k/#@vinteditemsbot) or search for `@vinteditemsbot` on Telegram.
+
+> [!NOTE]  
+> The showcase bot may not be available 24/7. For continuous use, consider deploying your own instance.
 
 ### Deploy Your Own Telegram Bot
 
@@ -52,33 +82,7 @@ npm run telegram
 *   `/start` - Start the bot and receive a welcome message. It will walk you through the setup process.
 *   `/stop` - Stop the bot and receive a goodbye message.
 
-Setting Up the Discord Bot
---------------------------
-
-![Demo](./etc/demo-discord.gif)
-
-To add a Discord bot to the Vinted Monitor, update the `config.yaml` with your Discord bot token. Obtain a token from the Discord Developer Portal.
-
-```yaml
-discord:   
-  token: "YOUR_DISCORD_TOKEN"
-```
-
-#### Start the Bot
-
-Install dependencies and start your bot using:
-
-```shell
-npm install
-npm run discord
-```
-
-#### Available Commands
-
-*   `/start` - Start the bot and receive a welcome message. It will walk you through the setup process.
-*   `/stop` - Stop the bot and receive a goodbye message.
-
-### Remaining Setup
+### Remaining Setup (Optional)
 
 Regardless of the platform (Telegram or Discord), set your item check interval and proxy settings in `config.yaml`:
 
