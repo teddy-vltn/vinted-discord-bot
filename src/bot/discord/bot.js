@@ -1,6 +1,6 @@
 import { db } from '../../database/db.js';
 import Logger from '../../utils/logger.js';
-import client from './handlers/bot_handler.js';
+import { client } from './handlers/bot_handler.js';
 
 Logger.info('Bot event listeners registered');
 
