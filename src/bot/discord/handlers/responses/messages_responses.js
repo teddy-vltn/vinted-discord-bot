@@ -27,8 +27,6 @@ export async function handleHttpMessage(message) {
     } catch (error) {
         Logger.error(`Monitoring error: ${error.message}`);
     }
-
-    message.channel.send('Monitoring started. 🛒');
 }
 
 // Handles the /stop command
