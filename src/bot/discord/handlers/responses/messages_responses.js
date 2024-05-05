@@ -1,28 +1,36 @@
 import { db } from '../../../../database/db.js';
 import Logger from '../../../../utils/logger.js';
+import { UrlTransformer } from '../../../../utils/url_transformer.js';
 import { client, startMonitoringForChannel, stopMonitoringForChannel } from '../bot_handler.js';
-import pkg from 'discord.js';
 
 // Handles the /start command
 export async function handleStartCommand(message) {
-    message.channel.send('Please send me the URL you want to monitor. 🛒');
+    message.channel.send('Please use the command like this: /start <URL>');
 }
 
 // Handles messages that are HTTP URLs
 export async function handleHttpMessage(message) {
     try {
         const text = message.content;
+        const url = text.split(' ')[1];
+
+        const isValidUrl = UrlTransformer.isUrlValid(url);
+        if (!isValidUrl) {
+            handleStartCommand(message);
+            return;
+        }
+
         const database = await db;
 
         try {
-            startMonitoringForChannel(message.channel.id, text);
+            startMonitoringForChannel(message.channel.id, url);
         } catch (error) {
             Logger.error(`Error starting monitoring: ${error.message}`);
             message.channel.send('Error starting monitoring. Please try again later.');
             return;
         }
 
-        await database.run(`INSERT INTO channel_urls (channel_id, url) VALUES (?, ?) ON CONFLICT(channel_id) DO UPDATE SET url = excluded.url`, [message.channel.id, text]);
+        await database.run(`INSERT INTO channel_urls (channel_id, url) VALUES (?, ?) ON CONFLICT(channel_id) DO UPDATE SET url = excluded.url`, [message.channel.id, url]);
 
     } catch (error) {
         Logger.error(`Monitoring error: ${error.message}`);

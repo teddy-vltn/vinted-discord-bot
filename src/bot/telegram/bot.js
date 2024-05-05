@@ -22,7 +22,7 @@ bot.on('callback_query', (callbackQuery) => handleCallback(bot, callbackQuery, v
 Logger.info('Bot event listeners registered');
 
 // Send support message to all users every 24 hours
-setInterval(() => supportMessage(bot), 1000 * 60 * 15);  
+setInterval(() => supportMessage(bot), 1000 * 60 * 60);  
 
 // Graceful shutdown
 process.on('exit', async () => {

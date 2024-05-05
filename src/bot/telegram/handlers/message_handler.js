@@ -18,7 +18,7 @@ export async function handleMessage(bot, msg, vintedMonitoringService) {
   } else if (text.startsWith('http')) {
     handleHttpMessage(bot, chatId, text, vintedMonitoringService);
   } else if (text === '/stop') {
-    handleStopCommand(bot, chatId);
+    handleStopCommand(bot, chatId, vintedMonitoringService);
   } else {
     handleUnknownCommand(bot, chatId);
   }

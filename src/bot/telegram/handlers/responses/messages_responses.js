@@ -1,8 +1,6 @@
 import { db } from '../../../../database/db.js';
 import Logger from '../../../../utils/logger.js';
 
-const monitors = {};
-
 // Handles the /start command
 export async function handleStartCommand(bot, chatId) {
     try {
@@ -37,7 +35,7 @@ export async function handleHttpMessage(bot, chatId, text, vintedMonitoringServi
         const database = await db;
         await database.run(`INSERT INTO user_urls (chat_id, url) VALUES (?, ?) ON CONFLICT(chat_id) DO UPDATE SET url = excluded.url`, [chatId, text]);
         
-        const vintedMonitor = vintedMonitoringService.startMonitoring(text, (items) => {
+        vintedMonitoringService.startMonitoring(text, chatId, (items) => {
             items.forEach(item => {
                 bot.sendPhoto(chatId, item.imageUrl, {
                     caption: `*${item.title}*\n🏷 Price: *${item.price} €*\n📏 Size: *${item.size}*\n🏷 Brand: *${item.brand}*\n🔎 Status: *${item.status}*`,
@@ -55,7 +53,6 @@ export async function handleHttpMessage(bot, chatId, text, vintedMonitoringServi
             parse_mode: 'HTML'
         });
 
-        monitors[chatId] = vintedMonitor;
     } catch (error) {
         Logger.error(`Monitoring error: ${error.message}`);
         bot.sendMessage(chatId, 'Error processing your request. Please try again.', {
@@ -65,20 +62,10 @@ export async function handleHttpMessage(bot, chatId, text, vintedMonitoringServi
 }
 
 // Handles the /stop command
-export async function handleStopCommand(bot, chatId) {
-    try {
-        const vintedMonitor = monitors[chatId];
-
-        vintedMonitor.stopMonitoring();
-        bot.sendMessage(chatId, 'Stopped monitoring. ✋', {
-            parse_mode: 'HTML'
-        });
-
-        delete monitors[chatId];
-        
-    } catch (error) {
-        Logger.error(`Monitoring error: ${error.message}`);
-        bot.sendMessage(chatId, 'Error stopping the monitoring. Please try again.', {
+export async function handleStopCommand(bot, chatId, vintedMonitoringService) {
+    if (vintedMonitoringService.isMonitoring(chatId)) {
+        vintedMonitoringService.stopMonitoring(chatId);
+        bot.sendMessage(chatId, 'Monitoring stopped. 🛒', {
             parse_mode: 'HTML'
         });
     }
@@ -95,7 +82,7 @@ export async function handleUnknownCommand(bot, chatId) {
 export async function handleYesCallback(bot, chatId, message, vintedMonitoringService) {
     try {
         const url = message.text.match(/again\? (.*)/)[1]; // Extract URL from message
-        const vintedMonitor = vintedMonitoringService.startMonitoring(url, (items) => {
+        vintedMonitoringService.startMonitoring(url, chatId, (items) => {
                 items.forEach(item => {
                     bot.sendPhoto(chatId, item.imageUrl, {
                         caption: `*${item.title}*\n🏷 Price: *${item.price} €*\n📏 Size: *${item.size}*\n🏷 Brand: *${item.brand}*\n🔎 Status: *${item.status}*`,
@@ -109,7 +96,6 @@ export async function handleYesCallback(bot, chatId, message, vintedMonitoringSe
                     });
                 });
             });
-        monitors[chatId] = vintedMonitor;
         bot.sendMessage(chatId, 'Started monitoring the Vinted URL. 🛒', {
             parse_mode: 'HTML'
         });

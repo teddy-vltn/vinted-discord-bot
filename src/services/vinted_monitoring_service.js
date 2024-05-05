@@ -11,6 +11,8 @@ class VintedMonitoringService {
 
         const isProxyEnabled = this.configManager.isProxyEnabled();
 
+        this.monitors = {};
+
         this.proxyHandler = null;
 
         if (isProxyEnabled && proxies.length === 0) {
@@ -31,12 +33,24 @@ class VintedMonitoringService {
 
     }
 
-    startMonitoring(url, callback) {
+    startMonitoring(url, id, callback) {
         const interval = this.configManager.getInterval();
         
         const vintedMonitor = new VintedMonitor(VintedHandlerAPIBasic, this.proxyHandler);
         vintedMonitor.startMonitoring(url, callback, interval);
-        return vintedMonitor;
+        
+        this.monitors[id] = vintedMonitor;
+    }
+
+    stopMonitoring(id) {
+        if (this.monitors[id]) {
+            this.monitors[id].stopMonitoring();
+            delete this.monitors[id];
+        }
+    }
+
+    isMonitoring(id) {
+        return this.monitors[id] !== undefined;
     }
 }
 

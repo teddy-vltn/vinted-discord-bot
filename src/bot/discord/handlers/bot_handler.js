@@ -18,6 +18,16 @@ const client = new Client({
     ]
 });
 
+async function sendSupportReminderGithub(channel) {
+    const embed = new EmbedBuilder()
+        .setTitle('Support the project')
+        .setColor(0x00AE86)
+        .setDescription('If you like the project, consider starring the repository on GitHub.')
+        .setURL('https://github.com/teddy-vltn/vinted-monitor');
+
+    channel.send({ embeds: [embed] });
+}
+
 import VintedMonitoringService from '../../../services/vinted_monitoring_service.js';
 const vintedMonitoringService = new VintedMonitoringService();
 
@@ -42,26 +52,34 @@ client.once('ready', async () => {
             return;
         }
 
-        channel.send('Found an existing monitoring URL in the database. 🛒');
-        channel.send(`Monitoring URL: ${row.url}`);
+        sendSupportReminderGithub(channel);
+
+        //channel.send('Found an existing monitoring URL in the database. 🛒');
+        //channel.send(`Monitoring URL: ${row.url}`);
+
+        const embed = new EmbedBuilder()
+            .setTitle('Found an existing monitoring URL in the database. 🛒')
+            .setDescription(`Monitoring URL: ${row.url}`);
+
+        channel.send({ embeds: [embed] });
 
         startMonitoringForChannel(row.channel_id, row.url);
     });
 });
 
-const monitors = {};
 
 async function startMonitoringForChannel(channelId, url) {
-    if (monitors[channelId]) {
-        monitors[channelId].stopMonitoring();
-        delete monitors[channelId];
-    }
-
     const channel = client.channels.cache.get(channelId);
 
-    channel.send('Monitoring started. 🛒');
+    //channel.send('Monitoring started. 🛒');
 
-    const vintedMonitor = vintedMonitoringService.startMonitoring(url, (items) => {
+    const embed = new EmbedBuilder()
+        .setTitle('Monitoring started. 🛒')
+        .setDescription(`Monitoring URL: ${url}`);
+
+    channel.send({ embeds: [embed] });
+
+    vintedMonitoringService.startMonitoring(url, channelId, (items) => {
         items.forEach(item => {
             const embed = new EmbedBuilder()
                 .setTitle(item.title)
@@ -90,14 +108,11 @@ async function startMonitoringForChannel(channelId, url) {
             channel.send({ embeds: [embed], components: [row]});
         });
     });
-
-    monitors[channelId] = vintedMonitor;
 }
 
 async function stopMonitoringForChannel(channelId) {
-    if (monitors[channelId]) {
-        monitors[channelId].stopMonitoring();
-        delete monitors[channelId];
+    if (vintedMonitoringService.isMonitoring(channelId)) {
+        vintedMonitoringService.stopMonitoring(channelId);
 
         // remove the URL from the database
         const database = await db;
