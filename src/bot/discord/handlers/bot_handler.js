@@ -89,7 +89,9 @@ async function startMonitoringForChannel(channelId, url) {
                     { name: '🏷 Price', value: `${item.price} €`, inline: true },
                     { name: '📏 Size', value: item.size, inline: true },
                     { name: '👕 Brand', value: item.brand, inline: true },
-                    { name: '🔎 Status', value: item.status, inline: true }
+                    { name: '🔎 Status', value: item.status, inline: true },
+                    { name: '📦 Date', value: item.unixTimestampString, inline: true}
+                    
                 ])
                 .setImage(item.imageUrl)
 

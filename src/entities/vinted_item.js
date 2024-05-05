@@ -1,3 +1,5 @@
+
+
 class VintedItem {
     constructor({ id, title, price, size_title, url, photo_url, profile_url, brand_title, status, service_fee }) {
         this.id = id;
@@ -10,6 +12,8 @@ class VintedItem {
         this.brand = brand_title;
         this.status = status;
         this.serviceFee = service_fee;
+        // <t:1714931400:R> unix timestamp
+        this.unixTimestampString = `<t:${Math.floor(Date.now() / 1000)}:R>`;
     }
 
     static fromApiResponse(apiResponse) {

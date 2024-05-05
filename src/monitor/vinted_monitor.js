@@ -1,5 +1,3 @@
-const VINTED_API_URL = "https://www.{domain}/api/v2/catalog"
-
 import { UrlTransformer } from "../utils/url_transformer.js";
 import Logger from "../utils/logger.js";
 

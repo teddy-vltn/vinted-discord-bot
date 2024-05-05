@@ -16,6 +16,7 @@ const monitoringService = new VintedMonitoringService();
 
 monitoringService.startMonitoring(
     "https://www.vinted.it/catalog/80-shorts",
+    "shorts",
     (items) => {
         items.forEach(item => {
             const space = " ".repeat(50 - item.title.length);
