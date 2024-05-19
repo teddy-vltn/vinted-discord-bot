@@ -1,3 +1,11 @@
+> [!NOTE]  
+> I've began working on a completly FREE real zero-delay bot some while ago where user can create their own private channels with their own query. It is actually in test phase and I'm looking for some testers. If you are interested in testing the bot, please join the [Discord Server](https://discord.gg/BGbDvpQzKK). I will provide you with the bot and the instructions. Or you can follow the #help channel in the server for more information.
+
+![Zero Delay New Free Bot](./etc/new-bot.png)
+![Zero Delay New Free Bot Commands](./etc/new-bot-commands.png)
+
+> [!NOTE]  
+> This bot is still well maintained and I will continue to provide support for it. If you have any questions or need help, feel free to ask in the [Discord Server](https://discord.gg/uBTPsfMQ).
 
 ![Vinted Monitor](./etc/banner.png)
 

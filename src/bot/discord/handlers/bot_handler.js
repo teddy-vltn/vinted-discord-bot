@@ -112,7 +112,7 @@ async function startMonitoringForChannel(channelId, url) {
                     new ButtonBuilder()
                         .setLabel('📨 Send Message')
                         .setStyle(ButtonStyle.Link)
-                        .setURL(`https://www.vinted.fr//items/${item.id}/want_it/new?button_name=receiver_id=${item.id}`)
+                        .setURL(`https://www.vinted.fr/items/${item.id}/want_it/new?button_name=receiver_id=${item.id}`)
                 );
                 
             channel.send({ embeds: [embed], components: [row]});
