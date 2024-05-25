@@ -48,17 +48,13 @@ export async function createVintedItemEmbed(item) {
 
     // Add first photo
     const firstPhoto = item.photos[0];
-    if (!firstPhoto) {
-        Logger.debug(`No photos for item ${item.id}`);
-        return;
+    if (firstPhoto) {
+        if (firstPhoto.fullSizeUrl) {
+            embed.setImage(`${firstPhoto.fullSizeUrl}`);
+        }
+    } else {
+        return { embed, photosEmbeds };
     }
-
-    if (!firstPhoto.fullSizeUrl) {
-        Logger.debug(`No fullSizeUrl for photo ${firstPhoto.id}`);
-        return;
-    }
-
-    embed.setImage(`${firstPhoto.fullSizeUrl}`);
 
     // Add photos
     for (let i = 1; i < item.photos.length && i < maxPhotos; i++) {
