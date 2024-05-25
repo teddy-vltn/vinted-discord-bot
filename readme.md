@@ -38,7 +38,7 @@ cd vinted-monitor
 3. Modify the configuration file `.env` to suit your needs:
 
 > [!IMPORTANT]
-> You will need a rotating proxy for that to work, this bot works as follows: It makes x requests per seconds and if the vinted server has y items being poster per second and if y > x, then you will skip some items because you are not making enough requests. But if x > y, then you will get all the items.
+> You will need a rotating proxy for that to work, this bot works as follows: It makes x requests per seconds and if the vinted server has y items being posted per second and if y > x, then you will skip some items because you are not making enough requests. But if x > y, then you will get all the items.
 > So the more proxy you have behind the bot, the more requests per second you can make and the less items you will skip. If you feel like it is too slow, you can increase the `ALGORITHM_CONCURRENT_REQUESTS` variable in the `.env` file, i would suggest you to start with 20 and increase it by 10 until you are satisfied with the speed.
 
 > [!NOTE]
