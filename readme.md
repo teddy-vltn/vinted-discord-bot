@@ -20,10 +20,10 @@ Vinted Monitor is a bot that monitors the Vinted items route for new items and n
 
 1. Clone the repository and install the dependencies:
 
-    ```bash
-    git clone https://github.com/teddy-vltn/vinted-monitor.git
-    cd vinted-monitor
-    ```
+```bash
+git clone https://github.com/teddy-vltn/vinted-monitor.git
+cd vinted-monitor
+```
 
 2. Modify the configuration file `.env` to suit your needs:
 
@@ -61,11 +61,17 @@ PROXY_PASSWORD="fakeProxyPassword"
 
 3. Make sure you have docker installed on your machine or [Install Docker](https://docs.docker.com/engine/install/) and run the following command:
 
-    ```bash
-    docker-compose up -d --build
-    # OR
-    sudo docker-compose up -d --build
-    ```
+> [!WARN]
+> If you are on Windows, you will need to install WSL2 alongside Docker Desktop to run the following command. You will also certainly need to activate virtualization in your BIOS.
+
+```bash
+docker-compose up -d --build
+# OR
+sudo docker-compose up -d --build
+```
+
+> [!WARN]
+> If along the way you happen to modify the `.env` file or files in the other folders, you will need to rebuild the docker image by running the command above.
 
 > [!NOTE]
 > You can also connect the bot to your own database by modifying the `.env` file, and by running simply by node by running `npm start`.
