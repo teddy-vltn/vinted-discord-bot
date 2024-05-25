@@ -38,7 +38,7 @@ cd vinted-monitor
 3. Modify the configuration file `.env` to suit your needs:
 
 > [!NOTE]
-> This bot will require you to have a rotating proxy service due to high request rates. You can buy one here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral). It's very cheap if you take the 100 proxy server and 1000GB plan ($5.49 per month). The more proxies you have, the more requests you can make per second. And so the more close to real-time the bot will be.
+> This bot will require you to have a rotating proxy service due to high request rates. You can buy one here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral) (I get a small cut from that link so please use it if you want to support my work). It's very cheap if you take the 100 proxy server and 1000GB plan ($5.49 per month). The more proxies you have, the more requests you can make per second. And so the more close to real-time the bot will be. Tho if you only take 100 proxy servers the bot might skip some items in a high traffic period, in a perfect world i would recommend 500 proxy servers, and 5000GB plan ($28.41 per month).
 
 ```sh
 # Your discord bot client id and token
