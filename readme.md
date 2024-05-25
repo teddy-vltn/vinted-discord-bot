@@ -38,7 +38,8 @@ cd vinted-monitor
 3. Modify the configuration file `.env` to suit your needs:
 
 > [!IMPORTANT]
-> You will need a rotating proxy for that to work, this bot works as follows: It makes x requests per seconds and if the vinted server has y items, it will then skip some items to catch up with the latest ones. So the more proxy you have behind the bot, the more requests per second you can make and the less items you will skip. If you feel like it is too slow, you can increase the `ALGORITHM_CONCURRENT_REQUESTS` variable in the `.env` file, i would suggest you to start with 20 and increase it by 10 until you are satisfied with the speed.
+> You will need a rotating proxy for that to work, this bot works as follows: It makes x requests per seconds and if the vinted server has y items being poster per second and if y > x, then you will skip some items because you are not making enough requests. But if x > y, then you will get all the items.
+> So the more proxy you have behind the bot, the more requests per second you can make and the less items you will skip. If you feel like it is too slow, you can increase the `ALGORITHM_CONCURRENT_REQUESTS` variable in the `.env` file, i would suggest you to start with 20 and increase it by 10 until you are satisfied with the speed.
 
 > [!NOTE]
 > You can buy rotating proxies here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral) (I get a small cut from that link so please use it if you want to support my work). It's very cheap if you take the 100 proxy server and 1000GB plan ($5.49 per month), but i would highly suggest you take the 500 proxy server and 5000GB plan ($28.41 per month) if you want to have a good speed and avoid skipping items the most you can. The proxy server are often blocked by vinted aswell so basically not all proxies will work unfortunately, or you can take some residential proxies but they are more expensive.
