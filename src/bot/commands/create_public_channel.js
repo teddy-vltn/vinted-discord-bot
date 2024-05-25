@@ -44,7 +44,7 @@ export async function execute(interaction) {
         await crud.createVintedChannel({
             channelId,
             name: channelName,
-            vintedUrl: url,
+            url: url,
             isMonitoring: true,
             type: 'public',
             user: null
