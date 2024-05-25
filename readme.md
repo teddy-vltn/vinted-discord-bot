@@ -28,34 +28,34 @@ Vinted Monitor is a bot that monitors the Vinted items route for new items and n
 > [!NOTE]
 > This bot will require you to have a rotating proxy service due to high request rates. You can buy one here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral). It's very cheap if you take the 100 proxy server and 1000GB plan ($5.49 per month).
 
-    ```sh
-    # Your discord bot client id and token
-    DISCORD_CLIENT_ID="1234567890123456789"
-    DISCORD_TOKEN="MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5"
+```sh
+# Your discord bot client id and token
+DISCORD_CLIENT_ID="1234567890123456789"
+DISCORD_TOKEN="MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5"
 
-    # The user id of the bot owner, the one that will be able to create public channels
-    DISCORD_ADMIN_ID="987654321098765432"
+# The user id of the bot owner, the one that will be able to create public channels
+DISCORD_ADMIN_ID="987654321098765432"
 
-    # Don't change that unless you know what you are doing
-    MONGODB_URI="mongodb://mongodb:27017/vinted"
+# Don't change that unless you know what you are doing
+MONGODB_URI="mongodb://mongodb:27017/vinted"
 
-    # Generate a good password and username https://www.avast.com/random-password-generator
-    MONGO_EXPRESS_USERNAME="fakeUser12345"
-    MONGO_EXPRESS_PASSWORD="FakePassword67890"
+# Generate a good password and username https://www.avast.com/random-password-generator
+MONGO_EXPRESS_USERNAME="fakeUser12345"
+MONGO_EXPRESS_PASSWORD="FakePassword67890"
 
-    # Max number of private channels a user can create
-    USER_MAX_PRIVATE_CHANNELS_DEFAULT=5
+# Max number of private channels a user can create
+USER_MAX_PRIVATE_CHANNELS_DEFAULT=5
 
-    # Max requests in the queue (more concurrent requests = more requests per second = more memory usage)
-    ALGORITHM_CONCURRENT_REQUESTS=20
+# Max requests in the queue (more concurrent requests = more requests per second = more memory usage)
+ALGORITHM_CONCURRENT_REQUESTS=20
 
-    # Rotating proxy settings config (use a socks proxy http proxy are not supported)
-    # Get cheap proxies here : https://www.webshare.io/?referral_code=eh8mkj0b6ral
-    PROXY_HOST="fakeproxy.webshare.io"
-    PROXY_PORT="8080"
-    PROXY_USERNAME="fakeProxyUser"
-    PROXY_PASSWORD="fakeProxyPassword"
-    ```
+# Rotating proxy settings config (use a socks proxy http proxy are not supported)
+# Get cheap proxies here : https://www.webshare.io/?referral_code=eh8mkj0b6ral
+PROXY_HOST="fakeproxy.webshare.io"
+PROXY_PORT="8080"
+PROXY_USERNAME="fakeProxyUser"
+PROXY_PASSWORD="fakeProxyPassword"
+```
 
 3. Make sure you have docker installed on your machine or [Install Docker](https://docs.docker.com/engine/install/) and run the following command:
 
