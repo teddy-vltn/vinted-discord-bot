@@ -22,7 +22,7 @@ Vinted Monitor is a bot that monitors the Vinted items route for new items and n
 
     ```bash
     git clone https://github.com/teddy-vltn/vinted-monitor.git
-    cd vinted-monitor-no-delay
+    cd vinted-monitor
     ```
 
 2. Modify the configuration file `.env` to suit your needs:
