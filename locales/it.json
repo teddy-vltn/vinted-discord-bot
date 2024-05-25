@@ -1,0 +1,51 @@
+{
+    "enabled": "Attivato",
+    "disabled": "Disattivato",
+
+    "error": "Errore",
+    "please-wait": "Attendere prego...",
+    "not-found": "Non trovato.",
+
+    "invalid-url": "URL non valida.",
+    "invalid-url-with-example": "Fornire un URL in questo formato: es. https://www.vinted.fr/catalog?...",
+    "must-have-query-params": "L'URL deve avere parametri di query.",
+
+    "user": "Utente",
+    "channel": "Canale",
+
+    "provide-valid-url": "Fornire un URL valido.",
+
+    "removing-country": "Rimozione del paese dalla lista bianca...",
+    "user-not-found": "Utente non trovato.",
+    "channel-not-found": "Canale non trovato.",
+    "channel-not-found-nor-owned": "Canale non trovato o non possiedi questo canale.",
+    "channel-name-required": "Il nome del canale è obbligatorio, fornire un nome del canale.",
+    "country-removed": "Paese rimosso dalla lista bianca.",
+    "country-has-been-removed": "Il codice del paese {countryCode} è stato rimosso con successo dalla lista bianca {type}.",
+
+    "adding-country": "Aggiunta del paese alla lista bianca...",
+    "invalid-country-code": "{countryCode} non è un codice paese valido. Selezionare tra questi codici paese: {validCountryCodes}.",
+    "country-added": "Paese aggiunto alla lista bianca.",
+    "country-has-been-added": "Il codice del paese {countryCode} è stato aggiunto con successo alla lista bianca {type}.",
+
+    "creating-private-channel": "Creazione del canale privato...",
+    "channel-limit-exceeded": "Limite di canali superato. Puoi creare solo {limit} canale(i).",
+    "private-channel-created": "Canale privato creato.",
+    "private-channel-created-success": "Il tuo canale privato {channelName} è stato creato con successo.",
+
+    "deleting-private-channel": "Eliminazione del canale privato...",
+    "private-channel-deleted": "Canale privato eliminato.",
+    "private-channel-deleted-success": "Il tuo canale privato {channelName} è stato eliminato con successo.",
+
+    "updating-mentions": "Aggiornamento delle menzioni...",
+    "mentions-updated": "Menzioni aggiornate.",
+    "mentions-has-been-updated": "Le menzioni sono state {status} per il {type}.",
+
+    "starting-monitoring": "Avvio del monitoraggio...",
+    "monitoring-started": "Monitoraggio avviato.",
+    "monitoring-has-been-started": "Il monitoraggio è stato avviato [Ricerca catalogo Vinted]({url}), i risultati saranno inviati in questo canale.",
+
+    "stopping-monitoring": "Arresto del monitoraggio...",
+    "monitoring-stopped": "Monitoraggio arrestato.",
+    "monitoring-has-been-stopped": "Il monitoraggio è stato arrestato per questo canale. Potrebbero essere necessari alcuni secondi prima che il monitoraggio si arresti completamente."
+}

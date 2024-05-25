@@ -1,27 +1,23 @@
 {
-  "name": "vinted-real-monitor",
-  "version": "1.0.0",
-  "description": "",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "chalk": "^5.3.0",
+    "discord.js": "^14.15.2",
+    "dotenv": "^16.4.5",
+    "js-yaml": "^4.1.0",
+    "mongoose": "^8.3.4",
+    "random-useragent": "^0.5.0",
+    "socks-proxy-agent": "^8.0.3"
+  },
   "type": "module",
+  "name": "vinted-no-delay",
+  "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js",
-    "telegram": "node src/bot/telegram/bot.js",
-    "discord": "node src/bot/discord/bot.js",
-    "test_proxy": "node test/test_proxies.js",
+    "start": "node --max-old-space-size=4096 main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "axios": "^1.6.8",
-    "chalk": "^5.3.0",
-    "cookie": "^0.6.0",
-    "discord.js": "^14.14.1",
-    "js-yaml": "^4.1.0",
-    "node-telegram-bot-api": "^0.65.1",
-    "socks-proxy-agent": "^8.0.3",
-    "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.7"
-  }
+  "description": ""
 }

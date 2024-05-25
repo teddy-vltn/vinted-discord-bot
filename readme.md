@@ -1,150 +1,140 @@
-> [!NOTE]  
-> I've began working on a completly FREE real zero-delay bot some while ago where user can create their own private channels with their own query. It is actually in test phase and I'm looking for some testers. If you are interested in testing the bot, please join the [Discord Server](https://discord.gg/BGbDvpQzKK). I will provide you with the bot and the instructions. Or you can follow the #help channel in the server for more information.
+# Vinted Monitor - No Delay
 
-![Zero Delay New Free Bot](./etc/new-bot.png)
-![Zero Delay New Free Bot Commands](./etc/new-bot-commands.png)
+Vinted Monitor is a bot that monitors the Vinted items route for new items and notifies users in real-time. It is designed to work with minimal delay, ensuring that users are always up-to-date with the latest items.
 
-> [!NOTE]  
-> This bot is still well maintained and I will continue to provide support for it. If you have any questions or need help, feel free to ask in the [Discord Server](https://discord.gg/uBTPsfMQ).
+<p align="center">
+  <img src="./doc/example_items.png" alt="Example" style="max-height: 400px; width: auto;">
+</p>
 
-![Vinted Monitor](./etc/banner.png)
+## Features
 
-Quick Navigation
-----------------
+- **Real-time Monitoring**: Vinted Monitor fetches the latest items from the Vinted items route in real-time.
+- **Discord Integration**: The bot integrates with Discord and can send notifications to specific channels.
+- **Commands**: The bot supports a variety of commands that allow users to interact with it.
+- **Database Channel/User Management**: The bot can manage channels and users in a database, allowing for easy management of notifications.
+- **Language Support**: The bot will communicate with users in their set Discord language. (If available, you can add your own translations in the `locales` folder.)
 
-*   **[Setting Up the Discord Bot](#setting-up-the-discord-bot)** - Follow these instructions to add a Discord bot feature.
-*   **[Using the Telegram Bot](#using-the-telegram-bot)** - Start here to use the pre-configured bot or set up your own.
-*   **[Remaining Setup](#remaining-setup)** - Configure the bot with your preferences and start monitoring Vinted
-*   **[Using proxy servers](#using-proxy-servers)** - Learn how to use proxy servers for monitoring Vinted.
-*   **[Troubleshooting](#troubleshooting)** - Find solutions to common issues and get help from the community.
+## Setup
 
-Setting Up the Discord Bot
---------------------------
+1. Clone the repository and install the dependencies:
 
-![Demo](./etc/demo-discord.gif)
+    ```bash
+    git clone https://github.com/teddy-vltn/vinted-monitor.git
+    cd vinted-monitor-no-delay
+    ```
 
-To add a Discord bot to the Vinted Monitor, update the `config.yaml` with your Discord bot token. Obtain a token from the Discord Developer Portal.
+2. Modify the configuration file `.env` to suit your needs:
 
-```yaml
-discord:   
-  token: "YOUR_DISCORD_TOKEN"
-```
+    > [!NOTE]
+    > This bot will require you to have a rotating proxy service due to high request rates. You can buy one here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral). It's very cheap if you take the 100 proxy server and 1000GB plan ($5.49 per month).
 
-#### Start the Bot
+    ```env
+    # Your discord bot client id and token
+    DISCORD_CLIENT_ID="1234567890123456789"
+    DISCORD_TOKEN="MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5"
 
-Install dependencies and start your bot using:
+    # The user id of the bot owner, the one that will be able to create public channels
+    DISCORD_ADMIN_ID="987654321098765432"
 
-```shell
-npm install
-npm run discord
-```
+    # Don't change that unless you know what you are doing
+    MONGODB_URI="mongodb://mongodb:27017/vinted"
 
-#### Available Commands
+    # Generate a good password and username https://www.avast.com/random-password-generator
+    MONGO_EXPRESS_USERNAME="fakeUser12345"
+    MONGO_EXPRESS_PASSWORD="FakePassword67890"
 
-*   `/start <URL>` - Start the bot and receive a welcome message. It will walk you through the setup process.
-*   `/stop` - Stop the bot and receive a goodbye message.
+    # Max number of private channels a user can create
+    USER_MAX_PRIVATE_CHANNELS_DEFAULT=5
 
-#### Features
+    # Max requests in the queue (more concurrent requests = more requests per second = more memory usage)
+    ALGORITHM_CONCURRENT_REQUESTS=20
 
-*  **Multiple Monitoring Channels** - Monitor multiple Vinted URLs in different channels.
-*  **Monitoring Channels Database** - The monitoring channels are stored in a database for when the bot restarts. So you don't have to re-add the channels.
+    # Rotating proxy settings config (use a socks proxy http proxy are not supported)
+    # Get cheap proxies here : https://www.webshare.io/?referral_code=eh8mkj0b6ral
+    PROXY_HOST="fakeproxy.webshare.io"
+    PROXY_PORT="8080"
+    PROXY_USERNAME="fakeProxyUser"
+    PROXY_PASSWORD="fakeProxyPassword"
+    ```
 
-Using the Telegram Bot
-----------------------
+3. Make sure you have docker installed on your machine or [Install Docker](https://docs.docker.com/engine/install/) and run the following command:
 
-![Demo](./etc/demo-telegram.gif)
+    ```bash
+    docker-compose up -d --build
+    # OR
+    sudo docker-compose up -d --build
+    ```
 
-For a quick trial, use the showcase bot available at this link: [https://web.telegram.org/k/#@vinteditemsbot](https://web.telegram.org/k/#@vinteditemsbot) or search for `@vinteditemsbot` on Telegram.
+    > [!NOTE]
+    > You can also connect the bot to your own database by modifying the `.env` file, and by running simply by node by running `npm start`.
 
-> [!NOTE]  
-> The showcase bot may not be available 24/7. For continuous use, consider deploying your own instance.
+4. The bot should now be running and ready to use. And enjoy! (if it ain't working you can come to the discord server for help)
 
-### Deploy Your Own Telegram Bot
+    > [!NOTE]
+    > If you want to access the database, you can use the MongoDB Express interface by going to `http://localhost:8081` and logging in with the credentials you set in the `.env` file.
 
-Clone the repository to get started:
+## Usage
 
-```shell
-git clone https://github.com/teddy-vltn/vinted-monitor
-```
+The bot supports a variety of commands that allow users to interact with the bot. Here are some of the available commands:
+- `/create_public_channel`: Creates a public channel for the bot to send notifications.
+- `/create_private_channel`: Creates a private channel for a user for the bot to send notifications.
+- `/delete_public_channel`: Deletes a public channel.
+- `/delete_private_channel`: Deletes a private channel.
+- `/start_monitoring`: Starts monitoring the Vinted items route.
+- `/stop_monitoring`: Stops monitoring the Vinted items route.
+- `/set_mentions`: Sets the preferences for mentions in notifications.
+- `/add_country`: Adds a country to the list of monitored countries.
+- `/remove_country`: Removes a country from the list of monitored countries.
 
-or download the ZIP file [Direct Download](https://github.com/teddy-vltn/vinted-monitor/archive/refs/heads/main.zip).
+## Some usage examples
 
-#### Configuration
+- **I want to create a public channel where people on my server can see the monitored URL.**
 
-Configure your bot in `config.yaml` using the token obtained from BotFather on Telegram. Here's a guide to [creating a Telegram Bot](https://core.telegram.org/bots/tutorial).
+  <p align="center">
+    <img src="./doc/create_public_channel.png" alt="Create Public Channel" style="max-height: 200px; width: auto;">
+  </p>
 
-```yaml
-telegram:   
-  token: "YOUR_TELEGRAM_TOKEN"
-```
+- **I want to create a private channel where I can see the monitored URL.**
 
-Install dependencies and start your bot using:
+  <p align="center">
+    <img src="./doc/create_private_channel.png" alt="Create Private Channel" style="max-height: 200px; width: auto;">
+  </p>
 
-```shell
-npm install 
-npm run telegram
-```
+- **I want to make a whitelist of countries that I want to monitor but I misspell the country code.**
 
-#### Available Commands
+  <p align="center">
+    <img src="./doc/add_country_error.png" alt="Add Country" style="max-height: 200px; width: auto;">
+  </p>
 
-*   `/start` - Start the bot and receive a welcome message. It will walk you through the setup process.
-*   `/stop` - Stop the bot and receive a goodbye message.
+- **I want to set mentions so I get a notification when a new item is found.**
 
-### Remaining Setup (Optional)
+  <p align="center">
+    <img src="./doc/set_mentions.png" alt="Set Mentions" style="max-height: 200px; width: auto;">
+  </p>
 
-Regardless of the platform (Telegram or Discord), set your item check interval and proxy settings in `config.yaml`:
+## Database Schema
 
-```yaml
-interval: 3 # Interval in seconds for checking new items on Vinted
+The bot uses a database to manage channels and users. Here is the schema for the database:
 
-use_proxies: false # Set to true if you want to use a proxy server
+<p align="center">
+  <img src="./doc/relations.png" alt="Database Schema" style="max-height: 200px; width: auto;">
+</p>
 
-# List of proxy configurations for handling multiple proxy servers
-proxies:
-  - host: "YOUR_PROXY_IP"  # Proxy server IP address
-    port: "YOUR_PROXY_PORT"            # Proxy server port
-    username: "YOUR_PROXY_USERNAME"       # Proxy authentication username
-    password: "YOUR_PROXY_PASSWORD"  # Proxy authentication password
-    type: "YOUR_PROXY_PROTOCOL"           # Proxy type, e.g., socks, http
-```
+In this schema, preferences are a JSON object that stores the preferences for the user. When a user creates a channel, their preferences will transfer to the channel, but individual channel preferences will override the user preferences.
 
-### Using proxy servers
+Available preferences:
+- Countries: A list of countries to monitor.
+- Language: The language of the notifications.
+- Currency: The currency of the notifications.
+- Mention: The mention preferences for the notifications.
 
-If you want to use a proxy server, set `use_proxies` to `true` and add your proxy configurations to the `proxies` list.
+> [!NOTE]
+> Some preferences aren't fully supported yet.
 
-#### Example
+## Regarding AutoBuy
 
-```yaml
-use_proxies: true
+The bot does not support autobuying items. It is designed to monitor the Vinted items route for new items and notify users in real-time. Users can then manually purchase the items they are interested in.
 
-proxies:
-  - host: "x.x.x.x"
-    port: "xxxx"
-    username: "username"
-    password: "password"
-    type: "socks"
-```
+AutoBuy can be extremely dangerous and can lead to account suspension or even legal action. We do not condone the use of AutoBuy and will not provide support for it.
 
-You can add multiple proxy configurations to the list for handling multiple proxy servers.
-
-#### Example
-
-```yaml
-proxies:
-  - host: "x.x.x.x"
-    port: "xxxx"
-    username: "username"
-    password: "password"
-    type: "socks"
-  - host: "y.y.y.y"
-    port: "xxxx"
-    ...
-```
-
-### Troubleshooting
-
-If you encounter any issues, ensure that the configuration is correct and the bot is running.
-
-Make sure you have Node.js installed on your system. If not, download it from the [official website](https://nodejs.org/).
-
-Finally, check the `app.log` for logs and troubleshooting assistance, or join the community on [Discord](https://discord.gg/HgMHRjXqhQ) for support.
+By giving access to your OAuth2 token, you are putting yourself at risk.

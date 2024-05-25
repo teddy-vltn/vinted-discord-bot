@@ -1,0 +1,51 @@
+{
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+
+    "error": "Error",
+    "please-wait": "Please wait...",
+    "not-found": "Not found.",
+
+    "invalid-url": "Invalid URL.",
+    "invalid-url-with-example": "Please provide an url in this format: eg. https://www.vinted.fr/catalog?...",
+    "must-have-query-params": "URL must have query parameters.",
+
+    "user": "User",
+    "channel": "Channel",
+
+    "provide-valid-url": "Please provide a valid URL.",
+
+    "removing-country": "'Removing country from whitelist...'",
+    "user-not-found": "User not found.",
+    "channel-not-found": "Channel not found.",
+    "channel-not-found-nor-owned": "Channel not found or you don't own this channel.",
+    "channel-name-required": "Channel name is required, please provide a channel name",
+    "country-removed": "Country removed from whitelist.",
+    "country-has-been-removed": "The country code {countryCode} has been successfully removed from the {type} whitelist.",
+
+    "adding-country": "Adding country to whitelist...",
+    "invalid-country-code": "The {countryCode} is not a valid country code. Please select from one of those countries code : {validCountryCodes}",
+    "country-added": "Country added to whitelist.",
+    "country-has-been-added": "The country code {countryCode} has been successfully added to the {type} whitelist.",
+
+    "creating-private-channel": "Creating private channel...",
+    "channel-limit-exceeded": "Channel limit exceeded. You can only create {limit} channel(s).",
+    "private-channel-created": "Private channel created.",
+    "private-channel-created-success": "YOur private channel {channelName} has been successfully created.",
+
+    "deleting-private-channel": "Deleting private channel...",
+    "private-channel-deleted": "Private channel deleted.",
+    "private-channel-deleted-success": "Your private channel {channelName} has been successfully deleted.",
+
+    "updating-mentions": "Updating mentions...",
+    "mentions-updated": "Mention updated.",
+    "mentions-has-been-updated": "The mentions have been {status} for the {type}.",
+
+    "starting-monitoring": "Starting monitoring...",
+    "monitoring-started": "Monitoring started.",
+    "monitoring-has-been-started": "The monitoring has been started [Vinted Catalog Search]({url}).",
+
+    "stopping-monitoring": "Stopping monitoring...",
+    "monitoring-stopped": "Monitoring stopped.",
+    "monitoring-has-been-stopped": "The monitoring has been stopped."
+}

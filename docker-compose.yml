@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  app:
+    image: node:18.18.0
+    container_name: vinted_app
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    command: sh -c "npm install && npm start"
+    depends_on:
+      - mongodb
+    networks:
+      - vinted-network
+    env_file:
+      - .env
+      - .env.local
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_vinted
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - mongodb_data_container:/data/db
+    networks:
+      - vinted-network
+    env_file:
+      - .env
+      - .env.local
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo_express_vinted
+    depends_on:
+      - mongodb
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_BASICAUTH_USERNAME: ${MONGO_EXPRESS_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${MONGO_EXPRESS_PASSWORD}
+    networks:
+      - vinted-network
+    env_file:
+      - .env
+      - .env.local
+
+volumes:
+  mongodb_data_container:
+
+networks:
+  vinted-network:

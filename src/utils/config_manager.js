@@ -1,56 +1,73 @@
+import dotenv from 'dotenv';
+import path from 'path';
 import fs from 'fs';
-import yaml from 'js-yaml';
-import { ProxyConfig } from '../entities/proxy_config.js';
 
+dotenv.config();
+
+// Check if .env.local exists and load environment variables from it, overriding the default .env values
+const envLocalPath = path.resolve(process.cwd(), '.env.local');
+if (fs.existsSync(envLocalPath)) {
+    dotenv.config({ path: envLocalPath, override: true });
+}
+
+/**
+ * Static class to manage application configurations.
+ */
 class ConfigurationManager {
-    constructor(baseConfigPath) {
-        this.baseConfigPath = baseConfigPath;
-        this.localConfigPath = baseConfigPath.replace(/\.yaml$/, '.local.yaml');
-        this.config = this.loadConfig();
+    /**
+     * Retrieves the Discord configuration section from environment variables.
+     * @returns {Object} Discord configuration object.
+     */
+    static getDiscordConfig() {
+        return {
+            client_id: process.env.DISCORD_CLIENT_ID,
+            token: process.env.DISCORD_TOKEN,
+            admin_id: process.env.DISCORD_ADMIN_ID
+        };
+    }
+    
+    /**
+     * Retrieves the MongoDB configuration section from environment variables.
+     * @returns {Object} MongoDB configuration object.
+     */
+    static getMongoDBConfig() {
+        return {
+            uri: process.env.MONGODB_URI
+        };
     }
 
-    loadConfig() {
-        let config = {};
-        // Load the base configuration file
-        if (fs.existsSync(this.baseConfigPath)) {
-            config = yaml.load(fs.readFileSync(this.baseConfigPath, 'utf8'));
-        }
-
-        // Check if the local configuration file exists and merge it
-        if (fs.existsSync(this.localConfigPath)) {
-            const localConfig = yaml.load(fs.readFileSync(this.localConfigPath, 'utf8'));
-            config = localConfig
-        }
-
-        return config;
+    /**
+     * Retrieves the user configuration from environment variables.
+     * @returns {Object} User configuration object.
+     */
+    static getUserConfig() {
+        return {
+            max_private_channels_default: process.env.USER_MAX_PRIVATE_CHANNELS_DEFAULT
+        };
     }
 
-    isProxyEnabled() {
-        return this.config.use_proxies;
+    /**
+     * Retrieves the algorithm settings from environment variables.
+     * @returns {Object} Algorithm settings object.
+     */
+    static getAlgorithmSettings() {
+        return {
+            concurrent_requests: process.env.ALGORITHM_CONCURRENT_REQUESTS
+        };
     }
 
-    getTelegramToken() {
-        return this.config.telegram.token;
+    /**
+     * Retrieves the rotating proxy configuration from environment variables.
+     * @returns {Array} Array of proxy configurations.
+     */
+    static getRotatingProxyConfig() {
+        return {
+                host: process.env.PROXY_HOST,
+                port: process.env.PROXY_PORT,
+                username: process.env.PROXY_USERNAME,
+                password: process.env.PROXY_PASSWORD
+            }
     }
-
-    getDiscordToken() {
-        return this.config.discord.token;
-    }
-
-    getProxies() {
-        if (!this.isProxyEnabled()) {
-            return [];
-        }
-
-        // return array of ProxyConfig instances
-        return this.config.proxies.map(proxy => new ProxyConfig(proxy.host, proxy.port, proxy.username, proxy.password, proxy.type));
-    }
-
-    getInterval() {
-        return this.config.interval * 1000;
-    }
-
 }
 
 export default ConfigurationManager;
-

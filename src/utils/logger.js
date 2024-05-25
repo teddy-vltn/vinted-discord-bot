@@ -33,8 +33,9 @@ class Logger {
         let logMessage = `${timestamp} ${formattedLevel}: ${message}`;
 
         if (includeSource) {
-            const callSource = Logger.getCallSource();
-            logMessage += ` (Called from: ${callSource})`;
+            // get stack of the message
+            const source = Logger.getCallSource();
+            logMessage += ` [${source}]`;
         }
 
         console.log(logMessage);
