@@ -63,6 +63,7 @@ ALGORITHM_CONCURRENT_REQUESTS=20
 
 # Rotating proxy settings config (use a socks proxy http proxy are not supported)
 # Get cheap proxies here : https://www.webshare.io/?referral_code=eh8mkj0b6ral
+# And go on that page : https://proxy2.webshare.io/proxy/rotating and set the protocol to socks5 and username/password authentification
 PROXY_HOST="fakeproxy.webshare.io"
 PROXY_PORT="8080"
 PROXY_USERNAME="fakeProxyUser"
