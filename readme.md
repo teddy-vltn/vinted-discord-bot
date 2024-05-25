@@ -1,7 +1,5 @@
 # Vinted Monitor - No Delay
 
-Stop wasting your money on overpriced subscriptions for Vinted Monitor bots. This bot is free and open-source, and you can host it yourself. It is designed to work with minimal delay, ensuring that users are always up-to-date with the latest items.
-
 Vinted Monitor is a bot that monitors the Vinted items route for new items and notifies users in real-time. It is designed to work with minimal delay, ensuring that users are always up-to-date with the latest items.
 
 <p align="center">

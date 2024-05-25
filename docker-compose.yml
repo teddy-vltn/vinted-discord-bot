@@ -17,9 +17,6 @@ services:
       - mongodb
     networks:
       - vinted-network
-    env_file:
-      - .env
-      - .env.local
 
   mongodb:
     image: mongo:latest
@@ -30,9 +27,6 @@ services:
       - mongodb_data_container:/data/db
     networks:
       - vinted-network
-    env_file:
-      - .env
-      - .env.local
 
   mongo-express:
     image: mongo-express:latest
@@ -48,9 +42,6 @@ services:
       ME_CONFIG_BASICAUTH_PASSWORD: ${MONGO_EXPRESS_PASSWORD}
     networks:
       - vinted-network
-    env_file:
-      - .env
-      - .env.local
 
 volumes:
   mongodb_data_container:
