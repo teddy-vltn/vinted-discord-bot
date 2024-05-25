@@ -2,6 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import { createBaseEmbed, sendErrorEmbed, sendWaitingEmbed } from '../components/base_embeds.js';
 import crud from '../../crud.js';
 import t from '../../t.js';
+import Logger from '../../utils/logger.js';
 
 export const data = new SlashCommandBuilder()
     .setName('start_monitoring')
