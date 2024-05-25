@@ -71,7 +71,7 @@ PROXY_PASSWORD="fakeProxyPassword"
 
 4. Make sure you have docker installed on your machine or [Install Docker](https://docs.docker.com/engine/install/) and run the following command:
 
-> [!WARN]
+> [!IMPORTANT]
 > If you are on Windows, you will need to install WSL2 alongside Docker Desktop to run the following command. You will also certainly need to activate virtualization in your BIOS.
 
 ```bash
@@ -80,16 +80,24 @@ docker-compose up -d --build
 sudo docker-compose up -d --build
 ```
 
-> [!WARN]
+> [!IMPORTANT]
 > If along the way you happen to modify the `.env` file or files in the other folders, you will need to rebuild the docker image by running the command above.
 
-> [!NOTE]
+> [!TIP]
 > You can also connect the bot to your own database by modifying the `.env` file, and by running simply by node by running `npm start`.
 
 5. The bot should now be running and ready to use. And enjoy! (if it ain't working you can come to the discord server for help https://discord.gg/CDv9b8cPXU)
 
 > [!NOTE]
 > If you want to access the database, you can use the MongoDB Express interface by going to `http://localhost:8081` and logging in with the credentials you set in the `.env` file.
+
+6?. If you want to stop the bot, you can run the following command:
+
+```bash
+docker-compose down
+# OR
+sudo docker-compose down
+```
 
 ## Usage
 
