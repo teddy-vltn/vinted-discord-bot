@@ -32,7 +32,7 @@ cd vinted-monitor
 - Go to the "Bot" tab and click on "Add Bot".
 - Copy the "Client ID" and "Token" and paste them into the `.env` file.
 - Give intent permissions to the bot by going to the "Bot" tab and enabling the "Presence Intent" and "Server Members Intent".
-- Go to the "OAuth2" tab and select the "bot" scope.
+- Invite the bot with admin permissions to your server by going to the "OAuth2" tab and selecting the "bot" scope and the "Administrator" permission.
 - Copy the generated URL and paste it into your browser to invite the bot to your server.
 
 3. Modify the configuration file `.env` to suit your needs:
