@@ -68,7 +68,7 @@ Vinted Monitor is a bot that monitors the Vinted items route for new items and n
 > [!NOTE]
 > You can also connect the bot to your own database by modifying the `.env` file, and by running simply by node by running `npm start`.
 
-4. The bot should now be running and ready to use. And enjoy! (if it ain't working you can come to the discord server for help)
+4. The bot should now be running and ready to use. And enjoy! (if it ain't working you can come to the discord server for help https://discord.gg/CDv9b8cPXU)
 
 > [!NOTE]
 > If you want to access the database, you can use the MongoDB Express interface by going to `http://localhost:8081` and logging in with the credentials you set in the `.env` file.
