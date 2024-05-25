@@ -25,8 +25,8 @@ Vinted Monitor is a bot that monitors the Vinted items route for new items and n
 
 2. Modify the configuration file `.env` to suit your needs:
 
-    > [!NOTE]
-    > This bot will require you to have a rotating proxy service due to high request rates. You can buy one here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral). It's very cheap if you take the 100 proxy server and 1000GB plan ($5.49 per month).
+> [!NOTE]
+> This bot will require you to have a rotating proxy service due to high request rates. You can buy one here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral). It's very cheap if you take the 100 proxy server and 1000GB plan ($5.49 per month).
 
     ```env
     # Your discord bot client id and token
@@ -65,13 +65,13 @@ Vinted Monitor is a bot that monitors the Vinted items route for new items and n
     sudo docker-compose up -d --build
     ```
 
-    > [!NOTE]
-    > You can also connect the bot to your own database by modifying the `.env` file, and by running simply by node by running `npm start`.
+> [!NOTE]
+> You can also connect the bot to your own database by modifying the `.env` file, and by running simply by node by running `npm start`.
 
 4. The bot should now be running and ready to use. And enjoy! (if it ain't working you can come to the discord server for help)
 
-    > [!NOTE]
-    > If you want to access the database, you can use the MongoDB Express interface by going to `http://localhost:8081` and logging in with the credentials you set in the `.env` file.
+> [!NOTE]
+> If you want to access the database, you can use the MongoDB Express interface by going to `http://localhost:8081` and logging in with the credentials you set in the `.env` file.
 
 ## Usage
 
