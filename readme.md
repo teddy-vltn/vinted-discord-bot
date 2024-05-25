@@ -42,7 +42,7 @@ cd vinted-monitor
 > So the more proxy you have behind the bot, the more requests per second you can make and the less items you will skip. If you feel like it is too slow, you can increase the `ALGORITHM_CONCURRENT_REQUESTS` variable in the `.env` file, i would suggest you to start with 20 and increase it by 10 until you are satisfied with the speed.
 
 > [!NOTE]
-> You can buy rotating proxies here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral) (I get a small cut from that link so please use it if you want to support my work). It's very cheap if you take the 100 proxy server and 1000GB plan ($5.49 per month), but i would highly suggest you take the 500 proxy server and 5000GB plan ($28.41 per month) if you want to have a good speed and avoid skipping items the most you can. The proxy server are often blocked by vinted aswell so basically not all proxies will work unfortunately, or you can take some residential proxies but they are more expensive.
+> You can buy rotating proxies here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral) (I get a small cut from that link so please use it if you want to support my work). It's very cheap if you take the 100 proxy server and 1000GB plan ($5.49 per month), but i would highly suggest you take the 500 proxy server and 5000GB plan ($28.41 per month) if you want to have a good speed and avoid skipping items the most you can. The proxy server are often blocked by vinted aswell so basically not all proxies will work unfortunately, or you can take some residential proxies but they are more expensive. And try to set your proxies locations to France or nearby countries.
 
 ```sh
 # Your discord bot client id and token
