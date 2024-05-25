@@ -1,5 +1,6 @@
 import { EmbedBuilder, ActionRowBuilder } from "discord.js";
 import { createBaseActionButton, createBaseEmbed, createBaseUrlButton } from "./base_embeds.js";
+import Logger from "../../utils/logger.js";
 
 function getNumberOfStars(rating) {
     rating = rating * 5;
@@ -47,6 +48,16 @@ export async function createVintedItemEmbed(item) {
 
     // Add first photo
     const firstPhoto = item.photos[0];
+    if (!firstPhoto) {
+        Logger.debug(`No photos for item ${item.id}`);
+        return;
+    }
+
+    if (!firstPhoto.fullSizeUrl) {
+        Logger.debug(`No fullSizeUrl for photo ${firstPhoto.id}`);
+        return;
+    }
+
     embed.setImage(`${firstPhoto.fullSizeUrl}`);
 
     // Add photos
