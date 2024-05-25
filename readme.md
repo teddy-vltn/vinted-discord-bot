@@ -25,10 +25,20 @@ git clone https://github.com/teddy-vltn/vinted-monitor.git
 cd vinted-monitor
 ```
 
-2. Modify the configuration file `.env` to suit your needs:
+2. Create a Discord bot in Discord's Developer Portal and invite it to your server:
+
+- Go to the [Discord Developer Portal](https://discord.com/developers/applications).
+- Click on "New Application" and give your bot a name.
+- Go to the "Bot" tab and click on "Add Bot".
+- Copy the "Client ID" and "Token" and paste them into the `.env` file.
+- Give intent permissions to the bot by going to the "Bot" tab and enabling the "Presence Intent" and "Server Members Intent".
+- Go to the "OAuth2" tab and select the "bot" scope.
+- Copy the generated URL and paste it into your browser to invite the bot to your server.
+
+3. Modify the configuration file `.env` to suit your needs:
 
 > [!NOTE]
-> This bot will require you to have a rotating proxy service due to high request rates. You can buy one here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral). It's very cheap if you take the 100 proxy server and 1000GB plan ($5.49 per month).
+> This bot will require you to have a rotating proxy service due to high request rates. You can buy one here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral). It's very cheap if you take the 100 proxy server and 1000GB plan ($5.49 per month). The more proxies you have, the more requests you can make per second. And so the more close to real-time the bot will be.
 
 ```sh
 # Your discord bot client id and token
@@ -59,7 +69,7 @@ PROXY_USERNAME="fakeProxyUser"
 PROXY_PASSWORD="fakeProxyPassword"
 ```
 
-3. Make sure you have docker installed on your machine or [Install Docker](https://docs.docker.com/engine/install/) and run the following command:
+4. Make sure you have docker installed on your machine or [Install Docker](https://docs.docker.com/engine/install/) and run the following command:
 
 > [!WARN]
 > If you are on Windows, you will need to install WSL2 alongside Docker Desktop to run the following command. You will also certainly need to activate virtualization in your BIOS.
@@ -76,7 +86,7 @@ sudo docker-compose up -d --build
 > [!NOTE]
 > You can also connect the bot to your own database by modifying the `.env` file, and by running simply by node by running `npm start`.
 
-4. The bot should now be running and ready to use. And enjoy! (if it ain't working you can come to the discord server for help https://discord.gg/CDv9b8cPXU)
+5. The bot should now be running and ready to use. And enjoy! (if it ain't working you can come to the discord server for help https://discord.gg/CDv9b8cPXU)
 
 > [!NOTE]
 > If you want to access the database, you can use the MongoDB Express interface by going to `http://localhost:8081` and logging in with the credentials you set in the `.env` file.
