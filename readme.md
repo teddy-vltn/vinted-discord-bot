@@ -28,7 +28,7 @@ Vinted Monitor is a bot that monitors the Vinted items route for new items and n
 > [!NOTE]
 > This bot will require you to have a rotating proxy service due to high request rates. You can buy one here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral). It's very cheap if you take the 100 proxy server and 1000GB plan ($5.49 per month).
 
-    ```env
+    ```sh
     # Your discord bot client id and token
     DISCORD_CLIENT_ID="1234567890123456789"
     DISCORD_TOKEN="MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5"
