@@ -1,6 +1,10 @@
 import { User, VintedChannel } from "./database.js";
 import EventEmitter from "./utils/event_emitter.js";
 
+import ConfigurationManager from "./utils/config_manager.js";
+
+const userDefaultConfig = ConfigurationManager.getUserConfig()
+
 const eventEmitter = new EventEmitter();
 
 // CRUD Operations for User
@@ -11,7 +15,7 @@ const eventEmitter = new EventEmitter();
  * @returns {Promise<Object>} - The created user.
  */
 async function createUser({ discordId, preferences = {}, channels = [], lastUpdated = new Date() }) {
-    const user = new User({ discordId, preferences, channels, lastUpdated });
+    const user = new User({ discordId, preferences, channels, lastUpdated, maxChannels: userDefaultConfig.max_private_channels_default });
     const result = await user.save();
     eventEmitter.emit('updated');
     return result;

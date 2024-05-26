@@ -3,6 +3,8 @@ import { createBaseEmbed, sendErrorEmbed, sendWaitingEmbed } from '../components
 import { createCategoryIfNotExists, createChannelIfNotExists } from '../../services/discord_service.js';
 import crud from '../../crud.js';
 
+import ConfigurationManager from '../../utils/config_manager.js';
+
 export const data = new SlashCommandBuilder()
     .setName('create_public_channel')
     .setDescription('Create a public monitoring channel.')
@@ -22,7 +24,7 @@ export const data = new SlashCommandBuilder()
 export async function execute(interaction) {
     await sendWaitingEmbed(interaction, 'Creating public channel...');
 
-    const adminDiscordId = "220131830492299275";
+    const adminDiscordId = ConfigurationManager.getDiscordConfig().admin_id;
     if (interaction.user.id !== adminDiscordId) {
         await sendErrorEmbed(interaction, 'You do not have permission to create a public channel.');
         return;
