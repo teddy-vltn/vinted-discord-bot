@@ -51,8 +51,12 @@ export async function createVintedItemEmbed(item) {
     if (firstPhoto) {
         if (firstPhoto.fullSizeUrl) {
             embed.setImage(`${firstPhoto.fullSizeUrl}`);
+        } else {
+            Logger.error(`No fullSizeUrl for photo: ${firstPhoto}`);
+            return { embed, photosEmbeds };
         }
     } else {
+        Logger.error(`No photo for item: ${item}`);
         return { embed, photosEmbeds };
     }
 

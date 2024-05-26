@@ -67,35 +67,53 @@ async function findHighestID(cookie) {
 const activePromises = new Set();
 const concurrency = ConfigurationManager.getAlgorithmSettings().concurrent_requests;
 
-let requestPerSecond = 0;
 let consecutiveErrors = 0;
 let rateLimitErrorsPerSecond = 0;
 
 let step = 1;
 
+let lastValidItemsPerSecond = 0;
+let validItemsPerSecond = 0;
+
+let lastRequestPerSecond = 0;
+let requestPerSecond = 0;
+
 let lastPublishedTime = Date.now() - 10000;
 let idTimeSinceLastPublication = 0;
+
+let minFetchedRange = 0;
+let maxFetchedRange = 0;
 
 let currentID = 0;
 
 let fetchedIds = new Set();
 
 setInterval(() => {
-    Logger.info(`Requests per second: ${requestPerSecond}, Step: ${step}, Consecutive errors: ${consecutiveErrors}, Rate limit errors per second: ${rateLimitErrorsPerSecond}`);
-    requestPerSecond = 0;
+    Logger.info(`Requests per second: ${requestPerSecond}, Step: ${step}, Consecutive errors: ${consecutiveErrors}, Rate limit errors per second: ${rateLimitErrorsPerSecond}, Valid items per second: ${validItemsPerSecond}`);
+    Logger.debug(`Active promises: ${activePromises.size}`);
+    Logger.debug(`Current ID: ${currentID}, Last published time: ${lastPublishedTime}, ID time since last publication: ${idTimeSinceLastPublication}`); 
+    let numberOfItemBetweenRange = maxFetchedRange - minFetchedRange;
+    Logger.debug(`minFetchedRange: ${minFetchedRange}, maxFetchedRange: ${maxFetchedRange}, numberOfItemBetweenRange: ${numberOfItemBetweenRange}`);
+
     rateLimitErrorsPerSecond = 0;
+
+    lastValidItemsPerSecond = validItemsPerSecond;
+    validItemsPerSecond = 0;
+
+    lastRequestPerSecond = requestPerSecond;
+    requestPerSecond = 0;
+
+    minFetchedRange = 99999999999
+    maxFetchedRange = 0
 }, 1000);
 
 async function fetchUntilCurrentAutomatic(cookie, callback) {
-
     if (!cookie) {
         throw new Error("Cookie is required.");
     }
     
     if (rateLimitErrorsPerSecond > 3) {
-        //Logger.error("Rate limit errors per second exceeded, waiting for 1 second...");
         await new Promise(resolve => setTimeout(resolve, 3000));
-
         return;
     }
 
@@ -103,18 +121,22 @@ async function fetchUntilCurrentAutomatic(cookie, callback) {
         const id = currentID + step;
 
         currentID = id;
+
+        if (currentID < idTimeSinceLastPublication) {
+            currentID = idTimeSinceLastPublication++;
+        }
+
         requestPerSecond++;
 
         fetchedIds.add(id);
-
-        await launchFetch(id, cookie, callback);
-        
+        launchFetch(id, cookie, callback);
+        adjustStep();
     } else {
         await Promise.race(activePromises);
     }
 
+    await Promise.resolve();
 }
-
 
 function adjustStep() {
     const timeSinceLastPublication = Date.now() - lastPublishedTime;
@@ -128,23 +150,19 @@ function adjustStep() {
     } else if (timeSinceLastPublication > 5000) {
         step = Math.min(step * 2, 10); // Aggressive fetching if last publication was a while ago
     } else if (timeSinceLastPublication > 3000 && timeSinceLastPublication < 5000) {
-        step = Math.min(step + 1, 5); // Slightly aggressive fetching if last publication was a bit ago
-    } else if (timeSinceLastPublication > 2000 && timeSinceLastPublication < 3000) {
-        step = Math.min(step + 1, 2); // Slightly aggressive fetching if last publication was a bit ago
+        step = Math.min(step + 1, 3); // Slightly aggressive fetching if last publication was a bit ago
     } else {
-        step = Math.max(step / 2, 1); // Fine adjustments when very close
+        step = 1
     }
 
-    if (consecutiveErrors > 15) {
-        step = -1 * (consecutiveErrors / 15);
-        step = Math.ceil(step);
+    if (consecutiveErrors > 5) {
+        step = -2
     }
 
     step = Math.ceil(step);
 }
 
 async function launchFetch(id, cookie, callback) {
-    adjustStep();
     const fetchPromise = fetchAndHandleItemSafe(cookie, id, callback);
     activePromises.add(fetchPromise);
     await fetchPromise.finally(() => {
@@ -157,12 +175,21 @@ async function fetchAndHandleItemSafe(cookie, itemID, callback) {
 
     if (response.item) {
         callback(response.item);
+        validItemsPerSecond++;
 
         if (itemID > idTimeSinceLastPublication) {
             idTimeSinceLastPublication = itemID;
             lastPublishedTime = new Date(response.item.updated_at_ts).getTime();
         }
         consecutiveErrors = 0;
+
+        if (itemID < minFetchedRange) {
+            minFetchedRange = itemID;
+        }
+
+        if (itemID > maxFetchedRange) {
+            maxFetchedRange = itemID;
+        }
     } else if (response.code === 404) {
         consecutiveErrors++;
     } else if (response.code === 429) {

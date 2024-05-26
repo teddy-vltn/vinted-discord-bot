@@ -71,7 +71,7 @@ setInterval(async () => {
 
     await CatalogService.findHighestIDUntilSuccessful(cookie);
 
-    setInterval(async () => {
+    while (true) {
         try {
             await CatalogService.fetchUntilCurrentAutomatic(cookie, (rawItem) => {
 
@@ -99,7 +99,7 @@ setInterval(async () => {
             console.error(error);
         }
     
-    }, 10);
+    }
 
 })();
 
