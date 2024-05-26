@@ -6,12 +6,29 @@
     "please-wait": "Please wait...",
     "not-found": "Not found.",
 
+    "name": "Name",
+
+    "url": "URL",
+
     "invalid-url": "Invalid URL.",
     "invalid-url-with-example": "Please provide an url in this format: eg. https://www.vinted.fr/catalog?...",
     "must-have-query-params": "URL must have query parameters.",
 
     "user": "User",
     "channel": "Channel",
+
+    "user-id": "User ID",
+    "channel-id": "Channel ID",
+    "channel-discord-id": "Channel Discord ID",
+    "discord-id": "Discord ID",
+
+    "max-channels": "Max channels",
+    "country-whitelist": "Country whitelist",
+    "user-mentions": "User mentions",
+
+    "monitoring": "Monitoring",
+
+    "type": "Type",
 
     "provide-valid-url": "Please provide a valid URL.",
 
@@ -47,5 +64,11 @@
 
     "stopping-monitoring": "Stopping monitoring...",
     "monitoring-stopped": "Monitoring stopped.",
-    "monitoring-has-been-stopped": "The monitoring has been stopped."
+    "monitoring-has-been-stopped": "The monitoring has been stopped.",
+
+    "user-info": "User info",
+    "channel-info": "Channel info",
+
+    "user-info-success": "Find below the information about the user!",
+    "channel-info-success": "Find below the information about the channel!"
 }

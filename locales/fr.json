@@ -6,12 +6,29 @@
     "please-wait": "Veuillez patienter...",
     "not-found": "Non trouvé.",
 
+    "name": "Nom",
+
+    "url": "URL",
+
     "invalid-url": "URL invalide.",
-    "invalid-url-with-example": "Veuillez fournir une URL dans ce format : par ex. https://www.vinted.fr/catalog?...",
-    "must-have-query-params": "L'URL doit comporter des paramètres de requête.",
+    "invalid-url-with-example": "Veuillez fournir une URL dans ce format : par exemple https://www.vinted.fr/catalog?...",
+    "must-have-query-params": "L'URL doit avoir des paramètres de requête.",
 
     "user": "Utilisateur",
     "channel": "Canal",
+
+    "user-id": "ID utilisateur",
+    "channel-id": "ID du canal",
+    "channel-discord-id": "ID Discord du canal",
+    "discord-id": "ID Discord",
+
+    "max-channels": "Canaux maximum",
+    "country-whitelist": "Liste blanche des pays",
+    "user-mentions": "Mentions de l'utilisateur",
+
+    "monitoring": "Surveillance",
+
+    "type": "Type",
 
     "provide-valid-url": "Veuillez fournir une URL valide.",
 
@@ -19,17 +36,17 @@
     "user-not-found": "Utilisateur non trouvé.",
     "channel-not-found": "Canal non trouvé.",
     "channel-not-found-nor-owned": "Canal non trouvé ou vous ne possédez pas ce canal.",
-    "channel-name-required": "Le nom du canal est requis, veuillez fournir un nom de canal.",
+    "channel-name-required": "Le nom du canal est requis, veuillez fournir un nom de canal",
     "country-removed": "Pays supprimé de la liste blanche.",
     "country-has-been-removed": "Le code du pays {countryCode} a été supprimé avec succès de la liste blanche {type}.",
 
     "adding-country": "Ajout du pays à la liste blanche...",
-    "invalid-country-code": "{countryCode} n'est pas un code pays valide. Veuillez sélectionner parmi ces codes pays : {validCountryCodes}.",
+    "invalid-country-code": "Le code {countryCode} n'est pas un code de pays valide. Veuillez sélectionner l'un de ces codes pays : {validCountryCodes}",
     "country-added": "Pays ajouté à la liste blanche.",
     "country-has-been-added": "Le code du pays {countryCode} a été ajouté avec succès à la liste blanche {type}.",
 
     "creating-private-channel": "Création du canal privé...",
-    "channel-limit-exceeded": "Limite de canaux dépassée. Vous ne pouvez créer que {limit} canal(aux).",
+    "channel-limit-exceeded": "Limite de canal dépassée. Vous pouvez créer seulement {limit} canal(aux).",
     "private-channel-created": "Canal privé créé.",
     "private-channel-created-success": "Votre canal privé {channelName} a été créé avec succès.",
 
@@ -38,14 +55,20 @@
     "private-channel-deleted-success": "Votre canal privé {channelName} a été supprimé avec succès.",
 
     "updating-mentions": "Mise à jour des mentions...",
-    "mentions-updated": "Mentions mises à jour.",
+    "mentions-updated": "Mention mise à jour.",
     "mentions-has-been-updated": "Les mentions ont été {status} pour le {type}.",
 
     "starting-monitoring": "Démarrage de la surveillance...",
     "monitoring-started": "Surveillance démarrée.",
-    "monitoring-has-been-started": "La surveillance a été démarrée [Recherche de catalogue Vinted]({url}), les résultats seront envoyés dans ce canal.",
+    "monitoring-has-been-started": "La surveillance a été démarrée [Recherche de catalogue Vinted]({url}).",
 
     "stopping-monitoring": "Arrêt de la surveillance...",
     "monitoring-stopped": "Surveillance arrêtée.",
-    "monitoring-has-been-stopped": "La surveillance a été arrêtée pour ce canal. Cela peut prendre quelques secondes avant que la surveillance ne s'arrête complètement."
+    "monitoring-has-been-stopped": "La surveillance a été arrêtée.",
+
+    "user-info": "Informations sur l'utilisateur",
+    "channel-info": "Informations sur le canal",
+
+    "user-info-success": "Trouvez ci-dessous les informations sur l'utilisateur !",
+    "channel-info-success": "Trouvez ci-dessous les informations sur le canal !"
 }

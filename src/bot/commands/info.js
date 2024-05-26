@@ -26,7 +26,7 @@ export const data = new SlashCommandBuilder()
 
 export async function execute(interaction) {
     const l = interaction.locale;
-    await sendWaitingEmbed(interaction, t(l, 'retrieving-info'));
+    await sendWaitingEmbed(interaction, t(l, 'please-wait'));
 
     const type = interaction.options.getString('type');
     const channelId = interaction.options.getString('channel_id');
@@ -51,11 +51,11 @@ export async function execute(interaction) {
             const userNumberOfChannels = user.channels.length;
 
             embed.setFields([
-                { name: 'User ID', value: `${user._id} ` },
-                { name: 'Discord ID', value: `${user.discordId} ` },
-                { name: 'Channels', value: `${userNumberOfChannels} / ${user.maxChannels} `, inline: true },
-                { name: 'Country Whitelist', value: `${user.preferences.get(Preference.Countries) || []} `, inline: true },
-                { name: 'Mention User', value: `${user.preferences.get(Preference.Mention) || false} `, inline: true }
+                { name: `${t(l, 'user-id')}`, value: `${user._id} ` },
+                { name: `${t(l, 'discord-id')}`, value: `${user.discordId} ` },
+                { name: `${t(l, 'max-channels')}`, value: `${userNumberOfChannels} / ${user.maxChannels} `, inline: true },
+                { name: `${t(l, 'country-whitelist')}`, value: `${user.preferences.get(Preference.Countries) || []} `, inline: true },
+                { name: `${t(l, 'user-mentions')}`, value: `${user.preferences.get(Preference.Mention) || false} `, inline: true }
             ]);
 
         } else if (type === 'channel') {
@@ -81,14 +81,14 @@ export async function execute(interaction) {
             );
 
             embed.setFields([
-                { name: 'Channel ID', value: `${channel._id} `},
-                { name: 'Channel Discord ID', value: `${channel.channelId} ` },
-                { name: 'Name', value: `${channel.name} `, inline: true },
-                { name: 'URL', value: `${channel.url} ` },
-                { name: 'Monitoring', value: `${channel.isMonitoring} `, inline: true },
-                { name: 'Type', value: `${channel.type} `, inline: true },
-                { name: 'Country Whitelist', value: `${channel.preferences.get(Preference.Countries) || []} `, inline: true },
-                { name: 'Mention User', value: `${channel.preferences.get(Preference.Mention) || false} `, inline: true }
+                { name: `${t(l, 'channel-id')}`, value: `${channel._id} `},
+                { name: `${t(l, 'channel-discord-id')}`, value: `${channel.channelId} ` },
+                { name: `${t(l, 'name')}`, value: `${channel.name} `, inline: true },
+                { name: `${t(l, 'url')}`, value: `${channel.url} ` },
+                { name: `${t(l, 'monitoring')}`, value: `${channel.isMonitoring} `, inline: true },
+                { name: `${t(l, 'type')}`, value: `${channel.type} `, inline: true },
+                { name: `${t(l, 'country-whitelist')}`, value: `${channel.preferences.get(Preference.Countries) || []} `, inline: true },
+                { name: `${t(l, 'user-mentions')}`, value: `${channel.preferences.get(Preference.Mention) || false} `, inline: true }
             ]);
         }
 
