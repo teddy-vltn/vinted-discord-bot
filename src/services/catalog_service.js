@@ -3,6 +3,7 @@ import ProxyManager from "../utils/http_utils.js";
 import Logger from "../utils/logger.js";
 
 import ConfigurationManager from "../utils/config_manager.js";
+import { time } from "discord.js";
 
 /**
  * 
@@ -86,6 +87,8 @@ let maxFetchedRange = 0;
 
 let currentID = 0;
 
+let offset = 0;
+
 let fetchedIds = new Set();
 
 setInterval(() => {
@@ -107,6 +110,41 @@ setInterval(() => {
     maxFetchedRange = 0
 }, 1000);
 
+let computedConcurrency = concurrency;
+
+setInterval(() => {
+    // Remove fetched IDs that are older than 1 minutes
+    const now = Date.now();
+    fetchedIds = new Set([...fetchedIds].filter(id => now - id < 60000));
+}, 60000);
+
+
+setInterval(() => {
+    // compute the concurrency based on the consecutive errors and time since last publication
+    // add a concurrency of 1 if time since last publication is more than 5 seconds
+    // and remove concurrency based on the consecutive errors
+    if (consecutiveErrors > 5) {
+        computedConcurrency = Math.max(computedConcurrency - 1, 2);
+    } else {
+        computedConcurrency = Math.min(computedConcurrency + 1, concurrency);
+    }
+
+    if (lastValidItemsPerSecond === 0 && validItemsPerSecond === 0) {
+        computedConcurrency = Math.max(computedConcurrency - 1, 2);
+    }
+
+    let timeSinceLastPublication = Date.now() - lastPublishedTime;
+
+    if (timeSinceLastPublication > 10000) {
+        computedConcurrency = Math.min(computedConcurrency + 1, concurrency);
+    }
+
+    if (timeSinceLastPublication < 5000) {
+        computedConcurrency = Math.min(computedConcurrency - 1, 2);
+    }
+
+}, 100);
+
 async function fetchUntilCurrentAutomatic(cookie, callback) {
     if (!cookie) {
         throw new Error("Cookie is required.");
@@ -117,20 +155,26 @@ async function fetchUntilCurrentAutomatic(cookie, callback) {
         return;
     }
 
-    if (activePromises.size < concurrency) {
+    if (computedConcurrency < 1) {
+        computedConcurrency = 1;
+    }
+
+    if (computedConcurrency > concurrency) {
+        computedConcurrency = concurrency;
+    }
+
+    if (activePromises.size < computedConcurrency) {
+        adjustStep();
+
         const id = currentID + step;
 
         currentID = id;
 
-        if (currentID < idTimeSinceLastPublication) {
+        if ( currentID < idTimeSinceLastPublication) {
             currentID = idTimeSinceLastPublication++
         }
 
-        requestPerSecond++;
-
-        fetchedIds.add(id);
         launchFetch(id, cookie, callback);
-        adjustStep();
     } else {
         await Promise.race(activePromises);
     }
@@ -145,24 +189,32 @@ function adjustStep() {
         step = 1;
     }
 
-    if (timeSinceLastPublication > 10000) {
-        step = Math.min(step * 2 + 5, 50); // Very aggressive fetching if last publication was a long time ago
-    } else if (timeSinceLastPublication > 5000) {
-        step = Math.min(step * 2, 10); // Aggressive fetching if last publication was a while ago
+    if (timeSinceLastPublication > 20000) {
+        step = Math.min(step * 2 + 10, 50); // Very aggressive fetching if last publication was a long time ago
+    } else if (timeSinceLastPublication > 10000 && timeSinceLastPublication < 20000) {
+        step = Math.min(step * 2 + 5, 20); // Very aggressive fetching if last publication was a long time ago
+    } else if (timeSinceLastPublication > 5000 && timeSinceLastPublication < 10000) {
+        step = Math.min(step * 2, 7); // Aggressive fetching if last publication was a while ago
     } else if (timeSinceLastPublication > 3000 && timeSinceLastPublication < 5000) {
         step = Math.min(step + 1, 3); // Slightly aggressive fetching if last publication was a bit ago
-    } else {
+    } else if (timeSinceLastPublication > 2000 && timeSinceLastPublication < 3000) {
         step = 1
+    } else {
+        step = -1
     }
 
     if (consecutiveErrors > 5) {
-        step = -2
+        step = -1 
     }
 
     step = Math.ceil(step);
 }
 
 async function launchFetch(id, cookie, callback) {
+
+
+    requestPerSecond++;
+
     const fetchPromise = fetchAndHandleItemSafe(cookie, id, callback);
     activePromises.add(fetchPromise);
     await fetchPromise.finally(() => {
@@ -177,7 +229,7 @@ async function fetchAndHandleItemSafe(cookie, itemID, callback) {
         callback(response.item);
         validItemsPerSecond++;
 
-        if (itemID > idTimeSinceLastPublication) {
+        if (itemID >= idTimeSinceLastPublication) {
             idTimeSinceLastPublication = itemID;
             lastPublishedTime = new Date(response.item.updated_at_ts).getTime();
         }
@@ -192,6 +244,7 @@ async function fetchAndHandleItemSafe(cookie, itemID, callback) {
         }
     } else if (response.code === 404) {
         consecutiveErrors++;
+        offset++;
     } else if (response.code === 429) {
         rateLimitErrorsPerSecond++;
         Logger.error(`Rate limit error: ${rateLimitErrorsPerSecond}`);
