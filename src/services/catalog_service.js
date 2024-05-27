@@ -122,6 +122,10 @@ async function fetchUntilCurrentAutomatic(cookie, callback) {
 
         currentID = id;
 
+        if (currentID < idTimeSinceLastPublication) {
+            currentID = idTimeSinceLastPublication++
+        }
+
         requestPerSecond++;
 
         fetchedIds.add(id);
