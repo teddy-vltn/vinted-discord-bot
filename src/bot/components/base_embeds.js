@@ -16,9 +16,15 @@ async function createBaseEmbed(interaction, title, description, color) {
     .setTimestamp();
 
     if (interaction) {
+        let avatar = interaction.user.avatarURL();
+        if (!avatar) {
+            avatar = interaction.user.defaultAvatarURL;
+        }
+        
         embed.setFooter({
+
             text: `${interaction.user.username}`,
-            iconURL: `${interaction.user.avatarURL()}`,
+            iconURL: `${avatar}`
         });
     }
 

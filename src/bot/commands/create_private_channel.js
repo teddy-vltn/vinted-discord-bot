@@ -13,14 +13,14 @@ export const data = new SlashCommandBuilder()
             .setRequired(true));
 
 export async function execute(interaction) {
-    const l = interaction.locale;
-    await sendWaitingEmbed(interaction, t(l, 'creating-private-channel'));
-
-    const categoryOption = 'Private Channels';
-    const channelName = interaction.options.getString('channel_name');
-    const discordId = interaction.user.id;
-
     try {
+        const l = interaction.locale;
+        await sendWaitingEmbed(interaction, t(l, 'creating-private-channel'));
+
+        const categoryOption = 'Private Channels';
+        const channelName = interaction.options.getString('channel_name');
+        const discordId = interaction.user.id;
+
         // Check if the user exists and has not exceeded the channel limit
         let user = await crud.getUserByDiscordId(discordId);
         if (!user) {
