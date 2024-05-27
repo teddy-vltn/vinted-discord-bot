@@ -25,15 +25,15 @@ export const data = new SlashCommandBuilder()
             .setRequired(false));
 
 export async function execute(interaction) {
-    const l = interaction.locale
-    await sendWaitingEmbed(interaction, t(l, 'removing-country'));
-
-    const type = interaction.options.getString('type');
-    const countryCode = interaction.options.getString('country_code');
-    const channelName = interaction.options.getString('channel_name');
-    const discordId = interaction.user.id;
-
     try {
+        const l = interaction.locale
+        await sendWaitingEmbed(interaction, t(l, 'removing-country'));
+
+        const type = interaction.options.getString('type');
+        const countryCode = interaction.options.getString('country_code');
+        const channelName = interaction.options.getString('channel_name');
+        const discordId = interaction.user.id;
+
         let entity;
         if (type === 'user') {
             entity = await crud.removeUserPreference(discordId, Preference.Countries, countryCode);

@@ -30,17 +30,17 @@ export const data = new SlashCommandBuilder()
 
 
 export async function execute(interaction) {
-    const l = interaction.locale;
-    await sendWaitingEmbed(interaction, t(l, 'updating-mentions'));
-
-    const type = interaction.options.getString('type');
-    const state = interaction.options.getString('state');
-    const channelName = interaction.options.getString('channel_name');
-    const discordId = interaction.user.id;
-
-    const mention = state === 'enable';
-
     try {
+        const l = interaction.locale;
+        await sendWaitingEmbed(interaction, t(l, 'updating-mentions'));
+
+        const type = interaction.options.getString('type');
+        const state = interaction.options.getString('state');
+        const channelName = interaction.options.getString('channel_name');
+        const discordId = interaction.user.id;
+
+        const mention = state === 'enable';
+  
         let entity;
         if (type === 'user') {
             entity = await crud.setUserPreference(discordId, Preference.Mention, mention);

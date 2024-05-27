@@ -30,22 +30,22 @@ const validCountryCodes = [
 ];
 
 export async function execute(interaction) {
-    const l = interaction.locale;
-    await sendWaitingEmbed(interaction, t(l, 'adding-country'));
-
-    const type = interaction.options.getString('type');
-    const countryCode = interaction.options.getString('country_code');
-    const channelName = interaction.options.getString('channel_name');
-    const discordId = interaction.user.id;
-
-    // Validate the country code
-    if (!validCountryCodes.includes(countryCode)) {
-        const text = t(l, 'invalid-country-code', { countryCode, validCountryCodes: validCountryCodes.join(', ') });
-        await sendErrorEmbed(interaction, text);
-        return;
-    }
-
     try {
+        const l = interaction.locale;
+        await sendWaitingEmbed(interaction, t(l, 'adding-country'));
+
+        const type = interaction.options.getString('type');
+        const countryCode = interaction.options.getString('country_code');
+        const channelName = interaction.options.getString('channel_name');
+        const discordId = interaction.user.id;
+
+        // Validate the country code
+        if (!validCountryCodes.includes(countryCode)) {
+            const text = t(l, 'invalid-country-code', { countryCode, validCountryCodes: validCountryCodes.join(', ') });
+            await sendErrorEmbed(interaction, text);
+            return;
+        }
+
         let entity;
         if (type === 'user') {
             entity = await crud.addUserPreference(discordId, Preference.Countries, countryCode);

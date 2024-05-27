@@ -77,19 +77,14 @@ export async function execute(interaction) {
             return;
         }
 
-        crud.eventEmitter.on('startMonitoring', async (vintedChannel) => {
-            Logger.info(`Started monitoring Vinted channel ${vintedChannel._id}`);
+        const embed = await createBaseEmbed(
+            interaction,
+            t(l, 'monitoring-started'),
+            t(l, 'monitoring-has-been-started', { url: vintedChannel.url }),
+            0x00FF00
+        );
 
-            const embed = await createBaseEmbed(
-                interaction,
-                t(l, 'monitoring-started'),
-                t(l, 'monitoring-has-been-started', { url: vintedChannel.url }),
-                0x00FF00
-            );
-
-            await interaction.editReply({ embeds: [embed] });
-            crud.eventEmitter.off('startMonitoring');
-        });
+        await interaction.editReply({ embeds: [embed] });
 
         // Update the VintedChannel with the provided URL (if any) and set isMonitoring to true
         await crud.startVintedChannelMonitoring(vintedChannel._id, url);

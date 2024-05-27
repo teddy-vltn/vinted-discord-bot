@@ -13,17 +13,17 @@ export const data = new SlashCommandBuilder()
             .setRequired(true));
 
 export async function execute(interaction) {
-    await sendWaitingEmbed(interaction, 'Deleting public channel...');
-
-    const adminDiscordId = ConfigurationManager.getDiscordConfig().admin_id;
-    if (interaction.user.id !== adminDiscordId) {
-        await sendErrorEmbed(interaction, 'You do not have permission to delete a public channel.');
-        return;
-    }
-
-    const channelId = interaction.options.getString('channel_id');
-
     try {
+        await sendWaitingEmbed(interaction, 'Deleting public channel...');
+
+        const adminDiscordId = ConfigurationManager.getDiscordConfig().admin_id;
+        if (interaction.user.id !== adminDiscordId) {
+            await sendErrorEmbed(interaction, 'You do not have permission to delete a public channel.');
+            return;
+        }
+
+        const channelId = interaction.options.getString('channel_id');
+
         // Find the VintedChannel by channelId
         const vintedChannel = await crud.getVintedChannelById(channelId);
         if (!vintedChannel || vintedChannel.type !== 'public') {

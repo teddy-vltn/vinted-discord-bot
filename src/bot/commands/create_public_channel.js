@@ -22,19 +22,19 @@ export const data = new SlashCommandBuilder()
             .setRequired(true));
 
 export async function execute(interaction) {
-    await sendWaitingEmbed(interaction, 'Creating public channel...');
-
-    const adminDiscordId = ConfigurationManager.getDiscordConfig().admin_id;
-    if (interaction.user.id !== adminDiscordId) {
-        await sendErrorEmbed(interaction, 'You do not have permission to create a public channel.');
-        return;
-    }
-
-    const categoryOption = interaction.options.getString('category');
-    const channelName = interaction.options.getString('channel_name');
-    const url = interaction.options.getString('url');
-
     try {
+        await sendWaitingEmbed(interaction, 'Creating public channel...');
+
+        const adminDiscordId = ConfigurationManager.getDiscordConfig().admin_id;
+        if (interaction.user.id !== adminDiscordId) {
+            await sendErrorEmbed(interaction, 'You do not have permission to create a public channel.');
+            return;
+        }
+
+        const categoryOption = interaction.options.getString('category');
+        const channelName = interaction.options.getString('channel_name');
+        const url = interaction.options.getString('url');
+
         // Create the category if it does not exist
         const category = await createCategoryIfNotExists(interaction.guild.channels, categoryOption);
 

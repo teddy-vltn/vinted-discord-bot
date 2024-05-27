@@ -13,13 +13,13 @@ export const data = new SlashCommandBuilder()
 
 
 export async function execute(interaction) {
-    const l = interaction.locale;
-    await sendWaitingEmbed(interaction, t(l, 'deleting-private-channel'));
-
-    const channelName = interaction.options.getString('channel_name');
-    const discordId = interaction.user.id;
-
     try {
+        const l = interaction.locale;
+        await sendWaitingEmbed(interaction, t(l, 'deleting-private-channel'));
+
+        const channelName = interaction.options.getString('channel_name');
+        const discordId = interaction.user.id;
+
         // Get the user and ensure they exist
         let user = await crud.getUserByDiscordId(discordId);
         if (!user) {

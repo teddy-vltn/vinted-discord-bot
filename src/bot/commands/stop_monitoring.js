@@ -30,19 +30,14 @@ export async function execute(interaction) {
             return;
         }
 
-        crud.eventEmitter.on('stopMonitoring', async (vintedChannel) => { 
-            Logger.info(`Stopped monitoring Vinted channel ${vintedChannel._id}`);
+        const embed = await createBaseEmbed(
+            interaction,
+            t(l, 'monitoring-stopped'),
+            t(l, 'monitoring-has-been-stopped'),
+            0xFF0000
+        );
 
-            const embed = await createBaseEmbed(
-                interaction,
-                t(l, 'monitoring-stopped'),
-                t(l, 'monitoring-has-been-stopped'),
-                0xFF0000
-            );
-    
-            await interaction.editReply({ embeds: [embed] });
-            crud.eventEmitter.off('stopMonitoring');
-        });
+        await interaction.editReply({ embeds: [embed] });
 
         // Update the VintedChannel and set isMonitoring to false
         await crud.stopVintedChannelMonitoring(vintedChannel._id);

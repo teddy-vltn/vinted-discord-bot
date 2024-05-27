@@ -25,14 +25,14 @@ export const data = new SlashCommandBuilder()
             .setRequired(false));
 
 export async function execute(interaction) {
-    const l = interaction.locale;
-    await sendWaitingEmbed(interaction, t(l, 'please-wait'));
-
-    const type = interaction.options.getString('type');
-    const channelId = interaction.options.getString('channel_id');
-    const discordId = interaction.options.getString('user_id') || interaction.user.id;
-
     try {
+        const l = interaction.locale;
+        await sendWaitingEmbed(interaction, t(l, 'please-wait'));
+
+        const type = interaction.options.getString('type');
+        const channelId = interaction.options.getString('channel_id');
+        const discordId = interaction.options.getString('user_id') || interaction.user.id;
+
         let embed;
         if (type === 'user') {
             const user = await crud.getUserByDiscordId(discordId);
