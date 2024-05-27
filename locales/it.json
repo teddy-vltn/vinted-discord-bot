@@ -10,9 +10,9 @@
 
     "url": "URL",
 
-    "invalid-url": "URL non valida.",
+    "invalid-url": "URL non valido.",
     "invalid-url-with-example": "Si prega di fornire un URL in questo formato: es. https://www.vinted.fr/catalog?...",
-    "must-have-query-params": "L'URL deve avere parametri di query.",
+    "must-have-query-params": "L'URL deve avere dei parametri di query.",
 
     "user": "Utente",
     "channel": "Canale",
@@ -23,7 +23,7 @@
     "discord-id": "ID Discord",
 
     "max-channels": "Canali massimi",
-    "country-whitelist": "Lista bianca dei paesi",
+    "country-whitelist": "Whitelist dei paesi",
     "user-mentions": "Menzioni dell'utente",
 
     "monitoring": "Monitoraggio",
@@ -32,21 +32,21 @@
 
     "provide-valid-url": "Si prega di fornire un URL valido.",
 
-    "removing-country": "Rimozione del paese dalla lista bianca...",
+    "removing-country": "Rimozione del paese dalla whitelist...",
     "user-not-found": "Utente non trovato.",
     "channel-not-found": "Canale non trovato.",
-    "channel-not-found-nor-owned": "Canale non trovato o non possiedi questo canale.",
-    "channel-name-required": "Il nome del canale è obbligatorio, si prega di fornire un nome di canale",
-    "country-removed": "Paese rimosso dalla lista bianca.",
-    "country-has-been-removed": "Il codice paese {countryCode} è stato rimosso con successo dalla lista bianca {type}.",
+    "channel-not-found-nor-owned": "Canale non trovato o non hai accesso questo canale.",
+    "channel-name-required": "Il nome del canale è obbligatorio, si prega di fornire un nome di un canale",
+    "country-removed": "Paese rimosso dalla whitelist.",
+    "country-has-been-removed": "Il codice paese {countryCode} è stato rimosso con successo dalla whitelist {type}.",
 
-    "adding-country": "Aggiunta del paese alla lista bianca...",
+    "adding-country": "Aggiunta del paese alla whitelist...",
     "invalid-country-code": "Il codice {countryCode} non è un codice paese valido. Si prega di selezionare uno di questi codici paese: {validCountryCodes}",
-    "country-added": "Paese aggiunto alla lista bianca.",
-    "country-has-been-added": "Il codice paese {countryCode} è stato aggiunto con successo alla lista bianca {type}.",
+    "country-added": "Paese aggiunto alla whitelist.",
+    "country-has-been-added": "Il codice paese {countryCode} è stato aggiunto con successo alla whitelist {type}.",
 
     "creating-private-channel": "Creazione del canale privato...",
-    "channel-limit-exceeded": "Limite del canale superato. Puoi creare solo {limit} canale(i).",
+    "channel-limit-exceeded": "Limite di canali. Puoi creare solo {limit} canale(i).",
     "private-channel-created": "Canale privato creato.",
     "private-channel-created-success": "Il tuo canale privato {channelName} è stato creato con successo.",
 
