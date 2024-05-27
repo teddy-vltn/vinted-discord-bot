@@ -72,7 +72,7 @@ export async function execute(interaction) {
         }
 
         // Check if URL is provided or present in the VintedChannel
-        if (!url && !vintedChannel.vintedUrl) {
+        if (!url && !vintedChannel.url) {
             await sendErrorEmbed(interaction, t(l, 'provide-vaild-url') + " " + t(l, url));
             return;
         }
@@ -80,7 +80,7 @@ export async function execute(interaction) {
         const embed = await createBaseEmbed(
             interaction,
             t(l, 'monitoring-started'),
-            t(l, 'monitoring-has-been-started', { url: vintedChannel.url }),
+            t(l, 'monitoring-has-been-started', { url: url || vintedChannel.url}),
             0x00FF00
         );
 
