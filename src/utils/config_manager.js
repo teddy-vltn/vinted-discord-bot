@@ -68,6 +68,10 @@ class ConfigurationManager {
                 password: process.env.PROXY_PASSWORD
             }
     }
+
+    static getDevMode() {
+        return process.env.DEV_MODE == 1 ? true : false;
+    }
 }
 
 export default ConfigurationManager;

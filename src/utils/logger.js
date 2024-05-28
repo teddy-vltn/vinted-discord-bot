@@ -2,6 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
 
+import ConfigurationManager from './config_manager.js';
+
+const devMode = ConfigurationManager.getDevMode();
+
 class Logger {
     static logFilePath = path.join(process.cwd(), 'app.log');
 
@@ -24,10 +28,15 @@ class Logger {
     }
 
     static debug(message) {
+        if (!devMode) {
+            return;
+        }
+
         Logger.log('DEBUG', message, chalk.magenta);
     }
 
     static log(level, message, colorFn, includeSource = false) {
+
         const timestamp = new Date().toISOString();
         const formattedLevel = colorFn(`[${level}]`);
         let logMessage = `${timestamp} ${formattedLevel}: ${message}`;

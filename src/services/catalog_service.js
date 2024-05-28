@@ -92,7 +92,7 @@ let offset = 0;
 let fetchedIds = new Set();
 
 setInterval(() => {
-    Logger.info(`Requests per second: ${requestPerSecond}, Step: ${step}, Consecutive errors: ${consecutiveErrors}, Rate limit errors per second: ${rateLimitErrorsPerSecond}, Valid items per second: ${validItemsPerSecond}`);
+    Logger.debug(`Requests per second: ${requestPerSecond}, Step: ${step}, Consecutive errors: ${consecutiveErrors}, Rate limit errors per second: ${rateLimitErrorsPerSecond}, Valid items per second: ${validItemsPerSecond}`);
     Logger.debug(`Active promises: ${activePromises.size}`);
     Logger.debug(`Current ID: ${currentID}, Last published time: ${lastPublishedTime}, ID time since last publication: ${idTimeSinceLastPublication}`); 
     let numberOfItemBetweenRange = maxFetchedRange - minFetchedRange;
@@ -135,11 +135,11 @@ setInterval(() => {
 
     let timeSinceLastPublication = Date.now() - lastPublishedTime;
 
-    if (timeSinceLastPublication > 10000) {
+    if (timeSinceLastPublication > 6000) {
         computedConcurrency = Math.min(computedConcurrency + 1, concurrency);
     }
 
-    if (timeSinceLastPublication < 5000) {
+    if (timeSinceLastPublication < 1000) {
         computedConcurrency = Math.min(computedConcurrency - 1, 2);
     }
 
