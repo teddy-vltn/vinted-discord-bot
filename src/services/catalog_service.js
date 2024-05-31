@@ -175,7 +175,7 @@ async function fetchUntilCurrentAutomatic(cookie, callback) {
     adjustConcurrency();
 
     // Check if the number of active promises is less than the computed concurrency
-    if (activePromises.size < computedConcurrency) {
+    /*if (activePromises.size < computedConcurrency) {
         // Adjust the fetching step based on time since last publication and consecutive errors
         adjustStep();
 
@@ -194,7 +194,27 @@ async function fetchUntilCurrentAutomatic(cookie, callback) {
         // If the number of active promises is equal to the computed concurrency,
         // wait for the first promise in the set to resolve
         await Promise.race(activePromises);
+    }*/
+
+    while ( activePromises.size < computedConcurrency ) {
+        // Adjust the fetching step based on time since last publication and consecutive errors
+        adjustStep();
+
+        // Calculate the ID for the next item to fetch
+        const id = currentID + step;
+        currentID = id;
+
+        // Check if the current ID is less than the ID time since last publication
+        if (currentID < idTimeSinceLastPublication) {
+            currentID = idTimeSinceLastPublication++;
+        }
+
+        // Launch the fetch for the calculated ID
+        launchFetch(id, cookie, callback);
     }
+
+    // Wait for the first promise in the set to resolve
+    await Promise.race(activePromises);
 
     // Wait for the Promise to resolve
     await Promise.resolve();
@@ -223,10 +243,10 @@ function adjustStep() {
     } else if (timeSinceLastPublication > 10000) {
         // If it's been longer than 10 seconds since the last publication, double the step and add 5
         step = Math.min(step * 2 + 1, 10);
-    } else if (timeSinceLastPublication > 5000) {
+    } else if (timeSinceLastPublication > 6500) {
         // If it's been longer than 5 seconds since the last publication, double the step
         step = Math.min(step * 2, 3);
-    } else if (timeSinceLastPublication > 3000) {
+    } else if (timeSinceLastPublication > 4000) {
         // If it's been longer than 3 seconds since the last publication, increase the step by 1
         step = Math.min(step + 1, 2);
     } else if (timeSinceLastPublication > 2000) {
