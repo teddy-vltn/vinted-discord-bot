@@ -24,6 +24,10 @@ const errorStatusMap = {};
  */
 async function executeWithDetailedHandling(asyncFn, ...params) {
     try {
+        if (typeof asyncFn !== 'function') {
+            throw new TypeError('asyncFn must be a function');
+        }
+
         const result = await asyncFn(...params);
 
         return { 
@@ -32,15 +36,17 @@ async function executeWithDetailedHandling(asyncFn, ...params) {
             ...result
         };
     } catch (error) {
+        if (!error) {
+            throw new Error('An unknown error occurred');
+        }
 
-        //Logger.error(`Error executing: ${error.message}, ${error.stack}`);
         // Determine the status code based on the type of error
         const statusCode = determineStatusCode(error);
 
         return {
             success: false,
             code: statusCode,
-            error: error.message
+            error: error.message || 'An unknown error occurred'
         };
     }
 }
