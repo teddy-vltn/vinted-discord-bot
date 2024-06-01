@@ -63,9 +63,15 @@ const sendToChannel = async (item, user, vintedChannel) => {
     );
 };
 
+let allMonitoringChannels = await crud.getAllMonitoredVintedChannels();
+
+crud.eventEmitter.on('updated', async () => {
+    allMonitoringChannels = await crud.getAllMonitoredVintedChannels();
+    Logger.debug('Updated vinted channels');
+});
+
 const monitorChannels = () => {
     const handleItem = async (rawItem) => {
-        const allMonitoringChannels = await crud.getAllVintedChannels();
         const item = new VintedItem(rawItem);
 
         for (const vintedChannel of allMonitoringChannels) {

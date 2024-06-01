@@ -51,7 +51,7 @@ export async function execute(interaction) {
             const user = await crud.getUserByDiscordId(discordId);
 
             // Find the channel by name
-            const channel = user.channels.find(channel => channel.name === channelName && channel.user.equals(user._id));
+            const channel = crud.isUserOwnerOfChannel(user.channels, channelName);
             if (!channel) {
                 await sendErrorEmbed(interaction, t(l, 'channel-not-found'));
                 return;

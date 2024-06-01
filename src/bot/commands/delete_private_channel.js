@@ -28,7 +28,7 @@ export async function execute(interaction) {
         }
 
         // Find the VintedChannel by channel name and user
-        const vintedChannel = user.channels.find(channel => channel.name === channelName && channel.user.equals(user._id));
+        const vintedChannel = crud.isUserOwnerOfChannel(user.channels, channelName);
         if (!vintedChannel) {
             await sendErrorEmbed(interaction, t(l, 'channel-not-found'));
             return;

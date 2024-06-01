@@ -42,9 +42,13 @@ function matchVintedItemToSearchParams(item, searchParams, countries_codes = [])
     const lowerCaseItem = {
         title: item.title.toLowerCase(),
         description: item.description.toLowerCase(),
+        brand: item.brand.toLowerCase()
     };
-    if (searchParams.search_text && !lowerCaseItem.title.includes(searchParams.search_text.toLowerCase()) && !lowerCaseItem.description.includes(searchParams.search_text.toLowerCase())) {
-        return false;
+    if (searchParams.search_text) {
+        const searchText = searchParams.search_text.toLowerCase();
+        if (!lowerCaseItem.title.includes(searchParams.search_text) && !lowerCaseItem.description.includes(searchText) && !lowerCaseItem.brand.includes(searchText)) {
+            return false;
+        }
     }
 
     // Check catalog IDs
@@ -52,35 +56,36 @@ function matchVintedItemToSearchParams(item, searchParams, countries_codes = [])
         return false;
     }
 
+    if (searchParams.price_from && item.priceNumeric < searchParams.price_from) {
+        return false;
+    }
+
+    if (searchParams.price_to && item.priceNumeric > searchParams.price_to) {
+        return false;
+    }
+
     // Check other parameters
     const searchParamsMap = new Map([
-        ['brand_ids', 'brand'],
-        ['size_ids', 'size'],
-        ['price_from', 'price'],
-        ['price_to', 'price'],
-        ['status_ids', 'status'],
+        ['brand_ids', 'brandId'],
+        ['size_ids', 'sizeId'],
+        ['status_ids', 'statusId'],
         ['material_ids', 'material'],
-        ['color_ids', 'color'],
-        ['catalog', 'catalogId'],
+        ['color_ids', 'colorId'],
     ].map(([key, value]) => [key, item[value]]));
-
-    console.log("Item: ", item.title, " searchParamsMap: ", searchParamsMap);
 
     for (const [key, value] of searchParamsMap) {
         if (searchParams[key] !== undefined && searchParams[key] !== null) {
             if (Array.isArray(searchParams[key])) {
-                if (searchParams[key].length > 0 && !searchParams[key].includes(value)) {
+                if (searchParams[key].length > 0 && !searchParams[key].includes(value.toString())) {
                     return false;
                 }
             } else {
-                if (searchParams[key] !== value) {
+                if (searchParams[key] !== value.toString()) {
                     return false;
                 }
             }
         }
     }
-
-    console.log("Item matched search parameters: ", item.title);
 
     // If all criteria are met, return true
     return true;

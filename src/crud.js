@@ -21,6 +21,16 @@ async function createUser({ discordId, preferences = {}, channels = [], lastUpda
     return result;
 }
 
+function isUserOwnerOfChannel(user_channels, channel_name) {
+    return user_channels.find(channel => isChannelNameEqual(channel, channel_name));
+}
+
+function isChannelNameEqual(channel, channel_name) {
+    const a = channel.name.toLowerCase();
+    const b = channel_name.toLowerCase();
+    return a === b || a.endsWith(`_${b}`);
+}
+
 /**
  * Get a user by their ID.
  * @param {string} id - The user ID.
@@ -189,6 +199,10 @@ async function getAllVintedChannels() {
     return await VintedChannel.find().populate('user');
 }
 
+async function getAllMonitoredVintedChannels() {
+    return await VintedChannel.find({ isMonitoring: true }).populate('user');
+}
+
 /**
  * Update a Vinted channel.
  * @param {string} id - The channel ID.
@@ -296,6 +310,7 @@ async function removeChannelFromUser(userId, channelId) {
 
 const crud = {
     createUser,
+    isUserOwnerOfChannel,
     getUserById,
     getUserByDiscordId,
     updateUser,
@@ -310,6 +325,7 @@ const crud = {
     createVintedChannel,
     getVintedChannelById,
     getAllVintedChannels,
+    getAllMonitoredVintedChannels,
     updateVintedChannel,
     deleteVintedChannel,
     checkVintedChannelExists,
