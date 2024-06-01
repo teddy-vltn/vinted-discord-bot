@@ -202,11 +202,12 @@ async function fetchUntilCurrentAutomatic(cookie, callback) {
 
         // Calculate the ID for the next item to fetch
         const id = currentID + step;
-        currentID = id;
 
         // Check if the current ID is less than the ID time since last publication
-        if (currentID < idTimeSinceLastPublication) {
-            currentID = idTimeSinceLastPublication++;
+        if (id < idTimeSinceLastPublication) {
+            currentID = idTimeSinceLastPublication + 1;
+        } else {
+            currentID = id;
         }
 
         // Launch the fetch for the calculated ID
