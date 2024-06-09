@@ -46,7 +46,14 @@ async function getUserById(id) {
  * @returns {Promise<Object>} - The user.
  */
 async function getUserByDiscordId(discordId) {
-    return await User.findOne({ discordId }).populate('channels');
+    let user = await User.findOne({ discordId }).populate('channels');
+
+    if (!user) {
+        await crud.createUser({ discordId });
+        user = User.findOne({ discordId }).populate('channels');
+    }
+
+    return user
 }
 
 /**
@@ -143,14 +150,32 @@ async function removeFromPreferenceKey(model, idKey, idValue, key, value) {
 // User preference functions
 
 async function setUserPreference(discordId, key, value) {
+    const user = await getUserByDiscordId(discordId);
+    if (!user) {
+        await sendErrorEmbed(interaction, t(l, 'user-not-found'));
+        return;
+    }
+
     return await setPreferenceKey(User, 'discordId', discordId, key, value);
 }
 
 async function addUserPreference(discordId, key, value) {
+    const user = await getUserByDiscordId(discordId);
+    if (!user) {
+        await sendErrorEmbed(interaction, t(l, 'user-not-found'));
+        return;
+    }
+
     return await addToPreferenceKey(User, 'discordId', discordId, key, value);
 }
 
 async function removeUserPreference(discordId, key, value) {
+    const user = await getUserByDiscordId(discordId);
+    if (!user) {
+        await sendErrorEmbed(interaction, t(l, 'user-not-found'));
+        return;
+    }
+
     return await removeFromPreferenceKey(User, 'discordId', discordId, key, value);
 }
 

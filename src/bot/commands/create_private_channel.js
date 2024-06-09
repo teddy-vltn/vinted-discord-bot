@@ -23,9 +23,6 @@ export async function execute(interaction) {
 
         // Check if the user exists and has not exceeded the channel limit
         let user = await crud.getUserByDiscordId(discordId);
-        if (!user) {
-            user = await crud.createUser({ discordId });
-        }
 
         if (user.channels.length >= user.maxChannels) {
             await sendErrorEmbed(interaction, t(l, 'channel-limit-exceeded', { limit: user.maxChannels }));

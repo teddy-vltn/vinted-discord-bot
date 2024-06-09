@@ -206,6 +206,7 @@ async function fetchUntilCurrentAutomatic(cookie, callback) {
         // Check if the current ID is less than the ID time since last publication
         if (id < idTimeSinceLastPublication) {
             currentID = idTimeSinceLastPublication + 1;
+            idTimeSinceLastPublication++;
         } else {
             currentID = id;
         }
