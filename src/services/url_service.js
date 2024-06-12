@@ -2,6 +2,10 @@ import { URL } from 'url';
 import Logger from '../utils/logger.js';
 import { isSubcategory } from '../database.js';
 
+import ConfigurationManager from '../utils/config_manager.js';
+
+const blacklisted_countries_codes = ConfigurationManager.getAlgorithmSettings().blacklisted_countries_codes;
+
 function parseVintedSearchParams(url) {
     try {
         const searchParams = {};
@@ -33,6 +37,12 @@ function parseVintedSearchParams(url) {
  * @return {boolean} Returns true if the item matches all the search parameters and country codes, false otherwise.
  */
 function matchVintedItemToSearchParams(item, searchParams, countries_codes = []) {
+
+    // Check blacklisted countries
+    if (blacklisted_countries_codes.includes(item.user.countryCode)) {
+        return false;
+    }
+
     // Check country codes
     if (countries_codes.length && !countries_codes.includes(item.user.countryCode)) {
         return false;

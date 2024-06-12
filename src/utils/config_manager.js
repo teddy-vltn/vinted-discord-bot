@@ -58,7 +58,8 @@ class ConfigurationManager {
      */
     static getAlgorithmSettings() {
         return {
-            concurrent_requests: process.env.ALGORITHM_CONCURRENT_REQUESTS
+            concurrent_requests: process.env.ALGORITHM_CONCURRENT_REQUESTS,
+            blacklisted_countries_codes : process.env.BLACKLISTED_COUNTRIES_CODES.split(',') || []
         };
     }
 
