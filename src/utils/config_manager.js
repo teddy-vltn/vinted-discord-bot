@@ -46,6 +46,12 @@ class ConfigurationManager {
         };
     }
 
+    static getPermissionConfig() {
+        return {
+            allow_user_to_create_private_channels: process.env.ALLOW_USER_TO_CREATE_PRIVATE_CHANNELS == 1 ? true : false
+        };
+    }
+
     /**
      * Retrieves the algorithm settings from environment variables.
      * @returns {Object} Algorithm settings object.

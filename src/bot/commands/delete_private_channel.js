@@ -7,8 +7,8 @@ export const data = new SlashCommandBuilder()
     .setName('delete_private_channel')
     .setDescription('Delete a private monitoring channel.')
     .addStringOption(option =>
-        option.setName('channel_name')
-            .setDescription('The name of the channel to be deleted.')
+        option.setName('channel_id')
+            .setDescription('The ID of the channel to be deleted.')
             .setRequired(true));
 
 
@@ -17,7 +17,7 @@ export async function execute(interaction) {
         const l = interaction.locale;
         await sendWaitingEmbed(interaction, t(l, 'deleting-private-channel'));
 
-        const channelName = interaction.options.getString('channel_name');
+        const channelId = interaction.options.getString('channel_id');
         const discordId = interaction.user.id;
 
         // Get the user and ensure they exist
@@ -28,7 +28,7 @@ export async function execute(interaction) {
         }
 
         // Find the VintedChannel by channel name and user
-        const vintedChannel = user.channels.find(channel => channel.name === channelName && channel.user.equals(user._id));
+        const vintedChannel = await crud.isUserOwnerOfChannel(user.channels, channelId, discordId);
         if (!vintedChannel) {
             await sendErrorEmbed(interaction, t(l, 'channel-not-found'));
             return;
@@ -49,7 +49,7 @@ export async function execute(interaction) {
         const embed = await createBaseEmbed(
             interaction,
             t(l, 'private-channel-deleted'),
-            t(l, 'private-channel-deleted-success', { channelName }),
+            t(l, 'private-channel-deleted-success', { channelId }),
             0xFF0000
         );
 

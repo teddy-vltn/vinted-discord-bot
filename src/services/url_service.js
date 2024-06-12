@@ -4,21 +4,19 @@ import { isSubcategory } from '../database.js';
 
 function parseVintedSearchParams(url) {
     try {
-        const urlObj = new URL(url);
-        const params = new URLSearchParams(urlObj.search);
-        const searchParams = {
-            searchText: params.get('search_text') || "N/A",
-            order: params.get('order') || "N/A",
-            catalogIds: params.getAll('catalog[]') || [],
-            brandIds: params.getAll('brand_ids[]') || [],
-            sizeIds: params.getAll('size_ids[]') || [],
-            priceFrom: params.get('price_from') || "N/A",
-            priceTo: params.get('price_to') || "N/A",
-            statusIds: params.getAll('status_ids[]') || [],
-            materialIds: params.getAll('material_ids[]') || [],
-            colorsIds: params.getAll('color_ids[]') || []
-        };
+        const searchParams = {};
+        const params = new URL(url).searchParams;
+        const paramsKeys = ['search_text', 'order', 'catalog[]', 'brand_ids[]', 'size_ids[]', 'price_from', 'price_to', 'status_ids[]', 'material_ids[]', 'color_ids[]'];
+        for (const key of paramsKeys) {
+            //searchParams[key.replace('[]', '')] = params.getAll(key) || ["N/A"];
+            const isMultiple = key.endsWith('[]');
 
+            if (isMultiple) {
+                searchParams[key.replace('[]', '')] = params.getAll(key) || null
+            } else {
+                searchParams[key] = params.get(key) || null;
+            }
+        }
         return searchParams;
     } catch (error) {
         Logger.error("Invalid URL provided: ", error.message);
@@ -26,73 +24,67 @@ function parseVintedSearchParams(url) {
     }
 }
 
+/**
+ * Checks if a Vinted item matches the given search parameters and country codes.
+ *
+ * @param {Object} item - The Vinted item to check.
+ * @param {Object} searchParams - The search parameters to match against the item.
+ * @param {Array} [countries_codes=[]] - The country codes to check against the item's user country code.
+ * @return {boolean} Returns true if the item matches all the search parameters and country codes, false otherwise.
+ */
 function matchVintedItemToSearchParams(item, searchParams, countries_codes = []) {
     // Check country codes
-    if (countries_codes.length > 0 && !countries_codes.includes(item.user.countryCode)) {
+    if (countries_codes.length && !countries_codes.includes(item.user.countryCode)) {
         return false;
     }
 
     // Check search text
-    if (searchParams.searchText && searchParams.searchText !== "N/A" &&
-        (
-            !item.title.toLowerCase().includes(searchParams.searchText.toLowerCase()) &&
-            !item.description.toLowerCase().includes(searchParams.searchText.toLowerCase()) &&
-            !item.brand.toLowerCase().includes(searchParams.searchText.toLowerCase()) &&
-            !item.size.toLowerCase().includes(searchParams.searchText.toLowerCase())
-        )
-    ) {
-        return false;
-    }
-
-    // Check catalog IDs
-    if (searchParams.catalogIds.length > 0) {
-        const itemCatalogId = item.catalogId;
-        let isSub = false;
-        
-        for (const catalogId of searchParams.catalogIds) {
-            if (isSubcategory(catalogId, itemCatalogId)) {
-                isSub = true;
-                break;
-            }
-        }
-
-        if (!isSub) {
+    const lowerCaseItem = {
+        title: item.title.toLowerCase(),
+        description: item.description.toLowerCase(),
+        brand: item.brand.toLowerCase()
+    };
+    if (searchParams.search_text) {
+        const searchText = searchParams.search_text.toLowerCase();
+        if (!lowerCaseItem.title.includes(searchParams.search_text) && !lowerCaseItem.description.includes(searchText) && !lowerCaseItem.brand.includes(searchText)) {
             return false;
         }
     }
 
-    // Check brand IDs
-    if (searchParams.brandIds.length > 0 && !searchParams.brandIds.includes(String(item.brandId))) {
+    // Check catalog IDs
+    if (searchParams.catalog.length && !searchParams.catalog.some(catalogId => isSubcategory(catalogId, item.catalogId))) {
         return false;
     }
 
-    // Check size IDs
-    if (searchParams.sizeIds.length > 0 && !searchParams.sizeIds.includes(String(item.sizeId))) {
+    if (searchParams.price_from && item.priceNumeric < searchParams.price_from) {
         return false;
     }
 
-    // Check status IDs
-    if (searchParams.statusIds.length > 0 && !searchParams.statusIds.includes(String(item.statusId))) {
+    if (searchParams.price_to && item.priceNumeric > searchParams.price_to) {
         return false;
     }
 
-    // Check material IDs
-    if (searchParams.materialIds.length > 0 && !searchParams.materialIds.includes(String(item.materialId))) {
-        return false;
-    }
+    // Check other parameters
+    const searchParamsMap = new Map([
+        ['brand_ids', 'brandId'],
+        ['size_ids', 'sizeId'],
+        ['status_ids', 'statusId'],
+        ['material_ids', 'material'],
+        ['color_ids', 'colorId'],
+    ].map(([key, value]) => [key, item[value]]));
 
-    // Check color IDs
-    if (searchParams.colorsIds.length > 0 && !searchParams.colorsIds.includes(String(item.colorId))) {
-        return false;
-    }
-
-    // Check price range
-    if (searchParams.priceFrom !== "N/A" && item.priceNumeric < searchParams.priceFrom) {
-        return false;
-    }
-
-    if (searchParams.priceTo !== "N/A" && item.priceNumeric > searchParams.priceTo) {
-        return false;
+    for (const [key, value] of searchParamsMap) {
+        if (searchParams[key] !== undefined && searchParams[key] !== null) {
+            if (Array.isArray(searchParams[key])) {
+                if (searchParams[key].length > 0 && !searchParams[key].includes(value.toString())) {
+                    return false;
+                }
+            } else {
+                if (searchParams[key] !== value.toString()) {
+                    return false;
+                }
+            }
+        }
     }
 
     // If all criteria are met, return true

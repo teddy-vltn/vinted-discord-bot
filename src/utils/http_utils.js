@@ -2,8 +2,6 @@ import axios from 'axios';
 import { SocksProxyAgent } from 'socks-proxy-agent';
 import { ForbiddenError, NotFoundError, RateLimitError, executeWithDetailedHandling } from '../helpers/execute_helper.js';
 import randomUserAgent from 'random-useragent';
-import Logger from './logger.js';
-import { time } from 'discord.js';
 
 // platform used to parse random user agent to get the correct platform, key is the platform name, value is the platform used in the user agent
 const PLATFORMS = {
@@ -59,49 +57,73 @@ class ProxyManager {
      */
     static async makeGetRequest(url, headers = {}) {
         return await executeWithDetailedHandling(async () => {
+            // Get the configured proxy agent
             const agent = this.getProxyAgent();
 
+            // Get a random user agent and extract the platform from it
             const userAgent = randomUserAgent.getRandom();
-            let platform = userAgent.split(' ')[0];
-            // cycle through platforms to get the correct platform, value is the platform used in the user agent
-            platform = Object.keys(PLATFORMS).find(key => userAgent.includes(PLATFORMS[key]));
+            const platform = Object.keys(PLATFORMS).find(key => userAgent.includes(PLATFORMS[key])) || 'Windows';
 
+            // Prepare the request options
             const options = {
                 url,
                 method: 'GET',
                 headers: {
+                    // Set the user agent
                     'User-Agent': userAgent,
-                    'Accept-Encoding': 'gzip, deflate, br', // Request gzip compression
-                    // get agent platform
-                    'Platform': platform || 'Windows',
+                    // Request gzip compression
+                    'Accept-Encoding': 'gzip, deflate, br',
+                    // Set the agent platform
+                    'Platform': platform,
+                    // Set the accept language
                     'Accept-Language': 'fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7',
+                    // Set cache control
                     'Cache-Control': 'no-cache',
+                    // Set connection
                     'Connection': 'keep-alive',
+                    // Set referer
                     'Referer': 'https://vinter.fr/',
+                    // Set origin
                     'Origin': 'https://www.vinted.fr/catalog',
+                    // Set do not track
                     'DNT': '1',
+                    // Set upgrade insecure requests
                     'Upgrade-Insecure-Requests': '1',
+                    // Set fetch site
                     'Sec-Fetch-Site': 'same-origin',
+                    // Set fetch mode
                     'Sec-Fetch-Mode': 'navigate',
+                    // Set fetch user
                     'Sec-Fetch-User': '?1',
+                    // Set fetch destination
                     'Sec-Fetch-Dest': 'document',
-                    'TE': 'Trailers', // Adds Transfer-Encoding support
-                    'Pragma': 'no-cache', // Controls caching in HTTP/1.0 caches
+                    // Add transfer encoding support
+                    'TE': 'Trailers',
+                    // Control caching in HTTP/1.0 caches
+                    'Pragma': 'no-cache',
+                    // Set priority
                     'Priority': 'u=0, i',
+                    // Merge custom headers with the default headers
                     ...headers
                 },
+                // Set the https agent and http agent to the proxy agent
                 httpsAgent: agent,
                 httpAgent: agent,
-                responseType: 'json', // Ensure we receive JSON responses directly
+                // Set the response type to json
+                responseType: 'json',
+                // Set the timeout to 1000ms
                 timeout: 1000
             };
 
             try {
+                // Make the request and return the response with the response body
                 const response = await axios(options);
                 return { response, body: response.data };
             } catch (error) {
+                // Get the response status code if available
                 const code = error.response ? error.response.status : null;
 
+                // Throw specific error based on the response status code
                 if (code === 404) {
                     throw new NotFoundError("Resource not found.");
                 } else if (code === 403) {
@@ -109,7 +131,7 @@ class ProxyManager {
                 } else if (code === 429) {
                     throw new RateLimitError("Rate limit exceeded. IP: " + error.response);
                 } else {
-                    throw new Error(`Error making GET request: ${error.message}`);  
+                    throw new Error(`Error making GET request: ${error.message}`);
                 }
             }
         });

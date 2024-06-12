@@ -60,7 +60,7 @@ export async function execute(interaction) {
 
         } else if (type === 'channel') {
             if (!channelId) {
-                await sendErrorEmbed(interaction, t(l, 'channel-name-required'));
+                await sendErrorEmbed(interaction, t(l, 'channe-id-required'));
                 return;
             }
 

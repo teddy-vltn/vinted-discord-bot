@@ -52,7 +52,7 @@
 
     "deleting-private-channel": "Suppression du canal privé...",
     "private-channel-deleted": "Canal privé supprimé.",
-    "private-channel-deleted-success": "Votre canal privé {channelName} a été supprimé avec succès.",
+    "private-channel-deleted-success": "Votre canal privé a été supprimé avec succès.",
 
     "updating-mentions": "Mise à jour des mentions...",
     "mentions-updated": "Mention mise à jour.",

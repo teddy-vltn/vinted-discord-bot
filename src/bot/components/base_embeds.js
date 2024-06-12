@@ -22,7 +22,6 @@ async function createBaseEmbed(interaction, title, description, color) {
         }
         
         embed.setFooter({
-
             text: `${interaction.user.username}`,
             iconURL: `${avatar}`
         });

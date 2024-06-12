@@ -2,8 +2,10 @@ import { User, VintedChannel } from "./database.js";
 import EventEmitter from "./utils/event_emitter.js";
 
 import ConfigurationManager from "./utils/config_manager.js";
+import { set } from "mongoose";
 
 const userDefaultConfig = ConfigurationManager.getUserConfig()
+const discordAdminId = ConfigurationManager.getDiscordConfig().admin_id;
 
 const eventEmitter = new EventEmitter();
 
@@ -21,6 +23,35 @@ async function createUser({ discordId, preferences = {}, channels = [], lastUpda
     return result;
 }
 
+async function findChannelInDatabase(channel_id) {
+    return VintedChannel.findOne({ channelId: channel_id });
+}
+
+async function isUserOwnerOfChannel(user_channels, channel_id, user_id=null) {
+    // if user id then check if user id is admin to return the channel
+    console.log(user_id, discordAdminId)
+    if (discordAdminId === user_id) {
+        const vintedChannel = await findChannelInDatabase(channel_id);
+        console.log(vintedChannel)
+        return vintedChannel;
+    }
+
+    // return the channel from the list
+    for (let i = 0; i < user_channels.length; i++) {
+        if (user_channels[i].channelId === channel_id) {
+            return user_channels[i];
+        }
+    }
+
+    return null;
+}
+
+function isChannelNameEqual(channel, channel_name) {
+    const a = channel.name.toLowerCase();
+    const b = channel_name.toLowerCase();
+    return a === b || a.endsWith(`_${b}`);
+}
+
 /**
  * Get a user by their ID.
  * @param {string} id - The user ID.
@@ -36,7 +67,14 @@ async function getUserById(id) {
  * @returns {Promise<Object>} - The user.
  */
 async function getUserByDiscordId(discordId) {
-    return await User.findOne({ discordId }).populate('channels');
+    let user = await User.findOne({ discordId }).populate('channels');
+
+    if (!user) {
+        await crud.createUser({ discordId });
+        user = User.findOne({ discordId }).populate('channels');
+    }
+
+    return user
 }
 
 /**
@@ -48,6 +86,23 @@ async function getUserByDiscordId(discordId) {
 async function updateUser(id, { discordId, preferences, channels, lastUpdated, timeMonitored }) {
     const update = { discordId, preferences, channels, lastUpdated, timeMonitored };
     const result = await User.findByIdAndUpdate(id, update, { new: true });
+    eventEmitter.emit('updated');
+    return result;
+}
+
+/**
+ * Set the maximum number of channels a user can have.
+ * @param {string} discordId - The Discord ID.
+ * @param {number} maxChannels - The maximum number of channels.
+ * @returns {Promise<Object>} - The updated user.
+ */
+async function setUserMaxChannels(discordId, maxChannels) {
+    const user = await getUserByDiscordId(discordId);
+    if (!user) {
+        throw new Error('User not found');
+    }
+    user.maxChannels = maxChannels;
+    const result = await user.save();
     eventEmitter.emit('updated');
     return result;
 }
@@ -133,14 +188,32 @@ async function removeFromPreferenceKey(model, idKey, idValue, key, value) {
 // User preference functions
 
 async function setUserPreference(discordId, key, value) {
+    const user = await getUserByDiscordId(discordId);
+    if (!user) {
+        await sendErrorEmbed(interaction, t(l, 'user-not-found'));
+        return;
+    }
+
     return await setPreferenceKey(User, 'discordId', discordId, key, value);
 }
 
 async function addUserPreference(discordId, key, value) {
+    const user = await getUserByDiscordId(discordId);
+    if (!user) {
+        await sendErrorEmbed(interaction, t(l, 'user-not-found'));
+        return;
+    }
+
     return await addToPreferenceKey(User, 'discordId', discordId, key, value);
 }
 
 async function removeUserPreference(discordId, key, value) {
+    const user = await getUserByDiscordId(discordId);
+    if (!user) {
+        await sendErrorEmbed(interaction, t(l, 'user-not-found'));
+        return;
+    }
+
     return await removeFromPreferenceKey(User, 'discordId', discordId, key, value);
 }
 
@@ -187,6 +260,10 @@ async function getVintedChannelById(id) {
  */
 async function getAllVintedChannels() {
     return await VintedChannel.find().populate('user');
+}
+
+async function getAllMonitoredVintedChannels() {
+    return await VintedChannel.find({ isMonitoring: true }).populate('user');
 }
 
 /**
@@ -296,9 +373,11 @@ async function removeChannelFromUser(userId, channelId) {
 
 const crud = {
     createUser,
+    isUserOwnerOfChannel,
     getUserById,
     getUserByDiscordId,
     updateUser,
+    setUserMaxChannels,
     deleteUser,
     checkUserExists,
     setUserPreference,
@@ -310,6 +389,7 @@ const crud = {
     createVintedChannel,
     getVintedChannelById,
     getAllVintedChannels,
+    getAllMonitoredVintedChannels,
     updateVintedChannel,
     deleteVintedChannel,
     checkVintedChannelExists,

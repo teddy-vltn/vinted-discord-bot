@@ -36,6 +36,7 @@
     "user-not-found": "User not found.",
     "channel-not-found": "Channel not found.",
     "channel-not-found-nor-owned": "Channel not found or you don't own this channel.",
+    "channel-id-required": "Channel ID is required, please provide a channel ID",
     "channel-name-required": "Channel name is required, please provide a channel name",
     "country-removed": "Country removed from whitelist.",
     "country-has-been-removed": "The country code {countryCode} has been successfully removed from the {type} whitelist.",
@@ -48,7 +49,7 @@
     "creating-private-channel": "Creating private channel...",
     "channel-limit-exceeded": "Channel limit exceeded. You can only create {limit} channel(s).",
     "private-channel-created": "Private channel created.",
-    "private-channel-created-success": "YOur private channel {channelName} has been successfully created.",
+    "private-channel-created-success": "Your private channel {channelName} has been successfully created.",
 
     "deleting-private-channel": "Deleting private channel...",
     "private-channel-deleted": "Private channel deleted.",
@@ -70,5 +71,12 @@
     "channel-info": "Channel info",
 
     "user-info-success": "Find below the information about the user!",
-    "channel-info-success": "Find below the information about the channel!"
+    "channel-info-success": "Find below the information about the channel!",
+
+    "not-authorized": "Not authorized. Please contact the administrator.",
+    "user-not-admin": "The user is not an administrator.",
+    "not-allowed-to-create-private-channel": "The administrator has disabled the ability to create private channels. Please contact the administrator.",
+
+    "max-channels-set": "Max channels set.",
+    "max-channels-set-success": "The max channels has been successfully set."
 }
