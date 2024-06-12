@@ -2,8 +2,10 @@ import { User, VintedChannel } from "./database.js";
 import EventEmitter from "./utils/event_emitter.js";
 
 import ConfigurationManager from "./utils/config_manager.js";
+import { set } from "mongoose";
 
 const userDefaultConfig = ConfigurationManager.getUserConfig()
+const discordAdminId = ConfigurationManager.getDiscordConfig().admin_id;
 
 const eventEmitter = new EventEmitter();
 
@@ -21,8 +23,27 @@ async function createUser({ discordId, preferences = {}, channels = [], lastUpda
     return result;
 }
 
-function isUserOwnerOfChannel(user_channels, channel_name) {
-    return user_channels.find(channel => isChannelNameEqual(channel, channel_name));
+async function findChannelInDatabase(channel_id) {
+    return VintedChannel.findOne({ channelId: channel_id });
+}
+
+async function isUserOwnerOfChannel(user_channels, channel_id, user_id=null) {
+    // if user id then check if user id is admin to return the channel
+    console.log(user_id, discordAdminId)
+    if (discordAdminId === user_id) {
+        const vintedChannel = await findChannelInDatabase(channel_id);
+        console.log(vintedChannel)
+        return vintedChannel;
+    }
+
+    // return the channel from the list
+    for (let i = 0; i < user_channels.length; i++) {
+        if (user_channels[i].channelId === channel_id) {
+            return user_channels[i];
+        }
+    }
+
+    return null;
 }
 
 function isChannelNameEqual(channel, channel_name) {
@@ -65,6 +86,23 @@ async function getUserByDiscordId(discordId) {
 async function updateUser(id, { discordId, preferences, channels, lastUpdated, timeMonitored }) {
     const update = { discordId, preferences, channels, lastUpdated, timeMonitored };
     const result = await User.findByIdAndUpdate(id, update, { new: true });
+    eventEmitter.emit('updated');
+    return result;
+}
+
+/**
+ * Set the maximum number of channels a user can have.
+ * @param {string} discordId - The Discord ID.
+ * @param {number} maxChannels - The maximum number of channels.
+ * @returns {Promise<Object>} - The updated user.
+ */
+async function setUserMaxChannels(discordId, maxChannels) {
+    const user = await getUserByDiscordId(discordId);
+    if (!user) {
+        throw new Error('User not found');
+    }
+    user.maxChannels = maxChannels;
+    const result = await user.save();
     eventEmitter.emit('updated');
     return result;
 }
@@ -339,6 +377,7 @@ const crud = {
     getUserById,
     getUserByDiscordId,
     updateUser,
+    setUserMaxChannels,
     deleteUser,
     checkUserExists,
     setUserPreference,

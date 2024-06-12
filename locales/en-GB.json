@@ -71,5 +71,12 @@
     "channel-info": "Channel info",
 
     "user-info-success": "Find below the information about the user!",
-    "channel-info-success": "Find below the information about the channel!"
+    "channel-info-success": "Find below the information about the channel!",
+
+    "not-authorized": "Not authorized. Please contact the administrator.",
+    "user-not-admin": "The user is not an administrator.",
+    "not-allowed-to-create-private-channel": "The administrator has disabled the ability to create private channels. Please contact the administrator.",
+
+    "max-channels-set": "Max channels set.",
+    "max-channels-set-success": "The max channels has been successfully set."
 }

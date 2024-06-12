@@ -24,8 +24,8 @@ export const data = new SlashCommandBuilder()
                 { name: 'Disable', value: 'disable' }
             ))
     .addStringOption(option =>
-        option.setName('channel_name')
-            .setDescription('The name of the channel to set mentions for (if type is "channel").')
+        option.setName('channel_id')
+            .setDescription('The channel ID to set mentions for (if type is "Channel").')
             .setRequired(false));
 
 
@@ -36,7 +36,7 @@ export async function execute(interaction) {
 
         const type = interaction.options.getString('type');
         const state = interaction.options.getString('state');
-        const channelName = interaction.options.getString('channel_name');
+        const channelId = interaction.options.getString('channel_id');
         const discordId = interaction.user.id;
 
         const mention = state === 'enable';
@@ -49,7 +49,7 @@ export async function execute(interaction) {
                 return;
             }
         } else if (type === 'channel') {
-            if (!channelName) {
+            if (!channelId) {
                 await sendErrorEmbed(interaction, t(l, 'channel-name-required'));
                 return;
             }
@@ -58,7 +58,7 @@ export async function execute(interaction) {
             const user = await crud.getUserByDiscordId(discordId);
 
             // Find the channel by name
-            const channel = crud.isUserOwnerOfChannel(user.channels, channelName);
+            const channel = crud.isUserOwnerOfChannel(user.channels, channelId);
             if (!channel) {
                 await sendErrorEmbed(interaction, t(l, 'channel-not-found'));
                 return;

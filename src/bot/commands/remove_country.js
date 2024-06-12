@@ -20,8 +20,8 @@ export const data = new SlashCommandBuilder()
             .setDescription('The country code to remove from the whitelist.')
             .setRequired(true))
     .addStringOption(option =>
-        option.setName('channel_name')
-            .setDescription('The name of the channel to remove the country from (if type is "channel").')
+        option.setName('channel_id')
+            .setDescription('The ID of the channel to remove the country from (if type is "channel").')
             .setRequired(false));
 
 export async function execute(interaction) {
@@ -31,7 +31,7 @@ export async function execute(interaction) {
 
         const type = interaction.options.getString('type');
         const countryCode = interaction.options.getString('country_code');
-        const channelName = interaction.options.getString('channel_name');
+        const channelId = interaction.options.getString('channel_id');
         const discordId = interaction.user.id;
 
         let entity;
@@ -42,8 +42,8 @@ export async function execute(interaction) {
                 return;
             }
         } else if (type === 'channel') {
-            if (!channelName) {
-                await sendErrorEmbed(interaction, t(l, 'channel-name-required'));
+            if (!channelId) {
+                await sendErrorEmbed(interaction, t(l, 'channel-id-required'));
                 return;
             }
 
@@ -51,7 +51,7 @@ export async function execute(interaction) {
             const user = await crud.getUserByDiscordId(discordId);
 
             // Find the channel by name
-            const channel = crud.isUserOwnerOfChannel(user.channels, channelName);
+            const channel = await crud.isUserOwnerOfChannel(user.channels, channelId);
             if (!channel) {
                 await sendErrorEmbed(interaction, t(l, 'channel-not-found'));
                 return;
