@@ -115,11 +115,16 @@ let fetchedIds = new Set();
  * Log current status at regular intervals.
  */
 setInterval(() => {
+    const totalRequests = requestPerSecond + rateLimitErrorsPerSecond;
+    const requestSuccessRate = totalRequests ? ((requestPerSecond / totalRequests) * 100).toFixed(2) : 0;
+
     Logger.debug(`Requests per second: ${requestPerSecond}, Step: ${step}, Consecutive errors: ${consecutiveErrors}, Rate limit errors per second: ${rateLimitErrorsPerSecond}, Valid items per second: ${validItemsPerSecond}`);
     Logger.debug(`Active promises: ${activePromises.size}`);
-    Logger.debug(`Current ID: ${currentID}, Last published time: ${lastPublishedTime}, ID time since last publication: ${idTimeSinceLastPublication}`); 
+    Logger.debug(`Current ID: ${currentID}, Last published time: ${lastPublishedTime}, ID time since last publication: ${idTimeSinceLastPublication}`);
     const numberOfItemBetweenRange = maxFetchedRange - minFetchedRange;
     Logger.debug(`minFetchedRange: ${minFetchedRange}, maxFetchedRange: ${maxFetchedRange}, numberOfItemBetweenRange: ${numberOfItemBetweenRange}`);
+    Logger.debug(`Request success rate: ${requestSuccessRate}%`);
+    Logger.debug(`Concurrency: ${computedConcurrency}`);
 
     rateLimitErrorsPerSecond = 0;
 
@@ -132,7 +137,6 @@ setInterval(() => {
     minFetchedRange = 99999999999;
     maxFetchedRange = 0;
 }, 1000);
-
 /**
  * Adjust the concurrency dynamically based on errors and time since last publication.
  */
@@ -202,14 +206,7 @@ async function fetchUntilCurrentAutomatic(cookie, callback) {
 
         // Calculate the ID for the next item to fetch
         const id = currentID + step;
-
-        // Check if the current ID is less than the ID time since last publication
-        if (id < idTimeSinceLastPublication) {
-            currentID = idTimeSinceLastPublication + 1;
-            idTimeSinceLastPublication++;
-        } else {
-            currentID = id;
-        }
+        currentID = id;
 
         // Launch the fetch for the calculated ID
         launchFetch(id, cookie, callback);
@@ -244,7 +241,7 @@ function adjustStep() {
         step = Math.min(step * 2 + 10, 50);
     } else if (timeSinceLastPublication > 10000) {
         // If it's been longer than 10 seconds since the last publication, double the step and add 5
-        step = Math.min(step * 2 + 1, 10);
+        step = Math.min(step * 2 + 1, 5);
     } else if (timeSinceLastPublication > 6500) {
         // If it's been longer than 5 seconds since the last publication, double the step
         step = Math.min(step * 2, 3);
@@ -254,11 +251,8 @@ function adjustStep() {
     } else if (timeSinceLastPublication > 2000) {
         // If it's been longer than 2 seconds since the last publication, set the step to 1
         step = 1;
-    } else {
-        // If it's been less than 2 seconds since the last publication, set the step to -1
-        step = -1;
-    }
-
+    } 
+    
     // Reduce the step if there are consecutive errors
     if (consecutiveErrors > 5) {
         step = -1;
@@ -320,7 +314,15 @@ async function fetchAndHandleItemSafe(cookie, itemID, callback) {
         }
 
         // Reset the consecutive errors counter
-        consecutiveErrors = 0;
+        consecutiveErrors -= 1;
+        if (consecutiveErrors < 0) {
+            consecutiveErrors = 0;
+        }
+
+        if (consecutiveErrors > 5) {
+            consecutiveErrors = 6;
+        }
+
 
         // Update the fetched item ID range
         updateFetchedRange(itemID);
@@ -329,14 +331,14 @@ async function fetchAndHandleItemSafe(cookie, itemID, callback) {
     else if (response.code === 404) {
         // Increment the consecutive errors counter
         consecutiveErrors++;
-        // Increment the offset
-        offset++;
     } 
     // If a rate limit error occurred (429 error)
     else if (response.code === 429) {
         // Increment the rate limit errors per second counter and log the error
         rateLimitErrorsPerSecond++;
         Logger.error(`Rate limit error: ${rateLimitErrorsPerSecond}`);
+    } else {
+        consecutiveErrors++;
     }
 
     // Return a resolved promise
@@ -384,12 +386,12 @@ function adjustConcurrency() {
     } else {
         // Increase computedConcurrency if more than 6 seconds have passed since the last valid item was published
         const timeSinceLastPublication = Date.now() - lastPublishedTime;
-        if (timeSinceLastPublication > 6000) {
+        if (timeSinceLastPublication > 4000) {
             computedConcurrency = Math.min(computedConcurrency + 1, concurrency);
         }
         
         // Decrease computedConcurrency if less than 1 second has passed since the last valid item was published
-        if (timeSinceLastPublication < 1000) {
+        if (timeSinceLastPublication < 1500) {
             computedConcurrency = Math.min(computedConcurrency - 1, 2);
         }
     }

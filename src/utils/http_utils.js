@@ -1,7 +1,8 @@
-import axios from 'axios';
+import axios, { isCancel } from 'axios';
 import { SocksProxyAgent } from 'socks-proxy-agent';
 import { ForbiddenError, NotFoundError, RateLimitError, executeWithDetailedHandling } from '../helpers/execute_helper.js';
 import randomUserAgent from 'random-useragent';
+import Logger from './logger.js';
 
 // platform used to parse random user agent to get the correct platform, key is the platform name, value is the platform used in the user agent
 const PLATFORMS = {
@@ -64,10 +65,20 @@ class ProxyManager {
             const userAgent = randomUserAgent.getRandom();
             const platform = Object.keys(PLATFORMS).find(key => userAgent.includes(PLATFORMS[key])) || 'Windows';
 
+            // Prepare the cancel token and timeout
+            const CancelToken = axios.CancelToken;
+            const source = CancelToken.source();
+
+            // Set a timeout to cancel the request
+            const timeoutId = setTimeout(() => {
+                source.cancel('Request timed out after 1000ms');
+            }, 1000);
+
             // Prepare the request options
             const options = {
                 url,
                 method: 'GET',
+                
                 headers: {
                     // Set the user agent
                     'User-Agent': userAgent,
@@ -112,12 +123,14 @@ class ProxyManager {
                 // Set the response type to json
                 responseType: 'json',
                 // Set the timeout to 1000ms
-                timeout: 1000
+                timeout: 500,
+                cancelToken: source.token
             };
 
             try {
                 // Make the request and return the response with the response body
                 const response = await axios(options);
+                clearTimeout(timeoutId);  // Clear the timeout if the request completes successfully
                 return { response, body: response.data };
             } catch (error) {
                 // Get the response status code if available
