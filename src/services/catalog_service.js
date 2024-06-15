@@ -238,20 +238,17 @@ function adjustStep() {
     // Adjust the step based on the time since last publication
     if (timeSinceLastPublication > 20000) {
         // If it's been longer than 20 seconds since the last publication, double the step and add 10
-        step = Math.min(step * 2 + 10, 50);
+        step = Math.min(step * 2 + 10, 20);
     } else if (timeSinceLastPublication > 10000) {
         // If it's been longer than 10 seconds since the last publication, double the step and add 5
         step = Math.min(step * 2 + 1, 5);
     } else if (timeSinceLastPublication > 6500) {
         // If it's been longer than 5 seconds since the last publication, double the step
-        step = Math.min(step * 2, 3);
+        step = Math.min(step + 1, 3);
     } else if (timeSinceLastPublication > 4000) {
         // If it's been longer than 3 seconds since the last publication, increase the step by 1
-        step = Math.min(step + 1, 2);
-    } else if (timeSinceLastPublication > 2000) {
-        // If it's been longer than 2 seconds since the last publication, set the step to 1
         step = 1;
-    } 
+    }
     
     // Reduce the step if there are consecutive errors
     if (consecutiveErrors > 5) {
@@ -336,7 +333,7 @@ async function fetchAndHandleItemSafe(cookie, itemID, callback) {
     else if (response.code === 429) {
         // Increment the rate limit errors per second counter and log the error
         rateLimitErrorsPerSecond++;
-        Logger.error(`Rate limit error: ${rateLimitErrorsPerSecond}`);
+        Logger.debug(`Rate limit error: ${rateLimitErrorsPerSecond}`);
     } else {
         consecutiveErrors++;
     }
