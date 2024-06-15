@@ -43,7 +43,7 @@ cd vinted-monitor
 > So the more proxy you have behind the bot, the more requests per second you can make and the less items you will skip. If you feel like it is too slow, you can increase the `ALGORITHM_CONCURRENT_REQUESTS` variable in the `.env` file, i would suggest you to start with 20 and increase it by 10 until you are satisfied with the speed.
 
 > [!NOTE]
-> You can buy rotating proxies here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral) (I get a small cut from that link so please use it if you want to support my work). It's very cheap if you take the 100 proxy server and 1000GB plan ($5.49 per month), but i would highly suggest you take the 500 proxy server and 5000GB plan ($28.41 per month) if you want to have a good speed and avoid skipping items the most you can. The proxy server are often blocked by vinted aswell so basically not all proxies will work unfortunately, or you can take some residential proxies but they are more expensive. And try to set your proxies locations to France or nearby countries.
+> You can buy rotating proxies here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral) (I get a small cut from that link so please use it if you want to support my work). I would advice you to get the "Verified Proxy" Plan and to take 100 proxy server with 1000 GB/month Bandwidth which is 7.07$/month, but i would highly suggest you take the 250 proxy server and 5000GB plan ($25.73 per month) if you want to have a good speed and avoid skipping items the most you can.
 
 ```sh
 # Your discord bot client id and token
@@ -63,11 +63,18 @@ MONGO_EXPRESS_PASSWORD="FakePassword67890"
 # Max number of private channels a user can create
 USER_MAX_PRIVATE_CHANNELS_DEFAULT=5
 
+# Allow user to create private channels (0 = false, 1 = true)
+ALLOW_USER_TO_CREATE_PRIVATE_CHANNELS=1
+
+# Auto blacklist country codes (change as you wish, for example "uk,fr,us" to blacklist UK, FR and US)
+BLACKLISTED_COUNTRIES_CODES="uk"
+
 # Max requests in the queue (more concurrent requests = more requests per second = more memory usage)
-ALGORITHM_CONCURRENT_REQUESTS=20
+ALGORITHM_CONCURRENT_REQUESTS=35
 
 # Rotating proxy settings config (use a socks proxy http proxy are not supported)
 # Get cheap proxies here : https://www.webshare.io/?referral_code=eh8mkj0b6ral
+# I would advice you to get the "Verified Proxy" Plan and to take 100 proxy server with 1000 GB/month Bandwidth which is 7.07$/month
 # And go on that page : https://proxy2.webshare.io/proxy/rotating and set the protocol to socks5 and username/password authentification
 PROXY_HOST="fakeproxy.webshare.io"
 PROXY_PORT="8080"
@@ -117,6 +124,8 @@ The bot supports a variety of commands that allow users to interact with the bot
 - `/set_mentions`: Sets the preferences for mentions in notifications.
 - `/add_country`: Adds a country to the list of monitored countries.
 - `/remove_country`: Removes a country from the list of monitored countries.
+- `/info`: Displays information about Channel/User.
+- `/set_max_channels`: Sets the maximum number of private channels a user can create.
 
 ## Some usage examples
 
