@@ -93,7 +93,7 @@ class ProxyManager {
                     // Set connection
                     'Connection': 'keep-alive',
                     // Set referer
-                    'Referer': 'https://vinter.fr/',
+                    'Referer': 'https://vinted.fr/',
                     // Set origin
                     'Origin': 'https://www.vinted.fr/catalog',
                     // Set do not track
