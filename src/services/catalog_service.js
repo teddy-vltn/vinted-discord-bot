@@ -389,7 +389,7 @@ function adjustConcurrency() {
         
         // Decrease computedConcurrency if less than 1 second has passed since the last valid item was published
         if (timeSinceLastPublication < 1500) {
-            computedConcurrency = Math.min(computedConcurrency - 1, 2);
+            computedConcurrency = Math.max(computedConcurrency - 1, 2);
         }
     }
 
