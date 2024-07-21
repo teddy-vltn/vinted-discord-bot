@@ -74,13 +74,20 @@ export async function createChannelIfNotExists(category, channelName, discordId=
  * @param {Array} components - An array of action row objects.
  * @returns {Promise} - A promise that resolves with the response or rejects with an error.
  */
-export async function postMessageToChannel(token, channelId, content, embeds = [], components = []) {
+export async function postMessageToChannel(
+    token,
+    channelId,
+    content,
+    embeds = [],
+    components = [],
+    retries = 3
+) {
     const url = `https://discord.com/api/v10/channels/${channelId}/messages`;
 
     const headers = {
-        'Authorization': `Bot ${token}`,
-        'Content-Type': 'application/json',
-        'User-Agent': 'DiscordBot (https://your-url.com, 1.0.0)',
+        Authorization: `Bot ${token}`,
+        "Content-Type": "application/json",
+        "User-Agent": "DiscordBot (https://your-url.com, 1.0.0)",
     };
 
     Logger.debug(`Posting message to channel ${channelId}`);
@@ -91,22 +98,22 @@ export async function postMessageToChannel(token, channelId, content, embeds = [
         components,
     };
 
-    return await executeWithDetailedHandling(async () => {
-        const agent = ProxyManager.getProxyAgent();
-        const options = {
-            url,
-            method: 'POST',
-            headers,
-            data,
-            httpsAgent: agent,
-            httpAgent: agent,
-            responseType: 'json',
-            decompress: true,
-            maxContentLength: 10 * 1024 * 1024,
-            maxRedirects: 5,
-        };
-
+    for (let attempt = 0; attempt <= retries; attempt++) {
         try {
+            const agent = ProxyManager.getProxyAgent();
+            const options = {
+                url,
+                method: "POST",
+                headers,
+                data,
+                httpsAgent: agent,
+                httpAgent: agent,
+                responseType: "json",
+                decompress: true,
+                maxContentLength: 10 * 1024 * 1024,
+                maxRedirects: 5,
+            };
+
             const response = await axios(options);
             return { response, body: response.data };
         } catch (error) {
@@ -115,10 +122,17 @@ export async function postMessageToChannel(token, channelId, content, embeds = [
                 throw new NotFoundError("Channel not found.");
             } else if (code === 403) {
                 throw new ForbiddenError("Access forbidden.");
+            } else if (attempt < retries) {
+                Logger.warn(`Attempt ${attempt + 1} failed. Retrying...`);
+                await new Promise((resolve) => setTimeout(resolve, 1000)); // wait 1 second before retrying
             } else {
-                throw new Error(`Error posting message: ${error.message}`);
+                throw new Error(
+                    `Error posting message after ${retries + 1} attempts: ${
+                        error.message
+                    }`
+                );
             }
         }
-    });
+    }
 }
 
