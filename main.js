@@ -54,13 +54,20 @@ const sendToChannel = async (item, user, vintedChannel) => {
     const doMentionUser = user && vintedChannel.preferences.get(Preference.Mention);
     const mentionString = doMentionUser ? `<@${user.discordId}>` : '';
 
-    await postMessageToChannel(
-        token,
-        vintedChannel.channelId,
-        `${mentionString} `,
-        [embed, ...photosEmbeds],
-        [actionRow]
-    );
+    try {
+        await postMessageToChannel(
+            token,
+            vintedChannel.channelId,
+            `${mentionString} `,
+            [embed, ...photosEmbeds],
+            [actionRow]
+        );
+    }
+    catch (error) {
+        Logger.debug('Error posting message to channel');
+        Logger.debug(error);
+    }
+
 };
 
 let allMonitoringChannels = await crud.getAllMonitoredVintedChannels();

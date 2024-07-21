@@ -124,7 +124,7 @@ export async function postMessageToChannel(
                 throw new ForbiddenError("Access forbidden.");
             } else if (attempt < retries) {
                 Logger.warn(`Attempt ${attempt + 1} failed. Retrying...`);
-                await new Promise((resolve) => setTimeout(resolve, 1000)); // wait 1 second before retrying
+                await new Promise((resolve) => setTimeout(resolve, 300)); 
             } else {
                 throw new Error(
                     `Error posting message after ${retries + 1} attempts: ${
