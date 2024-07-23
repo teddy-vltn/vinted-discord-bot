@@ -16,7 +16,11 @@ function getFlagEmoji(countryCode) {
     );
   }
 
-export async function createVintedItemEmbed(item) {
+function replaceDomainInUrl(url, domain) {
+    return url.replace(/vinted\.(.*?)\//, `vinted.${domain}/`);
+}
+
+export async function createVintedItemEmbed(item, domain = "fr") {
     const embed = await createBaseEmbed(
         null,
         item.title,
@@ -24,16 +28,14 @@ export async function createVintedItemEmbed(item) {
         0x00FF00
     )
 
-    embed.setURL(item.url);
+    embed.setURL(replaceDomainInUrl(item.url, domain));
 
     const rating = item.user.feedback_reputation;
     const ratingStars = getNumberOfStars(rating);
     const ratingTextRounded = Math.round(rating * 50) / 10;
     const ratingAllText = `${item.user.feedback_count}`;
 
-
     embed.setFields([
-        //{ name: '📝 Description', value: `${item.description}`},
         { name: '💰 Price', value: `${item.priceNumeric} ${item.currency}`, inline : true},
         { name: '📏 Size', value: `${item.size} ` , inline : true },
         { name: '🏷️ Brand', value: `${item.brand} ` , inline : true },
@@ -74,13 +76,16 @@ export async function createVintedItemEmbed(item) {
     return { embed, photosEmbeds };
 }
 
-export async function createVintedItemActionRow(item) {
+export async function createVintedItemActionRow(item, domain) {
     const actionRow = new ActionRowBuilder();
+
+    const sendMessageUrl = `https://www.vinted.${domain}/items/${item.id}/want_it/new?button_name=receiver_id=${item.id}`;
+    const buyUrl = `https://www.vinted.${domain}/transaction/buy/new?source_screen=item&transaction%5Bitem_id%5D=${item.id}`;
 
     actionRow.addComponents(
         await createBaseUrlButton("🔗 View on Vinted", item.url),
-        await createBaseUrlButton("📨 Send Message", `https://www.vinted.fr/items/${item.id}/want_it/new?button_name=receiver_id=${item.id}`),
-        await createBaseUrlButton("💸 Buy", `https://www.vinted.fr/transaction/buy/new?source_screen=item&transaction%5Bitem_id%5D=${item.id}`)
+        await createBaseUrlButton("📨 Send Message", sendMessageUrl),
+        await createBaseUrlButton("💸 Buy", buyUrl)
     );
 
     return actionRow;
