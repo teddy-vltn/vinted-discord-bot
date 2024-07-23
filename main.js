@@ -48,8 +48,10 @@ setInterval(async () => {
 }, 60000 * 5);  // 60 seconds
 
 const sendToChannel = async (item, user, vintedChannel) => {
-    const { embed, photosEmbeds } = await createVintedItemEmbed(item);
-    const actionRow = await createVintedItemActionRow(item);
+    // get the domain from the URL between vinted. and the next /
+    const domain = vintedChannel.url.match(/vinted\.(.*?)\//)[1];
+    const { embed, photosEmbeds } = await createVintedItemEmbed(item, domain);
+    const actionRow = await createVintedItemActionRow(item, domain);
 
     const doMentionUser = user && vintedChannel.preferences.get(Preference.Mention);
     const mentionString = doMentionUser ? `<@${user.discordId}>` : '';
