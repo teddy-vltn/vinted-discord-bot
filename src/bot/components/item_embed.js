@@ -68,7 +68,7 @@ export async function createVintedItemEmbed(item, domain = "fr") {
 
         const photoEmbed = new EmbedBuilder()
             .setImage(`${photo.fullSizeUrl}`)
-            .setURL(`${item.url}`);
+            .setURL(replaceDomainInUrl(item.url, domain));
 
         photosEmbeds.push(photoEmbed);
     }
