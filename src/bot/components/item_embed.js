@@ -83,7 +83,7 @@ export async function createVintedItemActionRow(item, domain) {
     const buyUrl = `https://www.vinted.${domain}/transaction/buy/new?source_screen=item&transaction%5Bitem_id%5D=${item.id}`;
 
     actionRow.addComponents(
-        await createBaseUrlButton("🔗 View on Vinted", item.url),
+        await createBaseUrlButton("🔗 View on Vinted", replaceDomainInUrl(item.url, domain))
         await createBaseUrlButton("📨 Send Message", sendMessageUrl),
         await createBaseUrlButton("💸 Buy", buyUrl)
     );
