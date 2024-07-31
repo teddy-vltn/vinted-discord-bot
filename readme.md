@@ -17,21 +17,17 @@ Vinted Monitor is a bot that monitors the Vinted items route for new items and n
   <img src="./doc/AnimationPublic.gif" alt="Example" style="max-height: 400px; width: auto;">
 </p>
 
-
 ### Create a Private Channel
 
 <p align="center">
   <img src="./doc/AnimationCreatePrivate.gif" alt="Example" style="max-height: 400px; width: auto;">
 </p>
 
-
 ### Start Monitoring in a Private Channel
 
 <p align="center">
   <img src="./doc/AnimationStartMonitoring.gif" alt="Example" style="max-height: 400px; width: auto;">
 </p>
-
-
 
 ### Enable mentions in a Private Channel
 
