@@ -9,6 +9,23 @@ Vinted Monitor is a bot that monitors the Vinted items route for new items and n
   <img src="./doc/bot.gif" alt="Example" style="max-height: 400px; width: auto;">
 </p>
 
+## Table of Contents
+1. [Showcase](#showcase)
+    - [Create a Public Channel](#create-a-public-channel)
+    - [Create a Private Channel](#create-a-private-channel)
+    - [Start Monitoring in a Private Channel](#start-monitoring-in-a-private-channel)
+    - [Enable mentions in a Private Channel](#enable-mentions-in-a-private-channel)
+2. [Features](#features)
+3. [Requirements](#requirements)
+4. [Setup](#setup)
+    - [Clone the Repository](#clone-the-repository)
+    - [Create a Discord Bot](#create-a-discord-bot)
+    - [Modify the Configuration File](#modify-the-configuration-file)
+    - [Run Docker](#run-docker)
+    - [Database Access](#database-access)
+    - [Stop the Bot](#stop-the-bot)
+5. [Usage](#usage)
+
 ## Showcase 
 
 ### Create a Public Channel
