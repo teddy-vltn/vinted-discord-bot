@@ -5,6 +5,7 @@ Vinted Monitor is a bot that monitors the Vinted items route for new items and n
 > [!TIP]
 > [Discord Invite](https://discord.gg/CDv9b8cPXU) - Join if you want: preview of the bot, simply to use the bot freely or if you need help.
 
+
 <p align="center">
   <img src="./doc/bot.gif" alt="Example" style="max-height: 400px; width: auto;">
 </p>
@@ -36,7 +37,7 @@ Vinted Monitor is a bot that monitors the Vinted items route for new items and n
 
 ## Requirements
 
-- VPS running on a Linux kernel or you own computer 
+- VPS running on a Linux kernel or you own computer (avoid Windows if possible)
 - Rotating proxy
 > [!NOTE]
 > You can buy rotating proxies here: [WebShare](https://www.webshare.io/?referral_code=eh8mkj0b6ral) (I get a small cut from that link so please use it if you want to support my work). I would advice you to get the "Verified Proxy" Plan and to take 100 proxy server with 1000 GB/month Bandwidth which is 7.07$/month, but i would highly suggest you take the 250 proxy server and 5000GB plan ($25.73 per month) if you want to have a good speed and avoid skipping items the most you can.
