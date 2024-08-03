@@ -10,47 +10,21 @@ Vinted Monitor is a bot that monitors the Vinted items route for new items and n
 </p>
 
 ## Table of Contents
-1. [Showcase](#showcase)
-    - [Create a Public Channel](#create-a-public-channel)
-    - [Create a Private Channel](#create-a-private-channel)
-    - [Start Monitoring in a Private Channel](#start-monitoring-in-a-private-channel)
-    - [Enable mentions in a Private Channel](#enable-mentions-in-a-private-channel)
-2. [Features](#features)
-3. [Requirements](#requirements)
-4. [Setup](#setup)
+1. [Features](#features)
+2. [Requirements](#requirements)
+3. [Setup](#setup)
     - [Clone the Repository](#clone-the-repository)
     - [Create a Discord Bot](#create-a-discord-bot)
     - [Modify the Configuration File](#modify-the-configuration-file)
     - [Run Docker](#run-docker)
     - [Database Access](#database-access)
     - [Stop the Bot](#stop-the-bot)
-5. [Usage](#usage)
-
-## Showcase 
-
-### Create a Public Channel
-
-<p align="center">
-  <img src="./doc/AnimationPublic.gif" alt="Example" style="max-height: 400px; width: auto;">
-</p>
-
-### Create a Private Channel
-
-<p align="center">
-  <img src="./doc/AnimationCreatePrivate.gif" alt="Example" style="max-height: 400px; width: auto;">
-</p>
-
-### Start Monitoring in a Private Channel
-
-<p align="center">
-  <img src="./doc/AnimationStartMonitoring.gif" alt="Example" style="max-height: 400px; width: auto;">
-</p>
-
-### Enable mentions in a Private Channel
-
-<p align="center">
-  <img src="./doc/AnimationMentions.gif" alt="Example" style="max-height: 400px; width: auto;">
-</p>
+4. [Usage](#usage)
+5. [Showcase](#showcase)
+    - [Create a Public Channel](#create-a-public-channel)
+    - [Create a Private Channel](#create-a-private-channel)
+    - [Start Monitoring in a Private Channel](#start-monitoring-in-a-private-channel)
+    - [Enable mentions in a Private Channel](#enable-mentions-in-a-private-channel)
 
 ## Features
 
@@ -146,3 +120,28 @@ The bot supports a variety of commands that allow users to interact with the bot
 - `/info`: Displays information about Channel/User.
 - `/set_max_channels`: Sets the maximum number of private channels a user can create.
 
+## Showcase 
+
+### Create a Public Channel
+
+<p align="center">
+  <img src="./doc/AnimationPublic.gif" alt="Example" style="max-height: 400px; width: auto;">
+</p>
+
+### Create a Private Channel
+
+<p align="center">
+  <img src="./doc/AnimationCreatePrivate.gif" alt="Example" style="max-height: 400px; width: auto;">
+</p>
+
+### Start Monitoring in a Private Channel
+
+<p align="center">
+  <img src="./doc/AnimationStartMonitoring.gif" alt="Example" style="max-height: 400px; width: auto;">
+</p>
+
+### Enable mentions in a Private Channel
+
+<p align="center">
+  <img src="./doc/AnimationMentions.gif" alt="Example" style="max-height: 400px; width: auto;">
+</p>

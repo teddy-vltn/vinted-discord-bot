@@ -69,10 +69,12 @@ class ProxyManager {
             const CancelToken = axios.CancelToken;
             const source = CancelToken.source();
 
+            const timeout_value = 3000;
+
             // Set a timeout to cancel the request
             const timeoutId = setTimeout(() => {
                 source.cancel('Request timed out after 1000ms');
-            }, 1000);
+            }, timeout_value);
 
             // Prepare the request options
             const options = {
@@ -123,7 +125,7 @@ class ProxyManager {
                 // Set the response type to json
                 responseType: 'json',
                 // Set the timeout to 1000ms
-                timeout: 500,
+                timeout: timeout_value,
                 cancelToken: source.token
             };
 
