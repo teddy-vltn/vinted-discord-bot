@@ -17,6 +17,7 @@ services:
       - mongodb
     networks:
       - vinted-network
+    restart: unless-stopped
 
   mongodb:
     image: mongo:latest

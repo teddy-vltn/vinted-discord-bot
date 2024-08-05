@@ -2,9 +2,10 @@
 
 Vinted Monitor is a bot that monitors the Vinted items route for new items and notifies users in real-time. It is designed to work with minimal delay, ensuring that users are always up-to-date with the latest items. Ideal for people who wants to start a reselling discord service or community to make some money.
 
+---
 > [!TIP]
 > [Discord Invite](https://discord.gg/CDv9b8cPXU) - Join if you want: preview of the bot, simply to use the bot freely or if you need help.
-
+---
 
 <p align="center">
   <img src="./doc/bot.gif" alt="Example" style="max-height: 400px; width: auto;">
