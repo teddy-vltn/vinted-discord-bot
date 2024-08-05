@@ -52,7 +52,7 @@ export async function execute(interaction) {
     // validate the URL
     const validation = validateUrl(url);
     if (validation !== true) {
-        await sendErrorEmbed(interaction, validation);
+        await sendErrorEmbed(interaction, t(l, validation));
         return;
     }
 
