@@ -88,7 +88,7 @@ const monitorChannels = () => {
             const matchingItems = filterItemsByUrl([item], vintedChannel.url, vintedChannel.preferences.get(Preference.Countries) || []);
 
             if (matchingItems.length > 0) {
-                await sendToChannel(item, user, vintedChannel);
+                sendToChannel(item, user, vintedChannel);
             }
         }
     };
