@@ -5,16 +5,9 @@ import ConfigurationManager from "./utils/config_manager.js";
 
 const mongoConfig = ConfigurationManager.getMongoDBConfig();
 
-import fs from 'fs';
-import path from 'path';
 import Logger from "./utils/logger.js";
 
-const __dirname = path.resolve();
-
-// Load and parse the JSON file
-const data = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'src/groups.json')));
-
-const categoryMap = {};
+var categoryMap = {};
 
 // Helper function to recursively build the catalog map
 function buildCategoryMap(node, parentMap = {}) {
@@ -23,20 +16,23 @@ function buildCategoryMap(node, parentMap = {}) {
         parentMap[nodeId] = parentMap[nodeId] || [];
         parentMap[nodeId].push(nodeId); // Include the current node ID in its own list of children
     }
-    if (node.children) {
-        for (const key in node.children) {
-            const child = node.children[key];
+    if (node.catalogs && Array.isArray(node.catalogs)) {
+        node.catalogs.forEach((child) => {
             const childId = String(child.id);
             const parentId = String(node.id);
             buildCategoryMap(child, parentMap);
             parentMap[parentId] = parentMap[parentId].concat(parentMap[childId] || []);
-        }
+        });
     }
     return parentMap;
 }
+
 // Build the category map starting from the root nodes
-for (const key in data) {
-    buildCategoryMap(data[key], categoryMap);
+function buildCategoryMapFromRoots(roots) {
+    console.log(roots)
+    roots.data.catalogs.forEach((root) => {
+        buildCategoryMap(root, categoryMap);
+    });
 }
 
 function isSubcategory(parentId, childId) {
@@ -93,4 +89,4 @@ const VintedChannel = model('VintedChannel', vintedChannelSchema);
 
 Logger.info("Database models loaded.");
 
-export { Preference, User, VintedChannel, isSubcategory };
+export { Preference, User, VintedChannel, isSubcategory, buildCategoryMapFromRoots };
