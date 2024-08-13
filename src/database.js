@@ -42,6 +42,9 @@ for (const key in data) {
 function isSubcategory(parentId, childId) {
     parentId = String(parentId);
     childId = String(childId);
+    if (!categoryMap[parentId]) {
+        return false
+    }
     return categoryMap[parentId].includes(childId);
 }
 
