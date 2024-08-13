@@ -1,7 +1,7 @@
 import ProxyManager from "./src/utils/http_utils.js";
 import { VintedItem } from "./src/entities/vinted_item.js";
 import { filterItemsByUrl } from "./src/services/url_service.js";
-import { Preference } from "./src/database.js";
+import { Preference, buildCategoryMapFromRoots } from "./src/database.js";
 import client from "./src/client.js";
 import ConfigurationManager from "./src/utils/config_manager.js";
 import { postMessageToChannel } from "./src/services/discord_service.js";
@@ -13,6 +13,8 @@ import CatalogService from "./src/services/catalog_service.js";
 
 const proxyConfig = ConfigurationManager.getRotatingProxyConfig();
 ProxyManager.setProxy(proxyConfig);
+
+var cookie = null;
 
 const getCookie = async () => {
     const c = await fetchCookie('https://www.vinted.fr/catalog?');
@@ -26,6 +28,7 @@ const refreshCookie = async () => {
             const cookie = await getCookie();
             if (cookie) {
                 found = true;
+                Logger.info('Fetched cookie from Vinted');
                 return cookie;
             }
         } catch (error) {
@@ -35,9 +38,14 @@ const refreshCookie = async () => {
     }
 };
 
+
 const discordConfig = ConfigurationManager.getDiscordConfig();
 const token = discordConfig.token;
-let cookie = await refreshCookie();
+
+Logger.info('Starting Vinted Bot');
+Logger.info('Fetching cookie from Vinted');
+
+cookie = await refreshCookie();
 
 setInterval(async () => {
     try {
@@ -46,6 +54,29 @@ setInterval(async () => {
         Logger.debug('Error refreshing cookie');
     }
 }, 60000 * 5);  // 60 seconds
+
+const getCatalogRoots = async (cookie) => {
+    let found = false;
+    while (!found) {
+        try {
+            const roots = await CatalogService.fetchCatalogInitializer( { cookie });
+            console.log(roots);
+            if (roots) {
+                buildCategoryMapFromRoots(roots);
+                found = true;
+                Logger.info('Fetched catalog roots from Vinted');
+            }
+        } catch (error) {
+            Logger.debug('Error fetching catalog roots');
+            console.error(error);
+            await new Promise(resolve => setTimeout(resolve, 200));
+        }
+    }
+}
+
+Logger.info('Fetching catalog roots from Vinted');
+
+await getCatalogRoots(cookie);
 
 const sendToChannel = async (item, user, vintedChannel) => {
     // get the domain from the URL between vinted. and the next /

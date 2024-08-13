@@ -124,7 +124,6 @@ class ProxyManager {
                 httpAgent: agent,
                 // Set the response type to json
                 responseType: 'json',
-                // Set the timeout to 1000ms
                 timeout: timeout_value,
                 cancelToken: source.token
             };

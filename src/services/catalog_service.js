@@ -26,6 +26,23 @@ async function fetchCatalogItems({ cookie, per_page = 30, order = 'newest_first'
     });
 }
 
+async function fetchCatalogInitializer({ cookie }) {
+    return await executeWithDetailedHandling(async () => {
+        const url = `https://www.vinted.fr/api/v2/catalog/initializers`;
+        const headers = { 'Cookie': cookie };
+
+        const response = await ProxyManager.makeGetRequest(url, headers);
+
+        if (!response.success) {
+            console.log(response);
+            console.log(cookie)
+            throw new NotFoundError("Error fetching catalog items.");
+        }
+
+        return { data: response.body.dtos };
+    });
+}
+
 /**
  * Fetch a specific item by ID from Vinted.
  * @param {Object} params - Parameters for fetching an item.
@@ -442,6 +459,7 @@ function delay(ms) {
 
 const CatalogService = {
     fetchCatalogItems,
+    fetchCatalogInitializer,
     fetchItem,
     fetchUntilCurrentAutomatic,
     findHighestIDUntilSuccessful,
