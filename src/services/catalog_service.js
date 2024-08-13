@@ -34,8 +34,6 @@ async function fetchCatalogInitializer({ cookie }) {
         const response = await ProxyManager.makeGetRequest(url, headers);
 
         if (!response.success) {
-            console.log(response);
-            console.log(cookie)
             throw new NotFoundError("Error fetching catalog items.");
         }
 

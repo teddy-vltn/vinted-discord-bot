@@ -60,7 +60,6 @@ const getCatalogRoots = async (cookie) => {
     while (!found) {
         try {
             const roots = await CatalogService.fetchCatalogInitializer( { cookie });
-            console.log(roots);
             if (roots) {
                 buildCategoryMapFromRoots(roots);
                 found = true;
