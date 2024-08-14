@@ -193,28 +193,6 @@ async function fetchUntilCurrentAutomatic(cookie, callback) {
     // Adjust the concurrency limits dynamically
     adjustConcurrency();
 
-    // Check if the number of active promises is less than the computed concurrency
-    /*if (activePromises.size < computedConcurrency) {
-        // Adjust the fetching step based on time since last publication and consecutive errors
-        adjustStep();
-
-        // Calculate the ID for the next item to fetch
-        const id = currentID + step;
-        currentID = id;
-
-        // Check if the current ID is less than the ID time since last publication
-        if (currentID < idTimeSinceLastPublication) {
-            currentID = idTimeSinceLastPublication++;
-        }
-
-        // Launch the fetch for the calculated ID
-        launchFetch(id, cookie, callback);
-    } else {
-        // If the number of active promises is equal to the computed concurrency,
-        // wait for the first promise in the set to resolve
-        await Promise.race(activePromises);
-    }*/
-
     while ( activePromises.size < computedConcurrency ) {
         // Adjust the fetching step based on time since last publication and consecutive errors
         adjustStep();

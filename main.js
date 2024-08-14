@@ -12,6 +12,7 @@ import Logger from "./src/utils/logger.js";
 import CatalogService from "./src/services/catalog_service.js";
 
 const proxyConfig = ConfigurationManager.getRotatingProxyConfig();
+const algorithmSettings = ConfigurationManager.getAlgorithmSettings();
 ProxyManager.setProxy(proxyConfig);
 
 var cookie = null;
@@ -112,6 +113,10 @@ crud.eventEmitter.on('updated', async () => {
 const monitorChannels = () => {
     const handleItem = async (rawItem) => {
         const item = new VintedItem(rawItem);
+
+        if (item.getNumericStars() === 0 && algorithmSettings.filter_zero_stars_profiles) {
+            return;
+        }
 
         for (const vintedChannel of allMonitoringChannels) {
             const user = vintedChannel.user;

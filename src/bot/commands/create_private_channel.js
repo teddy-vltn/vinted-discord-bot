@@ -36,7 +36,10 @@ export async function execute(interaction) {
             return;
         }
 
-        if (interaction.options.getUser('user') && interaction.user.id !== adminDiscordId) {
+        if (interaction.options.getUser('user') 
+            && interaction.user.id !== adminDiscordId
+            && interaction.options.getUser('user').id !== interaction.user.id
+        ) {
             await sendErrorEmbed(interaction, t(l, 'user-not-admin'));
             return;
         }

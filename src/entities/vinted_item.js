@@ -90,6 +90,10 @@ function validateId(value) {
       // Create user object
       this.user = itemData.user ? new VintedUser(itemData.user) : null;
     }
+
+    getNumericStars() {
+      return this.user ? this.user.feedback_reputation : 0;
+    }
   }
   
   export { VintedItem, VintedPhoto };
