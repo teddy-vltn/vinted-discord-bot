@@ -58,6 +58,7 @@ class ConfigurationManager {
      */
     static getAlgorithmSettings() {
         return {
+            vinted_api_domain_extension: process.env.VINTED_API_DOMAIN_EXTENSION,
             filter_zero_stars_profiles: process.env.ALGORITHM_FILTER_ZERO_STARS_PROFILES == 1 ? true : false,
             concurrent_requests: process.env.ALGORITHM_CONCURRENT_REQUESTS,
             blacklisted_countries_codes : process.env.BLACKLISTED_COUNTRIES_CODES.split(',') || []
@@ -68,12 +69,10 @@ class ConfigurationManager {
      * Retrieves the rotating proxy configuration from environment variables.
      * @returns {Array} Array of proxy configurations.
      */
-    static getRotatingProxyConfig() {
+    static getProxiesConfig() {
         return {
-                host: process.env.PROXY_HOST,
-                port: process.env.PROXY_PORT,
-                username: process.env.PROXY_USERNAME,
-                password: process.env.PROXY_PASSWORD
+                use_webshare: process.env.USE_WEBSHARE == 1 ? true : false,
+                webshare_api_key: process.env.WEBSHARE_API_KEY,
             }
     }
 

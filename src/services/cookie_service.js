@@ -1,6 +1,10 @@
 import { executeWithDetailedHandling } from "../helpers/execute_helper.js";
 import ProxyManager from "../utils/http_utils.js";
 import Logger from "../utils/logger.js";
+import ConfigurationManager from "../utils/config_manager.js";
+
+const settings = ConfigurationManager.getAlgorithmSettings();
+const vinted_api_domain_extension = settings.vinted_api_domain_extension;
 
 /**
  * Fetches the session cookie from the headers of the response to a GET request to the given URL.
@@ -8,7 +12,10 @@ import Logger from "../utils/logger.js";
  * @returns {Promise<{cookie: string}>}
  * @throws {DetailedExecutionResultError}
  */
-export async function fetchCookie(url) {
+export async function fetchCookie() {
+
+    const extension = vinted_api_domain_extension
+    const url = `https://www.vinted.${extension}/catalog?`
 
     return await executeWithDetailedHandling( async () => {
 

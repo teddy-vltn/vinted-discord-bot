@@ -3,6 +3,14 @@ import { SocksProxyAgent } from 'socks-proxy-agent';
 import { ForbiddenError, NotFoundError, RateLimitError, executeWithDetailedHandling } from '../helpers/execute_helper.js';
 import randomUserAgent from 'random-useragent';
 import Logger from './logger.js';
+import { listProxies, Proxy } from './webshare.js';
+import ConfigurationManager from './config_manager.js';
+import fs from 'fs';
+
+
+const proxy_settings = ConfigurationManager.getProxiesConfig();
+const algorithm_settings = ConfigurationManager.getAlgorithmSettings();
+const vinted_api_domain_extension = algorithm_settings.vinted_api_domain_extension;
 
 // platform used to parse random user agent to get the correct platform, key is the platform name, value is the platform used in the user agent
 const PLATFORMS = {
@@ -14,22 +22,35 @@ const PLATFORMS = {
     'Windows Phone': 'Windows Phone'
 };
 
-
 /**
  * Static class for managing proxy settings and making HTTP requests with SOCKS authentication.
  */
 class ProxyManager {
     static proxyConfig = null;
+    static proxies = [];
+    static currentProxyIndex = 0;
 
-    /**
-     * Sets the proxy configuration for all subsequent requests with optional authentication.
-     * @param {string} host - The host of the socks proxy.
-     * @param {number} port - The port number of the socks proxy.
-     * @param {string} [username] - The username for proxy authentication (optional).
-     * @param {string} [password] - The password for proxy authentication (optional).
-     */
-    static setProxy({ host, port, username = null, password = null }) {
-        this.proxyConfig = `socks://${username}:${password}@${host}:${port}`;
+    static init() {
+        if (proxy_settings.use_webshare) {
+            this.proxies = listProxies();
+
+            Logger.info(`Loaded ${this.proxies.length} proxies from Webshare.`);
+        } else {
+            // Read the proxy file
+            const proxyFile = fs.readFileSync('proxies.txt', 'utf8');
+            const proxyLines = proxyFile.split('\n');
+
+            // Parse the proxy lines
+            for (const line of proxyLines) {
+                const parts = line.split(':');
+                if (parts.length === 4) {
+                    const proxy = new Proxy(parts[0], parts[1], parts[2], parts[3]);
+                    this.proxies.push(proxy);
+                }
+            }
+
+            Logger.info(`Loaded ${this.proxies.length} proxies from file.`);
+        }
     }
 
     /**
@@ -43,10 +64,17 @@ class ProxyManager {
      * Retrieves the current proxy agent if a proxy is configured.
      * @returns {SocksProxyAgent|undefined} The proxy agent or undefined if no proxy is set.
      */
-    static getProxyAgent() {
-        if (this.proxyConfig) {
-            return new SocksProxyAgent(this.proxyConfig);
+    static getNewProxyAgent() {
+        if (this.proxies.length > 0) {
+            this.currentProxyIndex = (this.currentProxyIndex + 1) % this.proxies.length;
+
+            const proxy = this.proxies[this.currentProxyIndex];
+
+            return new SocksProxyAgent(proxy.getProxyString());
         }
+        
+        Logger.error('No proxies available.');
+
         return undefined;
     }
 
@@ -58,8 +86,13 @@ class ProxyManager {
      */
     static async makeGetRequest(url, headers = {}) {
         return await executeWithDetailedHandling(async () => {
+
             // Get the configured proxy agent
-            const agent = this.getProxyAgent();
+            const agent = this.getNewProxyAgent();
+
+            if (!agent) {
+                throw new Error('No proxy agent available.');
+            }
 
             // Get a random user agent and extract the platform from it
             const userAgent = randomUserAgent.getRandom();
@@ -75,6 +108,9 @@ class ProxyManager {
             const timeoutId = setTimeout(() => {
                 source.cancel('Request timed out after 1000ms');
             }, timeout_value);
+
+            // Vinted APi domain extension
+            const extension = vinted_api_domain_extension;
 
             // Prepare the request options
             const options = {
@@ -95,9 +131,9 @@ class ProxyManager {
                     // Set connection
                     'Connection': 'keep-alive',
                     // Set referer
-                    'Referer': 'https://vinted.fr/',
+                    'Referer': `https://vinted.${extension}/catalog`,
                     // Set origin
-                    'Origin': 'https://www.vinted.fr/catalog',
+                    'Origin': `https://www.vinted.${extension}`,
                     // Set do not track
                     'DNT': '1',
                     // Set upgrade insecure requests

@@ -11,14 +11,14 @@ import crud from "./src/crud.js";
 import Logger from "./src/utils/logger.js";
 import CatalogService from "./src/services/catalog_service.js";
 
-const proxyConfig = ConfigurationManager.getRotatingProxyConfig();
+ProxyManager.init();
+
 const algorithmSettings = ConfigurationManager.getAlgorithmSettings();
-ProxyManager.setProxy(proxyConfig);
 
 var cookie = null;
 
 const getCookie = async () => {
-    const c = await fetchCookie('https://www.vinted.fr/catalog?');
+    const c = await fetchCookie();
     return c.cookie;
 };
 

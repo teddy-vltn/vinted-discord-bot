@@ -3,6 +3,10 @@ import ProxyManager from "../utils/http_utils.js";
 import Logger from "../utils/logger.js";
 import ConfigurationManager from "../utils/config_manager.js";
 
+const settings = ConfigurationManager.getAlgorithmSettings();
+const concurrency = settings.concurrency;
+const vinted_api_domain_extension = settings.vinted_api_domain_extension;
+
 /**
  * Fetch catalog items from Vinted.
  * @param {Object} params - Parameters for fetching catalog items.
@@ -12,8 +16,10 @@ import ConfigurationManager from "../utils/config_manager.js";
  * @returns {Promise<Object>} - Promise resolving to the fetched catalog items.
  */
 async function fetchCatalogItems({ cookie, per_page = 30, order = 'newest_first' }) {
+    const extension = vinted_api_domain_extension
+
     return await executeWithDetailedHandling(async () => {
-        const url = `https://www.vinted.fr/api/v2/catalog/items?per_page=${per_page}&order=${order}`;
+        const url = `https://www.vinted.${extension}/api/v2/catalog/items?per_page=${per_page}&order=${order}`;
         const headers = { 'Cookie': cookie };
 
         const response = await ProxyManager.makeGetRequest(url, headers);
@@ -28,7 +34,7 @@ async function fetchCatalogItems({ cookie, per_page = 30, order = 'newest_first'
 
 async function fetchCatalogInitializer({ cookie }) {
     return await executeWithDetailedHandling(async () => {
-        const url = `https://www.vinted.fr/api/v2/catalog/initializers`;
+        const url = `https://www.vinted.${extension}/api/v2/catalog/initializers`;
         const headers = { 'Cookie': cookie };
 
         const response = await ProxyManager.makeGetRequest(url, headers);
@@ -50,7 +56,7 @@ async function fetchCatalogInitializer({ cookie }) {
  */
 async function fetchItem({ cookie, item_id }) {
     return await executeWithDetailedHandling(async () => {
-        const url = `https://www.vinted.fr/api/v2/items/${item_id}`;
+        const url = `https://www.vinted.${extension}/api/v2/items/${item_id}`;
         const headers = { 'Cookie': cookie };
 
         const response = await ProxyManager.makeGetRequest(url, headers);
@@ -101,8 +107,6 @@ async function findHighestID(cookie) {
  * Manage concurrency and fetching logic.
  */
 const activePromises = new Set();
-const concurrency = ConfigurationManager.getAlgorithmSettings().concurrent_requests;
-
 let consecutiveErrors = 0;
 let rateLimitErrorsPerSecond = 0;
 
@@ -121,8 +125,6 @@ let minFetchedRange = 0;
 let maxFetchedRange = 0;
 
 let currentID = 0;
-
-let offset = 0;
 
 let fetchedIds = new Set();
 
