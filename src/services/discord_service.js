@@ -100,7 +100,7 @@ export async function postMessageToChannel(
 
     for (let attempt = 0; attempt <= retries; attempt++) {
         try {
-            const proxy = ProxyManager.getNewProxy();
+            const proxy = await ProxyManager.getNewProxy();
             const agent = ProxyManager.getProxyAgent(proxy);
 
             const options = {
