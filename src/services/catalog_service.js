@@ -1,106 +1,6 @@
-import { NotFoundError, ForbiddenError, executeWithDetailedHandling, RateLimitError } from "../helpers/execute_helper.js";
-import ProxyManager from "../utils/http_utils.js";
 import Logger from "../utils/logger.js";
-import ConfigurationManager from "../utils/config_manager.js";
-
-const settings = ConfigurationManager.getAlgorithmSettings();
-const concurrency = settings.concurrent_requests;
-const vinted_api_domain_extension = settings.vinted_api_domain_extension;
-const extension = vinted_api_domain_extension;
-
-/**
- * Fetch catalog items from Vinted.
- * @param {Object} params - Parameters for fetching catalog items.
- * @param {string} params.cookie - Cookie for authentication.
- * @param {number} [params.per_page=30] - Number of items per page.
- * @param {string} [params.order='newest_first'] - Order of items.
- * @returns {Promise<Object>} - Promise resolving to the fetched catalog items.
- */
-async function fetchCatalogItems({ cookie, per_page = 30, order = 'newest_first' }) {
-    return await executeWithDetailedHandling(async () => {
-        const url = `https://www.vinted.${extension}/api/v2/catalog/items?per_page=${per_page}&order=${order}`;
-        const headers = { 'Cookie': cookie };
-
-        const response = await ProxyManager.makeGetRequest(url, headers);
-
-        if (!response.success) {
-            throw new NotFoundError("Error fetching catalog items.");
-        }
-
-        return { items: response.body.items };
-    });
-}
-
-async function fetchCatalogInitializer({ cookie }) {
-    return await executeWithDetailedHandling(async () => {
-        const url = `https://www.vinted.${extension}/api/v2/catalog/initializers`;
-        const headers = { 'Cookie': cookie };
-
-        const response = await ProxyManager.makeGetRequest(url, headers);
-
-        if (!response.success) {
-            throw new NotFoundError("Error fetching catalog items.");
-        }
-
-        return { data: response.body.dtos };
-    });
-}
-
-/**
- * Fetch a specific item by ID from Vinted.
- * @param {Object} params - Parameters for fetching an item.
- * @param {string} params.cookie - Cookie for authentication.
- * @param {number} params.item_id - ID of the item to fetch.
- * @returns {Promise<Object>} - Promise resolving to the fetched item.
- */
-async function fetchItem({ cookie, item_id }) {
-    return await executeWithDetailedHandling(async () => {
-        const url = `https://www.vinted.${extension}/api/v2/items/${item_id}`;
-        const headers = { 'Cookie': cookie };
-
-        const response = await ProxyManager.makeGetRequest(url, headers);
-
-        if (!response.success) {
-            handleFetchItemError(response.code);
-        }
-
-        return { item: response.body.item };
-    });
-}
-
-/**
- * Handle errors during item fetching based on response code.
- * @param {number} code - Response code.
- * @throws {Error} - Corresponding error based on response code.
- */
-function handleFetchItemError(code) {
-    switch (code) {
-        case 404:
-            throw new NotFoundError("Item not found.");
-        case 403:
-            throw new ForbiddenError("Access forbidden.");
-        case 429:
-            throw new RateLimitError("Rate limit exceeded.");
-        default:
-            throw new Error("Error fetching item.");
-    }
-}
-
-/**
- * Find the highest item ID in the catalog.
- * @param {string} cookie - Cookie for authentication.
- * @returns {Promise<Object>} - Promise resolving to the highest item ID.
- */
-async function findHighestID(cookie) {
-    const response = await fetchCatalogItems({ cookie });
-
-    if (!response.items) {
-        throw new Error("Error fetching catalog items.");
-    }
-
-    const maxID = Math.max(...response.items.map(item => parseInt(item.id)));
-    return { highestID: maxID };
-}
+import { fetchCatalogItems } from "../api/fetchCatalogItems.js";
+import { fetchItem } from "../api/fetchItem.js";
 
 /**
  * Manage concurrency and fetching logic.
@@ -126,6 +26,27 @@ let maxFetchedRange = 0;
 let currentID = 0;
 
 let fetchedIds = new Set();
+let concurrency = 0;
+
+function initializeConcurrency( concurrent_requests ) {
+    concurrency = concurrent_requests
+}
+
+/**
+ * Find the highest item ID in the catalog.
+ * @param {string} cookie - Cookie for authentication.
+ * @returns {Promise<Object>} - Promise resolving to the highest item ID.
+ */
+async function findHighestID(cookie) {
+    const response = await fetchCatalogItems({ cookie });
+
+    if (!response.items) {
+        throw new Error("Error fetching catalog items.");
+    }
+
+    const maxID = Math.max(...response.items.map(item => parseInt(item.id)));
+    return { highestID: maxID };
+}
 
 /**
  * Log current status at regular intervals.
@@ -165,7 +86,6 @@ setInterval(() => {
 setInterval(() => {
     adjustConcurrency();
 }, 100);
-
 
 /**
  * Fetch items until the current item is reached automatically.
@@ -435,9 +355,7 @@ function delay(ms) {
 }
 
 const CatalogService = {
-    fetchCatalogItems,
-    fetchCatalogInitializer,
-    fetchItem,
+    initializeConcurrency,
     fetchUntilCurrentAutomatic,
     findHighestIDUntilSuccessful,
 };

@@ -1,4 +1,4 @@
-import axios, { isCancel } from 'axios';
+import axios from 'axios';
 import { SocksProxyAgent } from 'socks-proxy-agent';
 import { ForbiddenError, NotFoundError, RateLimitError, executeWithDetailedHandling } from '../helpers/execute_helper.js';
 import randomUserAgent from 'random-useragent';
@@ -7,8 +7,8 @@ import { listProxies, Proxy } from './proxies.js';
 import ConfigurationManager from './config_manager.js';
 import fs from 'fs';
 
-const proxy_settings = ConfigurationManager.getProxiesConfig();
-const algorithm_settings = ConfigurationManager.getAlgorithmSettings();
+const proxy_settings = ConfigurationManager.getProxiesConfig
+const algorithm_settings = ConfigurationManager.getAlgorithmSetting
 const vinted_api_domain_extension = algorithm_settings.vinted_api_domain_extension;
 
 // platform used to parse random user agent to get the correct platform, key is the platform name, value is the platform used in the user agent
@@ -194,16 +194,16 @@ class ProxyManager {
 
             try {
                 // Make the request and return the response with the response body
-                Logger.info(`Making GET request to ${url}`);
+                Logger.debug(`Making GET request to ${url}`);
                 const response = await axios(options);
                 clearTimeout(timeoutId);  // Clear the timeout if the request completes successfully
-                Logger.info(`GET request to ${url} completed successfully`);
+                Logger.debug(`GET request to ${url} completed successfully`);
                 return { response, body: response.data };
             } catch (error) {
                 // Get the response status code if available
                 const code = error.response ? error.response.status : null;
 
-                Logger.error(`Error making GET request: ${error.message}`);
+                Logger.debug(`Error making GET request: ${error.message}`);
 
                 // Throw specific error based on the response status code
                 if (code === 404) {

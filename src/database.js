@@ -3,7 +3,7 @@ const { Schema, model, Types } = mongoose;
 
 import ConfigurationManager from "./utils/config_manager.js";
 
-const mongoConfig = ConfigurationManager.getMongoDBConfig();
+const mongoConfig = ConfigurationManager.getMongoDBConfig
 
 import Logger from "./utils/logger.js";
 

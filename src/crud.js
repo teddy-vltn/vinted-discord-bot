@@ -4,8 +4,8 @@ import EventEmitter from "./utils/event_emitter.js";
 import ConfigurationManager from "./utils/config_manager.js";
 import { set } from "mongoose";
 
-const userDefaultConfig = ConfigurationManager.getUserConfig()
-const discordAdminId = ConfigurationManager.getDiscordConfig().admin_id;
+const userDefaultConfig = ConfigurationManager.getUserConfig
+const discordAdminId = ConfigurationManager.getDiscordConfig.admin_id;
 
 const eventEmitter = new EventEmitter();
 

@@ -4,7 +4,7 @@ import chalk from 'chalk';
 
 import ConfigurationManager from './config_manager.js';
 
-const devMode = ConfigurationManager.getDevMode();
+const devMode = ConfigurationManager.getDevMode
 
 class Logger {
     static logFilePath = path.join(process.cwd(), 'app.log');
