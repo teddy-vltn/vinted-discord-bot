@@ -9,7 +9,6 @@ import fs from 'fs';
 
 const proxy_settings = ConfigurationManager.getProxiesConfig();
 const algorithm_settings = ConfigurationManager.getAlgorithmSettings();
-const concurrent_requests = algorithm_settings.concurrent_requests;
 const vinted_api_domain_extension = algorithm_settings.vinted_api_domain_extension;
 
 // platform used to parse random user agent to get the correct platform, key is the platform name, value is the platform used in the user agent
