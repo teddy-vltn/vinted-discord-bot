@@ -3,10 +3,9 @@ import { SocksProxyAgent } from 'socks-proxy-agent';
 import { ForbiddenError, NotFoundError, RateLimitError, executeWithDetailedHandling } from '../helpers/execute_helper.js';
 import randomUserAgent from 'random-useragent';
 import Logger from './logger.js';
-import { listProxies, Proxy } from './webshare.js';
+import { listProxies, Proxy } from './proxies.js';
 import ConfigurationManager from './config_manager.js';
 import fs from 'fs';
-
 
 const proxy_settings = ConfigurationManager.getProxiesConfig();
 const algorithm_settings = ConfigurationManager.getAlgorithmSettings();
@@ -28,11 +27,12 @@ const PLATFORMS = {
 class ProxyManager {
     static proxyConfig = null;
     static proxies = [];
+    static proxiesLoaded = false;
     static currentProxyIndex = 0;
 
-    static init() {
+    static async init() {
         if (proxy_settings.use_webshare) {
-            this.proxies = listProxies();
+            this.proxies = await listProxies(proxy_settings.webshare_api_key);
 
             Logger.info(`Loaded ${this.proxies.length} proxies from Webshare.`);
         } else {
@@ -51,6 +51,8 @@ class ProxyManager {
 
             Logger.info(`Loaded ${this.proxies.length} proxies from file.`);
         }
+
+        Promise.resolve();
     }
 
     /**
@@ -64,18 +66,42 @@ class ProxyManager {
      * Retrieves the current proxy agent if a proxy is configured.
      * @returns {SocksProxyAgent|undefined} The proxy agent or undefined if no proxy is set.
      */
-    static getNewProxyAgent() {
+    static async getNewProxy() {
+        if (!this.proxiesLoaded) {
+            await this.init()
+            this.proxiesLoaded = true;
+        }
+
         if (this.proxies.length > 0) {
             this.currentProxyIndex = (this.currentProxyIndex + 1) % this.proxies.length;
 
             const proxy = this.proxies[this.currentProxyIndex];
 
-            return new SocksProxyAgent(proxy.getProxyString());
+            return proxy
         }
         
         Logger.error('No proxies available.');
 
         return undefined;
+    }
+
+    /** 
+     * Get New Proxy Socks Agent
+     * @param {Proxy} proxy - The proxy to get the agent for
+     * @returns {SocksProxyAgent} - The proxy agent
+     */
+    static getProxyAgent(proxy) {
+        return new SocksProxyAgent(proxy.getProxyString());
+    }
+    
+
+    /** 
+     * Remove invalid proxies from the list
+     * @param {Proxy} proxy - The proxy to remove
+     * @returns {void}
+     */
+    static removeProxy(proxy) {
+        this.proxies = this.proxies.filter(p => p !== proxy);
     }
 
     /**
@@ -88,7 +114,9 @@ class ProxyManager {
         return await executeWithDetailedHandling(async () => {
 
             // Get the configured proxy agent
-            const agent = this.getNewProxyAgent();
+            const proxy = await this.getNewProxy();
+
+            const agent = this.getProxyAgent(proxy);
 
             if (!agent) {
                 throw new Error('No proxy agent available.');
@@ -166,17 +194,23 @@ class ProxyManager {
 
             try {
                 // Make the request and return the response with the response body
+                Logger.info(`Making GET request to ${url}`);
                 const response = await axios(options);
                 clearTimeout(timeoutId);  // Clear the timeout if the request completes successfully
+                Logger.info(`GET request to ${url} completed successfully`);
                 return { response, body: response.data };
             } catch (error) {
                 // Get the response status code if available
                 const code = error.response ? error.response.status : null;
 
+                Logger.error(`Error making GET request: ${error.message}`);
+
                 // Throw specific error based on the response status code
                 if (code === 404) {
                     throw new NotFoundError("Resource not found.");
                 } else if (code === 403) {
+                    Logger.info(`Removing proxy ${proxy.ip}:${proxy.port} due to access forbidden error.`);
+                    this.removeProxy(proxy);
                     throw new ForbiddenError("Access forbidden. IP: " + error.response);
                 } else if (code === 429) {
                     throw new RateLimitError("Rate limit exceeded. IP: " + error.response);

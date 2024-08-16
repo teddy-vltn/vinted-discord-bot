@@ -20,6 +20,7 @@ export async function listProxies( apiKey ) {
 
     const url = new URL('https://proxy.webshare.io/api/v2/proxy/list/')
           url.searchParams.append('mode', 'direct')
+          url.searchParams.append('page_size', '9999')
    
     const req = await fetch(url.href, {
       method: "GET",
@@ -31,7 +32,7 @@ export async function listProxies( apiKey ) {
     const res = await req.json()
 
     const proxies = res.results.map(proxy => 
-        new Proxy(proxy.proxy_adress, proxy.port, proxy.username, proxy.password)
+        new Proxy(proxy.proxy_address, proxy.port, proxy.username, proxy.password)
     )
 
     return proxies

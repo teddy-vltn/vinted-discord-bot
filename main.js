@@ -103,7 +103,12 @@ const sendToChannel = async (item, user, vintedChannel) => {
 
 };
 
+Logger.info('Fetching monitored channels');
+
 let allMonitoringChannels = await crud.getAllMonitoredVintedChannels();
+
+// Print the number of monitored channels
+Logger.info(`Monitoring ${allMonitoringChannels.length} Vinted channels`);
 
 crud.eventEmitter.on('updated', async () => {
     allMonitoringChannels = await crud.getAllMonitoredVintedChannels();
@@ -112,6 +117,7 @@ crud.eventEmitter.on('updated', async () => {
 
 const monitorChannels = () => {
     const handleItem = async (rawItem) => {
+        Logger.debug('Handling item');
         const item = new VintedItem(rawItem);
 
         if (item.getNumericStars() === 0 && algorithmSettings.filter_zero_stars_profiles) {
@@ -140,5 +146,7 @@ const monitorChannels = () => {
         }
     })();
 };
+
+Logger.info('Starting monitoring channels');
 
 monitorChannels();

@@ -4,8 +4,9 @@ import Logger from "../utils/logger.js";
 import ConfigurationManager from "../utils/config_manager.js";
 
 const settings = ConfigurationManager.getAlgorithmSettings();
-const concurrency = settings.concurrency;
+const concurrency = settings.concurrent_requests;
 const vinted_api_domain_extension = settings.vinted_api_domain_extension;
+const extension = vinted_api_domain_extension;
 
 /**
  * Fetch catalog items from Vinted.
@@ -16,8 +17,6 @@ const vinted_api_domain_extension = settings.vinted_api_domain_extension;
  * @returns {Promise<Object>} - Promise resolving to the fetched catalog items.
  */
 async function fetchCatalogItems({ cookie, per_page = 30, order = 'newest_first' }) {
-    const extension = vinted_api_domain_extension
-
     return await executeWithDetailedHandling(async () => {
         const url = `https://www.vinted.${extension}/api/v2/catalog/items?per_page=${per_page}&order=${order}`;
         const headers = { 'Cookie': cookie };
