@@ -6,18 +6,20 @@ import client from "./src/client.js";
 import ConfigurationManager from "./src/utils/config_manager.js";
 import { postMessageToChannel } from "./src/services/discord_service.js";
 import { createVintedItemEmbed, createVintedItemActionRow } from "./src/bot/components/item_embed.js";
-import { fetchCookie } from "./src/services/cookie_service.js";
+import { fetchCookie } from "./src/api/fetchCookie.js";
+import { fetchCatalogInitializer } from "./src/api/fetchCatalogInitializers.js";
 import crud from "./src/crud.js";
 import Logger from "./src/utils/logger.js";
 import CatalogService from "./src/services/catalog_service.js";
 
-const proxyConfig = ConfigurationManager.getRotatingProxyConfig();
-ProxyManager.setProxy(proxyConfig);
-
 var cookie = null;
 
+ProxyManager.init();
+const algorithmSettings = ConfigurationManager.getAlgorithmSetting
+CatalogService.initializeConcurrency(algorithmSettings.concurrent_requests);
+
 const getCookie = async () => {
-    const c = await fetchCookie('https://www.vinted.fr/catalog?');
+    const c = await fetchCookie();
     return c.cookie;
 };
 
@@ -39,7 +41,7 @@ const refreshCookie = async () => {
 };
 
 
-const discordConfig = ConfigurationManager.getDiscordConfig();
+const discordConfig = ConfigurationManager.getDiscordConfig
 const token = discordConfig.token;
 
 Logger.info('Starting Vinted Bot');
@@ -59,7 +61,7 @@ const getCatalogRoots = async (cookie) => {
     let found = false;
     while (!found) {
         try {
-            const roots = await CatalogService.fetchCatalogInitializer( { cookie });
+            const roots = await fetchCatalogInitializer( { cookie });
             if (roots) {
                 buildCategoryMapFromRoots(roots);
                 found = true;
@@ -102,7 +104,12 @@ const sendToChannel = async (item, user, vintedChannel) => {
 
 };
 
+Logger.info('Fetching monitored channels');
+
 let allMonitoringChannels = await crud.getAllMonitoredVintedChannels();
+
+// Print the number of monitored channels
+Logger.info(`Monitoring ${allMonitoringChannels.length} Vinted channels`);
 
 crud.eventEmitter.on('updated', async () => {
     allMonitoringChannels = await crud.getAllMonitoredVintedChannels();
@@ -111,7 +118,12 @@ crud.eventEmitter.on('updated', async () => {
 
 const monitorChannels = () => {
     const handleItem = async (rawItem) => {
+        Logger.debug('Handling item');
         const item = new VintedItem(rawItem);
+
+        if (item.getNumericStars() === 0 && algorithmSettings.filter_zero_stars_profiles) {
+            return;
+        }
 
         for (const vintedChannel of allMonitoringChannels) {
             const user = vintedChannel.user;
@@ -135,5 +147,7 @@ const monitorChannels = () => {
         }
     })();
 };
+
+Logger.info('Starting monitoring channels');
 
 monitorChannels();

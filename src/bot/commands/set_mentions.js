@@ -25,7 +25,7 @@ export const data = new SlashCommandBuilder()
             ))
     .addStringOption(option =>
         option.setName('channel_id')
-            .setDescription('The channel ID to set mentions for (if type is "Channel").')
+            .setDescription('The channel ID to set mentions for.')
             .setRequired(false));
 
 

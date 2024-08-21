@@ -36,11 +36,13 @@ export async function registerCommands(client, discordConfig) {
 export async function handleCommands(interaction) {
     if (!interaction.isCommand()) return;
 
-    try {
+    Logger.info(`Received command: ${interaction.commandName}`);
+
+    try {   
         const module = await import(`./commands/${interaction.commandName}.js`);
         await module.execute(interaction);
     } catch (error) {
         Logger.error('Error handling command:', error);
-        await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
+        await interaction.followUp({ content: 'There was an error while executing this command!' });
     }
 }

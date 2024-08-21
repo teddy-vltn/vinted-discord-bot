@@ -100,7 +100,9 @@ export async function postMessageToChannel(
 
     for (let attempt = 0; attempt <= retries; attempt++) {
         try {
-            const agent = ProxyManager.getProxyAgent();
+            const proxy = await ProxyManager.getNewProxy();
+            const agent = ProxyManager.getProxyAgent(proxy);
+
             const options = {
                 url,
                 method: "POST",
@@ -123,7 +125,7 @@ export async function postMessageToChannel(
             } else if (code === 403) {
                 throw new ForbiddenError("Access forbidden.");
             } else if (attempt < retries) {
-                Logger.warn(`Attempt ${attempt + 1} failed. Retrying...`);
+                Logger.debug(`Attempt ${attempt + 1} failed. Retrying...`);
                 await new Promise((resolve) => setTimeout(resolve, 300)); 
             } else {
                 throw new Error(

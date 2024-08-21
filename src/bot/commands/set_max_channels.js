@@ -4,6 +4,7 @@ import crud from '../../crud.js';
 import t from '../../t.js';
 
 import ConfigurationManager from '../../utils/config_manager.js';
+const adminDiscordId = ConfigurationManager.getDiscordConfig.admin_id;
 
 export const data = new SlashCommandBuilder()
     .setName('set_max_channels')
@@ -25,7 +26,6 @@ export async function execute(interaction) {
         const discordId = interaction.options.getUser('user').id || interaction.user.id;
         const maxChannels = interaction.options.getInteger('max_channels');
 
-        const adminDiscordId = ConfigurationManager.getDiscordConfig().admin_id;
         if (interaction.user.id !== adminDiscordId) {
             await sendErrorEmbed(interaction, t(l, 'not-authorized'));
             return;

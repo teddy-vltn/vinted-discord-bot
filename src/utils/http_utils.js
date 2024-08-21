@@ -1,8 +1,15 @@
-import axios, { isCancel } from 'axios';
+import axios from 'axios';
 import { SocksProxyAgent } from 'socks-proxy-agent';
 import { ForbiddenError, NotFoundError, RateLimitError, executeWithDetailedHandling } from '../helpers/execute_helper.js';
 import randomUserAgent from 'random-useragent';
 import Logger from './logger.js';
+import { listProxies, Proxy } from './proxies.js';
+import ConfigurationManager from './config_manager.js';
+import fs from 'fs';
+
+const proxy_settings = ConfigurationManager.getProxiesConfig
+const algorithm_settings = ConfigurationManager.getAlgorithmSetting
+const vinted_api_domain_extension = algorithm_settings.vinted_api_domain_extension;
 
 // platform used to parse random user agent to get the correct platform, key is the platform name, value is the platform used in the user agent
 const PLATFORMS = {
@@ -14,22 +21,38 @@ const PLATFORMS = {
     'Windows Phone': 'Windows Phone'
 };
 
-
 /**
  * Static class for managing proxy settings and making HTTP requests with SOCKS authentication.
  */
 class ProxyManager {
     static proxyConfig = null;
+    static proxies = [];
+    static proxiesLoaded = false;
+    static currentProxyIndex = 0;
 
-    /**
-     * Sets the proxy configuration for all subsequent requests with optional authentication.
-     * @param {string} host - The host of the socks proxy.
-     * @param {number} port - The port number of the socks proxy.
-     * @param {string} [username] - The username for proxy authentication (optional).
-     * @param {string} [password] - The password for proxy authentication (optional).
-     */
-    static setProxy({ host, port, username = null, password = null }) {
-        this.proxyConfig = `socks://${username}:${password}@${host}:${port}`;
+    static async init() {
+        if (proxy_settings.use_webshare) {
+            this.proxies = await listProxies(proxy_settings.webshare_api_key);
+
+            Logger.info(`Loaded ${this.proxies.length} proxies from Webshare.`);
+        } else {
+            // Read the proxy file
+            const proxyFile = fs.readFileSync('proxies.txt', 'utf8');
+            const proxyLines = proxyFile.split('\n');
+
+            // Parse the proxy lines
+            for (const line of proxyLines) {
+                const parts = line.split(':');
+                if (parts.length === 4) {
+                    const proxy = new Proxy(parts[0], parts[1], parts[2], parts[3]);
+                    this.proxies.push(proxy);
+                }
+            }
+
+            Logger.info(`Loaded ${this.proxies.length} proxies from file.`);
+        }
+
+        Promise.resolve();
     }
 
     /**
@@ -43,11 +66,53 @@ class ProxyManager {
      * Retrieves the current proxy agent if a proxy is configured.
      * @returns {SocksProxyAgent|undefined} The proxy agent or undefined if no proxy is set.
      */
-    static getProxyAgent() {
-        if (this.proxyConfig) {
-            return new SocksProxyAgent(this.proxyConfig);
+    static async getNewProxy() {
+        if (!this.proxiesLoaded) {
+            await this.init()
+            this.proxiesLoaded = true;
         }
+
+        if (this.proxies.length > 0) {
+            this.currentProxyIndex = (this.currentProxyIndex + 1) % this.proxies.length;
+
+            const proxy = this.proxies[this.currentProxyIndex];
+
+            return proxy
+        }
+        
+        Logger.error('No proxies available.');
+
         return undefined;
+    }
+
+    /** 
+     * Get New Proxy Socks Agent
+     * @param {Proxy} proxy - The proxy to get the agent for
+     * @returns {SocksProxyAgent} - The proxy agent
+     */
+    static getProxyAgent(proxy) {
+        return new SocksProxyAgent(proxy.getProxyString());
+    }
+    
+
+    /** 
+     * Remove invalid proxies from the list
+     * @param {Proxy} proxy - The proxy to remove
+     * @returns {void}
+     */
+    static removeProxy(proxy) {
+        this.proxies = this.proxies.filter(p => p !== proxy);
+    }
+
+
+    static removeTemporarlyInvalidProxy(proxy, timeout = 60000) {
+        this.proxiesOnCooldown.push(proxy);
+        this.proxies = this.proxies.filter(p => p !== proxy);
+
+        setTimeout(() => {
+            this.proxies.push(proxy);
+            this.proxiesOnCooldown = this.proxiesOnCooldown.filter(p => p !== proxy);
+        }, timeout);
     }
 
     /**
@@ -58,8 +123,15 @@ class ProxyManager {
      */
     static async makeGetRequest(url, headers = {}) {
         return await executeWithDetailedHandling(async () => {
+
             // Get the configured proxy agent
-            const agent = this.getProxyAgent();
+            const proxy = await this.getNewProxy();
+
+            const agent = this.getProxyAgent(proxy);
+
+            if (!agent) {
+                throw new Error('No proxy agent available.');
+            }
 
             // Get a random user agent and extract the platform from it
             const userAgent = randomUserAgent.getRandom();
@@ -75,6 +147,9 @@ class ProxyManager {
             const timeoutId = setTimeout(() => {
                 source.cancel('Request timed out after 1000ms');
             }, timeout_value);
+
+            // Vinted APi domain extension
+            const extension = vinted_api_domain_extension;
 
             // Prepare the request options
             const options = {
@@ -95,9 +170,9 @@ class ProxyManager {
                     // Set connection
                     'Connection': 'keep-alive',
                     // Set referer
-                    'Referer': 'https://vinted.fr/',
+                    'Referer': `https://vinted.${extension}/catalog`,
                     // Set origin
-                    'Origin': 'https://www.vinted.fr/catalog',
+                    'Origin': `https://www.vinted.${extension}`,
                     // Set do not track
                     'DNT': '1',
                     // Set upgrade insecure requests
@@ -130,19 +205,27 @@ class ProxyManager {
 
             try {
                 // Make the request and return the response with the response body
+                Logger.debug(`Making GET request to ${url}`);
                 const response = await axios(options);
                 clearTimeout(timeoutId);  // Clear the timeout if the request completes successfully
+                Logger.debug(`GET request to ${url} completed successfully`);
                 return { response, body: response.data };
             } catch (error) {
                 // Get the response status code if available
                 const code = error.response ? error.response.status : null;
 
+                Logger.debug(`Error making GET request: ${error.message}`);
+
                 // Throw specific error based on the response status code
                 if (code === 404) {
                     throw new NotFoundError("Resource not found.");
                 } else if (code === 403) {
+                    Logger.info(`Removing proxy ${proxy.ip}:${proxy.port} due to access forbidden error.`);
+                    this.removeTemporarlyInvalidProxy(proxy);
                     throw new ForbiddenError("Access forbidden. IP: " + error.response);
                 } else if (code === 429) {
+                    Logger.info(`Removing proxy ${proxy.ip}:${proxy.port} due to rate limit error.`);
+                    this.removeTemporarlyInvalidProxy(proxy, 20000);
                     throw new RateLimitError("Rate limit exceeded. IP: " + error.response);
                 } else {
                     throw new Error(`Error making GET request: ${error.message}`);

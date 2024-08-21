@@ -18,7 +18,7 @@ export const data = new SlashCommandBuilder()
             .setDescription('The user to create the channel for.')
             .setRequired(false));
 
-const allow_user_to_create_private_channels = ConfigurationManager.getPermissionConfig().allow_user_to_create_private_channels;
+const allow_user_to_create_private_channels = ConfigurationManager.getPermissionConfig.allow_user_to_create_private_channels;
 
 export async function execute(interaction) {
     try {
@@ -36,7 +36,10 @@ export async function execute(interaction) {
             return;
         }
 
-        if (interaction.options.getUser('user') && interaction.user.id !== adminDiscordId) {
+        if (interaction.options.getUser('user') 
+            && interaction.user.id !== adminDiscordId
+            && interaction.options.getUser('user').id !== interaction.user.id
+        ) {
             await sendErrorEmbed(interaction, t(l, 'user-not-admin'));
             return;
         }

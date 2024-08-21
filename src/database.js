@@ -3,7 +3,7 @@ const { Schema, model, Types } = mongoose;
 
 import ConfigurationManager from "./utils/config_manager.js";
 
-const mongoConfig = ConfigurationManager.getMongoDBConfig();
+const mongoConfig = ConfigurationManager.getMongoDBConfig
 
 import Logger from "./utils/logger.js";
 
@@ -29,7 +29,6 @@ function buildCategoryMap(node, parentMap = {}) {
 
 // Build the category map starting from the root nodes
 function buildCategoryMapFromRoots(roots) {
-    console.log(roots)
     roots.data.catalogs.forEach((root) => {
         buildCategoryMap(root, categoryMap);
     });

@@ -4,8 +4,8 @@ import EventEmitter from "./utils/event_emitter.js";
 import ConfigurationManager from "./utils/config_manager.js";
 import { set } from "mongoose";
 
-const userDefaultConfig = ConfigurationManager.getUserConfig()
-const discordAdminId = ConfigurationManager.getDiscordConfig().admin_id;
+const userDefaultConfig = ConfigurationManager.getUserConfig
+const discordAdminId = ConfigurationManager.getDiscordConfig.admin_id;
 
 const eventEmitter = new EventEmitter();
 
@@ -29,10 +29,8 @@ async function findChannelInDatabase(channel_id) {
 
 async function isUserOwnerOfChannel(user_channels, channel_id, user_id=null) {
     // if user id then check if user id is admin to return the channel
-    console.log(user_id, discordAdminId)
     if (discordAdminId === user_id) {
         const vintedChannel = await findChannelInDatabase(channel_id);
-        console.log(vintedChannel)
         return vintedChannel;
     }
 
@@ -44,12 +42,6 @@ async function isUserOwnerOfChannel(user_channels, channel_id, user_id=null) {
     }
 
     return null;
-}
-
-function isChannelNameEqual(channel, channel_name) {
-    const a = channel.name.toLowerCase();
-    const b = channel_name.toLowerCase();
-    return a === b || a.endsWith(`_${b}`);
 }
 
 /**
