@@ -61,8 +61,8 @@ cd vinted-monitor
 - Click on "New Application" and give your bot a name.
 - Go to the "Bot" tab and click on "Add Bot".
 - Copy the "Client ID" and "Token" and paste them into the `.env` file.
-- Give intent permissions to the bot by going to the "Bot" tab and enabling the "Presence Intent" and "Server Members Intent".
-- Invite the bot with admin permissions to your server by going to the "OAuth2" tab and selecting the "bot" scope and the "Administrator" permission.
+- Give intent permissions to the bot by going to the "Bot" tab and enabling the "Presence Intent", "Server Members Intent" and "Content Message Intent".
+- Invite the bot with admin permissions to your server by going to the "OAuth2" tab and selecting the "bot" and "application.commands" scope and the "Administrator" permission.
 - Copy the generated URL and paste it into your browser to invite the bot to your server.
 
 3. Modify the configuration file `.env`:
@@ -72,10 +72,7 @@ cd vinted-monitor
 - **DISCORD_CLIENT_ID**: The client ID of your Discord bot, obtained from the Discord Developer Portal.
 - **DISCORD_TOKEN**: The token for your Discord bot, obtained from the Discord Developer Portal.
 - **DISCORD_ADMIN_ID**: The user ID of the bot owner, who can create public channels.
-- **PROXY_HOST**: The hostname of your rotating proxy service.
-- **PROXY_PORT**: The port number of your rotating proxy service.
-- **PROXY_USERNAME**: The username for authenticating with your rotating proxy service.
-- **PROXY_PASSWORD**: The password for authenticating with your rotating proxy service.
+- **WEBSHARE_API_KEY**: The Webshare API key to use.
 
 6. Make sure you have docker installed on your machine or [Install Docker](https://docs.docker.com/engine/install/) and run the following command:
 
@@ -83,9 +80,9 @@ cd vinted-monitor
 > If you are on Windows, make sure you have WSL2 alongside Docker Desktop to run the following command. You will also certainly need to activate virtualization in your BIOS.
 
 ```bash
-docker-compose up -d 
+docker compose up -d 
 # OR
-sudo docker-compose up -d
+sudo docker compose up -d
 ```
 
 > [!IMPORTANT]
@@ -102,9 +99,9 @@ sudo docker-compose up -d
 ?. If you want to stop the bot, you can run the following command:
 
 ```bash
-docker-compose down
+docker compose down
 # OR
-sudo docker-compose down
+sudo docker compose down
 ```
 
 ## Usage
