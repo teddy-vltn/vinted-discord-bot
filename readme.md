@@ -79,29 +79,29 @@ cd vinted-monitor
 > [!IMPORTANT]
 > If you are on Windows, make sure you have WSL2 alongside Docker Desktop to run the following command. You will also certainly need to activate virtualization in your BIOS.
 
+Make sure the start.sh has permission to execute.
 ```bash
-docker compose up -d 
-# OR
-sudo docker compose up -d
+chmod +x start.sh
+```
+
+```bash
+./start.sh
 ```
 
 > [!IMPORTANT]
 > If along the way you happen to modify the `.env` file or files in the other folders, you will need to rebuild the docker image by running the command above.
 
-> [!TIP]
-> You can also connect the bot to your own database by modifying the `.env` file, and by running simply by node by running `npm start`.
-
 5. The bot should now be running and ready to use. And enjoy! (if it ain't working you can come to the discord server for help https://discord.gg/CDv9b8cPXU)
-
-> [!NOTE]
-> If you want to access the database, you can use the MongoDB Express interface by going to `http://localhost:8081` and logging in with the credentials you set in the `.env` file.
 
 ?. If you want to stop the bot, you can run the following command:
 
+Make sure the stop.sh has permission to execute.
 ```bash
-docker compose down
-# OR
-sudo docker compose down
+chmod +x stop.sh
+```
+
+```bash
+./stop.sh
 ```
 
 ## Usage
