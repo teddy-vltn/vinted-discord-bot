@@ -28,6 +28,20 @@ Vinted Monitor is a bot that monitors the Vinted items route for new items and n
     - [Start Monitoring in a Private Channel](#start-monitoring-in-a-private-channel)
     - [Enable mentions in a Private Channel](#enable-mentions-in-a-private-channel)
 
+## Use the bot for free 
+
+The bot is running for free on a public discord server that you can access if you don't want to painfully try to install the bot that can be found by [clicking here](https://discord.gg/CDv9b8cPXU)
+- You can also help this bot running longer and contribute to the development somehow by [clicking here](https://buymeacoffee.com/teddyvltn)
+- You can also buy a membership to have a private version of this bot running on your own server that I will personnaly host by [clicking here](https://buymeacoffee.com/teddyvltn/membership)
+
+
+<p align="center">
+  <a href="https://buymeacoffee.com/teddyvltn/membership" target="_blank">
+    <img src="./doc/donate.png" alt="Example" style="max-height: 200px; width: auto;">
+  </a>
+</p>
+
+
 ## Features
 
 - **Real-time Monitoring**: Vinted Monitor fetches the latest items from the Vinted items route in real-time.
