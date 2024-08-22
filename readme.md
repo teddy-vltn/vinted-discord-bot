@@ -34,6 +34,14 @@ The bot is running for free on a public discord server that you can access if yo
 - You can also help this bot running longer and contribute to the development somehow by [clicking here](https://buymeacoffee.com/teddyvltn)
 - You can also buy a membership to have a private version of this bot running on your own server that I will personnaly host by [clicking here](https://buymeacoffee.com/teddyvltn/membership)
 
+---- 
+<p align="center">
+  <a href="https://buymeacoffee.com/teddyvltn/membership" target="_blank">
+    <img src="./doc/donate.png" alt="Example" style="max-height: 300px; width: auto;">
+  </a>
+</p>
+----
+
 ## Features
 
 - **Real-time Monitoring**: Vinted Monitor fetches the latest items from the Vinted items route in real-time.
