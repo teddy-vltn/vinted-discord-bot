@@ -13,27 +13,42 @@ export class Proxy {
 
 }
 
-export async function listProxies( apiKey ) {
+export async function listProxies(apiKey) {
     if (!apiKey) {
-        throw new Error("API key is required.")
+        throw new Error("API key is required.");
     }
 
-    const url = new URL('https://proxy.webshare.io/api/v2/proxy/list/')
-          url.searchParams.append('mode', 'direct')
-          url.searchParams.append('page_size', '9999')
-   
-    const req = await fetch(url.href, {
-      method: "GET",
-      headers: {
-        Authorization: "Token " + apiKey
-      }
-    })
-   
-    const res = await req.json()
+    const baseUrl = 'https://proxy.webshare.io/api/v2/proxy/list/';
+    let allProxies = [];
+    let page = 1;
+    let totalPages = 1;
 
-    const proxies = res.results.map(proxy => 
-        new Proxy(proxy.proxy_address, proxy.port, proxy.username, proxy.password)
-    )
+    // Keep requesting until we reach the last page
+    while (page <= totalPages) {
+        const url = new URL(baseUrl);
+        url.searchParams.append('mode', 'direct');
+        url.searchParams.append('page_size', '100');
+        url.searchParams.append('page', page);
 
-    return proxies
+        const req = await fetch(url.href, {
+            method: "GET",
+            headers: {
+                Authorization: "Token " + apiKey,
+            },
+        });
+
+        const res = await req.json();
+
+        const proxies = res.results.map((proxy) =>
+            new Proxy(proxy.proxy_address, proxy.port, proxy.username, proxy.password)
+        );
+
+        allProxies = allProxies.concat(proxies);
+
+        totalPages = Math.ceil(res.count / 100); // Assuming the API returns a 'count' field with total proxies
+        page++;
+    }
+
+    return allProxies;
 }
+
