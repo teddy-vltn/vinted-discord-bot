@@ -34,7 +34,6 @@ The bot is running for free on a public discord server that you can access if yo
 - You can also help this bot running longer and contribute to the development somehow by [clicking here](https://buymeacoffee.com/teddyvltn)
 - You can also buy a membership to have a private version of this bot running on your own server that I will personnaly host by [clicking here](https://buymeacoffee.com/teddyvltn/membership)
 
-
 ## Features
 
 - **Real-time Monitoring**: Vinted Monitor fetches the latest items from the Vinted items route in real-time.
@@ -103,6 +102,7 @@ chmod +x start.sh
 ?. If you want to stop the bot, you can run the following command:
 
 Make sure the stop.sh has permission to execute.
+
 ```bash
 chmod +x stop.sh
 ```

@@ -51,4 +51,3 @@ export async function listProxies(apiKey) {
 
     return allProxies;
 }
-
