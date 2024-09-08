@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Function to detect whether docker-compose or docker compose is available
+detect_docker_compose() {
+  if command -v docker-compose &> /dev/null; then
+    echo "docker-compose"
+  elif docker compose version &> /dev/null; then
+    echo "docker compose"
+  else
+    echo "Neither docker-compose nor docker compose found. Please install Docker Compose."
+    exit 1
+  fi
+}
+
 # Load the .env file if it exists
 if [ -f .env ]; then
   export $(cat .env | grep -v '^#' | xargs)
@@ -10,11 +22,14 @@ if [ -f .env.local ]; then
   export $(cat .env.local | grep -v '^#' | xargs)
 fi
 
-# Check the value of ALLOW_MONGO_EXPRESS and run the appropriate docker-compose command
+# Detect which docker compose command to use
+DOCKER_COMPOSE=$(detect_docker_compose)
+
+# Check the value of ALLOW_MONGO_EXPRESS and run the appropriate command
 if [ "$ALLOW_MONGO_EXPRESS" = "1" ]; then
-  # Make sure the network exists before running the containers to fix that : network vinted-network declared as external, but could not be found
-  docker network create vinted-network
-  docker-compose -f docker-compose.yml -f docker-compose.mongo-express.yml up -d
+  # Make sure the network exists before running the containers
+  docker network create vinted-network || true
+  $DOCKER_COMPOSE -f docker-compose.yml -f docker-compose.mongo-express.yml up -d
 else
-  docker-compose -f docker-compose.yml up -d
+  $DOCKER_COMPOSE -f docker-compose.yml up -d
 fi

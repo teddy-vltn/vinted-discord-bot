@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Function to detect whether docker-compose or docker compose is available
+detect_docker_compose() {
+  if command -v docker-compose &> /dev/null; then
+    echo "docker-compose"
+  elif docker compose version &> /dev/null; then
+    echo "docker compose"
+  else
+    echo "Neither docker-compose nor docker compose found. Please install Docker Compose."
+    exit 1
+  fi
+}
+
 # Load the .env file if it exists
 if [ -f .env ]; then
   export $(cat .env | grep -v '^#' | xargs)
@@ -10,12 +22,14 @@ if [ -f .env.local ]; then
   export $(cat .env.local | grep -v '^#' | xargs)
 fi
 
-# Check the value of ALLOW_MONGO_EXPRESS and run the appropriate docker-compose command
+# Detect which docker compose command to use
+DOCKER_COMPOSE=$(detect_docker_compose)
+
+# Check the value of ALLOW_MONGO_EXPRESS and run the appropriate command
 if [ "$ALLOW_MONGO_EXPRESS" = "1" ]; then
-  docker-compose -f docker-compose.yml -f docker-compose.mongo-express.yml down
+  $DOCKER_COMPOSE -f docker-compose.yml -f docker-compose.mongo-express.yml down
 else
-  docker-compose -f docker-compose.yml down
+  $DOCKER_COMPOSE -f docker-compose.yml down
 fi
 
-# Optionally, you can remove the network if it's no longer needed
 docker network rm vinted-network
