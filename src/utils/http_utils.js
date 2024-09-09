@@ -30,29 +30,37 @@ class ProxyManager {
     static proxiesLoaded = false;
     static currentProxyIndex = 0;
 
-    static async init() {
-        if (proxy_settings.use_webshare) {
-            this.proxies = await listProxies(proxy_settings.webshare_api_key);
+    static async init(maxRetries = 3, retryDelay = 5000) {
+        for (let attempt = 0; attempt < maxRetries; attempt++) {
+            try {
+                if (proxy_settings.use_webshare) {
+                    this.proxies = await listProxies(proxy_settings.webshare_api_key);
+                    Logger.info(`Loaded ${this.proxies.length} proxies from Webshare.`);
+                } else {
+                    // Read the proxy file
+                    const proxyFile = fs.readFileSync('proxies.txt', 'utf8');
+                    const proxyLines = proxyFile.split('\n');
 
-            Logger.info(`Loaded ${this.proxies.length} proxies from Webshare.`);
-        } else {
-            // Read the proxy file
-            const proxyFile = fs.readFileSync('proxies.txt', 'utf8');
-            const proxyLines = proxyFile.split('\n');
-
-            // Parse the proxy lines
-            for (const line of proxyLines) {
-                const parts = line.split(':');
-                if (parts.length === 4) {
-                    const proxy = new Proxy(parts[0], parts[1], parts[2], parts[3]);
-                    this.proxies.push(proxy);
+                    // Parse the proxy lines
+                    for (const line of proxyLines) {
+                        const parts = line.split(':');
+                        if (parts.length === 4) {
+                            const proxy = new Proxy(parts[0], parts[1], parts[2], parts[3]);
+                            this.proxies.push(proxy);
+                        }
+                    }
+                    Logger.info(`Loaded ${this.proxies.length} proxies from file.`);
                 }
+                return;
+            } catch (error) {
+                Logger.error(`Attempt ${attempt + 1} failed to initialize proxies: ${error.message}`);
+                if (attempt === maxRetries - 1) {
+                    Logger.error('Failed to initialize proxies after maximum retries');
+                    throw error;
+                }
+                await new Promise(resolve => setTimeout(resolve, retryDelay));
             }
-
-            Logger.info(`Loaded ${this.proxies.length} proxies from file.`);
         }
-
-        Promise.resolve();
     }
 
     /**

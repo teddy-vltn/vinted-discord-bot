@@ -13,7 +13,7 @@ export class Proxy {
 
 }
 
-export async function listProxies(apiKey) {
+export async function listProxies(apiKey, timeout = 10000) {
     if (!apiKey) {
         throw new Error("API key is required.");
     }
@@ -23,30 +23,46 @@ export async function listProxies(apiKey) {
     let page = 1;
     let totalPages = 1;
 
-    // Keep requesting until we reach the last page
     while (page <= totalPages) {
         const url = new URL(baseUrl);
         url.searchParams.append('mode', 'direct');
         url.searchParams.append('page_size', '100');
         url.searchParams.append('page', page);
 
-        const req = await fetch(url.href, {
-            method: "GET",
-            headers: {
-                Authorization: "Token " + apiKey,
-            },
-        });
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), timeout);
 
-        const res = await req.json();
+            const req = await fetch(url.href, {
+                method: "GET",
+                headers: {
+                    Authorization: "Token " + apiKey,
+                },
+                signal: controller.signal
+            });
 
-        const proxies = res.results.map((proxy) =>
-            new Proxy(proxy.proxy_address, proxy.port, proxy.username, proxy.password)
-        );
+            clearTimeout(timeoutId);
 
-        allProxies = allProxies.concat(proxies);
+            if (!req.ok) {
+                throw new Error(`HTTP error! status: ${req.status}`);
+            }
 
-        totalPages = Math.ceil(res.count / 100); // Assuming the API returns a 'count' field with total proxies
-        page++;
+            const res = await req.json();
+
+            const proxies = res.results.map((proxy) =>
+                new Proxy(proxy.proxy_address, proxy.port, proxy.username, proxy.password)
+            );
+
+            allProxies = allProxies.concat(proxies);
+
+            totalPages = Math.ceil(res.count / 100);
+            page++;
+        } catch (error) {
+            if (error.name === 'AbortError') {
+                throw new Error('Request timed out');
+            }
+            throw error;
+        }
     }
 
     return allProxies;
