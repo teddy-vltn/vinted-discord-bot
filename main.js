@@ -14,7 +14,13 @@ import CatalogService from "./src/services/catalog_service.js";
 
 var cookie = null;
 
-ProxyManager.init();
+try {
+    await ProxyManager.init();
+} catch (error) {
+    Logger.error(`Failed to initialize proxies: ${error.message}`);
+    Logger.info('Continuing without proxies...');
+}
+
 const algorithmSettings = ConfigurationManager.getAlgorithmSetting
 CatalogService.initializeConcurrency(algorithmSettings.concurrent_requests);
 
