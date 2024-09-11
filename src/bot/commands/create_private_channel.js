@@ -29,7 +29,7 @@ export async function execute(interaction) {
         const channelName = interaction.options.getString('channel_name');
         const discordId = interaction.options.getUser('user')?.id ?? interaction.user.id;
 
-        const adminDiscordId = ConfigurationManager.getDiscordConfig().admin_id;
+        const adminDiscordId = ConfigurationManager.getDiscordConfig.admin_id;
 
         if (!allow_user_to_create_private_channels && interaction.user.id !== adminDiscordId) {
             await sendErrorEmbed(interaction, t(l, 'not-allowed-to-create-private-channel'));
