@@ -186,7 +186,7 @@ class ProxyManager {
                     // Indicate that the request isn't from a mobile device
                     'Sec-Ch-Ua-Mobile': '?0',
                     // Set the agent platform
-                    'Sec-Ch-Ua-Platform:': platform,
+                    'Sec-Ch-Ua-Platform': platform,
                     // Set fetch site
                     'Sec-Fetch-Site': 'same-origin',
                     // Set fetch mode
