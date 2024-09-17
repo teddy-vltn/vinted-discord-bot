@@ -181,12 +181,12 @@ class ProxyManager {
                     'Origin': `https://www.vinted.${extension}`,
                     // Set do not track
                     'DNT': '1',
+                    // Set upgrade insecure requests
+                    'Upgrade-Insecure-Requests': '1',
                     // Indicate that the request isn't from a mobile device
                     'Sec-Ch-Ua-Mobile': '?0',
                     // Set the agent platform
                     'Sec-Ch-Ua-Platform:': platform,
-                    // Set upgrade insecure requests
-                    'Upgrade-Insecure-Requests': '1',
                     // Set fetch site
                     'Sec-Fetch-Site': 'same-origin',
                     // Set fetch mode
