@@ -169,8 +169,6 @@ class ProxyManager {
                     'User-Agent': userAgent,
                     // Request gzip compression
                     'Accept-Encoding': 'gzip, deflate, br',
-                    // Set the agent platform
-                    'Platform': platform,
                     // Set the accept language
                     'Accept-Language': 'fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7',
                     // Set cache control
@@ -185,6 +183,10 @@ class ProxyManager {
                     'DNT': '1',
                     // Set upgrade insecure requests
                     'Upgrade-Insecure-Requests': '1',
+                    // Indicate that the request isn't from a mobile device
+                    'Sec-Ch-Ua-Mobile': '?0',
+                    // Set the agent platform
+                    'Sec-Ch-Ua-Platform': platform,
                     // Set fetch site
                     'Sec-Fetch-Site': 'same-origin',
                     // Set fetch mode
@@ -195,8 +197,6 @@ class ProxyManager {
                     'Sec-Fetch-Dest': 'document',
                     // Add transfer encoding support
                     'TE': 'Trailers',
-                    // Control caching in HTTP/1.0 caches
-                    'Pragma': 'no-cache',
                     // Set priority
                     'Priority': 'u=0, i',
                     // Merge custom headers with the default headers
