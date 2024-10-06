@@ -73,8 +73,10 @@ const ShippableMap = {
     "lt": ["fi", "pl"],
     "rs": ["cz", "pl"],
     "hr": ["pl"],
-    "ro": ["pl"],
+    "ro": ["pl", "gr"],
     "hu": ["pl"],
+    "gr": ["ro"],
+    "com": ["us"],
     "de": [],
     "uk": [],
 };
