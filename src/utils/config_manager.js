@@ -21,7 +21,7 @@ class ConfigurationManager {
     static getDiscordConfig = {
         client_id: process.env.DISCORD_CLIENT_ID,
         token: process.env.DISCORD_TOKEN,
-        admin_id: process.env.DISCORD_ADMIN_ID
+        role_admin_id: process.env.DISCORD_ROLE_ADMIN_ID,
     }
     
     /**

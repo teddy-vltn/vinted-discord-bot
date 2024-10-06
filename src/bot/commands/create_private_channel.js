@@ -3,7 +3,6 @@ import { createBaseEmbed, sendErrorEmbed, sendWaitingEmbed } from '../components
 import crud from '../../crud.js';
 import { createCategoryIfNotExists, createChannelIfNotExists } from '../../services/discord_service.js';
 import t from '../../t.js';
-
 import ConfigurationManager from '../../utils/config_manager.js';
 
 export const data = new SlashCommandBuilder()
@@ -12,11 +11,7 @@ export const data = new SlashCommandBuilder()
     .addStringOption(option =>
         option.setName('channel_name')
             .setDescription('The name of the channel to be created.')
-            .setRequired(true))
-    .addUserOption(option =>
-        option.setName('user')
-            .setDescription('The user to create the channel for.')
-            .setRequired(false));
+            .setRequired(true));
 
 const allow_user_to_create_private_channels = ConfigurationManager.getPermissionConfig.allow_user_to_create_private_channels;
 
@@ -25,24 +20,17 @@ export async function execute(interaction) {
         const l = interaction.locale;
         await sendWaitingEmbed(interaction, t(l, 'creating-private-channel'));
 
-        const categoryOption = 'Private Channels';
+        const baseCategoryName = 'Private Channels';
         const channelName = interaction.options.getString('channel_name');
-        const discordId = interaction.options.getUser('user')?.id ?? interaction.user.id;
 
-        const adminDiscordId = ConfigurationManager.getDiscordConfig.admin_id;
+        const isUserAdmin = crud.isUserAdmin(interaction);
 
-        if (!allow_user_to_create_private_channels && interaction.user.id !== adminDiscordId) {
+        if (!allow_user_to_create_private_channels && !isUserAdmin) {
             await sendErrorEmbed(interaction, t(l, 'not-allowed-to-create-private-channel'));
             return;
         }
 
-        if (interaction.options.getUser('user') 
-            && interaction.user.id !== adminDiscordId
-            && interaction.options.getUser('user').id !== interaction.user.id
-        ) {
-            await sendErrorEmbed(interaction, t(l, 'user-not-admin'));
-            return;
-        }
+        const discordId = interaction.user.id;
 
         // Check if the user exists and has not exceeded the channel limit
         let user = await crud.getUserByDiscordId(discordId);
@@ -52,11 +40,10 @@ export async function execute(interaction) {
             return;
         }
 
-        // Create the category if it does not exist
-        const category = await createCategoryIfNotExists(interaction.guild.channels, categoryOption);
+        // Find or create an appropriate category
+        let category = await findOrCreateCategory(interaction.guild.channels, baseCategoryName);
 
         // Create the private channel
-        // cast discordId to integer
         const privateChannel = await createChannelIfNotExists(category, channelName, discordId);
 
         // Create the VintedChannel
@@ -76,13 +63,53 @@ export async function execute(interaction) {
         const embed = await createBaseEmbed(
             interaction,
             t(l, 'private-channel-created'),
-            t(l, 'private-channel-created-success', { channelName }),
+            t(l, 'private-channel-created-success', { channelName: `<#${channelId}>` }),
             0x00FF00
         );
 
         await interaction.editReply({ embeds: [embed] });
+
+        // Send a message in the private channel
+        const privateChannelObj = await interaction.guild.channels.cache.get(channelId);
+        await privateChannelObj.send(t(l, 'private-channel-welcome', { user: `<@${discordId}>` }));
     } catch (error) {
         console.error('Error creating private channel:', error);
         await sendErrorEmbed(interaction, 'There was an error creating the private channel.');
     }
 }
+
+async function findOrCreateCategory(channels, baseCategoryName) {
+    // Find categories that match the base name and include a number suffix if needed
+    let categoryNumber = 1;
+    let currentCategory;
+
+    while (true) {
+        const categoryName = categoryNumber === 1 ? baseCategoryName : `${baseCategoryName} ${categoryNumber}`;
+        currentCategory = channels.cache.find(
+            c => c.type === 4 && c.name === categoryName
+        );
+
+        // If the category is found but has fewer than 40 channels, use it
+        if (currentCategory && currentCategory.children.size < 40) {
+            return currentCategory;
+        }
+
+        // If the category doesn't exist, create it
+        if (!currentCategory) {
+            try {
+                return await channels.create({
+                    name: categoryName,
+                    type: 4,
+                    reason: 'Needed a new category for private channels due to limit'
+                });
+            } catch (error) {
+                console.error('Error creating category:', error);
+                throw error;
+            }
+        }
+
+        // If the category is full, increment the category number to create or search for the next one
+        categoryNumber++;
+    }
+}
+

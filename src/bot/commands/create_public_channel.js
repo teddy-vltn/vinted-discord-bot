@@ -4,7 +4,6 @@ import { createCategoryIfNotExists, createChannelIfNotExists } from '../../servi
 import crud from '../../crud.js';
 
 import ConfigurationManager from '../../utils/config_manager.js';
-const adminDiscordId = ConfigurationManager.getDiscordConfig.admin_id;
 
 export const data = new SlashCommandBuilder()
     .setName('create_public_channel')
@@ -26,7 +25,7 @@ export async function execute(interaction) {
     try {
         await sendWaitingEmbed(interaction, 'Creating public channel...');
 
-        if (interaction.user.id !== adminDiscordId) {
+        if (await crud.isUserAdmin(interaction) === false) {
             await sendErrorEmbed(interaction, 'You do not have permission to create a public channel.');
             return;
         }

@@ -5,7 +5,7 @@ import ConfigurationManager from "./utils/config_manager.js";
 import { set } from "mongoose";
 
 const userDefaultConfig = ConfigurationManager.getUserConfig
-const discordAdminId = ConfigurationManager.getDiscordConfig.admin_id;
+const discordAdminId = ConfigurationManager.getDiscordConfig.role_admin_id;
 
 const eventEmitter = new EventEmitter();
 
@@ -23,21 +23,26 @@ async function createUser({ discordId, preferences = {}, channels = [], lastUpda
     return result;
 }
 
-async function findChannelInDatabase(channel_id) {
-    return VintedChannel.findOne({ channelId: channel_id });
+async function isUserAdmin(interaction) {
+    console.log(discordAdminId)
+    return await interaction.member.roles.cache.some(role => role.id === discordAdminId);
 }
 
-async function isUserOwnerOfChannel(user_channels, channel_id, user_id=null) {
-    // if user id then check if user id is admin to return the channel
-    if (discordAdminId === user_id) {
-        const vintedChannel = await findChannelInDatabase(channel_id);
-        return vintedChannel;
+async function isUserOwnerOfChannel(interaction, user_channels, channel_id, user_id=null) {
+
+    // get role admin id
+    if (await isUserAdmin(interaction)) {
+        return true;
     }
 
-    // return the channel from the list
-    for (let i = 0; i < user_channels.length; i++) {
-        if (user_channels[i].channelId === channel_id) {
-            return user_channels[i];
+    if (user_channels.includes(channel_id)) {
+        return true;
+    }
+
+    if (user_id) {
+        const user = await getUserById(user_id);
+        if (user.channels.includes(channel_id)) {
+            return true;
         }
     }
 
@@ -223,6 +228,13 @@ async function removeVintedChannelPreference(channelId, key, value) {
     return await removeFromPreferenceKey(VintedChannel, 'channelId', channelId, key, value);
 }
 
+async function getVintedChannelPreference(channelId, key) {
+    const channel = await getVintedChannelById(channelId);
+    if (channel) {
+        return channel.preferences.get(key);
+    }
+}
+
 // CRUD Operations for VintedChannel
 
 /**
@@ -256,6 +268,11 @@ async function getAllVintedChannels() {
 
 async function getAllMonitoredVintedChannels() {
     return await VintedChannel.find({ isMonitoring: true }).populate('user');
+}
+
+async function getAllVintedChannelsByDiscordId(discordId) {
+    const user = await getUserByDiscordId(discordId);
+    return await VintedChannel.find({ user: user.discordId }).populate('user');
 }
 
 /**
@@ -306,6 +323,13 @@ async function deleteVintedChannel(id) {
     const result = await VintedChannel.findByIdAndDelete(id);
     eventEmitter.emit('updated');
     return result;
+}
+
+async function deleteVintedChannelByChannelId(channelId) {
+    const channel = await VintedChannel.findOne({ channelId: channelId });
+    if (channel) {
+        return await deleteVintedChannel(channel._id);
+    }
 }
 
 /**
@@ -361,10 +385,20 @@ async function removeChannelFromUser(userId, channelId) {
     eventEmitter.emit('updated');
 }
 
+async function removeChannelFromUserByIds(discordId, channelId) {
+    const user = await getUserByDiscordId(discordId);
+    if (user) {
+        user.channels.pull(channelId);
+        await user.save();
+    }
+    eventEmitter.emit('updated');
+}
+
 // Export the CRUD operations and utility functions
 
 const crud = {
     createUser,
+    isUserAdmin,
     isUserOwnerOfChannel,
     getUserById,
     getUserByDiscordId,
@@ -378,16 +412,20 @@ const crud = {
     setVintedChannelPreference,
     addVintedChannelPreference,
     removeVintedChannelPreference,
+    getVintedChannelPreference,
     createVintedChannel,
     getVintedChannelById,
     getAllVintedChannels,
     getAllMonitoredVintedChannels,
+    getAllVintedChannelsByDiscordId,
     updateVintedChannel,
     deleteVintedChannel,
+    deleteVintedChannelByChannelId,
     checkVintedChannelExists,
     addChannelToUser,
     checkChannelInUser,
     removeChannelFromUser,
+    removeChannelFromUserByIds,
     startVintedChannelMonitoring,
     stopVintedChannelMonitoring,
     eventEmitter

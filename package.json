@@ -15,9 +15,13 @@
   "main": "main.js",
   "scripts": {
     "start": "node --max-old-space-size=4096 main.js",
+    "dev": "nodemon --max-old-space-size=4096 main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
 }

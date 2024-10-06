@@ -2,9 +2,6 @@ import { SlashCommandBuilder } from 'discord.js';
 import { createBaseEmbed, sendErrorEmbed, sendWaitingEmbed } from '../components/base_embeds.js';
 import crud from '../../crud.js';
 
-import ConfigurationManager from '../../utils/config_manager.js';
-const adminDiscordId = ConfigurationManager.getDiscordConfig.admin_id;
-
 export const data = new SlashCommandBuilder()
     .setName('delete_public_channel')
     .setDescription('Delete a public monitoring channel.')
@@ -17,7 +14,7 @@ export async function execute(interaction) {
     try {
         await sendWaitingEmbed(interaction, 'Deleting public channel...');
 
-        if (interaction.user.id !== adminDiscordId) {
+        if (await crud.isUserAdmin(interaction) === false) {
             await sendErrorEmbed(interaction, 'You do not have permission to delete a public channel.');
             return;
         }

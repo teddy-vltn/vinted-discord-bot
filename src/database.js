@@ -56,6 +56,29 @@ const Preference = {
     Mention: "mention"
 };
 
+const ShippableMap = {
+    "pl": ["se", "lt", "rs", "hu", "ro", "cz", "dk", "hr", "fi"],
+    "fr": ["nl", "be", "it", "es", "pt", "lu", "at"],
+    "it": ["nl", "be", "fr", "es", "pt", "lu", "at"],
+    "be": ["nl", "fr", "it", "es", "pt", "lu"],
+    "es": ["nl", "be", "fr", "it", "pt", "lu"],
+    "nl": ["be", "fr", "it", "es", "pt", "lu"],
+    "pt": ["nl", "be", "fr", "it", "es"],
+    "lu": ["nl", "be", "fr", "it", "es"],
+    "fi": ["se", "dk", "lt", "pl"],
+    "dk": ["se", "fi", "pl"],
+    "se": ["fi", "dk", "pl"],
+    "at": ["fr", "it"],
+    "cz": ["rs", "pl"],
+    "lt": ["fi", "pl"],
+    "rs": ["cz", "pl"],
+    "hr": ["pl"],
+    "ro": ["pl"],
+    "hu": ["pl"],
+    "de": [],
+    "uk": [],
+};
+
 // Define your schemas
 const userSchema = new Schema({
     discordId: { type: String, unique: true, required: true },
@@ -88,4 +111,4 @@ const VintedChannel = model('VintedChannel', vintedChannelSchema);
 
 Logger.info("Database models loaded.");
 
-export { Preference, User, VintedChannel, isSubcategory, buildCategoryMapFromRoots };
+export { Preference, ShippableMap, User, VintedChannel, isSubcategory, buildCategoryMapFromRoots };
