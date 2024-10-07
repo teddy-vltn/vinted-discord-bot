@@ -57,7 +57,7 @@ const Preference = {
 };
 
 const ShippableMap = {
-    "pl": ["se", "lt", "rs", "hu", "ro", "cz", "dk", "hr", "fi"],
+    "pl": ["se", "lt", "sk", "hu", "ro", "cz", "dk", "hr", "fi"],
     "fr": ["nl", "be", "it", "es", "pt", "lu", "at"],
     "it": ["nl", "be", "fr", "es", "pt", "lu", "at"],
     "be": ["nl", "fr", "it", "es", "pt", "lu"],
@@ -69,9 +69,9 @@ const ShippableMap = {
     "dk": ["se", "fi", "pl"],
     "se": ["fi", "dk", "pl"],
     "at": ["fr", "it"],
-    "cz": ["rs", "pl"],
+    "cz": ["sk", "pl"],
     "lt": ["fi", "pl"],
-    "rs": ["cz", "pl"],
+    "sk": ["cz", "pl"],
     "hr": ["pl"],
     "ro": ["pl", "gr"],
     "hu": ["pl"],

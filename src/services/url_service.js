@@ -54,6 +54,7 @@ function matchVintedItemToSearchParams(item, searchParams, countries_codes = [])
         description: item.description.toLowerCase(),
         brand: item.brand.toLowerCase()
     };
+
     if (searchParams.search_text) {
         const searchText = searchParams.search_text.toLowerCase();
         if (!lowerCaseItem.title.includes(searchParams.search_text) && !lowerCaseItem.description.includes(searchText) && !lowerCaseItem.brand.includes(searchText)) {
