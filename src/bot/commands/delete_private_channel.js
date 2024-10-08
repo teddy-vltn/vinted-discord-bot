@@ -70,7 +70,7 @@ export async function execute(interaction) {
                 0xFF0000
             );
 
-            await channelInteraction.update({ content: '', embeds: [embed], components: [] });
+            await channelInteraction.followUp({ content: '', embeds: [embed], components: [] });
         });
 
     } catch (error) {
