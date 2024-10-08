@@ -5,10 +5,6 @@ import crud from '../../crud.js';
 export const data = new SlashCommandBuilder()
     .setName('delete_public_channel')
     .setDescription('Delete a public monitoring channel.')
-    .addStringOption(option =>
-        option.setName('channel_id')
-            .setDescription('The ID of the channel to be deleted.')
-            .setRequired(true));
 
 export async function execute(interaction) {
     try {
@@ -19,7 +15,7 @@ export async function execute(interaction) {
             return;
         }
 
-        const channelId = interaction.options.getString('channel_id');
+        const channelId = interaction.channel.id;
 
         // Find the VintedChannel by channelId
         const vintedChannel = await crud.getVintedChannelById(channelId);

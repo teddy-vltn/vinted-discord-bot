@@ -98,7 +98,6 @@ const userSchema = new Schema({
 const vintedChannelSchema = new Schema({
     channelId: { type: String, unique: true, required: true },
     lastUpdated: { type: Date, default: Date.now },
-    name: { type: String, required: true },
     url: { type: String, default: null },
     isMonitoring: { type: Boolean, default: true },
     type: { type: String, default: 'public' },
