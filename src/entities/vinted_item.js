@@ -3,15 +3,15 @@ function validateId(value) {
     return (typeof value === 'number' && value > 0) ? value : 0;
   }
   
-  function validateNumber(value, fieldName) {
+  function validateNumber(value) {
     return (typeof value === 'number') ? value : 0;
   }
   
-  function validateString(value, fieldName) {
+  function validateString(value) {
     return (typeof value === 'string') ? value : "N/A";
   }
   
-  function validateBoolean(value, fieldName) {
+  function validateBoolean(value) {
     return (typeof value === 'boolean') ? value : false;
   }
   
@@ -33,10 +33,11 @@ function validateId(value) {
   class VintedPhoto {
     constructor(photo) {
       this.id = validateId(photo.id);
-      this.imageNo = validateNumber(photo.image_no, "image_no");
-      this.width = validateNumber(photo.width, "width");
-      this.height = validateNumber(photo.height, "height");
+      this.imageNo = validateNumber(photo.image_no);
+      this.width = validateNumber(photo.width);
+      this.height = validateNumber(photo.height);
       this.url = validateUrl(photo.url);
+      this.dominantColor = validateString(photo.dominant_color);
       this.fullSizeUrl = validateUrl(photo.full_size_url);
     }
   }
@@ -44,10 +45,10 @@ function validateId(value) {
   class VintedUser {
     constructor(userData) {
         this.id = validateId(userData.id);
-        this.login = validateString(userData.login, "login");
-        this.feedback_reputation = validateNumber(userData.feedback_reputation, "feedback_reputation");
-        this.feedback_count = validateNumber(userData.feedback_count, "feedback_count");
-        this.countryCode = validateString(userData.country_code, "country_code").toLowerCase();
+        this.login = validateString(userData.login);
+        this.feedback_reputation = validateNumber(userData.feedback_reputation)
+        this.feedback_count = validateNumber(userData.feedback_count)
+        this.countryCode = validateString(userData.country_code).toLowerCase();
 
         this.photo = userData.photo ? new VintedPhoto(userData.photo) : "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
 
@@ -58,7 +59,7 @@ function validateId(value) {
   class VintedItem {
     constructor(itemData) {
       this.id = validateId(itemData.id);
-      this.title = validateString(itemData.title, "title");
+      this.title = validateString(itemData.title);
       this.url = validateUrl(itemData.url);
       this.brandId = validateId(itemData.brand_id);
       this.sizeId = validateId(itemData.size_id);
@@ -68,14 +69,14 @@ function validateId(value) {
       this.countryId = validateId(itemData.country_id);
       this.catalogId = validateId(itemData.catalog_id);
 
-      this.description = validateString(itemData.description, "description");
-      this.size = validateString(itemData.size, "size");
-      this.brand = validateString(itemData.brand, "brand");
-      this.composition = validateString(itemData.composition, "composition");
-      this.status = validateString(itemData.status, "status");
-      this.label = validateString(itemData.label, "label");
-      this.currency = validateString(itemData.currency, "currency");
-      this.priceNumeric = validateNumber(parseFloat(itemData.price_numeric), "price_numeric");
+      this.description = validateString(itemData.description);
+      this.size = validateString(itemData.size);
+      this.brand = validateString(itemData.brand);
+      this.composition = validateString(itemData.composition);
+      this.status = validateString(itemData.status);
+      this.label = validateString(itemData.label);
+      this.currency = validateString(itemData.currency);
+      this.priceNumeric = validateNumber(parseFloat(itemData.price_numeric));
 
       this.updatedAtTs = parseDate(itemData.updated_at_ts);
       this.colorId = validateId(itemData.color1_id);
@@ -89,10 +90,19 @@ function validateId(value) {
 
       // Create user object
       this.user = itemData.user ? new VintedUser(itemData.user) : null;
+
+      this.catalogBranchTitle = validateString(itemData.catalog_branch_title);
     }
 
     getNumericStars() {
       return this.user ? this.user.feedback_reputation : 0;
+    }
+
+    getDominantColor() {
+      if (this.photos.length === 0) {
+        return "#000000";
+      }
+      return this.photos[0].dominantColor;
     }
   }
   

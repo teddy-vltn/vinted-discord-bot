@@ -35,7 +35,7 @@ export async function execute(interaction) {
         const embed = await createBaseEmbed(
             interaction,
             'Public Channel Created',
-            `Public channel "${channelName}" has been created successfully and is now monitoring [Vinted Search](${url}).`,
+            `Public channel has been linked successfully and is now monitoring [Vinted Search](${url}).`,
             0x00FF00
         );
 

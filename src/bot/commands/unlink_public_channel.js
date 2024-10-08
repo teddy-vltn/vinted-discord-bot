@@ -3,8 +3,8 @@ import { createBaseEmbed, sendErrorEmbed, sendWaitingEmbed } from '../components
 import crud from '../../crud.js';
 
 export const data = new SlashCommandBuilder()
-    .setName('delete_public_channel')
-    .setDescription('Delete a public monitoring channel.')
+    .setName('unlink_public_channel')
+    .setDescription('Unlink a public monitoring channel.');
 
 export async function execute(interaction) {
     try {
@@ -23,13 +23,7 @@ export async function execute(interaction) {
             await sendErrorEmbed(interaction, 'Public channel not found.');
             return;
         }
-
-        // Delete the channel from Discord
-        const channel = await interaction.guild.channels.cache.get(channelId);
-        if (channel) {
-            await channel.delete('Deleting public channel');
-        }
-
+        
         // Delete the VintedChannel from the database
         await crud.deleteVintedChannel(vintedChannel._id);
 

@@ -25,7 +25,7 @@ export async function createVintedItemEmbed(item, domain = "fr") {
         null,
         item.title,
         `📝 ${item.description}`,
-        0x00FF00
+        item.getDominantColor()
     )
 
     embed.setURL(replaceDomainInUrl(item.url, domain));
