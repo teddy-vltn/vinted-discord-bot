@@ -70,5 +70,7 @@
     "channel-info": "Informations sur le canal",
 
     "user-info-success": "Trouvez ci-dessous les informations sur l'utilisateur !",
-    "channel-info-success": "Trouvez ci-dessous les informations sur le canal !"
+    "channel-info-success": "Trouvez ci-dessous les informations sur le canal !",
+    
+    "deleting-all-private-channels": "Suppression de tous les canaux privés..."
 }

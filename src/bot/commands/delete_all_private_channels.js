@@ -16,7 +16,7 @@ export async function execute(interaction) {
         const l = interaction.locale;
 
         // Check if the user is an admin
-        const isAdmin = await crud.isUserAdmin(interaction.user.id);
+        const isAdmin = await crud.isUserAdmin(interaction);
         if (!isAdmin) {
             await sendErrorEmbed(interaction, t(l, 'admin-only-command'));
             return;

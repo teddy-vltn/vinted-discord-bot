@@ -83,5 +83,10 @@
     "max-channels-set": "Max channels set.",
     "max-channels-set-success": "The max channels has been successfully set.",
 
-    "private-channel-welcome": "Welcome to your private channel {user}! You can now start monitoring the Vinted catalog search. `/start_monitoring`"
+    "private-channel-welcome": "Welcome to your private channel {user}! You can now start monitoring the Vinted catalog search. `/start_monitoring`",
+
+    "all-private-channels-deleted-success": "All private channels have been successfully deleted.",
+    "all-private-channels-deleted": "Deleting all private channels...",
+
+    "delete-all-private-channels": "Delete all private channels"
 }
