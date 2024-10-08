@@ -30,7 +30,7 @@ export async function execute(interaction) {
 
         // Create a select menu for channel selection
         const channelMenu = new StringSelectMenuBuilder()
-            .setCustomId('channel_delete_select')
+            .setCustomId('channel_delete_select' + discordId)
             .setPlaceholder('Select the private channel to delete')
             .addOptions(channels.map(channel => ({
                 label: channel.name,
@@ -45,7 +45,7 @@ export async function execute(interaction) {
         });
 
         // Create a collector for the channel selection
-        const filter = i => i.customId === 'channel_delete_select' && i.user.id === discordId;
+        const filter = i => i.customId === 'channel_delete_select' + discordId && i.user.id === discordId;
         const channelCollector = interaction.channel.createMessageComponentCollector({ filter, time: 60000 });
 
         channelCollector.on('collect', async channelInteraction => {
@@ -57,16 +57,16 @@ export async function execute(interaction) {
             // Remove the channel from the user's channels list
             await crud.removeChannelFromUserByIds(interaction.user.id, channelId);
 
+            await channelInteraction.update({ 
+                content: `The private channel has been deleted.`,
+                components: [] 
+            });
+
             // Delete the actual Discord channel
             const discordChannel = interaction.guild.channels.cache.get(channelId);
             if (discordChannel) {
                 await discordChannel.delete();
             }
-
-            await channelInteraction.update({ 
-                content: `The private channel has been deleted.`,
-                components: [] 
-            });
         });
 
     } catch (error) {

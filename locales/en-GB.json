@@ -88,5 +88,13 @@
     "all-private-channels-deleted-success": "All private channels have been successfully deleted.",
     "all-private-channels-deleted": "Deleting all private channels...",
 
-    "delete-all-private-channels": "Delete all private channels"
+    "delete-all-private-channels": "Delete all private channels",
+
+    "channel-inactivity-warning": "Your channel has been inactive for a while.",
+    "reply-to-keep-channel": "Reply to this message to keep the channel {channelName}, otherwise it will be deleted in {time} hours.",
+    "keep-channel": "Keep channel",
+    "delete-channel": "Delete channel",
+
+    "channel-kept": "Channel kept.",
+    "channel-deleted": "Channel deleted."
 }

@@ -235,6 +235,21 @@ async function getVintedChannelPreference(channelId, key) {
     }
 }
 
+async function setVintedChannelUpdatedAtNow(channelId) {
+    const channel = await getVintedChannelById(channelId);
+    if (channel) {
+        channel.lastUpdated = new Date();
+        await channel.save();
+    }
+}
+
+async function setVintedChannelKeepMessageSent(channelId, keepMessageSent) {
+    const channel = await getVintedChannelById(channelId);
+    if (channel) {
+        channel.keepMessageSent = keepMessageSent;
+        await channel.save();
+    }
+}
 // CRUD Operations for VintedChannel
 
 /**
@@ -398,6 +413,13 @@ async function removeChannelFromUserByIds(discordId, channelId) {
     eventEmitter.emit('updated');
 }
 
+async function getUserFromChannel(channelId) {
+    const channel = await VintedChannel.findOne({ channelId });
+    if (channel) {
+        return await getUserById(channel.user);
+    }
+}
+
 // Export the CRUD operations and utility functions
 
 const crud = {
@@ -406,8 +428,11 @@ const crud = {
     isUserOwnerOfChannel,
     getUserById,
     getUserByDiscordId,
+    getUserFromChannel,
     updateUser,
     setUserMaxChannels,
+    setVintedChannelUpdatedAtNow,
+    setVintedChannelKeepMessageSent,
     deleteUser,
     checkUserExists,
     setUserPreference,

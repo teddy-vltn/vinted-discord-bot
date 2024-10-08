@@ -36,7 +36,7 @@ export async function execute(interaction) {
 
         // Create a select menu for channel selection
         const channelMenu = new StringSelectMenuBuilder()
-            .setCustomId('channel_select')
+            .setCustomId('channel_select' + discordId)
             .setPlaceholder('Select the channel to set mentions for')
             .addOptions(channels.map(channel => ({
                 label: channel.name,
@@ -51,7 +51,7 @@ export async function execute(interaction) {
         });
 
         // Create a collector for the channel selection
-        const filter = i => i.customId === 'channel_select' && i.user.id === discordId;
+        const filter = i => i.customId === 'channel_select' + discordId && i.user.id === discordId;
         const channelCollector = interaction.channel.createMessageComponentCollector({ filter, time: 60000 });
 
         channelCollector.on('collect', async channelInteraction => {
@@ -67,6 +67,8 @@ export async function execute(interaction) {
                 content: `Mentions have been ${status} for the channel.`,
                 components: [],
             });
+
+            await crud.setVintedChannelUpdatedAtNow(channelId);
         });
 
     } catch (error) {

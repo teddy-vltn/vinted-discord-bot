@@ -1,9 +1,16 @@
 import pkg from 'discord.js';
-const { PermissionsBitField } = pkg;
+const { PermissionsBitField, ActionRowBuilder, ButtonBuilder } = pkg;
 import ProxyManager from '../utils/http_utils.js';
 import { ForbiddenError, NotFoundError, executeWithDetailedHandling } from '../helpers/execute_helper.js';
 import axios from 'axios';
 import Logger from '../utils/logger.js';
+import crud from '../crud.js';
+import ConfigurationManager from '../utils/config_manager.js';
+import { createBaseEmbed } from '../bot/components/base_embeds.js';
+import t from '../t.js';
+
+const discordConfig = ConfigurationManager.getDiscordConfig
+const guild_id = discordConfig.guild_id;
 
 /**
  * Create a category on Discord if it doesn't exist.
@@ -63,6 +70,100 @@ export async function createChannelIfNotExists(category, channelName, discordId=
     });
 
     return channel;
+}
+
+// Helper function to calculate the time difference in hours
+function hoursAgo(date) {
+    const now = new Date();
+    const diffMs = now - new Date(date);
+    return diffMs / (1000 * 60 * 60); // convert ms to hours
+}
+
+export async function checkVintedChannelInactivity(client) {
+    try {
+        // Fetch all Vinted channels from the database
+        const channels = await crud.getAllPrivateVintedChannels();
+        
+        for (const channel of channels) {
+            const { lastUpdated, user, _id, channelId, keepMessageSent } = channel;
+
+            // Skip if the keep message has already been sent
+            if (keepMessageSent) continue;
+
+            // Check if the lastUpdated is more than 72 hours ago
+            if (hoursAgo(lastUpdated) > discordConfig.channel_inactivity_hours) {
+                const userData = await crud.getUserById(user);
+                if (!userData) continue;
+
+                // check if the user is still in the server
+                const member = await client.guilds.cache.get(guild_id).members.fetch(userData.discordId).catch(() => null);
+
+                if (!member) {
+                    console.log('User is no longer in the server, deleting the channel');
+                    // User is no longer in the server, delete the channel
+                    await crud.deleteVintedChannelByChannelId(channelId);
+                    continue;
+                }
+
+                // Prepare a message to ask if they want to keep the channel
+                const embed = await createBaseEmbed(
+                    null, // no interaction needed here
+                    t(user.locale, 'channel-inactivity-warning'),
+                    t(user.locale, 'reply-to-keep-channel', { channelName: `<#${channelId}>`, time: 24 }),
+                    0xFFA500
+                );
+
+                // Create action buttons for "Keep" and "Delete"
+                const row = new ActionRowBuilder()
+                .addComponents(
+                    new ButtonBuilder().setStyle(1).setCustomId('keep_channel' + userData.discordId).setLabel(t(user.locale, 'keep-channel')),
+                    new ButtonBuilder().setStyle(4).setCustomId('delete_channel' + userData.discordId).setLabel(t(user.locale, 'delete-channel'))
+                );
+
+                // Send the message to the user via DM
+                const message = await member.send({ embeds: [embed], components: [row] });
+
+                await crud.setVintedChannelKeepMessageSent(channelId, true);
+
+                // Create a message component collector to wait for the user's response
+                const filter = i => i.user.id === userData.discordId;
+                const collector = message.createMessageComponentCollector({
+                    filter,
+                    time: discordConfig.channel_inactivity_delete_hours * 60 * 60 * 1000, // 24 hours in milliseconds
+                });
+
+                collector.on('collect', async interaction => {
+                    if (interaction.customId === 'keep_channel' + userData.discordId) {
+                        // User wants to keep the channel
+                        await crud.setVintedChannelUpdatedAtNow(channelId);
+                        await crud.setVintedChannelKeepMessageSent(channelId, false);
+                        await interaction.reply({ content: t(user.locale, 'channel-kept'), ephemeral: true });
+                    } else if (interaction.customId === 'delete_channel' + userData.discordId) {
+                        // User wants to delete the channel
+                        await crud.deleteVintedChannelByChannelId(channelId);
+
+                        await interaction.reply({ content: t(user.locale, 'channel-deleted'), ephemeral: true });
+
+                        // Delete the channel if it still exists
+                        const discordChannel = client.guilds.cache.get(guild_id).channels.cache.get(channelId);
+                        if (discordChannel) {
+                            await discordChannel.delete();
+                        }
+                    }
+                });
+
+                collector.on('end', async collected => {
+                    // If no response is collected after 24 hours, delete the channel
+                    if (collected.size === 0) {
+                        await crud.deleteVintedChannelByChannelId(channelId);
+                        await member.send(t(user.locale, 'channel-deleted'));
+                    }
+                });
+            }
+        }
+    } catch (error) {
+        console.error('Error checking Vinted channel inactivity:', error);
+    }
 }
 
 /**

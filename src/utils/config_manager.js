@@ -22,6 +22,10 @@ class ConfigurationManager {
         client_id: process.env.DISCORD_CLIENT_ID,
         token: process.env.DISCORD_TOKEN,
         role_admin_id: process.env.DISCORD_ROLE_ADMIN_ID,
+        guild_id: process.env.DISCORD_GUILD_ID,
+        channel_inactivity_enabled: process.env.ENABLE_CHANNEL_INACTIVITY == 1 ? true : false,
+        channel_inactivity_hours: process.env.CHANNEL_INACTIVITY_HOURS,
+        channel_inactivity_delete_hours: process.env.CHANNEL_INACTIVITY_DELETE_HOURS,
     }
     
     /**
@@ -37,7 +41,7 @@ class ConfigurationManager {
      * @returns {Object} User configuration object.
      */
     static getUserConfig = {
-        max_private_channels_default: process.env.USER_MAX_PRIVATE_CHANNELS_DEFAULT
+        max_private_channels_default: process.env.USER_MAX_PRIVATE_CHANNELS_DEFAULT,
     }
 
     static getPermissionConfig = {

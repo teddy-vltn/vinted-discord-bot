@@ -113,6 +113,8 @@ export async function execute(interaction) {
         const preferences = await crud.getVintedChannelPreference(channelId, Preference.Countries);
         await crud.setVintedChannelPreference(channelId, Preference.Countries, [ ...ShippableMap[domain], domain]);
 
+        await crud.setVintedChannelUpdatedAtNow(channelId);
+
         await interaction.editReply({ embeds: [embed] });
 
         // Update the VintedChannel with the provided URL (if any) and set isMonitoring to true
