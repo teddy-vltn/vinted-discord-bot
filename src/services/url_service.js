@@ -1,8 +1,8 @@
 import { URL } from 'url';
 import Logger from '../utils/logger.js';
 import { isSubcategory } from '../database.js';
-
 import ConfigurationManager from '../utils/config_manager.js';
+import Fuse from 'fuse.js'; // Import Fuse.js
 
 const blacklisted_countries_codes = ConfigurationManager.getAlgorithmSetting.blacklisted_countries_codes;
 
@@ -12,11 +12,9 @@ function parseVintedSearchParams(url) {
         const params = new URL(url).searchParams;
         const paramsKeys = ['search_text', 'order', 'catalog[]', 'brand_ids[]', 'size_ids[]', 'price_from', 'price_to', 'status_ids[]', 'material_ids[]', 'color_ids[]'];
         for (const key of paramsKeys) {
-            //searchParams[key.replace('[]', '')] = params.getAll(key) || ["N/A"];
             const isMultiple = key.endsWith('[]');
-
             if (isMultiple) {
-                searchParams[key.replace('[]', '')] = params.getAll(key) || null
+                searchParams[key.replace('[]', '')] = params.getAll(key) || null;
             } else {
                 searchParams[key] = params.get(key) || null;
             }
@@ -29,7 +27,7 @@ function parseVintedSearchParams(url) {
 }
 
 /**
- * Checks if a Vinted item matches the given search parameters and country codes.
+ * Checks if a Vinted item matches the given search parameters and country codes, using fuzzy search.
  *
  * @param {Object} item - The Vinted item to check.
  * @param {Object} searchParams - The search parameters to match against the item.
@@ -48,16 +46,27 @@ function matchVintedItemToSearchParams(item, searchParams, countries_codes = [])
         return false;
     }
 
-    // Check search text
+    // Prepare item data for fuzzy search
     const lowerCaseItem = {
         title: item.title.toLowerCase(),
         description: item.description.toLowerCase(),
         brand: item.brand.toLowerCase()
     };
 
+    // Fuzzy search options
+    const fuseOptions = {
+        includeScore: true,
+        threshold: 0.4,  // Adjust this value for fuzzy tolerance (lower is stricter, higher is more lenient)
+        keys: ['title', 'description', 'brand']
+    };
+
     if (searchParams.search_text) {
         const searchText = searchParams.search_text.toLowerCase();
-        if (!lowerCaseItem.title.includes(searchParams.search_text) && !lowerCaseItem.description.includes(searchText) && !lowerCaseItem.brand.includes(searchText)) {
+        const fuse = new Fuse([lowerCaseItem], fuseOptions);
+        const result = fuse.search(searchText);
+
+        // If no result or score is too low, return false
+        if (!result.length || result[0].score > 0.4) { // You can adjust the score threshold based on your needs
             return false;
         }
     }
