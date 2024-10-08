@@ -90,7 +90,7 @@ async function findOrCreateCategory(channels, baseCategoryName) {
         );
 
         // If the category is found but has fewer than 40 channels, use it
-        if (currentCategory && currentCategory.children.size < 40) {
+        if (currentCategory && currentCategory.children.cache.size < 40) {
             return currentCategory;
         }
 
