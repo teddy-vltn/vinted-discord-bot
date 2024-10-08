@@ -11,6 +11,10 @@ function getNumberOfStars(rating) {
 }
 
 function getFlagEmoji(countryCode) {
+    if (countryCode === 'uk') {
+        return '🇬🇧';
+    }
+
     return countryCode.toUpperCase().replace(/./g, char => 
         String.fromCodePoint(127397 + char.charCodeAt())
     );

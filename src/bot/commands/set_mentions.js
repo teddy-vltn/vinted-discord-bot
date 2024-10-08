@@ -63,7 +63,7 @@ export async function execute(interaction) {
             const status = mention ? 'enabled' : 'disabled';
 
             // remove the select menu
-            await channelInteraction.update({
+            await channelInteraction.followUp({
                 content: '',
                 components: [],
                 embeds: [await createBaseEmbed(

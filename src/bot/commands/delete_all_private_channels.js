@@ -13,6 +13,7 @@ function sleep(ms) {
 
 export async function execute(interaction) {
     try {
+        await sendWaitingEmbed(interaction, t(l, 'deleting-all-private-channels'));
         const l = interaction.locale;
 
         // Check if the user is an admin
@@ -29,7 +30,7 @@ export async function execute(interaction) {
             return;
         }
 
-        await sendWaitingEmbed(interaction, t(l, 'deleting-all-private-channels'));
+
 
         // Loop through each private channel and delete it with a delay
         for (const channel of channels) {
