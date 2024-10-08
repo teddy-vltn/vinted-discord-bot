@@ -63,14 +63,10 @@ export async function execute(interaction) {
                 await discordChannel.delete();
             }
 
-            const embed = await createBaseEmbed(
-                channelInteraction,
-                t(l, 'private-channel-deleted'),
-                t(l, 'private-channel-deleted-success', { channelId }),
-                0xFF0000
-            );
-
-            await channelInteraction.followUp({ content: '', embeds: [embed], components: [] });
+            await channelInteraction.update({ 
+                content: `The private channel has been deleted.`,
+                components: [] 
+            });
         });
 
     } catch (error) {

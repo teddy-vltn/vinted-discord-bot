@@ -63,16 +63,9 @@ export async function execute(interaction) {
             const status = mention ? 'enabled' : 'disabled';
 
             // remove the select menu
-            await channelInteraction.followUp({
-                content: '',
+            await channelInteraction.update({
+                content: `Mentions have been ${status} for the channel.`,
                 components: [],
-                embeds: [await createBaseEmbed(
-                    interaction,
-                    t(l, 'mentions-updated'),
-                    t(l, 'mentions-has-been-updated', { status: t(l, status), type: 'channel' }),
-                    0x00FF00
-                )],
-                ephemeral: true
             });
         });
 
