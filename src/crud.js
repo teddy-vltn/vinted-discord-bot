@@ -266,6 +266,10 @@ async function getAllVintedChannels() {
     return await VintedChannel.find().populate('user');
 }
 
+async function getAllPrivateVintedChannels() {
+    return await VintedChannel.find({ type: 'private' }).populate('user');
+}
+
 async function getAllMonitoredVintedChannels() {
     return await VintedChannel.find({ isMonitoring: true }).populate('user');
 }
@@ -416,6 +420,7 @@ const crud = {
     createVintedChannel,
     getVintedChannelById,
     getAllVintedChannels,
+    getAllPrivateVintedChannels,
     getAllMonitoredVintedChannels,
     getAllVintedChannelsByDiscordId,
     updateVintedChannel,
