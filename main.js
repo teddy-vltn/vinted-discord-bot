@@ -138,7 +138,12 @@ const monitorChannels = () => {
 
         for (const vintedChannel of allMonitoringChannels) {
             const user = vintedChannel.user;
-            const matchingItems = filterItemsByUrl([item], vintedChannel.url, vintedChannel.preferences.get(Preference.Countries) || []);
+            const matchingItems = filterItemsByUrl(
+                [item], 
+                vintedChannel.url, 
+                vintedChannel.bannedKeywords, 
+                vintedChannel.preferences.get(Preference.Countries) || []
+            );
 
             if (matchingItems.length > 0) {
                 sendToChannel(item, user, vintedChannel);

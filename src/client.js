@@ -3,6 +3,7 @@ const { Client, GatewayIntentBits } = pkg;
 import { registerCommands, handleCommands } from './bot/commands_handler.js';
 import ConfigurationManager from './utils/config_manager.js';
 import Logger from './utils/logger.js';
+import crud from './crud.js';
 
 const client = new Client({
     intents: [
@@ -27,6 +28,12 @@ client.once('ready', async () => {
         client.user.setPresence({ activities: [{ name: 'Vinted' }], status: 'online' });
     }
 });
+
+// Change presence to show number of channels being monitored
+setInterval(async () => {
+    const channelCount = (await crud.getAllVintedChannels()).length;
+    client.user.setPresence({ activities: [{ name: `${channelCount} channels` }], status: 'online' });
+}, 60000);
 
 client.on('interactionCreate', handleCommands);
 

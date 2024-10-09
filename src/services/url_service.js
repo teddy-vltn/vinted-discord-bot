@@ -34,7 +34,7 @@ function parseVintedSearchParams(url) {
  * @param {Array} [countries_codes=[]] - The country codes to check against the item's user country code.
  * @return {boolean} Returns true if the item matches all the search parameters and country codes, false otherwise.
  */
-function matchVintedItemToSearchParams(item, searchParams, countries_codes = []) {
+function matchVintedItemToSearchParams(item, searchParams, bannedKeywords, countries_codes = []) {
 
     // Check blacklisted countries
     if (blacklisted_countries_codes.includes(item.user.countryCode)) {
@@ -46,12 +46,19 @@ function matchVintedItemToSearchParams(item, searchParams, countries_codes = [])
         return false;
     }
 
-    // Prepare item data for fuzzy search
     const lowerCaseItem = {
         title: item.title.toLowerCase(),
         description: item.description.toLowerCase(),
         brand: item.brand.toLowerCase()
     };
+
+    // make sure the bannedKeywords is an array of lowercase strings
+    bannedKeywords = bannedKeywords.map(keyword => keyword.toLowerCase());
+
+    // check for banned keywords in the title and description
+    if (bannedKeywords.some(keyword => lowerCaseItem.title.includes(keyword) || lowerCaseItem.description.includes(keyword))) {
+        return false;
+    }
 
     // Fuzzy search options
     const fuseOptions = {
@@ -111,9 +118,9 @@ function matchVintedItemToSearchParams(item, searchParams, countries_codes = [])
     return true;
 }
 
-export function filterItemsByUrl(items, url, countries_codes = []) {
+export function filterItemsByUrl(items, url, bannedKeywords, countries_codes = []) {
     const searchParams = parseVintedSearchParams(url);
     if (!searchParams) return [];
 
-    return items.filter(item => matchVintedItemToSearchParams(item, searchParams, countries_codes));
+    return items.filter(item => matchVintedItemToSearchParams(item, searchParams, bannedKeywords, countries_codes));
 }

@@ -1,17 +1,29 @@
 import axios from 'axios';
 import ProxyManager from './proxy_manager.js';
 import { getRandom } from 'random-useragent';
+import Logger from './logger.js';
+import ConfigurationManager from './config_manager.js';
+
+const algorithm_settings = ConfigurationManager.getAlgorithmSetting
+const vinted_api_domain_extension = algorithm_settings.vinted_api_domain_extension;
 
 const BASE_HEADERS = {
     'Accept': 'application/json, text/plain, */*',
-    'Accept-Language': 'fr',
-    'X-Money-Object': 'true',
-    'X-CSRF-Token': '75f6c9fa-dc8e-4e52-a000-e09dd4084b3e',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Accept-Language': 'fr=FR, en-US',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-origin',
-    'Pragma': 'no-cache',
-    'Cache-Control': 'no-cache'
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive',
+    'Origin': `https://www.vinted.${vinted_api_domain_extension}`,
+    'Referer': `https://www.vinted.${vinted_api_domain_extension}/catalog`,
+    'DNT': '1',
+    'Upgrade-Insecure-Requests': '1',
+    'Sec-Ch-Ua-Mobile': '?0',
+    'TE': 'trailers',
+    'Sec-Ch-Ua-Mobile': '?1',
+    'Priority': 'u=0, i',
 };
 
 class RequestBuilder {
@@ -85,7 +97,7 @@ class RequestBuilder {
             return parseFloat(ua.browserVersion) >= 90;
         });
 
-        console.log(`Sending request to ${this.url} with user-agent: ${userAgent}`);
+        Logger.debug(`Sending request to ${this.url} with user-agent: ${userAgent}`);
 
         this.headers['User-Agent'] = userAgent;
 
@@ -95,7 +107,9 @@ class RequestBuilder {
             headers: this.headers,
             agent: this.proxy,
             timeout: this.timeout,
-            params: this.params
+            params: this.params,
+            httpsAgent: this.proxy,
+            httpAgent: this.proxy,
         };
 
         // If the method is POST, PUT, PATCH, DELETE, and body data exists, add it to the request
@@ -108,6 +122,7 @@ class RequestBuilder {
             response.success = response.status >= 200 && response.status < 300;
             return response
         } catch (error) {
+            Logger.debug(`Error sending request to ${this.url}, status: ${error.response.status}`);
             this.proxy && ProxyManager.removeTemporarlyInvalidProxy(this.proxy);
             throw error;
         }

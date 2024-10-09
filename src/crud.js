@@ -24,7 +24,6 @@ async function createUser({ discordId, preferences = {}, channels = [], lastUpda
 }
 
 async function isUserAdmin(interaction) {
-    console.log(discordAdminId)
     return await interaction.member.roles.cache.some(role => role.id === discordAdminId);
 }
 
@@ -243,6 +242,14 @@ async function setVintedChannelUpdatedAtNow(channelId) {
     }
 }
 
+async function setVintedChannelBannedKeywords(channelId, bannedKeywords) {
+    const channel = await getVintedChannelById(channelId);
+    if (channel) {
+        channel.bannedKeywords = bannedKeywords;
+        await channel.save();
+    }
+}
+
 async function setVintedChannelKeepMessageSent(channelId, keepMessageSent) {
     const channel = await getVintedChannelById(channelId);
     if (channel) {
@@ -432,6 +439,7 @@ const crud = {
     updateUser,
     setUserMaxChannels,
     setVintedChannelUpdatedAtNow,
+    setVintedChannelBannedKeywords,
     setVintedChannelKeepMessageSent,
     deleteUser,
     checkUserExists,
