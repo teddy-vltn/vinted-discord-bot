@@ -1,6 +1,6 @@
 import pkg from 'discord.js';
 const { PermissionsBitField, ActionRowBuilder, ButtonBuilder } = pkg;
-import ProxyManager from '../utils/http_utils.js';
+import ProxyManager from '../utils/proxy_manager.js';
 import { ForbiddenError, NotFoundError, executeWithDetailedHandling } from '../helpers/execute_helper.js';
 import axios from 'axios';
 import Logger from '../utils/logger.js';
