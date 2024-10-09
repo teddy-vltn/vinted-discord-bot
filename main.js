@@ -1,4 +1,4 @@
-import ProxyManager from "./src/utils/http_utils.js";
+import ProxyManager from "./src/utils/proxy_manager.js";
 import { VintedItem } from "./src/entities/vinted_item.js";
 import { filterItemsByUrl } from "./src/services/url_service.js";
 import { Preference, buildCategoryMapFromRoots } from "./src/database.js";
