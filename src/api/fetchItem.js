@@ -1,6 +1,7 @@
 import { executeWithDetailedHandling } from "../helpers/execute_helper.js";
-import ProxyManager from "../utils/http_utils.js";
+import RequestBuilder from "../utils/request_builder.js";   
 import ConfigurationManager from "../utils/config_manager.js";
+import { NotFoundError, ForbiddenError, RateLimitError } from "../helpers/execute_helper.js";
 
 const extension = ConfigurationManager.getAlgorithmSetting.vinted_api_domain_extension
 
@@ -32,14 +33,16 @@ function handleFetchItemError(code) {
 export async function fetchItem({ cookie, item_id }) {
     return await executeWithDetailedHandling(async () => {
         const url = `https://www.vinted.${extension}/api/v2/items/${item_id}`;
-        const headers = { 'Cookie': cookie };
 
-        const response = await ProxyManager.makeGetRequest(url, headers);
+        const response = await RequestBuilder.get(url)
+                        .setNextProxy()
+                        .setCookie(cookie)
+                        .send();
 
         if (!response.success) {
             handleFetchItemError(response.code);
         }
 
-        return { item: response.body.item };
+        return { item: response.data.item };
     });
 }

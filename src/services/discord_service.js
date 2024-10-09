@@ -85,7 +85,7 @@ export async function checkVintedChannelInactivity(client) {
         const channels = await crud.getAllPrivateVintedChannels();
         
         for (const channel of channels) {
-            const { lastUpdated, user, _id, channelId, keepMessageSent } = channel;
+            const { lastUpdated, user, channelId, keepMessageSent } = channel;
 
             // Skip if the keep message has already been sent
             if (keepMessageSent) continue;

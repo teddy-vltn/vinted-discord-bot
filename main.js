@@ -44,6 +44,10 @@ const refreshCookie = async () => {
             Logger.debug('Error fetching cookie');
             await new Promise(resolve => setTimeout(resolve, 200));
         }
+
+        setTimeout(() => {
+            Logger.debug('Retrying to fetch cookie');
+        }, 1000);
     }
 };
 

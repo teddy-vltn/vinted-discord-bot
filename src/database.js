@@ -29,6 +29,7 @@ function buildCategoryMap(node, parentMap = {}) {
 
 // Build the category map starting from the root nodes
 function buildCategoryMapFromRoots(roots) {
+    console.log(roots)
     roots.data.catalogs.forEach((root) => {
         buildCategoryMap(root, categoryMap);
     });

@@ -1,7 +1,7 @@
 import { executeWithDetailedHandling } from "../helpers/execute_helper.js";
-import ProxyManager from "../utils/http_utils.js";
 import Logger from "../utils/logger.js";
 import ConfigurationManager from "../utils/config_manager.js";
+import RequestBuilder from "../utils/request_builder.js";
 
 const settings = ConfigurationManager.getAlgorithmSetting
 const extension = settings.vinted_api_domain_extension
@@ -16,7 +16,7 @@ export async function fetchCookie() {
     return await executeWithDetailedHandling( async () => {
         const url = `https://www.vinted.${extension}/catalog?`
 
-        const {response,} = await ProxyManager.makeGetRequest(url);
+        const response = await RequestBuilder.get(url).setNextProxy().send();
 
         if (response && response.headers['set-cookie']) {
 

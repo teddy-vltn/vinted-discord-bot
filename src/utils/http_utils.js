@@ -1,25 +1,10 @@
-import axios from 'axios';
 import { SocksProxyAgent } from 'socks-proxy-agent';
-import { ForbiddenError, NotFoundError, RateLimitError, executeWithDetailedHandling } from '../helpers/execute_helper.js';
-import randomUserAgent from 'random-useragent';
 import Logger from './logger.js';
 import { listProxies, Proxy } from './proxies.js';
 import ConfigurationManager from './config_manager.js';
 import fs from 'fs';
 
 const proxy_settings = ConfigurationManager.getProxiesConfig
-const algorithm_settings = ConfigurationManager.getAlgorithmSetting
-const vinted_api_domain_extension = algorithm_settings.vinted_api_domain_extension;
-
-// platform used to parse random user agent to get the correct platform, key is the platform name, value is the platform used in the user agent
-const PLATFORMS = {
-    'Windows': 'Windows',
-    'macOS': 'Mac',
-    'Linux': 'Linux',
-    'Android': 'Android',
-    'iOS': 'iPhone',
-    'Windows Phone': 'Windows Phone'
-};
 
 /**
  * Static class for managing proxy settings and making HTTP requests with SOCKS authentication.
@@ -74,11 +59,7 @@ class ProxyManager {
      * Retrieves the current proxy agent if a proxy is configured.
      * @returns {SocksProxyAgent|undefined} The proxy agent or undefined if no proxy is set.
      */
-    static async getNewProxy() {
-        if (!this.proxiesLoaded) {
-            await this.init()
-            this.proxiesLoaded = true;
-        }
+    static getNewProxy() {
 
         if (this.proxies.length > 0) {
             this.currentProxyIndex = (this.currentProxyIndex + 1) % this.proxies.length;
@@ -121,125 +102,6 @@ class ProxyManager {
             this.proxies.push(proxy);
             this.proxiesOnCooldown = this.proxiesOnCooldown.filter(p => p !== proxy);
         }, timeout);
-    }
-
-    /**
-     * Makes an HTTP GET request with specified options, using the configured proxy.
-     * @param {string} url - The URL to which the request is sent.
-     * @param {Object} headers - Optional headers for the request.
-     * @returns {Promise} - A promise that resolves with the response body or rejects with an error.
-     */
-    static async makeGetRequest(url, headers = {}) {
-        return await executeWithDetailedHandling(async () => {
-
-            // Get the configured proxy agent
-            const proxy = await this.getNewProxy();
-
-            const agent = this.getProxyAgent(proxy);
-
-            if (!agent) {
-                throw new Error('No proxy agent available.');
-            }
-
-            // Get a random user agent and extract the platform from it
-            const userAgent = randomUserAgent.getRandom();
-            const platform = Object.keys(PLATFORMS).find(key => userAgent.includes(PLATFORMS[key])) || 'Windows';
-
-            // Prepare the cancel token and timeout
-            const CancelToken = axios.CancelToken;
-            const source = CancelToken.source();
-
-            const timeout_value = 3000;
-
-            // Set a timeout to cancel the request
-            const timeoutId = setTimeout(() => {
-                source.cancel('Request timed out after 1000ms');
-            }, timeout_value);
-
-            // Vinted APi domain extension
-            const extension = vinted_api_domain_extension;
-
-            // Prepare the request options
-            const options = {
-                url,
-                method: 'GET',
-                
-                headers: {
-                    // Set the user agent
-                    'User-Agent': userAgent,
-                    // Request gzip compression
-                    'Accept-Encoding': 'gzip, deflate, br',
-                    // Set the agent platform
-                    'Platform': platform,
-                    // Set the accept language
-                    'Accept-Language': 'fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7',
-                    // Set cache control
-                    'Cache-Control': 'no-cache',
-                    // Set connection
-                    'Connection': 'keep-alive',
-                    // Set referer
-                    'Referer': `https://vinted.${extension}/catalog`,
-                    // Set origin
-                    'Origin': `https://www.vinted.${extension}`,
-                    // Set do not track
-                    'DNT': '1',
-                    // Set upgrade insecure requests
-                    'Upgrade-Insecure-Requests': '1',
-                    // Set fetch site
-                    'Sec-Fetch-Site': 'same-origin',
-                    // Set fetch mode
-                    'Sec-Fetch-Mode': 'navigate',
-                    // Set fetch user
-                    'Sec-Fetch-User': '?1',
-                    // Set fetch destination
-                    'Sec-Fetch-Dest': 'document',
-                    // Add transfer encoding support
-                    'TE': 'Trailers',
-                    // Control caching in HTTP/1.0 caches
-                    'Pragma': 'no-cache',
-                    // Set priority
-                    'Priority': 'u=0, i',
-                    // Merge custom headers with the default headers
-                    ...headers
-                },
-                // Set the https agent and http agent to the proxy agent
-                httpsAgent: agent,
-                httpAgent: agent,
-                // Set the response type to json
-                responseType: 'json',
-                timeout: timeout_value,
-                cancelToken: source.token
-            };
-
-            try {
-                // Make the request and return the response with the response body
-                Logger.debug(`Making GET request to ${url}`);
-                const response = await axios(options);
-                clearTimeout(timeoutId);  // Clear the timeout if the request completes successfully
-                Logger.debug(`GET request to ${url} completed successfully`);
-                return { response, body: response.data };
-            } catch (error) {
-                // Get the response status code if available
-                const code = error.response ? error.response.status : null;
-
-                Logger.debug(`Error making GET request: ${error.message}`);
-
-                // Throw specific error based on the response status code
-                if (code === 404) {
-                    throw new NotFoundError("Resource not found.");
-                } else if (code === 403) {
-                    Logger.info(`Removing proxy ${proxy.ip}:${proxy.port} due to access forbidden error.`);
-                    this.removeTemporarlyInvalidProxy(proxy);
-                    throw new ForbiddenError("Access forbidden. IP: " + error.response);
-                } else if (code === 429) {
-                    Logger.info(`Removing proxy ${proxy.ip}:${proxy.port} due to rate limit error.`);
-                    this.removeTemporarlyInvalidProxy(proxy, 20000);
-                    throw new RateLimitError("Rate limit exceeded. IP: " + error.response);
-                } else {
-                    throw new Error(`Error making GET request: ${error.message}`);
-                }
-            }
-        });
     }
 }
 
