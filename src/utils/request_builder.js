@@ -1,5 +1,5 @@
 import axios from 'axios';
-import ProxyManager from './http_utils.js';
+import ProxyManager from './proxy_manager.js';
 import { getRandom } from 'random-useragent';
 
 const BASE_HEADERS = {

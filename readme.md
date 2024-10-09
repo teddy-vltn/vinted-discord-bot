@@ -1,10 +1,10 @@
-# Vinted Monitor - No Delay
+# Vinted Monitor - No Delay (fyndit Public Bot)
 
 Vinted Monitor is a bot that monitors the Vinted items route for new items and notifies users in real-time. It is designed to work with minimal delay, ensuring that users are always up-to-date with the latest items. Ideal for people who wants to start a reselling discord service or community to make some money.
 
 ---
 > [!TIP]
-> [Discord Invite](https://discord.gg/CDv9b8cPXU) - Join if you want: preview of the bot, simply to use the bot freely or if you need help.
+> [Discord Invite](https://discord.gg/CDv9b8cPXU) - Join if you want: simply to use the bot freely or if you need help.
 ---
 
 <p align="center">
@@ -15,18 +15,8 @@ Vinted Monitor is a bot that monitors the Vinted items route for new items and n
 1. [Features](#features)
 2. [Requirements](#requirements)
 3. [Setup](#setup)
-    - [Clone the Repository](#clone-the-repository)
-    - [Create a Discord Bot](#create-a-discord-bot)
-    - [Modify the Configuration File](#modify-the-configuration-file)
-    - [Run Docker](#run-docker)
-    - [Database Access](#database-access)
-    - [Stop the Bot](#stop-the-bot)
-4. [Usage](#usage)
+4. [Commands](#commands)
 5. [Showcase](#showcase)
-    - [Create a Public Channel](#create-a-public-channel)
-    - [Create a Private Channel](#create-a-private-channel)
-    - [Start Monitoring in a Private Channel](#start-monitoring-in-a-private-channel)
-    - [Enable mentions in a Private Channel](#enable-mentions-in-a-private-channel)
 
 ## Use the bot for free 
 
@@ -57,7 +47,7 @@ The bot is running for free on a public discord server that you can access if yo
 1. Clone the repository from terminal or download through Github.
 
 ```bash
-git clone https://github.com/teddy-vltn/vinted-monitor.git
+git clone https://github.com/teddy-vltn/vinted-discord-bot.git
 cd vinted-monitor
 ```
 
@@ -71,16 +61,9 @@ cd vinted-monitor
 - Invite the bot with admin permissions to your server by going to the "OAuth2" tab and selecting the "bot" and "application.commands" scope and the "Administrator" permission.
 - Copy the generated URL and paste it into your browser to invite the bot to your server.
 
-3. Modify the configuration file `.env`:
+3. Modify the configuration file `.env` to match your setup by modifying the remaining fields.
 
-### Environment Variables Description
-
-- **DISCORD_CLIENT_ID**: The client ID of your Discord bot, obtained from the Discord Developer Portal.
-- **DISCORD_TOKEN**: The token for your Discord bot, obtained from the Discord Developer Portal.
-- **DISCORD_ADMIN_ID**: The user ID of the bot owner, who can create public channels.
-- **WEBSHARE_API_KEY**: The Webshare API key to use.
-
-6. Make sure you have docker installed on your machine or [Install Docker](https://docs.docker.com/engine/install/) and run the following command:
+4. Make sure you have docker installed on your machine or [Install Docker](https://docs.docker.com/engine/install/) and run the following command:
 
 > [!IMPORTANT]
 > If you are on Windows, make sure you have WSL2 alongside Docker Desktop to run the following command. You will also certainly need to activate virtualization in your BIOS.
@@ -93,9 +76,6 @@ chmod +x start.sh
 ```bash
 ./start.sh
 ```
-
-> [!IMPORTANT]
-> If along the way you happen to modify the `.env` file or files in the other folders, you will need to rebuild the docker image by running the command above.
 
 5. The bot should now be running and ready to use. And enjoy! (if it ain't working you can come to the discord server for help https://discord.gg/CDv9b8cPXU)
 
@@ -111,17 +91,26 @@ chmod +x stop.sh
 ./stop.sh
 ```
 
-## Usage
+> [!IMPORTANT]
+> If along the way you happen to modify the `.env` file or files in the other folders, you will need to rebuild the docker image by stopping the containers and to start them again.
+
+## Commands
 
 The bot supports a variety of commands that allow users to interact with the bot. Here are some of the available commands:
-- `/create_public_channel`: Creates a public channel for the bot to send notifications.
-- `/create_private_channel`: Creates a private channel for a user for the bot to send notifications.
-- `/delete_public_channel`: Deletes a public channel.
+- `/link_public_channel`: Creates a public channel for the bot to send notifications.
+- `/unlink_public_channel`: Unlinks a public channel url.
+- `/create_private_channel`: Creates a private channel.
 - `/delete_private_channel`: Deletes a private channel.
 - `/start_monitoring`: Starts monitoring the Vinted items route.
 - `/stop_monitoring`: Stops monitoring the Vinted items route.
-- `/set_mentions`: Sets the preferences for mentions in notifications.
-- `/add_country`: Adds a country to the list of monitored countries.
-- `/remove_country`: Removes a country from the list of monitored countries.
+- `/set_mentions`: Sets the preferences for mentions in notifications.countries.
 - `/info`: Displays information about Channel/User.
 - `/set_max_channels`: Sets the maximum number of private channels a user can create.
+
+## Showcase 
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/5yllNcaQEcU" 
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
