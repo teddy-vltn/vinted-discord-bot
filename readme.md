@@ -1,6 +1,8 @@
 # Vinted Monitor - No Delay (fyndit Public Bot)
 
-Vinted Monitor is a bot that monitors the Vinted items route for new items and notifies users in real-time. It is designed to work with minimal delay, ensuring that users are always up-to-date with the latest items. Ideal for people who wants to start a reselling discord service or community to make some money.
+Vinted Monitor is a bot that monitors the Vinted items route for new items and notifies users in real-time. It is designed to work with minimal delay, ensuring that users are always up-to-date with the latest items.
+
+This bot is actively developed and used on a public server.
 
 ---
 > [!TIP]
@@ -26,7 +28,8 @@ The bot is running for free on a public discord server that you can access if yo
 
 ## Features
 
-- **Real-time Monitoring**: Vinted Monitor fetches the latest items from the Vinted items route in real-time.
+- **Real-time Monitoring**: Vinted Monitor fetches the latest items from the Vinted items route in real-time. 
+- **Monitoring all countries at once**: Lets you see all items from all country.
 - **Discord Integration**: The bot integrates with Discord and can send notifications to specific channels.
 - **Commands**: The bot supports a variety of commands that allow users to interact with it.
 - **Database Channel/User Management**: The bot can manage channels and users in a database, allowing for easy management of notifications.
@@ -109,8 +112,9 @@ The bot supports a variety of commands that allow users to interact with the bot
 
 ## Showcase 
 
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/5yllNcaQEcU" 
-frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
+### How to create a private channel and manage it
+Click on the image below to look at the tutorial
+
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=5yllNcaQEcU"><img src="https://img.youtube.com/vi/5yllNcaQEcU/0.jpg" alt="IMAGE ALT TEXT"></a>
+</div>
