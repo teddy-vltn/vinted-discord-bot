@@ -5,6 +5,9 @@
     "error": "Error",
     "please-wait": "Please wait...",
     "not-found": "Not found.",
+    "warning": "Warning",
+
+    "url-contains-search-text": "URL contains search_text parameter, the results may not be accurate or incomplete. Avoid using this parameter if possible to get the best results.",
 
     "name": "Name",
 
@@ -78,5 +81,20 @@
     "not-allowed-to-create-private-channel": "The administrator has disabled the ability to create private channels. Please contact the administrator.",
 
     "max-channels-set": "Max channels set.",
-    "max-channels-set-success": "The max channels has been successfully set."
+    "max-channels-set-success": "The max channels has been successfully set.",
+
+    "private-channel-welcome": "Welcome to your private channel {user}! You can now start monitoring the Vinted catalog search. `/start_monitoring`",
+
+    "all-private-channels-deleted-success": "All private channels have been successfully deleted.",
+    "all-private-channels-deleted": "Deleting all private channels...",
+
+    "delete-all-private-channels": "Delete all private channels",
+
+    "channel-inactivity-warning": "Your channel has been inactive for a while.",
+    "reply-to-keep-channel": "Reply to this message to keep the channel {channelName}, otherwise it will be deleted in {time} hours.",
+    "keep-channel": "Keep channel",
+    "delete-channel": "Delete channel",
+
+    "channel-kept": "Channel kept.",
+    "channel-deleted": "Channel deleted."
 }

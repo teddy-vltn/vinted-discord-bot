@@ -49,6 +49,13 @@ async function sendNotFoundEmbed(interaction, description) {
     await interaction.followUp({ embeds: [embed] });
 }
 
+async function sendWarningEmbed(interaction, description) {
+    const l = interaction.locale;
+    const embed = await createBaseEmbed(interaction, t(l, "warning"), description, 0xFFFF00);
+
+    await interaction.followUp({ embeds: [embed] });
+}
+
 async function sendErrorEmbed(interaction, description) {
     const l = interaction.locale;
     const embed = await createBaseEmbed(interaction, t(l, "error"), description, 0xFF0000);
@@ -101,6 +108,7 @@ async function createBaseUrlButton(label, url) {
 export { 
     createBaseEmbed, 
     sendWaitingEmbed,
+    sendWarningEmbed,
     sendNotFoundEmbed,
     sendErrorEmbed,
     sendSuccessEmbed,

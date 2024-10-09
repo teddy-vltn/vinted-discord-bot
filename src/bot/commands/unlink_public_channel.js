@@ -2,27 +2,20 @@ import { SlashCommandBuilder } from 'discord.js';
 import { createBaseEmbed, sendErrorEmbed, sendWaitingEmbed } from '../components/base_embeds.js';
 import crud from '../../crud.js';
 
-import ConfigurationManager from '../../utils/config_manager.js';
-const adminDiscordId = ConfigurationManager.getDiscordConfig.admin_id;
-
 export const data = new SlashCommandBuilder()
-    .setName('delete_public_channel')
-    .setDescription('Delete a public monitoring channel.')
-    .addStringOption(option =>
-        option.setName('channel_id')
-            .setDescription('The ID of the channel to be deleted.')
-            .setRequired(true));
+    .setName('unlink_public_channel')
+    .setDescription('Unlink a public monitoring channel.');
 
 export async function execute(interaction) {
     try {
         await sendWaitingEmbed(interaction, 'Deleting public channel...');
 
-        if (interaction.user.id !== adminDiscordId) {
+        if (await crud.isUserAdmin(interaction) === false) {
             await sendErrorEmbed(interaction, 'You do not have permission to delete a public channel.');
             return;
         }
 
-        const channelId = interaction.options.getString('channel_id');
+        const channelId = interaction.channel.id;
 
         // Find the VintedChannel by channelId
         const vintedChannel = await crud.getVintedChannelById(channelId);
@@ -30,13 +23,7 @@ export async function execute(interaction) {
             await sendErrorEmbed(interaction, 'Public channel not found.');
             return;
         }
-
-        // Delete the channel from Discord
-        const channel = await interaction.guild.channels.cache.get(channelId);
-        if (channel) {
-            await channel.delete('Deleting public channel');
-        }
-
+        
         // Delete the VintedChannel from the database
         await crud.deleteVintedChannel(vintedChannel._id);
 

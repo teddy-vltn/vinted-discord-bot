@@ -4,13 +4,14 @@ import { filterItemsByUrl } from "./src/services/url_service.js";
 import { Preference, buildCategoryMapFromRoots } from "./src/database.js";
 import client from "./src/client.js";
 import ConfigurationManager from "./src/utils/config_manager.js";
-import { postMessageToChannel } from "./src/services/discord_service.js";
+import { postMessageToChannel, checkVintedChannelInactivity } from "./src/services/discord_service.js";
 import { createVintedItemEmbed, createVintedItemActionRow } from "./src/bot/components/item_embed.js";
 import { fetchCookie } from "./src/api/fetchCookie.js";
 import { fetchCatalogInitializer } from "./src/api/fetchCatalogInitializers.js";
 import crud from "./src/crud.js";
 import Logger from "./src/utils/logger.js";
 import CatalogService from "./src/services/catalog_service.js";
+
 
 var cookie = null;
 
@@ -43,6 +44,10 @@ const refreshCookie = async () => {
             Logger.debug('Error fetching cookie');
             await new Promise(resolve => setTimeout(resolve, 200));
         }
+
+        setTimeout(() => {
+            Logger.debug('Retrying to fetch cookie');
+        }, 1000);
     }
 };
 
@@ -157,3 +162,10 @@ const monitorChannels = () => {
 Logger.info('Starting monitoring channels');
 
 monitorChannels();
+
+if (discordConfig.channel_inactivity_enabled) {
+    //every 30 minutes
+    setInterval(() => {
+        checkVintedChannelInactivity(client)
+    }, 1000 * 60 * 30);
+}

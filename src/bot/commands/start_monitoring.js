@@ -1,8 +1,9 @@
 import { SlashCommandBuilder } from 'discord.js';
-import { createBaseEmbed, sendErrorEmbed, sendWaitingEmbed } from '../components/base_embeds.js';
+import { createBaseEmbed, sendErrorEmbed, sendWaitingEmbed, sendWarningEmbed } from '../components/base_embeds.js';
 import crud from '../../crud.js';
 import t from '../../t.js';
 import Logger from '../../utils/logger.js';
+import { Preference, ShippableMap } from '../../database.js';
 
 export const data = new SlashCommandBuilder()
     .setName('start_monitoring')
@@ -41,6 +42,25 @@ function validateUrl(url) {
     }
 }
 
+function urlContainsSearchTextParameter(url) {
+    const urlObj = new URL(url);
+    const searchParams = urlObj.searchParams;
+    return searchParams.has('search_text');
+}
+
+// get .fr or other domain from the URL
+function getDomainInUrl(url) {
+    const urlObj = new URL(url);
+    let domain = urlObj.hostname.split('.').pop();
+
+    // handle .co.uk and other domains get only uk
+    if (domain === 'co') {
+        domain = urlObj.hostname.split('.').slice(-2)[0];
+    }
+
+    return domain;
+}
+
 export async function execute(interaction) {
     const l = interaction.locale;
     await sendWaitingEmbed(interaction, t(l, 'starting-monitoring'));
@@ -77,12 +97,23 @@ export async function execute(interaction) {
             return;
         }
 
+        // Check if the URL contains the search_text parameter
+        if (urlContainsSearchTextParameter(url)) {
+            await sendWarningEmbed(interaction, t(l, 'url-contains-search-text'));
+        }
+
         const embed = await createBaseEmbed(
             interaction,
             t(l, 'monitoring-started'),
             t(l, 'monitoring-has-been-started', { url: url || vintedChannel.url}),
             0x00FF00
         );
+
+        const domain = getDomainInUrl(url);
+        const preferences = await crud.getVintedChannelPreference(channelId, Preference.Countries);
+        await crud.setVintedChannelPreference(channelId, Preference.Countries, [ ...ShippableMap[domain], domain]);
+
+        await crud.setVintedChannelUpdatedAtNow(channelId);
 
         await interaction.editReply({ embeds: [embed] });
 

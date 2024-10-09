@@ -4,6 +4,8 @@
     "chalk": "^5.3.0",
     "discord.js": "^14.15.2",
     "dotenv": "^16.4.5",
+    "fuse.js": "^7.0.0",
+    "https-proxy-agent": "^7.0.5",
     "js-yaml": "^4.1.0",
     "mongoose": "^8.3.4",
     "random-useragent": "^0.5.0",
@@ -15,9 +17,13 @@
   "main": "main.js",
   "scripts": {
     "start": "node --max-old-space-size=4096 main.js",
+    "dev": "nodemon --max-old-space-size=4096 main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
 }

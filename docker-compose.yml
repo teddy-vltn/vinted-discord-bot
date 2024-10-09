@@ -10,7 +10,7 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
-    command: sh -c "npm install && npm start"
+    command: sh -c "npm install && npm run dev"
     depends_on:
       - mongodb
     networks:

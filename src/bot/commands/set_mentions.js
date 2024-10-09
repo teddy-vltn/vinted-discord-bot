@@ -1,20 +1,12 @@
-import { SlashCommandBuilder } from 'discord.js';
-import { createBaseEmbed, sendErrorEmbed, sendWaitingEmbed } from '../components/base_embeds.js';
+import { SlashCommandBuilder, StringSelectMenuBuilder, ActionRowBuilder } from 'discord.js';
+import { createBaseEmbed, sendErrorEmbed, sendSuccessEmbed, sendWaitingEmbed } from '../components/base_embeds.js';
 import crud from '../../crud.js';
 import { Preference } from '../../database.js';
 import t from '../../t.js';
 
 export const data = new SlashCommandBuilder()
     .setName('set_mentions')
-    .setDescription('Enable or disable mentions for the user or a channel.')
-    .addStringOption(option =>
-        option.setName('type')
-            .setDescription('The type to set mentions for: "user" or "channel".')
-            .setRequired(true)
-            .addChoices(
-                { name: 'User', value: 'user' },
-                { name: 'Channel', value: 'channel' }
-            ))
+    .setDescription('Enable or disable mentions for a channel.')
     .addStringOption(option =>
         option.setName('state')
             .setDescription('The state to set mentions to: "enable" or "disable".')
@@ -22,61 +14,63 @@ export const data = new SlashCommandBuilder()
             .addChoices(
                 { name: 'Enable', value: 'enable' },
                 { name: 'Disable', value: 'disable' }
-            ))
-    .addStringOption(option =>
-        option.setName('channel_id')
-            .setDescription('The channel ID to set mentions for.')
-            .setRequired(false));
-
+            ));
 
 export async function execute(interaction) {
     try {
         const l = interaction.locale;
         await sendWaitingEmbed(interaction, t(l, 'updating-mentions'));
 
-        const type = interaction.options.getString('type');
         const state = interaction.options.getString('state');
-        const channelId = interaction.options.getString('channel_id');
         const discordId = interaction.user.id;
-
         const mention = state === 'enable';
-  
-        let entity;
-        if (type === 'user') {
-            entity = await crud.setUserPreference(discordId, Preference.Mention, mention);
-            if (!entity) {
-                await sendErrorEmbed(interaction, t(l, 'user-not-found'));
-                return;
-            }
-        } else if (type === 'channel') {
-            if (!channelId) {
-                await sendErrorEmbed(interaction, t(l, 'channel-id-required'));
-                return;
-            }
 
-            // Get the user
-            const user = await crud.getUserByDiscordId(discordId);
+        // Fetch all channels associated with the user
+        const user = await crud.getUserByDiscordId(discordId);
+        const channels = user.channels;
 
-            // Find the channel by name
-            const channel = crud.isUserOwnerOfChannel(user.channels, channelId);
-            if (!channel) {
-                await sendErrorEmbed(interaction, t(l, 'channel-not-found'));
-                return;
-            }
+        if (channels.length === 0) {
+            await sendErrorEmbed(interaction, t(l, 'no-channels-found'));
+            return;
+        }
+
+        // Create a select menu for channel selection
+        const channelMenu = new StringSelectMenuBuilder()
+            .setCustomId('channel_select' + discordId)
+            .setPlaceholder('Select the channel to set mentions for')
+            .addOptions(channels.map(channel => ({
+                label: channel.name,
+                value: channel.channelId
+            })));
+
+        const row = new ActionRowBuilder().addComponents(channelMenu);
+        await interaction.followUp({
+            content: 'Please select the channel you want to set mentions for:',
+            components: [row],
+            ephemeral: true,
+        });
+
+        // Create a collector for the channel selection
+        const filter = i => i.customId === 'channel_select' + discordId && i.user.id === discordId;
+        const channelCollector = interaction.channel.createMessageComponentCollector({ filter, time: 60000 });
+
+        channelCollector.on('collect', async channelInteraction => {
+            const channelId = channelInteraction.values[0];
 
             // Set the mention preference for the channel
             await crud.setVintedChannelPreference(channelId, Preference.Mention, mention);
-        }
 
-        const status = mention ? 'enabled' : 'disabled';
-        const embed = await createBaseEmbed(
-            interaction,
-            t(l, 'mentions-updated'),
-            t(l, 'mentions-has-been-updated', { status: t(l, status), type: t(l, type) }),
-            mention ? 0x00FF00 : 0xFF0000
-        );
+            const status = mention ? 'enabled' : 'disabled';
 
-        await interaction.editReply({ embeds: [embed] });
+            // remove the select menu
+            await channelInteraction.update({
+                content: `Mentions have been ${status} for the channel.`,
+                components: [],
+            });
+
+            await crud.setVintedChannelUpdatedAtNow(channelId);
+        });
+
     } catch (error) {
         console.error(`Error updating mentions:`, error);
         await sendErrorEmbed(interaction, 'There was an error updating mentions.');

@@ -29,6 +29,7 @@ function buildCategoryMap(node, parentMap = {}) {
 
 // Build the category map starting from the root nodes
 function buildCategoryMapFromRoots(roots) {
+    console.log(roots)
     roots.data.catalogs.forEach((root) => {
         buildCategoryMap(root, categoryMap);
     });
@@ -56,6 +57,31 @@ const Preference = {
     Mention: "mention"
 };
 
+const ShippableMap = {
+    "pl": ["se", "lt", "sk", "hu", "ro", "cz", "dk", "hr", "fi"],
+    "fr": ["nl", "be", "it", "es", "pt", "lu", "at"],
+    "it": ["nl", "be", "fr", "es", "pt", "lu", "at"],
+    "be": ["nl", "fr", "it", "es", "pt", "lu"],
+    "es": ["nl", "be", "fr", "it", "pt", "lu"],
+    "nl": ["be", "fr", "it", "es", "pt", "lu"],
+    "pt": ["nl", "be", "fr", "it", "es"],
+    "lu": ["nl", "be", "fr", "it", "es"],
+    "fi": ["se", "dk", "lt", "pl"],
+    "dk": ["se", "fi", "pl"],
+    "se": ["fi", "dk", "pl"],
+    "at": ["fr", "it"],
+    "cz": ["sk", "pl"],
+    "lt": ["fi", "pl"],
+    "sk": ["cz", "pl"],
+    "hr": ["pl"],
+    "ro": ["pl", "gr"],
+    "hu": ["pl"],
+    "gr": ["ro"],
+    "com": ["us"],
+    "de": [],
+    "uk": [],
+};
+
 // Define your schemas
 const userSchema = new Schema({
     discordId: { type: String, unique: true, required: true },
@@ -73,7 +99,8 @@ const userSchema = new Schema({
 const vintedChannelSchema = new Schema({
     channelId: { type: String, unique: true, required: true },
     lastUpdated: { type: Date, default: Date.now },
-    name: { type: String, required: true },
+    keepMessageSent: { type: Boolean, default: false },
+    name: { type: String, required: false },
     url: { type: String, default: null },
     isMonitoring: { type: Boolean, default: true },
     type: { type: String, default: 'public' },
@@ -88,4 +115,4 @@ const VintedChannel = model('VintedChannel', vintedChannelSchema);
 
 Logger.info("Database models loaded.");
 
-export { Preference, User, VintedChannel, isSubcategory, buildCategoryMapFromRoots };
+export { Preference, ShippableMap, User, VintedChannel, isSubcategory, buildCategoryMapFromRoots };

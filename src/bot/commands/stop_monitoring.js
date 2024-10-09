@@ -37,10 +37,12 @@ export async function execute(interaction) {
             0xFF0000
         );
 
-        await interaction.editReply({ embeds: [embed] });
-
         // Update the VintedChannel and set isMonitoring to false
         await crud.stopVintedChannelMonitoring(vintedChannel._id);
+        
+        await crud.setVintedChannelUpdatedAtNow(channelId);
+
+        await interaction.editReply({ embeds: [embed] });
 
     } catch (error) {
         console.error('Error stopping monitoring session:', error);
