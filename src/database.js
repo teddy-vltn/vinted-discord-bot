@@ -29,7 +29,6 @@ function buildCategoryMap(node, parentMap = {}) {
 
 // Build the category map starting from the root nodes
 function buildCategoryMapFromRoots(roots) {
-    console.log(roots)
     roots.data.catalogs.forEach((root) => {
         buildCategoryMap(root, categoryMap);
     });
@@ -102,6 +101,7 @@ const vintedChannelSchema = new Schema({
     keepMessageSent: { type: Boolean, default: false },
     name: { type: String, required: false },
     url: { type: String, default: null },
+    bannedKeywords: { type: [String], default: [] },
     isMonitoring: { type: Boolean, default: true },
     type: { type: String, default: 'public' },
     user: { type: Types.ObjectId, ref: 'User', default: null },

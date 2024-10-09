@@ -1,6 +1,7 @@
 import axios from 'axios';
 import ProxyManager from './proxy_manager.js';
 import { getRandom } from 'random-useragent';
+import Logger from './logger.js';
 
 const BASE_HEADERS = {
     'Accept': 'application/json, text/plain, */*',
@@ -85,7 +86,7 @@ class RequestBuilder {
             return parseFloat(ua.browserVersion) >= 90;
         });
 
-        console.log(`Sending request to ${this.url} with user-agent: ${userAgent}`);
+        Logger.debug(`Sending request to ${this.url} with user-agent: ${userAgent}`);
 
         this.headers['User-Agent'] = userAgent;
 
@@ -108,6 +109,7 @@ class RequestBuilder {
             response.success = response.status >= 200 && response.status < 300;
             return response
         } catch (error) {
+            Logger.debug(`Error sending request to ${this.url}, status: ${error.response.status}`);
             this.proxy && ProxyManager.removeTemporarlyInvalidProxy(this.proxy);
             throw error;
         }

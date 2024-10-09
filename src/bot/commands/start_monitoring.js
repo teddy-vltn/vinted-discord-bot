@@ -11,7 +11,11 @@ export const data = new SlashCommandBuilder()
     .addStringOption(option =>
         option.setName('url')
             .setDescription('The URL of the Vinted product page.')
-            .setRequired(true));
+            .setRequired(true))
+    .addStringOption(option =>
+        option.setName('banned_keywords')
+            .setDescription('Keywords to ban from the search results. (separate with commas -> "keyword1, keyword2")')
+            .setRequired(false));
 
 // the base URL for monitoring Vinted products
 const VALID_BASE_URL = "catalog";
@@ -66,6 +70,7 @@ export async function execute(interaction) {
     await sendWaitingEmbed(interaction, t(l, 'starting-monitoring'));
 
     const url = interaction.options.getString('url');
+    const bannedKeywords = interaction.options.getString('banned_keywords') ? interaction.options.getString('banned_keywords').split(',').map(keyword => keyword.trim()) : [];
     const discordId = interaction.user.id;
     const channelId = interaction.channel.id;
 
@@ -109,13 +114,13 @@ export async function execute(interaction) {
             0x00FF00
         );
 
+        await interaction.followUp({ embeds: [embed] });
+
         const domain = getDomainInUrl(url);
-        const preferences = await crud.getVintedChannelPreference(channelId, Preference.Countries);
+
         await crud.setVintedChannelPreference(channelId, Preference.Countries, [ ...ShippableMap[domain], domain]);
-
         await crud.setVintedChannelUpdatedAtNow(channelId);
-
-        await interaction.editReply({ embeds: [embed] });
+        await crud.setVintedChannelBannedKeywords(channelId, bannedKeywords);
 
         // Update the VintedChannel with the provided URL (if any) and set isMonitoring to true
         await crud.startVintedChannelMonitoring(vintedChannel._id, url);

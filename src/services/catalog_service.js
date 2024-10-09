@@ -17,7 +17,7 @@ let validItemsPerSecond = 0;
 let lastRequestPerSecond = 0;
 let requestPerSecond = 0;
 
-let lastPublishedTime = Date.now() - 10000;
+let lastPublishedTime = Date.now();
 let idTimeSinceLastPublication = 0;
 
 let minFetchedRange = 0;
@@ -77,7 +77,7 @@ setInterval(() => {
 /**
  * Adjust the concurrency dynamically based on errors and time since last publication.
  */
-let computedConcurrency = concurrency;
+let computedConcurrency = 2;
 
 setInterval(() => {
     fetchedIds = new Set([...fetchedIds].filter(id => Date.now() - id < 60000));
@@ -156,10 +156,10 @@ function adjustStep() {
     } else if (timeSinceLastPublication > 10000) {
         // If it's been longer than 10 seconds since the last publication, double the step and add 5
         step = Math.min(step * 2 + 1, 5);
-    } else if (timeSinceLastPublication > 6500) {
+    } else if (timeSinceLastPublication > 5000) {
         // If it's been longer than 5 seconds since the last publication, double the step
-        step = Math.min(step + 1, 3);
-    } else if (timeSinceLastPublication > 4000) {
+        step = Math.min(step + 1, 2);
+    } else if (timeSinceLastPublication > 3000) {
         // If it's been longer than 3 seconds since the last publication, increase the step by 1
         step = 1;
     }
