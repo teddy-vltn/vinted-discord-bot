@@ -28,7 +28,6 @@ async function isUserAdmin(interaction) {
 }
 
 async function isUserOwnerOfChannel(interaction, user_channels, channel_id, user_id=null) {
-
     // get role admin id
     if (await isUserAdmin(interaction)) {
         return true;
