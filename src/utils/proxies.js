@@ -41,6 +41,7 @@ export async function listProxies(apiKey, timeout = 10000) {
                 signal: controller.signal
             });
 
+
             clearTimeout(timeoutId);
 
             if (!req.ok) {
@@ -61,6 +62,7 @@ export async function listProxies(apiKey, timeout = 10000) {
             if (error.name === 'AbortError') {
                 throw new Error('Request timed out');
             }
+            console.log(error)
             throw error;
         }
     }

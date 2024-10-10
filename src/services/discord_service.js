@@ -182,7 +182,7 @@ export async function postMessageToChannel(
     content,
     embeds = [],
     components = [],
-    retries = 3
+    retries = 1
 ) {
     const url = `https://discord.com/api/v10/channels/${channelId}/messages`;
 
@@ -203,6 +203,7 @@ export async function postMessageToChannel(
     for (let attempt = 0; attempt <= retries; attempt++) {
         try {
             const response = await RequestBuilder.post(url)
+                .setNextProxy()
                 .addHeaders(headers)
                 .setData(data)
                 .send();

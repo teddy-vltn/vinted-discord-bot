@@ -18,8 +18,6 @@ export async function fetchCookie() {
 
         const response = await RequestBuilder.get(url).setNextProxy().send();
 
-        console.log(response);
-
         if (response && response.headers['set-cookie']) {
 
             const cookies = response.headers['set-cookie'];

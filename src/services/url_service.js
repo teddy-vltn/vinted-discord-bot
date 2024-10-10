@@ -36,6 +36,7 @@ function parseVintedSearchParams(url) {
  */
 function matchVintedItemToSearchParams(item, searchParams, bannedKeywords, countries_codes = []) {
 
+
     // Check blacklisted countries
     if (blacklisted_countries_codes.includes(item.user.countryCode)) {
         return false;

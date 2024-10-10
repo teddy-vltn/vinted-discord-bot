@@ -81,6 +81,31 @@ const ShippableMap = {
     "uk": [],
 };
 
+const CurrencyMap = {
+    "pl": "PLN",
+    "fr": "EUR",
+    "it": "EUR",
+    "be": "EUR",
+    "es": "EUR",
+    "nl": "EUR",
+    "pt": "EUR",
+    "lu": "EUR",
+    "fi": "EUR",
+    "dk": "EUR",
+    "se": "EUR",
+    "at": "EUR",
+    "cz": "EUR",
+    "lt": "EUR",
+    "sk": "EUR",
+    "hr": "EUR",
+    "ro": "EUR",
+    "hu": "EUR",
+    "gr": "EUR",
+    "com": "USD",
+    "de": "EUR",
+    "uk": "GBP",
+};
+
 // Define your schemas
 const userSchema = new Schema({
     discordId: { type: String, unique: true, required: true },
@@ -115,4 +140,4 @@ const VintedChannel = model('VintedChannel', vintedChannelSchema);
 
 Logger.info("Database models loaded.");
 
-export { Preference, ShippableMap, User, VintedChannel, isSubcategory, buildCategoryMapFromRoots };
+export { Preference, ShippableMap, CurrencyMap, User, VintedChannel, isSubcategory, buildCategoryMapFromRoots };

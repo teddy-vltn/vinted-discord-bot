@@ -20,10 +20,9 @@ function handleFetchItemError(code) {
     }
 }
 
-
 const vinted_domain_extension = [
-    "fr", "be", "lt", "es", "de", "nl", "pt", "it", "cz", "pl"
-]
+    "fr", "be", "lt", "es", "de", "nl", "pt", "it", "cz", "pl", "at", "lu", "co.uk", "com", "gr", "ro", "se", "dk", "fi", "hr", "hu", "sk"
+] 
 
 let index = 0;
 

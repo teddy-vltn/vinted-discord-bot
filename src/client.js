@@ -27,13 +27,13 @@ client.once('ready', async () => {
     } else {
         client.user.setPresence({ activities: [{ name: 'Vinted' }], status: 'online' });
     }
+
+    setInterval(async () => {
+        const channelCount = (await crud.getAllVintedChannels()).length;
+        client.user.setPresence({ activities: [{ name: `${channelCount} channels` }], status: 'online' });
+    }, 60000);
 });
 
-// Change presence to show number of channels being monitored
-setInterval(async () => {
-    const channelCount = (await crud.getAllVintedChannels()).length;
-    client.user.setPresence({ activities: [{ name: `${channelCount} channels` }], status: 'online' });
-}, 60000);
 
 client.on('interactionCreate', handleCommands);
 

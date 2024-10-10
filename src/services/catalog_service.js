@@ -55,13 +55,13 @@ setInterval(() => {
     const totalRequests = requestPerSecond + rateLimitErrorsPerSecond;
     const requestSuccessRate = totalRequests ? ((requestPerSecond / totalRequests) * 100).toFixed(2) : 0;
 
-    Logger.debug(`Requests per second: ${requestPerSecond}, Step: ${step}, Consecutive errors: ${consecutiveErrors}, Rate limit errors per second: ${rateLimitErrorsPerSecond}, Valid items per second: ${validItemsPerSecond}`);
+    Logger.info(`Requests per second: ${requestPerSecond}, Step: ${step}, Consecutive errors: ${consecutiveErrors}, Rate limit errors per second: ${rateLimitErrorsPerSecond}, Valid items per second: ${validItemsPerSecond}`);
     Logger.debug(`Active promises: ${activePromises.size}`);
     Logger.debug(`Current ID: ${currentID}, Last published time: ${lastPublishedTime}, ID time since last publication: ${idTimeSinceLastPublication}`);
     const numberOfItemBetweenRange = maxFetchedRange - minFetchedRange;
     Logger.debug(`minFetchedRange: ${minFetchedRange}, maxFetchedRange: ${maxFetchedRange}, numberOfItemBetweenRange: ${numberOfItemBetweenRange}`);
     Logger.debug(`Request success rate: ${requestSuccessRate}%`);
-    Logger.debug(`Concurrency: ${computedConcurrency}`);
+    Logger.info(`Concurrency: ${computedConcurrency}`);
 
     rateLimitErrorsPerSecond = 0;
 
