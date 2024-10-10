@@ -12,7 +12,7 @@ export async function execute(interaction) {
         const l = interaction.locale;
         await sendWaitingEmbed(interaction, t(l, 'deleting-private-channel'));
 
-        const discordId = interaction.user.id;
+        const discordId = interaction.user.id; 
 
         // Get the user and ensure they exist
         const user = await crud.getUserByDiscordId(discordId);

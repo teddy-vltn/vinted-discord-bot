@@ -24,7 +24,7 @@ export async function execute(interaction) {
         }
 
         // Find the VintedChannel by channelId and ensure it's owned by the user
-        const vintedChannel = user.channels.find(channel => channel.channelId === channelId);
+        const vintedChannel = crud.isUserOwnerOfChannel(interaction, user.channels, channelId);
         if (!vintedChannel) {
             await sendErrorEmbed(interaction, t(l, 'channel-not-found-nor-owned'));
             return;

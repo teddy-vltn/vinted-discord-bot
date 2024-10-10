@@ -203,7 +203,6 @@ export async function postMessageToChannel(
     for (let attempt = 0; attempt <= retries; attempt++) {
         try {
             const response = await RequestBuilder.post(url)
-                .setNextProxy()
                 .addHeaders(headers)
                 .setData(data)
                 .send();

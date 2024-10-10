@@ -4,20 +4,15 @@ import { getRandom } from 'random-useragent';
 import Logger from './logger.js';
 import ConfigurationManager from './config_manager.js';
 
-const algorithm_settings = ConfigurationManager.getAlgorithmSetting
-const vinted_api_domain_extension = algorithm_settings.vinted_api_domain_extension;
-
 const BASE_HEADERS = {
     'Accept': 'application/json, text/plain, */*',
     'Accept-Encoding': 'gzip, deflate, br',
-    'Accept-Language': 'fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7',
+    'Accept-Language': 'en-US,en;q=0.9',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-origin',
     'Cache-Control': 'no-cache',
     'Connection': 'close',
-    'Origin': `https://www.vinted.${vinted_api_domain_extension}`,
-    'Referer': `https://www.vinted.${vinted_api_domain_extension}/catalog`,
     'DNT': '1',
     'Upgrade-Insecure-Requests': '1',
     'Sec-Ch-Ua-Mobile': '?0',
@@ -32,7 +27,7 @@ class RequestBuilder {
         this.method = method.toUpperCase(); // default is GET, but can be POST, PUT, DELETE, etc.
         this.headers = { ...BASE_HEADERS };
         this.proxy = null;
-        this.timeout = 5000; // default timeout in milliseconds
+        this.timeout = 3000; // default timeout in milliseconds
         this.params = {};
         this.data = null; // used for POST/PUT requests
         
@@ -95,8 +90,6 @@ class RequestBuilder {
         // Get a random user-agent
 
         if (!this.headers['User-Agent']) {
-
-
             const userAgent = getRandom( (ua) => {
                 return parseFloat(ua.browserVersion) >= 90;
             });
