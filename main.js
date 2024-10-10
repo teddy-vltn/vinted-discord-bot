@@ -54,6 +54,11 @@ const refreshCookie = async () => {
 
 const discordConfig = ConfigurationManager.getDiscordConfig
 const token = discordConfig.token;
+const token_sender = discordConfig.token_senders()
+
+if (token_sender.length === 0) {
+    token_sender.push(token);
+}
 
 Logger.info('Starting Vinted Bot');
 Logger.info('Fetching cookie from Vinted');
@@ -90,6 +95,8 @@ Logger.info('Fetching catalog roots from Vinted');
 
 await getCatalogRoots(cookie);
 
+let index_senders = 0;
+
 const sendToChannel = async (item, user, vintedChannel) => {
     // get the domain from the URL between vinted. and the next /
     const domain = vintedChannel.url.match(/vinted\.(.*?)\//)[1];
@@ -97,11 +104,11 @@ const sendToChannel = async (item, user, vintedChannel) => {
     const actionRow = await createVintedItemActionRow(item, domain);
 
     const doMentionUser = user && vintedChannel.preferences.get(Preference.Mention);
-    const mentionString = doMentionUser ? `<@${user.discordId}>` : '';
+    const mentionString = doMentionUser ? `<@${user.discordId}>` : ''
 
     try {
         await postMessageToChannel(
-            token,
+            token_sender[index_senders++ % token_sender.length],
             vintedChannel.channelId,
             `${mentionString} `,
             [embed, ...photosEmbeds],

@@ -21,6 +21,15 @@ class ConfigurationManager {
     static getDiscordConfig = {
         client_id: process.env.DISCORD_CLIENT_ID,
         token: process.env.DISCORD_TOKEN,
+        token_senders: () => {
+            let index = 1;
+            let tokens = [];
+            while (process.env[`DISCORD_TOKEN_SENDER_${index}`]) {
+                tokens.push(process.env[`DISCORD_TOKEN_SENDER_${index}`]);
+                index++;
+            }
+            return tokens;
+        },
         role_admin_id: process.env.DISCORD_ROLE_ADMIN_ID,
         guild_id: process.env.DISCORD_GUILD_ID,
         channel_inactivity_enabled: process.env.ENABLE_CHANNEL_INACTIVITY == 1 ? true : false,
