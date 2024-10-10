@@ -25,6 +25,7 @@ const BASE_HEADERS = {
     'Priority': 'u=0, i',
 };
 
+// generate some random user-agent to pick from
 class RequestBuilder {
     constructor(url, method = 'GET') {
         this.url = url;
@@ -39,9 +40,9 @@ class RequestBuilder {
     }
 
     // Set custom headers
-    setHeaders(headers) {
+    addHeaders(headers) {
         this.headers = { ...this.headers, ...headers };
-        return this; // return the instance to allow chaining
+        return this;
     }
 
     // Set proxy from proxy manager
@@ -92,13 +93,18 @@ class RequestBuilder {
     async send() {
 
         // Get a random user-agent
-        const userAgent = getRandom( (ua) => {
-            return parseFloat(ua.browserVersion) >= 90;
-        });
 
-        Logger.debug(`Sending request to ${this.url} with user-agent: ${userAgent}`);
+        if (!this.headers['User-Agent']) {
 
-        this.headers['User-Agent'] = userAgent;
+
+            const userAgent = getRandom( (ua) => {
+                return parseFloat(ua.browserVersion) >= 90;
+            });
+
+            this.headers['User-Agent'] = userAgent;
+
+            Logger.debug(`Sending request to ${this.url} with user-agent: ${userAgent}`);
+        }
 
         const config = {
             method: this.method,

@@ -8,6 +8,7 @@ import crud from '../crud.js';
 import ConfigurationManager from '../utils/config_manager.js';
 import { createBaseEmbed } from '../bot/components/base_embeds.js';
 import t from '../t.js';
+import RequestBuilder from '../utils/request_builder.js';
 
 const discordConfig = ConfigurationManager.getDiscordConfig
 const guild_id = discordConfig.guild_id;
@@ -188,7 +189,7 @@ export async function postMessageToChannel(
     const headers = {
         Authorization: `Bot ${token}`,
         "Content-Type": "application/json",
-        "User-Agent": "DiscordBot (https://your-url.com, 1.0.0)",
+        "User-Agent": "DiscordBot (via VintedBot, v" + Math.random() + ")",
     };
 
     Logger.debug(`Posting message to channel ${channelId}`);
@@ -201,23 +202,12 @@ export async function postMessageToChannel(
 
     for (let attempt = 0; attempt <= retries; attempt++) {
         try {
-            const proxy = await ProxyManager.getNewProxy();
-            const agent = ProxyManager.getProxyAgent(proxy);
+            const response = await RequestBuilder.post(url)
+                .setNextProxy()
+                .addHeaders(headers)
+                .setData(data)
+                .send();
 
-            const options = {
-                url,
-                method: "POST",
-                headers,
-                data,
-                httpsAgent: agent,
-                httpAgent: agent,
-                responseType: "json",
-                decompress: true,
-                maxContentLength: 10 * 1024 * 1024,
-                maxRedirects: 5,
-            };
-
-            const response = await axios(options);
             return { response, body: response.data };
         } catch (error) {
             const code = error.response ? error.response.status : null;

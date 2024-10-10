@@ -36,7 +36,11 @@ async function executeWithDetailedHandling(asyncFn, ...params) {
             ...result
         };
     } catch (error) {
+
+        Logger.debug(`Error occurred: ${error.message}`);
+
         if (!error) {
+
             throw new Error('An unknown error occurred');
         }
 
