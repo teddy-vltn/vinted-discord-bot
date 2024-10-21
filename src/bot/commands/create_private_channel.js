@@ -74,7 +74,7 @@ export async function execute(interaction) {
         await privateChannelObj.send(t(l, 'private-channel-welcome', { user: `<@${discordId}>` }));
     } catch (error) {
         console.error('Error creating private channel:', error);
-        await sendErrorEmbed(interaction, 'There was an error creating the private channel.');
+        await sendErrorEmbed(interaction, 'There was an error creating the private channel: ```' + error + '```');
     }
 }
 

@@ -62,10 +62,11 @@ export async function execute(interaction) {
                 components: [] 
             });
 
-            // Delete the actual Discord channel
-            const discordChannel = interaction.guild.channels.cache.get(channelId);
-            if (discordChannel) {
+            try {
                 await discordChannel.delete();
+            } catch (error) {
+                console.error('Error deleting private channel:', error);
+                await sendErrorEmbed(interaction, 'There was an error deleting the private channel, but was from the database: ```' + error + '```');
             }
         });
 
