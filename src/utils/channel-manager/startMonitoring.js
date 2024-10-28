@@ -1,31 +1,30 @@
-import { SlashCommandBuilder } from "discord.js";
-import crud from "../../crud.js";
-import { Preference, ShippableMap } from "../../database.js";
-import t from "../../t.js";
 import {
   createBaseEmbed,
   sendErrorEmbed,
   sendWaitingEmbed,
   sendWarningEmbed,
-} from "../components/base_embeds.js";
+} from "../../bot/components/base_embeds.js";
+import crud from "../../crud.js";
+import { Preference, ShippableMap } from "../../database.js";
+import t from "../../t.js";
 
-export const data = new SlashCommandBuilder()
-  .setName("start_monitoring")
-  .setDescription("Start monitoring this Vinted channel.")
-  .addStringOption((option) =>
-    option
-      .setName("url")
-      .setDescription("The URL of the Vinted product page.")
-      .setRequired(true)
-  )
-  .addStringOption((option) =>
-    option
-      .setName("banned_keywords")
-      .setDescription(
-        'Keywords to ban from the search results. (separate with commas -> "keyword1, keyword2")'
-      )
-      .setRequired(false)
-  );
+// export const data = new SlashCommandBuilder()
+//   .setName("start_monitoring")
+//   .setDescription("Start monitoring this Vinted channel.")
+//   .addStringOption((option) =>
+//     option
+//       .setName("url")
+//       .setDescription("The URL of the Vinted product page.")
+//       .setRequired(true)
+//   )
+//   .addStringOption((option) =>
+//     option
+//       .setName("banned_keywords")
+//       .setDescription(
+//         'Keywords to ban from the search results. (separate with commas -> "keyword1, keyword2")'
+//       )
+//       .setRequired(false)
+//   );
 
 // the base URL for monitoring Vinted products
 const VALID_BASE_URL = "catalog";
@@ -75,19 +74,12 @@ function getDomainInUrl(url) {
   return domain;
 }
 
-export async function execute(interaction) {
+export async function startMonitoring(interaction, url, keywords, channelId) {
   const l = interaction.locale;
-  await sendWaitingEmbed(interaction, t(l, "starting-monitoring"));
+  await sendWaitingEmbed(interaction, t(l, "starting-monitoring"), true);
 
-  const url = interaction.options.getString("url");
-  const bannedKeywords = interaction.options.getString("banned_keywords")
-    ? interaction.options
-        .getString("banned_keywords")
-        .split(",")
-        .map((keyword) => keyword.trim())
-    : [];
+  const bannedKeywords = keywords.split(",").map((keyword) => keyword.trim());
   const discordId = interaction.user.id;
-  const channelId = interaction.channel.id;
 
   // validate the URL
   const validation = validateUrl(url);
@@ -100,7 +92,7 @@ export async function execute(interaction) {
     // Get the user
     const user = await crud.getUserByDiscordId(discordId);
     if (!user) {
-      await sendErrorEmbed(interaction, t(l, "user-not-found"));
+      await sendErrorEmbed(interaction, t(l, "user-not-found"), true);
       return;
     }
 
@@ -110,7 +102,11 @@ export async function execute(interaction) {
         channel.channelId === channelId && channel.user.equals(user._id)
     );
     if (!vintedChannel) {
-      await sendErrorEmbed(interaction, t(l, "channel-not-found-nor-owned"));
+      await sendErrorEmbed(
+        interaction,
+        t(l, "channel-not-found-nor-owned"),
+        true
+      );
       return;
     }
 
@@ -118,7 +114,8 @@ export async function execute(interaction) {
     if (!url && !vintedChannel.url) {
       await sendErrorEmbed(
         interaction,
-        t(l, "provide-vaild-url") + " " + t(l, url)
+        t(l, "provide-vaild-url") + " " + t(l, url),
+        true
       );
       return;
     }
@@ -156,7 +153,8 @@ export async function execute(interaction) {
     console.error("Error starting monitoring session:", error);
     await sendErrorEmbed(
       interaction,
-      "There was an error starting the monitoring session."
+      "There was an error starting the monitoring session.",
+      true
     );
   }
 }

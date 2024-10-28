@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "@discordjs/rest": "^2.4.0",
     "axios": "^1.6.8",
     "chalk": "^5.3.0",
+    "discord-api-types": "^0.37.103",
     "discord.js": "^14.15.2",
     "dotenv": "^16.4.5",
     "fuse.js": "^7.0.0",

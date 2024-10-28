@@ -1,48 +1,27 @@
-import {
-  ActionRowBuilder,
-  SlashCommandBuilder,
-  StringSelectMenuBuilder,
-} from "discord.js";
+import { ActionRowBuilder, StringSelectMenuBuilder } from "discord.js";
+import { sendErrorEmbed } from "../../bot/components/base_embeds.js";
 import crud from "../../crud.js";
 import { Preference } from "../../database.js";
 import t from "../../t.js";
-import { sendErrorEmbed, sendWaitingEmbed } from "../components/base_embeds.js";
 
-export const data = new SlashCommandBuilder()
-  .setName("set_mentions")
-  .setDescription("Enable or disable mentions for a channel.")
-  .addStringOption((option) =>
-    option
-      .setName("state")
-      .setDescription('The state to set mentions to: "enable" or "disable".')
-      .setRequired(true)
-      .addChoices(
-        { name: "Enable", value: "enable" },
-        { name: "Disable", value: "disable" }
-      )
-  );
-
-export async function execute(interaction) {
+export async function setMentions(interaction) {
   try {
     const l = interaction.locale;
-    await sendWaitingEmbed(interaction, t(l, "updating-mentions"));
 
-    const state = interaction.options.getString("state");
-    const discordId = interaction.user.id;
-    const mention = state === "enable";
+    const userId = interaction.user.id;
 
     // Fetch all channels associated with the user
-    const user = await crud.getUserByDiscordId(discordId);
+    const user = await crud.getUserByDiscordId(userId);
     const channels = user.channels;
 
     if (channels.length === 0) {
-      await sendErrorEmbed(interaction, t(l, "no-channels-found"));
+      await sendErrorEmbed(interaction, t(l, "no-channels-found"), true);
       return;
     }
 
     // Create a select menu for channel selection
     const channelMenu = new StringSelectMenuBuilder()
-      .setCustomId("channel_select" + discordId)
+      .setCustomId("channel_select" + userId)
       .setPlaceholder("Select the channel to set mentions for")
       .addOptions(
         channels.map((channel) => ({
@@ -52,7 +31,7 @@ export async function execute(interaction) {
       );
 
     const row = new ActionRowBuilder().addComponents(channelMenu);
-    await interaction.followUp({
+    await interaction.reply({
       content: "Please select the channel you want to set mentions for:",
       components: [row],
       ephemeral: true,
@@ -60,7 +39,7 @@ export async function execute(interaction) {
 
     // Create a collector for the channel selection
     const filter = (i) =>
-      i.customId === "channel_select" + discordId && i.user.id === discordId;
+      i.customId === "channel_select" + userId && i.user.id === userId;
     const channelCollector =
       interaction.channel.createMessageComponentCollector({
         filter,
@@ -70,14 +49,19 @@ export async function execute(interaction) {
     channelCollector.on("collect", async (channelInteraction) => {
       const channelId = channelInteraction.values[0];
 
+      const currentMention = await crud.getVintedChannelPreference(
+        channelId,
+        Preference.Mention
+      );
+
       // Set the mention preference for the channel
       await crud.setVintedChannelPreference(
         channelId,
         Preference.Mention,
-        mention
+        !currentMention
       );
 
-      const status = mention ? "enabled" : "disabled";
+      const status = !currentMention ? "enabled" : "disabled";
 
       // remove the select menu
       await channelInteraction.update({

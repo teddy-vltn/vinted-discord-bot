@@ -1,35 +1,21 @@
-import { SlashCommandBuilder } from "discord.js";
+import {
+  createBaseEmbed,
+  sendErrorEmbed,
+} from "../../bot/components/base_embeds.js";
 import crud from "../../crud.js";
 import { createPrivateThread } from "../../services/discord_service.js";
 import t from "../../t.js";
 import ConfigurationManager from "../../utils/config_manager.js";
-import {
-  createBaseEmbed,
-  sendErrorEmbed,
-  sendWaitingEmbed,
-} from "../components/base_embeds.js";
-
-export const data = new SlashCommandBuilder()
-  .setName("create_private_channel")
-  .setDescription("Create a private monitoring channel.")
-  .addStringOption((option) =>
-    option
-      .setName("channel_name")
-      .setDescription("The name of the channel to be created.")
-      .setRequired(true)
-  );
 
 const allow_user_to_create_private_channels =
   ConfigurationManager.getPermissionConfig
     .allow_user_to_create_private_channels;
 
-export async function execute(interaction) {
+export async function createPrivateChannel(interaction, channelName) {
   try {
     const l = interaction.locale;
-    await sendWaitingEmbed(interaction, t(l, "creating-private-channel"), true);
 
     const baseCategoryName = "Private Channels";
-    const channelName = interaction.options.getString("channel_name");
 
     const isUserAdmin = crud.isUserAdmin(interaction);
 
@@ -94,7 +80,11 @@ export async function execute(interaction) {
       true
     );
 
-    await interaction.editReply({ embeds: [embed], ephemeral: true });
+    if (interaction.replied) {
+      await interaction.editReply({ embeds: [embed], ephemeral: true });
+    } else {
+      await interaction.reply({ embeds: [embed], ephemeral: true });
+    }
 
     // Send a message in the private channel
     const privateChannelObj = await interaction.guild.channels.cache.get(
@@ -110,7 +100,8 @@ export async function execute(interaction) {
     console.error("Error creating private channel:", error);
     await sendErrorEmbed(
       interaction,
-      "There was an error creating the private channel: ```" + error + "```"
+      "There was an error creating the private channel: ```" + error + "```",
+      true
     );
   }
 }
