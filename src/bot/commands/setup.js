@@ -5,6 +5,7 @@ import {
   EmbedBuilder,
   SlashCommandBuilder,
 } from "discord.js";
+import { users } from "../../../setup.owners.config.json";
 import t from "../../t.js";
 import { sendErrorEmbed, sendWaitingEmbed } from "../components/base_embeds.js";
 
@@ -14,6 +15,12 @@ export const data = new SlashCommandBuilder()
 
 export async function execute(interaction) {
   try {
+    if (!users.includes(interaction.user.id)) {
+      await sendErrorEmbed(
+        interaction,
+        "You are not authorized to use this command."
+      );
+    }
     const l = interaction.locale;
     await sendWaitingEmbed(interaction, t(l, "please-wait"));
 
