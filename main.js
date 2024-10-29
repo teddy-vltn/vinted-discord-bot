@@ -117,12 +117,14 @@ const sendToChannel = async (item, user, vintedChannel) => {
 Logger.info('Fetching monitored channels');
 
 let allMonitoringChannels = await crud.getAllMonitoredVintedChannels();
+let allMonitoringChannelsBrandMap = await crud.getAllMonitoredVintedChannelsBrandMap();
 
 // Print the number of monitored channels
 Logger.info(`Monitoring ${allMonitoringChannels.length} Vinted channels`);
 
 crud.eventEmitter.on('updated', async () => {
     allMonitoringChannels = await crud.getAllMonitoredVintedChannels();
+    allMonitoringChannelsBrandMap = await crud.getAllMonitoredVintedChannelsBrandMap();
     Logger.debug('Updated vinted channels');
 });
 
@@ -135,17 +137,24 @@ const monitorChannels = () => {
             return;
         }
 
-        for (const vintedChannel of allMonitoringChannels) {
-            const user = vintedChannel.user;
-            const matchingItems = filterItemsByUrl(
-                [item], 
-                vintedChannel.url, 
-                vintedChannel.bannedKeywords, 
-                vintedChannel.preferences.get(Preference.Countries) || []
-            );
+        let rawItemBrandId = item.brandId;
+        rawItemBrandId = rawItemBrandId ? rawItemBrandId.toString() : null;
 
-            if (matchingItems.length > 0) {
-                sendToChannel(item, user, vintedChannel);
+        if (allMonitoringChannelsBrandMap.has(rawItemBrandId)) {
+            console.log('Found brand channel');
+            const brandChannels = allMonitoringChannelsBrandMap.get(rawItemBrandId);
+            for (const brandChannel of brandChannels) {
+                const user = brandChannel.user;
+                const matchingItems = filterItemsByUrl(
+                    [item], 
+                    brandChannel.url, 
+                    brandChannel.bannedKeywords, 
+                    brandChannel.preferences.get(Preference.Countries) || []
+                );
+
+                if (matchingItems.length > 0) {
+                    sendToChannel(item, user, brandChannel);
+                }
             }
         }
     };

@@ -292,8 +292,56 @@ async function getAllPrivateVintedChannels() {
     return await VintedChannel.find({ type: 'private' }).populate('user');
 }
 
+function parseVintedSearchParams(url) {
+    try {
+        const searchParams = {};
+        const params = new URL(url).searchParams;
+        const paramsKeys = ['search_text', 'order', 'catalog[]', 'brand_ids[]', 'size_ids[]', 'price_from', 'price_to', 'status_ids[]', 'material_ids[]', 'color_ids[]'];
+        for (const key of paramsKeys) {
+            const isMultiple = key.endsWith('[]');
+            if (isMultiple) {
+                searchParams[key.replace('[]', '')] = params.getAll(key) || null;
+            } else {
+                searchParams[key] = params.get(key) || null;
+            }
+        }
+        return searchParams;
+    } catch (error) {
+        Logger.error("Invalid URL provided: ", error.message);
+        return null;
+    }
+}
+
 async function getAllMonitoredVintedChannels() {
-    return await VintedChannel.find({ isMonitoring: true }).populate('user');
+    let channels = await VintedChannel.find({ isMonitoring: true }).populate('user');
+
+    for (const channel of channels) {
+        channel.generated_filters = parseVintedSearchParams(channel.url);
+    }
+
+    return channels;
+}
+
+async function getAllMonitoredVintedChannelsBrandMap() {
+    const channels = await getAllMonitoredVintedChannels();
+    const brandMap = new Map();
+
+    for (const channel of channels) {
+        console.log(channel.generated_filters);
+        const brands = channel.generated_filters["brand_ids"]
+
+
+        for (const brand of brands) {
+            
+            if (!brandMap.has(brand)) {
+                brandMap.set(brand, [channel]);
+            } else {
+                brandMap.get(brand).push(channel);
+            }
+        }
+    }
+
+    return brandMap;
 }
 
 async function getAllVintedChannelsByDiscordId(discordId) {
@@ -455,6 +503,7 @@ const crud = {
     getAllVintedChannels,
     getAllPrivateVintedChannels,
     getAllMonitoredVintedChannels,
+    getAllMonitoredVintedChannelsBrandMap,
     getAllVintedChannelsByDiscordId,
     updateVintedChannel,
     deleteVintedChannel,
