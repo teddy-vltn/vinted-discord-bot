@@ -121,8 +121,13 @@ class RequestBuilder {
             response.success = response.status >= 200 && response.status < 300;
             return response
         } catch (error) {
+            // if response is a 404 it's not an error
+            if (error.response && error.response.status === 404) {
+                throw new Error('Not found');
+            }
+
             Logger.debug(`Error sending request to ${this.url}, status: ${error.response.status}`);
-            //this.proxy && ProxyManager.removeTemporarlyInvalidProxy(this.proxy);
+            this.proxy && ProxyManager.removeTemporarlyInvalidProxy(this.proxy);
             throw error;
         }
     }
