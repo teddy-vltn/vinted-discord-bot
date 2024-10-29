@@ -30,8 +30,6 @@ export async function execute(interaction) {
             return;
         }
 
-
-
         // Loop through each private channel and delete it with a delay
         for (const channel of channels) {
             const discordChannel = interaction.guild.channels.cache.get(channel.channelId);
@@ -54,8 +52,8 @@ export async function execute(interaction) {
 
             await interaction.followUp({ embeds: [embed], ephemeral: true });
 
-            // Sleep for 1 second between deletions
-            await sleep(1000);
+            // Sleep for 500ms between deletions
+            await sleep(500);
         }
 
         const finalEmbed = await createBaseEmbed(

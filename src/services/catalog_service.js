@@ -25,7 +25,6 @@ let maxFetchedRange = 0;
 
 let currentID = 0;
 
-let fetchedIds = new Set();
 let concurrency = 0;
 
 function initializeConcurrency( concurrent_requests ) {
@@ -80,12 +79,9 @@ setInterval(() => {
 let computedConcurrency = 2;
 
 setInterval(() => {
-    fetchedIds = new Set([...fetchedIds].filter(id => Date.now() - id < 60000));
-}, 60000);
-
-setInterval(() => {
     adjustConcurrency();
-}, 100);
+    adjustStep();
+}, 10);
 
 /**
  * Fetch items until the current item is reached automatically.
@@ -105,19 +101,13 @@ async function fetchUntilCurrentAutomatic(cookie, callback) {
     }
 
     // Check if there are more than 3 rate limit errors per second
-    if (rateLimitErrorsPerSecond > 3) {
+    /*if (rateLimitErrorsPerSecond > 3) {
         // Delay the function execution by 3 seconds
         await delay(3000);
         return;
-    }
-
-    // Adjust the concurrency limits dynamically
-    adjustConcurrency();
+    }*/
 
     while ( activePromises.size < computedConcurrency ) {
-        // Adjust the fetching step based on time since last publication and consecutive errors
-        adjustStep();
-
         // Calculate the ID for the next item to fetch
         const id = currentID + step;
         currentID = id;
@@ -144,6 +134,12 @@ function adjustStep() {
     // Calculate the time since the last publication
     const timeSinceLastPublication = Date.now() - lastPublishedTime;
 
+    // Reduce the step if there are consecutive errors
+    if (consecutiveErrors > 5) {
+        step = -1;
+        return;
+    }
+
     // Set the initial step value
     if (step < 1) {
         step = 1;
@@ -164,11 +160,6 @@ function adjustStep() {
         step = 1;
     }
     
-    // Reduce the step if there are consecutive errors
-    if (consecutiveErrors > 5) {
-        step = -1;
-    }
-
     // Ensure the step is a whole number
     step = Math.ceil(step);
 }
@@ -293,11 +284,15 @@ function updateFetchedRange(itemID) {
 function adjustConcurrency() {
     // Decrease computedConcurrency if there have been more than 5 consecutive errors
     if (consecutiveErrors > 5) {
+        if (computedConcurrency > 10) {
+            computedConcurrency = 10;
+        }
+        
         computedConcurrency = Math.max(computedConcurrency - 1, 2);
     } else {
         // Increase computedConcurrency if more than 6 seconds have passed since the last valid item was published
         const timeSinceLastPublication = Date.now() - lastPublishedTime;
-        if (timeSinceLastPublication > 4000) {
+        if (timeSinceLastPublication > 5000) {
             computedConcurrency = Math.min(computedConcurrency + 1, concurrency);
         }
         

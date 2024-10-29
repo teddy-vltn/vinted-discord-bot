@@ -5,14 +5,17 @@
     "error": "Erreur",
     "please-wait": "Veuillez patienter...",
     "not-found": "Non trouvé.",
+    "warning": "Avertissement",
+
+    "url-contains-search-text": "L'URL contient le paramètre search_text, les résultats peuvent être inexacts ou incomplets. Évitez d'utiliser ce paramètre si possible pour obtenir les meilleurs résultats.",
 
     "name": "Nom",
 
     "url": "URL",
 
     "invalid-url": "URL invalide.",
-    "invalid-url-with-example": "Veuillez fournir une URL dans ce format : par exemple https://www.vinted.fr/catalog?...",
-    "must-have-query-params": "L'URL doit avoir des paramètres de requête.",
+    "invalid-url-with-example": "Veuillez fournir une URL dans ce format : par ex. https://www.vinted.fr/catalog?...",
+    "must-have-query-params": "L'URL doit contenir des paramètres de requête.",
 
     "user": "Utilisateur",
     "channel": "Canal",
@@ -22,9 +25,9 @@
     "channel-discord-id": "ID Discord du canal",
     "discord-id": "ID Discord",
 
-    "max-channels": "Canaux maximum",
-    "country-whitelist": "Liste blanche des pays",
-    "user-mentions": "Mentions de l'utilisateur",
+    "max-channels": "Nombre max de canaux",
+    "country-whitelist": "Liste blanche de pays",
+    "user-mentions": "Mentions utilisateur",
 
     "monitoring": "Surveillance",
 
@@ -32,21 +35,22 @@
 
     "provide-valid-url": "Veuillez fournir une URL valide.",
 
-    "removing-country": "Suppression du pays de la liste blanche...",
+    "removing-country": "'Suppression du pays de la liste blanche...'",
     "user-not-found": "Utilisateur non trouvé.",
     "channel-not-found": "Canal non trouvé.",
-    "channel-not-found-nor-owned": "Canal non trouvé ou vous ne possédez pas ce canal.",
-    "channel-name-required": "Le nom du canal est requis, veuillez fournir un nom de canal",
-    "country-removed": "Pays supprimé de la liste blanche.",
-    "country-has-been-removed": "Le code du pays {countryCode} a été supprimé avec succès de la liste blanche {type}.",
+    "channel-not-found-nor-owned": "Canal non trouvé ou vous n'êtes pas propriétaire de ce canal.",
+    "channel-id-required": "L'ID du canal est requis, veuillez fournir un ID de canal.",
+    "channel-name-required": "Le nom du canal est requis, veuillez fournir un nom de canal.",
+    "country-removed": "Pays retiré de la liste blanche.",
+    "country-has-been-removed": "Le code pays {countryCode} a été retiré avec succès de la liste blanche de type {type}.",
 
     "adding-country": "Ajout du pays à la liste blanche...",
-    "invalid-country-code": "Le code {countryCode} n'est pas un code de pays valide. Veuillez sélectionner l'un de ces codes pays : {validCountryCodes}",
+    "invalid-country-code": "Le code {countryCode} n'est pas un code pays valide. Veuillez choisir parmi les codes de pays suivants : {validCountryCodes}",
     "country-added": "Pays ajouté à la liste blanche.",
-    "country-has-been-added": "Le code du pays {countryCode} a été ajouté avec succès à la liste blanche {type}.",
+    "country-has-been-added": "Le code pays {countryCode} a été ajouté avec succès à la liste blanche de type {type}.",
 
-    "creating-private-channel": "Création du canal privé...",
-    "channel-limit-exceeded": "Limite de canal dépassée. Vous pouvez créer seulement {limit} canal(aux).",
+    "creating-private-channel": "Création d'un canal privé...",
+    "channel-limit-exceeded": "Limite de canaux dépassée. Vous ne pouvez créer que {limit} canal(aux).",
     "private-channel-created": "Canal privé créé.",
     "private-channel-created-success": "Votre canal privé {channelName} a été créé avec succès.",
 
@@ -54,23 +58,46 @@
     "private-channel-deleted": "Canal privé supprimé.",
     "private-channel-deleted-success": "Votre canal privé a été supprimé avec succès.",
 
-    "updating-mentions": "Mise à jour des mentions...",
+    "updating-mentions": "Mises à jour des mentions...",
     "mentions-updated": "Mention mise à jour.",
     "mentions-has-been-updated": "Les mentions ont été {status} pour le {type}.",
 
     "starting-monitoring": "Démarrage de la surveillance...",
-    "monitoring-started": "Surveillance démarrée.",
-    "monitoring-has-been-started": "La surveillance a été démarrée [Recherche de catalogue Vinted]({url}).",
+    "monitoring-started": "Surveillance commencée.",
+    "monitoring-has-been-started": "La surveillance a démarré [Recherche de catalogue Vinted]({url}).",
 
     "stopping-monitoring": "Arrêt de la surveillance...",
     "monitoring-stopped": "Surveillance arrêtée.",
     "monitoring-has-been-stopped": "La surveillance a été arrêtée.",
 
-    "user-info": "Informations sur l'utilisateur",
-    "channel-info": "Informations sur le canal",
+    "user-info": "Infos utilisateur",
+    "channel-info": "Infos du canal",
 
-    "user-info-success": "Trouvez ci-dessous les informations sur l'utilisateur !",
-    "channel-info-success": "Trouvez ci-dessous les informations sur le canal !",
-    
+    "user-info-success": "Vous trouverez ci-dessous les informations sur l'utilisateur !",
+    "channel-info-success": "Vous trouverez ci-dessous les informations sur le canal !",
+
+    "not-authorized": "Non autorisé. Veuillez contacter l'administrateur.",
+    "user-not-admin": "L'utilisateur n'est pas un administrateur.",
+    "not-allowed-to-create-private-channel": "L'administrateur a désactivé la possibilité de créer des canaux privés. Veuillez contacter l'administrateur.",
+
+    "max-channels-set": "Nombre max de canaux défini.",
+    "max-channels-set-success": "Le nombre max de canaux a été défini avec succès.",
+
+    "private-channel-welcome": "Bienvenue dans votre canal privé {user} ! Vous pouvez maintenant commencer à surveiller la recherche de catalogue Vinted. `/start_monitoring`",
+
+    "all-private-channels-deleted-success": "Tous les canaux privés ont été supprimés avec succès.",
+    "all-private-channels-deleted": "Suppression de tous les canaux privés...",
+
+    "delete-all-private-channels": "Supprimer tous les canaux privés",
+
+    "channel-inactivity-warning": "Votre canal a été inactif pendant un certain temps.",
+    "reply-to-keep-channel": "Répondez à ce message pour conserver le canal {channelName}, sinon il sera supprimé dans {time} heures.",
+    "keep-channel": "Garder le canal",
+    "delete-channel": "Supprimer le canal",
+
+    "channel-kept": "Canal conservé.",
+    "channel-deleted": "Canal supprimé.",
+
+    "no-channels-found": "Aucun canal trouvé, vous devriez peut-être en créer un d'abord.",
     "deleting-all-private-channels": "Suppression de tous les canaux privés..."
 }

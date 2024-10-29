@@ -11,7 +11,7 @@
     "url": "URL",
 
     "invalid-url": "URL inválida.",
-    "invalid-url-with-example": "Por favor proporciona una URL en este formato: ej. https://www.vinted.fr/catalog?...",
+    "invalid-url-with-example": "Por favor proporciona una URL en este formato: ej. https://www.vinted.es/catalog?...",
     "must-have-query-params": "La URL debe tener parámetros de consulta.",
 
     "user": "Usuario",

@@ -1,0 +1,103 @@
+{
+    "enabled": "Włączone",
+    "disabled": "Wyłączone",
+
+    "error": "Błąd",
+    "please-wait": "Proszę czekać...",
+    "not-found": "Nie znaleziono.",
+    "warning": "Ostrzeżenie",
+
+    "url-contains-search-text": "URL zawiera parametr search_text, wyniki mogą być nieprecyzyjne lub niekompletne. Unikaj używania tego parametru, jeśli to możliwe, aby uzyskać najlepsze wyniki.",
+
+    "name": "Nazwa",
+
+    "url": "URL",
+
+    "invalid-url": "Nieprawidłowy URL.",
+    "invalid-url-with-example": "Podaj URL w następującym formacie: np. https://www.vinted.pl/catalog?...",
+    "must-have-query-params": "URL musi zawierać parametry zapytania.",
+
+    "user": "Użytkownik",
+    "channel": "Kanał",
+
+    "user-id": "ID użytkownika",
+    "channel-id": "ID kanału",
+    "channel-discord-id": "ID kanału Discord",
+    "discord-id": "ID Discord",
+
+    "max-channels": "Maksymalna liczba kanałów",
+    "country-whitelist": "Biała lista krajów",
+    "user-mentions": "Wzmianki o użytkownikach",
+
+    "monitoring": "Monitorowanie",
+
+    "type": "Typ",
+
+    "provide-valid-url": "Podaj prawidłowy URL.",
+
+    "removing-country": "'Usuwanie kraju z białej listy...'",
+    "user-not-found": "Nie znaleziono użytkownika.",
+    "channel-not-found": "Nie znaleziono kanału.",
+    "channel-not-found-nor-owned": "Nie znaleziono kanału lub nie jesteś jego właścicielem.",
+    "channel-id-required": "ID kanału jest wymagane, podaj proszę ID kanału",
+    "channel-name-required": "Nazwa kanału jest wymagana, podaj proszę nazwę kanału",
+    "country-removed": "Kraj usunięty z białej listy.",
+    "country-has-been-removed": "Kod kraju {countryCode} został pomyślnie usunięty z białej listy typu {type}.",
+
+    "adding-country": "Dodawanie kraju do białej listy...",
+    "invalid-country-code": "Kod {countryCode} nie jest prawidłowym kodem kraju. Wybierz z następujących kodów krajów: {validCountryCodes}",
+    "country-added": "Kraj dodany do białej listy.",
+    "country-has-been-added": "Kod kraju {countryCode} został pomyślnie dodany do białej listy typu {type}.",
+
+    "creating-private-channel": "Tworzenie prywatnego kanału...",
+    "channel-limit-exceeded": "Przekroczono limit kanałów. Możesz utworzyć tylko {limit} kanał(y).",
+    "private-channel-created": "Prywatny kanał utworzony.",
+    "private-channel-created-success": "Twój prywatny kanał {channelName} został pomyślnie utworzony.",
+
+    "deleting-private-channel": "Usuwanie prywatnego kanału...",
+    "private-channel-deleted": "Prywatny kanał usunięty.",
+    "private-channel-deleted-success": "Twój prywatny kanał został pomyślnie usunięty.",
+
+    "updating-mentions": "Aktualizowanie wzmianek...",
+    "mentions-updated": "Wzmianka zaktualizowana.",
+    "mentions-has-been-updated": "Wzmianki zostały {status} dla typu {type}.",
+
+    "starting-monitoring": "Rozpoczynanie monitorowania...",
+    "monitoring-started": "Monitorowanie rozpoczęte.",
+    "monitoring-has-been-started": "Monitorowanie zostało rozpoczęte [Vinted Catalog Search]({url}).",
+
+    "stopping-monitoring": "Zatrzymywanie monitorowania...",
+    "monitoring-stopped": "Monitorowanie zatrzymane.",
+    "monitoring-has-been-stopped": "Monitorowanie zostało zatrzymane.",
+
+    "user-info": "Informacje o użytkowniku",
+    "channel-info": "Informacje o kanale",
+
+    "user-info-success": "Poniżej znajdziesz informacje o użytkowniku!",
+    "channel-info-success": "Poniżej znajdziesz informacje o kanale!",
+
+    "not-authorized": "Brak autoryzacji. Skontaktuj się z administratorem.",
+    "user-not-admin": "Użytkownik nie jest administratorem.",
+    "not-allowed-to-create-private-channel": "Administrator wyłączył możliwość tworzenia prywatnych kanałów. Skontaktuj się z administratorem.",
+
+    "max-channels-set": "Maksymalna liczba kanałów ustawiona.",
+    "max-channels-set-success": "Maksymalna liczba kanałów została pomyślnie ustawiona.",
+
+    "private-channel-welcome": "Witamy w twoim prywatnym kanale {user}! Możesz teraz rozpocząć monitorowanie wyszukiwania w katalogu Vinted. `/start_monitoring`",
+
+    "all-private-channels-deleted-success": "Wszystkie prywatne kanały zostały pomyślnie usunięte.",
+    "all-private-channels-deleted": "Usuwanie wszystkich prywatnych kanałów...",
+
+    "delete-all-private-channels": "Usuń wszystkie prywatne kanały",
+
+    "channel-inactivity-warning": "Twój kanał był nieaktywny przez dłuższy czas.",
+    "reply-to-keep-channel": "Odpowiedz na tę wiadomość, aby zachować kanał {channelName}, w przeciwnym razie zostanie on usunięty za {time} godzin.",
+    "keep-channel": "Zachowaj kanał",
+    "delete-channel": "Usuń kanał",
+
+    "channel-kept": "Kanał zachowany.",
+    "channel-deleted": "Kanał usunięty.",
+
+    "no-channels-found": "Nie znaleziono kanałów, być może powinieneś najpierw utworzyć jeden.",
+    "deleting-all-private-channels": "Usuwanie wszystkich prywatnych kanałów..."
+}

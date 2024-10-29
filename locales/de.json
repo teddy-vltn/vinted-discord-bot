@@ -1,0 +1,103 @@
+{
+    "enabled": "Aktiviert",
+    "disabled": "Deaktiviert",
+
+    "error": "Fehler",
+    "please-wait": "Bitte warten...",
+    "not-found": "Nicht gefunden.",
+    "warning": "Warnung",
+
+    "url-contains-search-text": "Die URL enthält den Parameter search_text, die Ergebnisse sind möglicherweise ungenau oder unvollständig. Verwenden Sie diesen Parameter nach Möglichkeit nicht, um die besten Ergebnisse zu erzielen.",
+
+    "name": "Name",
+
+    "url": "URL",
+
+    "invalid-url": "Ungültige URL.",
+    "invalid-url-with-example": "Bitte geben Sie eine URL in diesem Format an: z. B. https://www.vinted.de/catalog?...",
+    "must-have-query-params": "Die URL muss Abfrageparameter enthalten.",
+
+    "user": "Benutzer",
+    "channel": "Kanal",
+
+    "user-id": "Benutzer-ID",
+    "channel-id": "Kanal-ID",
+    "channel-discord-id": "Kanal-Discord-ID",
+    "discord-id": "Discord-ID",
+
+    "max-channels": "Maximale Kanäle",
+    "country-whitelist": "Länderliste",
+    "user-mentions": "Benutzer-Erwähnungen",
+
+    "monitoring": "Überwachung",
+
+    "type": "Typ",
+
+    "provide-valid-url": "Bitte geben Sie eine gültige URL an.",
+
+    "removing-country": "'Land wird aus der Länderliste entfernt...'",
+    "user-not-found": "Benutzer nicht gefunden.",
+    "channel-not-found": "Kanal nicht gefunden.",
+    "channel-not-found-nor-owned": "Kanal nicht gefunden oder Sie besitzen diesen Kanal nicht.",
+    "channel-id-required": "Kanal-ID ist erforderlich, bitte geben Sie eine Kanal-ID an.",
+    "channel-name-required": "Kanalname ist erforderlich, bitte geben Sie einen Kanalnamen an.",
+    "country-removed": "Land aus der Länderliste entfernt.",
+    "country-has-been-removed": "Der Ländercode {countryCode} wurde erfolgreich aus der {type}-Liste entfernt.",
+
+    "adding-country": "Land wird zur Länderliste hinzugefügt...",
+    "invalid-country-code": "Der {countryCode} ist kein gültiger Ländercode. Bitte wählen Sie aus den folgenden Ländercodes: {validCountryCodes}",
+    "country-added": "Land zur Länderliste hinzugefügt.",
+    "country-has-been-added": "Der Ländercode {countryCode} wurde erfolgreich zur {type}-Liste hinzugefügt.",
+
+    "creating-private-channel": "Privater Kanal wird erstellt...",
+    "channel-limit-exceeded": "Kanallimit überschritten. Sie können nur {limit} Kanal(e) erstellen.",
+    "private-channel-created": "Privater Kanal erstellt.",
+    "private-channel-created-success": "Ihr privater Kanal {channelName} wurde erfolgreich erstellt.",
+
+    "deleting-private-channel": "Privater Kanal wird gelöscht...",
+    "private-channel-deleted": "Privater Kanal gelöscht.",
+    "private-channel-deleted-success": "Ihr privater Kanal wurde erfolgreich gelöscht.",
+
+    "updating-mentions": "Erwähnungen werden aktualisiert...",
+    "mentions-updated": "Erwähnung aktualisiert.",
+    "mentions-has-been-updated": "Die Erwähnungen wurden für den {type} {status} aktualisiert.",
+
+    "starting-monitoring": "Überwachung wird gestartet...",
+    "monitoring-started": "Überwachung gestartet.",
+    "monitoring-has-been-started": "Die Überwachung wurde gestartet [Vinted Catalog Search]({url}).",
+
+    "stopping-monitoring": "Überwachung wird gestoppt...",
+    "monitoring-stopped": "Überwachung gestoppt.",
+    "monitoring-has-been-stopped": "Die Überwachung wurde gestoppt.",
+
+    "user-info": "Benutzerinformationen",
+    "channel-info": "Kanalinformationen",
+
+    "user-info-success": "Unten finden Sie die Informationen über den Benutzer!",
+    "channel-info-success": "Unten finden Sie die Informationen über den Kanal!",
+
+    "not-authorized": "Nicht autorisiert. Bitte kontaktieren Sie den Administrator.",
+    "user-not-admin": "Der Benutzer ist kein Administrator.",
+    "not-allowed-to-create-private-channel": "Der Administrator hat die Möglichkeit zur Erstellung privater Kanäle deaktiviert. Bitte kontaktieren Sie den Administrator.",
+
+    "max-channels-set": "Maximale Kanäle festgelegt.",
+    "max-channels-set-success": "Die maximale Anzahl an Kanälen wurde erfolgreich festgelegt.",
+
+    "private-channel-welcome": "Willkommen in Ihrem privaten Kanal {user}! Sie können jetzt mit der Überwachung der Vinted-Katalogsuche beginnen. `/start_monitoring`",
+
+    "all-private-channels-deleted-success": "Alle privaten Kanäle wurden erfolgreich gelöscht.",
+    "all-private-channels-deleted": "Alle privaten Kanäle werden gelöscht...",
+
+    "delete-all-private-channels": "Alle privaten Kanäle löschen",
+
+    "channel-inactivity-warning": "Ihr Kanal war eine Weile inaktiv.",
+    "reply-to-keep-channel": "Antworten Sie auf diese Nachricht, um den Kanal {channelName} zu behalten, andernfalls wird er in {time} Stunden gelöscht.",
+    "keep-channel": "Kanal behalten",
+    "delete-channel": "Kanal löschen",
+
+    "channel-kept": "Kanal behalten.",
+    "channel-deleted": "Kanal gelöscht.",
+
+    "no-channels-found": "Keine Kanäle gefunden, Sie sollten vielleicht zuerst einen erstellen.",
+    "deleting-all-private-channels": "Alle privaten Kanäle werden gelöscht..."
+}

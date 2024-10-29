@@ -14,7 +14,7 @@
     "url": "URL",
 
     "invalid-url": "Invalid URL.",
-    "invalid-url-with-example": "Please provide an url in this format: eg. https://www.vinted.fr/catalog?...",
+    "invalid-url-with-example": "Please provide an url in this format: eg. https://www.vinted.co.uk/catalog?...",
     "must-have-query-params": "URL must have query parameters.",
 
     "user": "User",
@@ -96,5 +96,8 @@
     "delete-channel": "Delete channel",
 
     "channel-kept": "Channel kept.",
-    "channel-deleted": "Channel deleted."
+    "channel-deleted": "Channel deleted.",
+
+    "no-channels-found": "No channels found, you should maybe create one first.",
+    "deleting-all-private-channels": "Deleting all private channels..."
 }
