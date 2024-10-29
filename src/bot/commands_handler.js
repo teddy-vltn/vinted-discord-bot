@@ -43,6 +43,13 @@ export async function handleCommands(interaction) {
         await module.execute(interaction);
     } catch (error) {
         Logger.error('Error handling command:', error);
-        await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+
+        // prevent crash if interaction is not found
+        try {
+            await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+        }
+        catch (error) {
+            Logger.error('Error replying to interaction:', error);
+        }
     }
 }
