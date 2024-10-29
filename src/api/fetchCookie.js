@@ -14,16 +14,15 @@ const extension = settings.vinted_api_domain_extension
  */
 export async function fetchCookie() {
     return await executeWithDetailedHandling( async () => {
-        const url = `https://www.vinted.${extension}/catalog?`
+        const url = `https://www.vinted.${extension}`
 
         const response = await RequestBuilder.get(url).setNextProxy().send();
 
         if (response && response.headers['set-cookie']) {
 
             const cookies = response.headers['set-cookie'];
-            const vintedCookie = cookies.find(cookie => cookie.startsWith('_vinted_fr_session'));
+            const vintedCookie = cookies.find(cookie => cookie.startsWith('access_token_web'));
             if (vintedCookie) {
-
                 const cookie = vintedCookie.split(';')[0];
                 Logger.debug(`Fetched cookie: ${cookie}`);
 

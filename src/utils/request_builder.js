@@ -17,7 +17,6 @@ const BASE_HEADERS = {
     'Cache-Control': 'no-cache',
     'Connection': 'keep-alive',
     'Origin': `https://www.vinted.${vinted_api_domain_extension}`,
-    'Referer': `https://www.vinted.${vinted_api_domain_extension}/catalog`,
     'DNT': '1',
     'Upgrade-Insecure-Requests': '1',
     'Sec-Ch-Ua-Mobile': '?0',
@@ -94,7 +93,7 @@ class RequestBuilder {
 
         // Get a random user-agent
         const userAgent = getRandom( (ua) => {
-            return parseFloat(ua.browserVersion) >= 90;
+            return parseFloat(ua.browserVersion) >= 50;
         });
 
         Logger.debug(`Sending request to ${this.url} with user-agent: ${userAgent}`);

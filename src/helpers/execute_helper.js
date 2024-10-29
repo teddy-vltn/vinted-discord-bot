@@ -42,7 +42,7 @@ async function executeWithDetailedHandling(asyncFn, ...params) {
 
         // Determine the status code based on the type of error
         const statusCode = determineStatusCode(error);
-
+        
         return {
             success: false,
             code: statusCode,

@@ -12,7 +12,6 @@ import crud from "./src/crud.js";
 import Logger from "./src/utils/logger.js";
 import CatalogService from "./src/services/catalog_service.js";
 
-
 var cookie = null;
 
 try {
@@ -66,7 +65,7 @@ setInterval(async () => {
     } catch (error) {
         Logger.debug('Error refreshing cookie');
     }
-}, 60000 * 5);  // 60 seconds
+}, 60000);  // 60 seconds
 
 const getCatalogRoots = async (cookie) => {
     let found = false;

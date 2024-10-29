@@ -63,6 +63,8 @@ export async function execute(interaction) {
             });
 
             try {
+                const discordChannel = interaction.guild.channels.cache.get(channelId);
+
                 await discordChannel.delete();
             } catch (error) {
                 console.error('Error deleting private channel:', error);

@@ -14,6 +14,7 @@ class ProxyManager {
     static proxies = [];
     static proxiesLoaded = false;
     static currentProxyIndex = 0;
+    static proxiesOnCooldown = [];
 
     static async init(maxRetries = 3, retryDelay = 5000) {
         for (let attempt = 0; attempt < maxRetries; attempt++) {
