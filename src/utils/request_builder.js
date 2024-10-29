@@ -122,7 +122,7 @@ class RequestBuilder {
             return response
         } catch (error) {
             Logger.debug(`Error sending request to ${this.url}, status: ${error.response.status}`);
-            this.proxy && ProxyManager.removeTemporarlyInvalidProxy(this.proxy);
+            //this.proxy && ProxyManager.removeTemporarlyInvalidProxy(this.proxy);
             throw error;
         }
     }
