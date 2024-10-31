@@ -5,7 +5,6 @@ import {
   EmbedBuilder,
   SlashCommandBuilder,
 } from "discord.js";
-import { users } from "../../../setup.owners.config.json";
 import t from "../../t.js";
 import { sendErrorEmbed, sendWaitingEmbed } from "../components/base_embeds.js";
 
@@ -15,6 +14,7 @@ export const data = new SlashCommandBuilder()
 
 export async function execute(interaction) {
   try {
+    const users = process.env.SETUP_AUTHORIZED_USERS.split(",");
     if (!users.includes(interaction.user.id)) {
       await sendErrorEmbed(
         interaction,
@@ -23,8 +23,6 @@ export async function execute(interaction) {
     }
     const l = interaction.locale;
     await sendWaitingEmbed(interaction, t(l, "please-wait"));
-
-    const discordId = interaction.user.id;
 
     const createChannelButton = new ButtonBuilder()
       .setCustomId("create_private_channel")
