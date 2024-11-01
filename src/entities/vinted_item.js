@@ -66,7 +66,9 @@ function validateId(value) {
       this.statusId = validateId(itemData.status_id);
       this.userId = validateId(itemData.user_id);
 
-      this.videoGamePlatformId = validateId(itemData.item_attributes[0].ids[0]);
+      if (itemData.item_attributes) {
+        this.videoGamePlatformId = validateId(itemData.item_attributes[0].ids[0]);
+      }
 
       this.countryId = validateId(itemData.country_id);
       this.catalogId = validateId(itemData.catalog_id);
