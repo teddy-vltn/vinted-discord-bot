@@ -40,8 +40,8 @@ function validateUrl(url) {
             return "must-have-query-params"
         }
 
-        // cehck if there is at least a brand_ids[] query parameter
-        if (!searchParams.has('brand_ids[]')) {
+        // cehck if there is at least a brand_ids[] or video_game_platform_ids[] query parameter
+        if (!searchParams.has('brand_ids[]') && !searchParams.has('video_game_platform_ids[]')) {
             return "must-have-brand-query-param";
         }
 
