@@ -13,8 +13,8 @@ function sleep(ms) {
 
 export async function execute(interaction) {
     try {
-        await sendWaitingEmbed(interaction, t(l, 'deleting-all-private-channels'));
         const l = interaction.locale;
+        await sendWaitingEmbed(interaction, t(l, 'deleting-all-private-channels'));
 
         // Check if the user is an admin
         const isAdmin = await crud.isUserAdmin(interaction);
@@ -53,7 +53,7 @@ export async function execute(interaction) {
             await interaction.followUp({ embeds: [embed], ephemeral: true });
 
             // Sleep for 500ms between deletions
-            await sleep(500);
+            await sleep(200);
         }
 
         const finalEmbed = await createBaseEmbed(
