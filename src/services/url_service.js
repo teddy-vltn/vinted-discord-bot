@@ -10,7 +10,7 @@ function parseVintedSearchParams(url) {
     try {
         const searchParams = {};
         const params = new URL(url).searchParams;
-        const paramsKeys = ['search_text', 'order', 'catalog[]', 'brand_ids[]', 'size_ids[]', 'price_from', 'price_to', 'status_ids[]', 'material_ids[]', 'color_ids[]'];
+        const paramsKeys = ['search_text', 'order', 'catalog[]', 'brand_ids[]', 'video_game_platform_ids[]', 'size_ids[]', 'price_from', 'price_to', 'status_ids[]', 'material_ids[]', 'color_ids[]'];
         for (const key of paramsKeys) {
             const isMultiple = key.endsWith('[]');
             if (isMultiple) {
@@ -67,7 +67,8 @@ function matchVintedItemToSearchParams(item, searchParams, bannedKeywords, count
         keys: ['title', 'description', 'brand']
     };
 
-    if (searchParams.search_text) {
+    // sanitize the search text
+    if (searchParams.search_text && searchParams.search_text.length > 0 && searchParams.search_text !== " ") {
         const searchText = searchParams.search_text.toLowerCase();
         const fuse = new Fuse([lowerCaseItem], fuseOptions);
         const result = fuse.search(searchText);
@@ -94,6 +95,7 @@ function matchVintedItemToSearchParams(item, searchParams, bannedKeywords, count
     // Check other parameters
     const searchParamsMap = new Map([
         ['brand_ids', 'brandId'],
+        ['video_game_platform_ids', 'videoGamePlatformId'],
         ['size_ids', 'sizeId'],
         ['status_ids', 'statusId'],
         ['material_ids', 'material'],
