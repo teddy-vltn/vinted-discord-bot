@@ -29,6 +29,7 @@ let concurrency = 0;
 
 function initializeConcurrency( concurrent_requests ) {
     concurrency = concurrent_requests
+    computedConcurrency = concurrency;
 }
 
 /**
@@ -76,7 +77,7 @@ setInterval(() => {
 /**
  * Adjust the concurrency dynamically based on errors and time since last publication.
  */
-let computedConcurrency = concurrency
+let computedConcurrency = 2;
 
 setInterval(() => {
     //adjustConcurrency();
