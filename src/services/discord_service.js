@@ -1,5 +1,5 @@
 import pkg from 'discord.js';
-const { PermissionsBitField, ActionRowBuilder, ButtonBuilder } = pkg;
+const { PermissionsBitField, ActionRowBuilder, ButtonBuilder, ChannelType } = pkg;
 import ProxyManager from '../utils/proxy_manager.js';
 import { ForbiddenError, NotFoundError, executeWithDetailedHandling } from '../helpers/execute_helper.js';
 import axios from 'axios';
@@ -11,6 +11,7 @@ import t from '../t.js';
 
 const discordConfig = ConfigurationManager.getDiscordConfig
 const guild_id = discordConfig.guild_id;
+const thread_channel_id = discordConfig.thread_channel_id;
 
 /**
  * Create a category on Discord if it doesn't exist.
@@ -29,47 +30,33 @@ export async function createCategoryIfNotExists(channelManager, categoryName) {
     return category;
 }
 
-/**
- * Create a channel on Discord if it doesn't exist within a category.
- * @param {CategoryChannel} category - The category in which to create the channel.
- * @param {string} channelName - The name of the channel to be created.
- * @returns {Promise<TextChannel>} - The created or found text channel.
- */
-export async function createChannelIfNotExists(category, channelName, discordId=null) {
-    let permissionOverwrites = [];
-    if (discordId) {
-        // block everyone from viewing the channel except the user
-        permissionOverwrites = [
-            {
-                id: category.guild.id,
-                deny: PermissionsBitField.Flags.ViewChannel,
-                type: 'role'
-            },
-            {
-                id: discordId,
-                allow: PermissionsBitField.Flags.ViewChannel,
-                type: 'member'
-            }
-        ];
-    } else {
-        // allow everyone to view the channel
-        permissionOverwrites = [
-            {
-                id: category.guild.id,
-                allow: PermissionsBitField.Flags.ViewChannel,
-                type: 'role'
-            }
-        ];
+export async function createPrivateThread(
+  category,
+  threadName,
+  discordId = null,
+) {
+  // Get the channel in which to create the thread
+  const channel = await category.guild.channels.fetch(thread_channel_id);
+  if (!channel) throw new Error("Le channel spécifié est introuvable.");
+
+  // Create the thread
+  const thread = await channel.threads.create({
+    name: threadName,
+    type: ChannelType.PrivateThread,
+    reason: "...",
+  });
+
+  // if the user is specified, add them to the thread
+  if (discordId) {
+    try {
+      const member = await category.guild.members.fetch(discordId);
+      await thread.members.add(member.id);
+    } catch (error) {
+      console.error("Erreur lors de l'ajout du membre au fil :", error);
     }
+  }
 
-    const channel = await category.guild.channels.create({
-        name: channelName,
-        type: 0, // GUILD_TEXT type
-        parent: category.id,
-        permissionOverwrites
-    });
-
-    return channel;
+  return thread;
 }
 
 // Helper function to calculate the time difference in hours

@@ -23,6 +23,8 @@ class ConfigurationManager {
         token: process.env.DISCORD_TOKEN,
         role_admin_id: process.env.DISCORD_ROLE_ADMIN_ID,
         guild_id: process.env.DISCORD_GUILD_ID,
+        thread_channel_id: process.env.DISCORD_THREAD_CHANNEL_ID,
+        command_channel_id: process.env.DISCORD_COMMAND_CHANNEL_ID,
         channel_inactivity_enabled: process.env.ENABLE_CHANNEL_INACTIVITY == 1 ? true : false,
         channel_inactivity_hours: process.env.CHANNEL_INACTIVITY_HOURS,
         channel_inactivity_delete_hours: process.env.CHANNEL_INACTIVITY_DELETE_HOURS,

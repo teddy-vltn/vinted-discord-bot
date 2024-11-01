@@ -1,6 +1,5 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { createBaseEmbed, sendErrorEmbed, sendWaitingEmbed } from '../components/base_embeds.js';
-import { createCategoryIfNotExists, createChannelIfNotExists } from '../../services/discord_service.js';
 import crud from '../../crud.js';
 
 export const data = new SlashCommandBuilder()

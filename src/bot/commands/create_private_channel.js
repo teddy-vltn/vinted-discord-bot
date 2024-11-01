@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { createBaseEmbed, sendErrorEmbed, sendWaitingEmbed } from '../components/base_embeds.js';
 import crud from '../../crud.js';
-import { createCategoryIfNotExists, createChannelIfNotExists } from '../../services/discord_service.js';
+import { createPrivateThread } from '../../services/discord_service.js';
 import t from '../../t.js';
 import ConfigurationManager from '../../utils/config_manager.js';
 
@@ -44,7 +44,7 @@ export async function execute(interaction) {
         let category = await findOrCreateCategory(interaction.guild.channels, baseCategoryName);
 
         // Create the private channel
-        const privateChannel = await createChannelIfNotExists(category, channelName, discordId);
+        const privateChannel = await createPrivateThread(category, channelName, discordId);
 
         // Create the VintedChannel
         const channelId = privateChannel.id;

@@ -99,5 +99,7 @@
     "channel-deleted": "Channel deleted.",
 
     "no-channels-found": "No channels found, you should maybe create one first.",
-    "deleting-all-private-channels": "Deleting all private channels..."
+    "deleting-all-private-channels": "Deleting all private channels...",
+
+    "must-have-brand-query-param": "URL must have brand query parameter. Please search for at least one brand."
 }

@@ -40,6 +40,11 @@ function validateUrl(url) {
             return "must-have-query-params"
         }
 
+        // cehck if there is at least a brand_ids[] query parameter
+        if (!searchParams.has('brand_ids[]')) {
+            return "must-have-brand-query-param";
+        }
+
         return true;
     } catch (error) {
         return "invalid-url";

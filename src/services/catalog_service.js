@@ -76,10 +76,10 @@ setInterval(() => {
 /**
  * Adjust the concurrency dynamically based on errors and time since last publication.
  */
-let computedConcurrency = 2;
+let computedConcurrency = concurrency
 
 setInterval(() => {
-    adjustConcurrency();
+    //adjustConcurrency();
     adjustStep();
 }, 10);
 
@@ -151,13 +151,7 @@ function adjustStep() {
         step = Math.min(step * 2 + 10, 20);
     } else if (timeSinceLastPublication > 10000) {
         // If it's been longer than 10 seconds since the last publication, double the step and add 5
-        step = Math.min(step * 2 + 1, 5);
-    } else if (timeSinceLastPublication > 5000) {
-        // If it's been longer than 5 seconds since the last publication, double the step
-        step = Math.min(step + 1, 2);
-    } else if (timeSinceLastPublication > 3000) {
-        // If it's been longer than 3 seconds since the last publication, increase the step by 1
-        step = 1;
+        step = 1 
     }
     
     // Ensure the step is a whole number
@@ -281,7 +275,7 @@ function updateFetchedRange(itemID) {
  * - If less than 1 second has passed since the last valid item was published, the computedConcurrency
  *   is decreased by 1, with a minimum of 2.
  */
-function adjustConcurrency() {
+/*function adjustConcurrency() {
     // Decrease computedConcurrency if there have been more than 5 consecutive errors
     if (consecutiveErrors > 5) {
         if (computedConcurrency > 10) {
@@ -312,7 +306,7 @@ function adjustConcurrency() {
     computedConcurrency = Math.max(computedConcurrency, 2);
     // Make sure computedConcurrency is not above the initial concurrency
     computedConcurrency = Math.min(computedConcurrency, concurrency);
-}
+}*/
 
 
 /**
