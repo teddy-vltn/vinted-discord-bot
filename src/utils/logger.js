@@ -5,6 +5,7 @@ import chalk from 'chalk';
 import ConfigurationManager from './config_manager.js';
 
 const devMode = ConfigurationManager.getDevMode
+const dumpLogs = ConfigurationManager.getDumpLogs
 
 class Logger {
     static logFilePath = path.join(process.cwd(), 'app.log');
@@ -48,7 +49,10 @@ class Logger {
         }
 
         console.log(logMessage);
-        fs.appendFileSync(Logger.logFilePath, `${logMessage}\n`);
+        
+        if (dumpLogs) {
+            fs.appendFileSync(Logger.logFilePath, `${logMessage}\n`);
+        }
     }
 
     static getCallSource() {

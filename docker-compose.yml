@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: node:18.18.0
+    image: node:20.18.1
     container_name: vinted_app
     working_dir: /app
     volumes:
@@ -10,7 +10,7 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
-    command: sh -c "npm install && npm run start"
+    command: sh -c "npm install && npm start"
     depends_on:
       - mongodb
     networks:
@@ -19,9 +19,10 @@ services:
 
   mongodb:
     image: mongo:latest
-    container_name: mongodb_vinted
+    container_name: mongodb_vinted_public
+    command: mongod --port 27018
     ports:
-      - "127.0.0.1:27017:27017"
+      - "127.0.0.1:27018:27018"
     volumes:
       - mongodb_data_container:/data/db
     networks:

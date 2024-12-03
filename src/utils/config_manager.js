@@ -71,6 +71,7 @@ class ConfigurationManager {
     }
 
     static getDevMode = process.env.DEV_MODE == 1 ? true : false;
+    static getDumpLogs = process.env.DUMP_LOGS == 1 ? true : false;
 }
 
 export default ConfigurationManager;
