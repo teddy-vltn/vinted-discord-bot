@@ -16,7 +16,7 @@ class ProxyManager {
     static currentProxyIndex = 0;
     static proxiesOnCooldown = [];
 
-    static async init(maxRetries = 3, retryDelay = 5000) {
+    static async init(maxRetries = 99, retryDelay = 5000) {
         for (let attempt = 0; attempt < maxRetries; attempt++) {
             try {
                 if (proxy_settings.use_webshare) {
