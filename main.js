@@ -141,7 +141,6 @@ const monitorChannels = () => {
         rawItemBrandId = rawItemBrandId ? rawItemBrandId.toString() : null;
 
         if (allMonitoringChannelsBrandMap.has(rawItemBrandId)) {
-            console.log('Found brand channel');
             const brandChannels = allMonitoringChannelsBrandMap.get(rawItemBrandId);
             for (const brandChannel of brandChannels) {
                 try {

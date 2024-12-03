@@ -327,7 +327,6 @@ async function getAllMonitoredVintedChannelsBrandMap() {
     const brandMap = new Map();
 
     for (const channel of channels) {
-        console.log(channel.generated_filters);
         const brands = channel.generated_filters["brand_ids"]
 
 
