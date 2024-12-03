@@ -144,16 +144,21 @@ const monitorChannels = () => {
             console.log('Found brand channel');
             const brandChannels = allMonitoringChannelsBrandMap.get(rawItemBrandId);
             for (const brandChannel of brandChannels) {
-                const user = brandChannel.user;
-                const matchingItems = filterItemsByUrl(
-                    [item], 
-                    brandChannel.url, 
-                    brandChannel.bannedKeywords, 
-                    brandChannel.preferences.get(Preference.Countries) || []
-                );
+                try {
+                    const user = brandChannel.user;
+                    const matchingItems = filterItemsByUrl(
+                        [item], 
+                        brandChannel.url, 
+                        brandChannel.bannedKeywords, 
+                        brandChannel.preferences.get(Preference.Countries) || []
+                    );
 
-                if (matchingItems.length > 0) {
-                    sendToChannel(item, user, brandChannel);
+                    if (matchingItems.length > 0) {
+                        sendToChannel(item, user, brandChannel);
+                    }
+                } catch(error) {
+                    Logger.debug('Error sending to channel');
+                    Logger.debug(error);
                 }
             }
         }
