@@ -10,7 +10,7 @@ This bot is actively developed and used on a public server.
 
 
 > [!TIP]
-> [Discord Invite](https://discord.gg/CDv9b8cPXU) - Join if you want: simply to use the bot freely or if you need help.
+> [Discord Invite](https://discord.gg/BGbDvpQzKK) - Join if you want: simply to use the bot freely (with autobuy, fast-buy and more features), to get help, to contribute to the development or to get a private version of the bot running on your own server.
 
 ## Community Use
 
@@ -32,7 +32,7 @@ Do you manage a community and want a powerful, automated bot to elevate the expe
 
 ## Use the bot for free 
 
-The bot is running for free on a public discord server that you can access if you don't want to painfully try to install the bot that can be found by [clicking here](https://discord.gg/CDv9b8cPXU)
+The bot is running for free on a public discord server that you can access if you don't want to painfully try to install the bot that can be found by [clicking here](https://discord.gg/BGbDvpQzKK)
 - You can also help this bot running longer and contribute to the development somehow by [clicking here](https://buymeacoffee.com/teddyvltn)
 - You can also buy a membership to have a private version of this bot running on your own server that I will personnaly host by [clicking here](https://buymeacoffee.com/teddyvltn/membership)
 
@@ -90,7 +90,7 @@ chmod +x start.sh
 ./start.sh
 ```
 
-5. The bot should now be running and ready to use. And enjoy! (if it ain't working you can come to the discord server for help https://discord.gg/CDv9b8cPXU)
+5. The bot should now be running and ready to use. And enjoy! (if it ain't working you can come to the discord server for help https://discord.gg/BGbDvpQzKK)
 
 ?. If you want to stop the bot, you can run the following command:
 
