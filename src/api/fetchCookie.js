@@ -21,7 +21,13 @@ export async function fetchCookie() {
         if (response && response.headers['set-cookie']) {
 
             const cookies = response.headers['set-cookie'];
-            const vintedCookie = cookies.find(cookie => cookie.startsWith('access_token_web'));
+            // Vinted sends access_token_web twice: first an empty value (clearing the previous
+            // session) and only then the valid JWT. The original .find() returned the empty one,
+            // so /api/v2/catalog/items answered 401 invalid_authentication_token.
+            const prefix = 'access_token_web=';
+            const vintedCookie = cookies
+                .filter(cookie => cookie.startsWith(prefix) && cookie.split(';')[0].length > prefix.length)
+                .pop();
             if (vintedCookie) {
                 const cookie = vintedCookie.split(';')[0];
                 Logger.debug(`Fetched cookie: ${cookie}`);
