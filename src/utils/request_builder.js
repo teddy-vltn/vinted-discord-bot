@@ -1,11 +1,23 @@
 import axios from 'axios';
 import ProxyManager from './proxy_manager.js';
-import { getRandom } from 'random-useragent';
 import Logger from './logger.js';
 import ConfigurationManager from './config_manager.js';
 
 const algorithm_settings = ConfigurationManager.getAlgorithmSetting
 const vinted_api_domain_extension = algorithm_settings.vinted_api_domain_extension;
+
+// The user agent used to come from the random-useragent package with a browserVersion >= 50
+// filter. Its database is from 2018 - the newest Chrome in it is 52, and Vinted answers such a
+// user agent with HTTP 406, so the bot never received a cookie and looped forever.
+// A fixed list of current browsers is rotated instead (all verified against vinted.cz: HTTP 200).
+const USER_AGENTS = [
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:141.0) Gecko/20100101 Firefox/141.0',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Safari/605.1.15',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0',
+];
 
 const BASE_HEADERS = {
     'Accept': 'application/json, text/plain, */*',
@@ -92,9 +104,7 @@ class RequestBuilder {
     async send() {
 
         // Get a random user-agent
-        const userAgent = getRandom( (ua) => {
-            return parseFloat(ua.browserVersion) >= 50;
-        });
+        const userAgent = USER_AGENTS[Math.floor(Math.random() * USER_AGENTS.length)];
 
         Logger.debug(`Sending request to ${this.url} with user-agent: ${userAgent}`);
 
@@ -126,7 +136,9 @@ class RequestBuilder {
                 throw new Error('Not found');
             }
 
-            Logger.debug(`Error sending request to ${this.url}, status: ${error.response.status}`);
+            // optional chaining: on a network failure or timeout axios reports an error without
+            // a response, and the original line then crashed the whole bot with a TypeError.
+            Logger.debug(`Error sending request to ${this.url}, status: ${error.response?.status}`);
             this.proxy && ProxyManager.removeTemporarlyInvalidProxy(this.proxy);
             throw error;
         }
