@@ -38,7 +38,8 @@ function validateId(value) {
       this.height = validateNumber(photo.height);
       this.url = validateUrl(photo.url);
       this.dominantColor = validateString(photo.dominant_color);
-      this.fullSizeUrl = validateUrl(photo.full_size_url);
+      // The trimmed catalog response has no full_size_url, only url and thumbnails.
+      this.fullSizeUrl = validateUrl(photo.full_size_url ?? photo.url);
     }
   }
 
@@ -48,6 +49,7 @@ function validateId(value) {
         this.login = validateString(userData.login);
         this.feedback_reputation = validateNumber(userData.feedback_reputation)
         this.feedback_count = validateNumber(userData.feedback_count)
+        // Today's Vinted sends the seller country neither in the catalog nor on the item page.
         this.countryCode = validateString(userData.country_code).toLowerCase();
 
         this.photo = userData.photo ? new VintedPhoto(userData.photo) : "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
@@ -64,7 +66,7 @@ function validateId(value) {
       this.brandId = validateId(itemData.brand_id);
       this.sizeId = validateId(itemData.size_id);
       this.statusId = validateId(itemData.status_id);
-      this.userId = validateId(itemData.user_id);
+      this.userId = validateId(itemData.user_id ?? itemData.user?.id);
 
       if (itemData.item_attributes?.length > 0 && itemData.item_attributes[0].code === "video_game_platform") {
         this.videoGamePlatformId = validateId(itemData.item_attributes[0].ids?.[0]);
@@ -74,13 +76,16 @@ function validateId(value) {
       this.catalogId = validateId(itemData.catalog_id);
 
       this.description = validateString(itemData.description);
-      this.size = validateString(itemData.size);
-      this.brand = validateString(itemData.brand);
+      // Today's catalog returns size_title and brand_title instead of size and brand;
+      // the old fields stay as a fallback in case the API shape changes again.
+      this.size = validateString(itemData.size ?? itemData.size_title);
+      this.brand = validateString(itemData.brand ?? itemData.brand_title);
       this.composition = validateString(itemData.composition);
       this.status = validateString(itemData.status);
       this.label = validateString(itemData.label);
-      this.currency = validateString(itemData.currency);
-      this.priceNumeric = validateNumber(parseFloat(itemData.price_numeric));
+      // The price now arrives as an object { amount, currency_code }, previously as two fields.
+      this.currency = validateString(itemData.currency ?? itemData.price?.currency_code);
+      this.priceNumeric = validateNumber(parseFloat(itemData.price_numeric ?? itemData.price?.amount));
 
       this.updatedAtTs = parseDate(itemData.updated_at_ts);
       this.colorId = validateId(itemData.color1_id);
@@ -90,12 +95,43 @@ function validateId(value) {
       this.unixUpdatedAtString = `<t:${this.unixUpdatedAt}:R>`;
   
       // Create photo objects
-      this.photos = itemData.photos ? itemData.photos.map(photo => new VintedPhoto(photo)) : [];
+      // The catalog returns a photos array, some items carry a single photo in the photo field.
+      const photos = itemData.photos ?? (itemData.photo ? [itemData.photo] : []);
+      this.photos = photos.map(photo => new VintedPhoto(photo));
 
       // Create user object
       this.user = itemData.user ? new VintedUser(itemData.user) : null;
 
       this.catalogBranchTitle = validateString(itemData.catalog_branch_title);
+    }
+
+    /**
+     * Fills in fields that the catalog response no longer carries.
+     * @param {Object} detail - Detail from fetchItemDetail.
+     * @returns {VintedItem} - The same instance, for chaining.
+     */
+    mergeDetail(detail) {
+      if (!detail) {
+        return this;
+      }
+
+      if (typeof detail.description === 'string') {
+        this.description = detail.description;
+      }
+      if (typeof detail.brandId === 'number') {
+        this.brandId = detail.brandId;
+      }
+      if (typeof detail.catalogId === 'number') {
+        this.catalogId = detail.catalogId;
+      }
+      if (this.user && typeof detail.feedbackReputation === 'number') {
+        this.user.feedback_reputation = detail.feedbackReputation;
+      }
+      if (this.user && typeof detail.feedbackCount === 'number') {
+        this.user.feedback_count = detail.feedbackCount;
+      }
+
+      return this;
     }
 
     getNumericStars() {
@@ -111,4 +147,3 @@ function validateId(value) {
   }
   
   export { VintedItem, VintedPhoto };
-  

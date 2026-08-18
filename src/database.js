@@ -7,42 +7,6 @@ const mongoConfig = ConfigurationManager.getMongoDBConfig
 
 import Logger from "./utils/logger.js";
 
-var categoryMap = {};
-
-// Helper function to recursively build the catalog map
-function buildCategoryMap(node, parentMap = {}) {
-    if (node.id) {
-        const nodeId = String(node.id);
-        parentMap[nodeId] = parentMap[nodeId] || [];
-        parentMap[nodeId].push(nodeId); // Include the current node ID in its own list of children
-    }
-    if (node.catalogs && Array.isArray(node.catalogs)) {
-        node.catalogs.forEach((child) => {
-            const childId = String(child.id);
-            const parentId = String(node.id);
-            buildCategoryMap(child, parentMap);
-            parentMap[parentId] = parentMap[parentId].concat(parentMap[childId] || []);
-        });
-    }
-    return parentMap;
-}
-
-// Build the category map starting from the root nodes
-function buildCategoryMapFromRoots(roots) {
-    roots.data.catalogs.forEach((root) => {
-        buildCategoryMap(root, categoryMap);
-    });
-}
-
-function isSubcategory(parentId, childId) {
-    parentId = String(parentId);
-    childId = String(childId);
-    if (!categoryMap[parentId]) {
-        return false
-    }
-    return categoryMap[parentId].includes(childId);
-}
-
 // Connect to MongoDB
 mongoose.connect(mongoConfig.uri)
     .then(() => Logger.info("Connected to MongoDB."))
@@ -115,4 +79,4 @@ const VintedChannel = model('VintedChannel', vintedChannelSchema);
 
 Logger.info("Database models loaded.");
 
-export { Preference, ShippableMap, User, VintedChannel, isSubcategory, buildCategoryMapFromRoots };
+export { Preference, ShippableMap, User, VintedChannel };
