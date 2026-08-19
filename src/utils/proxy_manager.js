@@ -70,7 +70,9 @@ class ProxyManager {
             return proxy
         }
         
-        Logger.error('No proxies available.');
+        // debug instead of error: with no proxies this is the expected state on every request
+        // and Logger.error builds a stack trace on each call (see logger.js getCallSource).
+        Logger.debug('No proxies available.');
 
         return undefined;
     }
@@ -81,6 +83,13 @@ class ProxyManager {
      * @returns {SocksProxyAgent} - The proxy agent
      */
     static getProxyAgent(proxy) {
+        // With no proxy configured undefined is returned and axios sends the request directly.
+        // The original code called proxy.getProxyString() on undefined, which dropped fetchCookie
+        // into an endless retry loop in main.js and the bot never started.
+        if (!proxy) {
+            return undefined;
+        }
+
         return new SocksProxyAgent(proxy.getProxyString());
     }
     

@@ -58,6 +58,9 @@ class ConfigurationManager {
         vinted_api_domain_extension: process.env.VINTED_API_DOMAIN_EXTENSION,
         filter_zero_stars_profiles: process.env.ALGORITHM_FILTER_ZERO_STARS_PROFILES == 1 ? true : false,
         concurrent_requests: process.env.ALGORITHM_CONCURRENT_REQUESTS,
+        // How often a single channel is checked. The default minute is a compromise between
+        // notification speed and the load the bot puts on Vinted and on the network.
+        monitor_interval_seconds: Number(process.env.MONITOR_INTERVAL_SECONDS) || 60,
         blacklisted_countries_codes : process.env.BLACKLISTED_COUNTRIES_CODES.split(',') || []
     }
 
