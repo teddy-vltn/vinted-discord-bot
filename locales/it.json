@@ -1,37 +1,26 @@
 {
     "enabled": "Abilitato",
     "disabled": "Disabilitato",
-
     "error": "Errore",
     "please-wait": "Attendere prego...",
     "not-found": "Non trovato.",
-
     "name": "Nome",
-
     "url": "URL",
-
     "invalid-url": "URL non valido.",
     "invalid-url-with-example": "Si prega di fornire un URL in questo formato: es. https://www.vinted.it/catalog?...",
     "must-have-query-params": "L'URL deve avere dei parametri di query.",
-
     "user": "Utente",
     "channel": "Canale",
-
     "user-id": "ID utente",
     "channel-id": "ID del canale",
     "channel-discord-id": "ID Discord del canale",
     "discord-id": "ID Discord",
-
     "max-channels": "Canali massimi",
     "country-whitelist": "Whitelist dei paesi",
     "user-mentions": "Menzioni dell'utente",
-
     "monitoring": "Monitoraggio",
-
     "type": "Tipo",
-
     "provide-valid-url": "Si prega di fornire un URL valido.",
-
     "removing-country": "Rimozione del paese dalla whitelist...",
     "user-not-found": "Utente non trovato.",
     "channel-not-found": "Canale non trovato.",
@@ -39,36 +28,49 @@
     "channel-name-required": "Il nome del canale è obbligatorio, si prega di fornire un nome di un canale",
     "country-removed": "Paese rimosso dalla whitelist.",
     "country-has-been-removed": "Il codice paese {countryCode} è stato rimosso con successo dalla whitelist {type}.",
-
     "adding-country": "Aggiunta del paese alla whitelist...",
     "invalid-country-code": "Il codice {countryCode} non è un codice paese valido. Si prega di selezionare uno di questi codici paese: {validCountryCodes}",
     "country-added": "Paese aggiunto alla whitelist.",
     "country-has-been-added": "Il codice paese {countryCode} è stato aggiunto con successo alla whitelist {type}.",
-
     "creating-private-channel": "Creazione del canale privato...",
     "channel-limit-exceeded": "Limite di canali. Puoi creare solo {limit} canale(i).",
     "private-channel-created": "Canale privato creato.",
     "private-channel-created-success": "Il tuo canale privato {channelName} è stato creato con successo.",
-
     "deleting-private-channel": "Eliminazione del canale privato...",
     "private-channel-deleted": "Canale privato eliminato.",
     "private-channel-deleted-success": "Il tuo canale privato è stato eliminato con successo.",
-
     "updating-mentions": "Aggiornamento delle menzioni...",
     "mentions-updated": "Menzione aggiornata.",
     "mentions-has-been-updated": "Le menzioni sono state {status} per il {type}.",
-
     "starting-monitoring": "Avvio del monitoraggio...",
     "monitoring-started": "Monitoraggio avviato.",
     "monitoring-has-been-started": "Il monitoraggio è stato avviato [Ricerca catalogo Vinted]({url}).",
-
     "stopping-monitoring": "Arresto del monitoraggio...",
     "monitoring-stopped": "Monitoraggio interrotto.",
     "monitoring-has-been-stopped": "Il monitoraggio è stato interrotto.",
-
     "user-info": "Informazioni sull'utente",
     "channel-info": "Informazioni sul canale",
-
     "user-info-success": "Trova qui sotto le informazioni sull'utente!",
-    "channel-info-success": "Trova qui sotto le informazioni sul canale!"
+    "channel-info-success": "Trova qui sotto le informazioni sul canale!",
+    "warning": "Avviso",
+    "url-contains-search-text": "L'URL contiene il parametro search_text, i risultati potrebbero non essere accurati o completi. Evita di usare questo parametro se possibile per ottenere i migliori risultati.",
+    "channel-id-required": "È richiesto l'ID del canale, fornisci un ID del canale",
+    "not-authorized": "Non autorizzato. Contatta l'amministratore.",
+    "user-not-admin": "L'utente non è un amministratore del server.",
+    "not-allowed-to-create-private-channel": "Non hai il permesso di creare canali privati.",
+    "max-channels-set": "Il numero massimo di canali privati è stato impostato.",
+    "max-channels-set-success": "Il numero massimo di canali privati è stato aggiornato correttamente.",
+    "private-channel-welcome": "Benvenuto nel tuo canale privato! Questo canale è visibile solo a te e al bot. Verrà eliminato automaticamente dopo un periodo di inattività.",
+    "all-private-channels-deleted-success": "Tutti i canali privati sono stati eliminati correttamente.",
+    "all-private-channels-deleted": "Tutti i canali privati sono stati eliminati.",
+    "delete-all-private-channels": "Elimina tutti i canali privati",
+    "channel-inactivity-warning": "Questo canale verrà presto eliminato per inattività. Scrivi \"keep\" per conservarlo.",
+    "reply-to-keep-channel": "Rispondi con \"keep\" per conservare il canale",
+    "keep-channel": "Conserva canale",
+    "delete-channel": "Elimina canale",
+    "channel-kept": "Il canale sarà conservato. Non verrà eliminato per inattività.",
+    "channel-deleted": "Il canale è stato eliminato.",
+    "no-channels-found": "Nessun canale trovato.",
+    "deleting-all-private-channels": "Eliminazione di tutti i canali privati in corso...",
+    "must-have-supported-filter": "Devi includere almeno un filtro supportato (ad esempio, marca o taglia) per cercare articoli."
 }
